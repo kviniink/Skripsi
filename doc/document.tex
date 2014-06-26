@@ -1,0 +1,127 @@
+\documentclass[a4paper,twoside]{article}
+\usepackage[T1]{fontenc}
+\usepackage[bahasa]{babel}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{float}
+\usepackage[cm]{fullpage}
+\pagestyle{myheadings}
+\usepackage{etoolbox}
+\usepackage{setspace} 
+\usepackage{lipsum} 
+\setlength{\headsep}{30pt}
+\usepackage[inner=2cm,outer=2.5cm,top=2.5cm,bottom=2cm]{geometry} %margin
+% \pagestyle{empty}
+
+\makeatletter
+\renewcommand{\@maketitle} {\begin{center} {\LARGE \textbf{ \textsc{\@title}} \par} \bigskip {\large \textbf{\textsc{\@author}} }\end{center} }
+\renewcommand{\thispagestyle}[1]{}
+\markright{\textbf{\textsc{AIF401 \textemdash Rencana Kerja Skripsi \textemdash Sem. Ganjil 2014/2015}}}
+
+\onehalfspacing
+ 
+\begin{document}
+
+\title{\@judultopik}
+\author{\nama \textendash \@npm} 
+
+%tulis nama dan NPM anda di sini:
+\newcommand{\nama}{Kevin Theodorus Yonathan}
+\newcommand{\@npm}{2011730037}
+\newcommand{\@judultopik}{Pembuatan \textit{TwitterBot} Untuk Mencari Jalur Transportasi Publik} % Judul/topik anda
+\newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
+\newcommand{\tanggal}{05/16/2014}
+\maketitle
+
+\pagenumbering{arabic}
+
+\section{Deskripsi}
+
+Twitter adalah layanan jejaring sosial online yang dapat saling mengirim dan menerima pesan berbasis teks hingga 140 karakter. Kiriman pesan dalam Twitter sering disebut tweet. Twitter juga  memiliki fungsi yang bermacam-macam salah satunya adalah \textit{TwitterBot}. \textit{TwitterBot} adalah sebuah program yang digunakan untuk menghasilkan sebuah postingan/\textit{tweet} secara otomatis melalui layanan microblogging Twitter itu sendiri  (Jason Kincaid (January 22, 2010). "All Your Twitter Bot Needs Is Love". TechCrunch. Retrieved May 31, 2012.). \textit{TwitterBot} ini sendiri memiliki fungsi yang berbeda-beda sesuai dengan keinginan pengguna. Sebagai contoh \textit{TwitterBot} digunakan untuk \textit{spam} seperti promosi dan yang lainnya, bisa juga digunakan untuk penjadwalan seseorang.
+
+Kiri API adalah aplikasi pihak ke tiga yang memungkinkan programmer mendapatkan data tentang info jalur transportasi publik. Twitter API adalah aplikasi pihak ke tiga yang memungkinkan programmer melakukan manipulasi dan pengolahan data di twitter. Dengan memanfaatkan kiri api dan twitter api penulis akan membuat program yang dapat membalas tweet untuk mencari jalur transportasi publik. Program yang dibuat akan bersifat real time sehingga jika seseorang melakukan mention kepada bot pencari jalur maka bot akan menangkapnya dan membalas mention tersebut berupa jalur yang harus ditempuh.
+
+
+\section{Rumusan Masalah}
+Mengacu kepada deskripsi yang diberikan, maka rumusan masalah pada penelitian ini adalah:
+\begin{itemize}
+	\item Bagaimana membuat \textit{TwitterBot} untuk mencari jalur transportasi publik?
+	\item Bagaimana membuat \textit{TwitterBot} untuk dapat merespon secara real time?
+	\item Bagaimana memformat petunjuk rute perjalanan dalam keterbatasan tweet 140 karakter?
+\end{itemize}
+
+\section{Tujuan}
+Tujuan dari penelitian ini adalah:
+\begin{itemize}
+	\item Membuat aplikasi \textit{TwitterBot}.
+	\item Membuat aplikasi Twitter secara real time.
+	\item Mempermudah pengguna kendaraan umum untuk mencari jalur menggunakan \textit{TwitterBot} Kiri.travel.
+	\item Membuat algoritma untuk memecah instruksi dari KIRI API dan mengubahnya ke dalam bentuk tweet.
+\end{itemize}
+
+\section{Deskripsi Perangkat Lunak}
+Perangkat lunak akhir yang akan dibuat memiliki fitur setidaknya sebagai berikut:
+\begin{itemize}
+	\item Membaca mention dari pengguna twitter.
+	\item Perangkat lunak dapat membaca \textit{input} yang diberikan oleh user melalui \textit{tweet}.
+	\item Perangkat lunak dapat mencari jalur yang diberikan dengan memanfaatkan Kiri API.
+	\item Perangkat lunak dapat memberikan hasil/\textit{output} berupa \textit{tweet} yang dikirimkan kepada user.
+	\item Perangkat lunak dapat berjalan sebagai server yang berjalan terus menerus hingga program dihentikan.
+\end{itemize}
+
+\section{Rencana Kerja}
+Rencana kerja untuk menyelesaikan skripsi ini:
+\begin{itemize}
+	\item Pada saat mengambil kuliah AIF401 Skripsi 1
+	\begin{enumerate}
+		\item Melakukan studi literatur tentang Kiri API.
+		\item Melakukan studi literatur tentang REST API Twitter (https://dev.twitter.com/docs/api/1.1).
+		\item Melakukan studi literatur tentang Streaming API Twitter (https://dev.twitter.com/docs/api/streaming).
+		\item Mempelajari buku berjudul Server Based Java Programming.
+		\item Mempelajari bahasa Java dalam membuat sebuah server.
+		\item Mencoba membuat TwitterBot sederhana.
+		\item Membuat laporan dalam bentuk skripsi.
+	\end{enumerate}
+	\item Pada saat mengambil kuliah AIF401 Skripsi 2
+	\begin{enumerate}
+		\item Merancang dan mengimplementasikan algoritma untuk \textit{TwitterBot}.
+		\item Mengimplementasikan pembangkit \textit{TwitterBot}. 
+		\item Melakukan pengujian dan eksperimen.
+		\item Membuat dokumentasi skripsi.
+	\end{enumerate}
+\end{itemize}
+
+\section{Isi {\it Progress Report} Skripsi 1}
+Isi dari {\it Progress Report} Skripsi 1 yang akan diselesaikan paling lambat pada tanggal 1 Januari 2015 adalah :
+\begin{enumerate}
+	\item Pemahaman tentang Java Server.
+	\item Pemahaman tentang Kiri API.
+	\item Pemahaman tentang Twitter API.
+\end{enumerate}
+Estimasi persentase penyelesaian skripsi sampai dengan {\it Progress Report} Skripsi 1 adalah : 55\%
+\vspace{1.5cm}
+
+\centering Bandung, \tanggal\\
+\vspace{2cm} \nama \\ 
+\vspace{1cm}
+
+Menyetujui, \\
+\ifdefstring{\jumpemb}{2}{
+\vspace{1.5cm}
+\begin{centering} Menyetujui,\\ \end{centering} \vspace{0.75cm}
+\begin{minipage}[b]{0.45\linewidth}
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013 \\
+\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Utama
+\end{minipage} \hspace{0.5cm}
+\begin{minipage}[b]{0.45\linewidth}
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
+\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Pendamping
+\end{minipage}
+\vspace{0.5cm}
+}{
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
+\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Tunggal
+}
+`
+\end{document}
+
