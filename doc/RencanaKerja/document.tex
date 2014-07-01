@@ -37,34 +37,35 @@
 
 \section{Deskripsi}
 
-Twitter adalah layanan jejaring sosial online yang dapat saling mengirim dan menerima pesan berbasis teks hingga 140 karakter. Kiriman pesan dalam Twitter sering disebut tweet. Twitter juga  memiliki fungsi yang bermacam-macam salah satunya adalah \textit{TwitterBot}. \textit{TwitterBot} adalah sebuah program yang digunakan untuk menghasilkan sebuah postingan/\textit{tweet} secara otomatis melalui layanan microblogging Twitter itu sendiri  (Jason Kincaid (January 22, 2010). "All Your Twitter Bot Needs Is Love". TechCrunch. Retrieved May 31, 2012.). \textit{TwitterBot} ini sendiri memiliki fungsi yang berbeda-beda sesuai dengan keinginan pengguna. Sebagai contoh \textit{TwitterBot} digunakan untuk \textit{spam} seperti promosi dan yang lainnya, bisa juga digunakan untuk penjadwalan seseorang.
+Twitter adalah layanan jejaring sosial online yang dapat memposting pesan berbasis teks hingga 140 karakter. Pengguna Twitter menyebutnya sebagai \textit{tweets}. \textit{Tweets} ini akan mengirimkan pesan singkat yang ditujukan ke semua \textit{followers} suatu akun\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 7}. Reply adalah cara pengguna untuk dapat memberi rujukan kepada pengguna Twitter yang lainnya atau lebih dikenal dengan \textit{mention}\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 9}.
 
-Kiri API adalah aplikasi pihak ke tiga yang memungkinkan programmer mendapatkan data tentang info jalur transportasi publik. Twitter API adalah aplikasi pihak ke tiga yang memungkinkan programmer melakukan manipulasi dan pengolahan data di twitter. Dengan memanfaatkan kiri api dan twitter api penulis akan membuat program yang dapat membalas tweet untuk mencari jalur transportasi publik. Program yang dibuat akan bersifat real time sehingga jika seseorang melakukan mention kepada bot pencari jalur maka bot akan menangkapnya dan membalas mention tersebut berupa jalur yang harus ditempuh.
+\textit{Twitter bots} adalah akun Twitter yang secara otomatis menyelesaikan suatu perintah yang diberikan. Twitter bots ini dapat mengingatkan anda tentang suatu event melalui Twitter, seperti seseorang telah berhenti memfollow anda\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 59}. Salah satu yang menarik dari \textit{Twitter bots} ini adalah Twitter membuatnya agar didukung untuk pesan text(\textit{text messaging}). Jadi \textit{Twitter bots} dapat memanfaatkan pesan teks untuk memungkinkan pengguna menyelesaikan tugas atau perintah dari ponsel mereka.
+
+KIRI API adalah aplikasi pihak ketiga yang memungkinkan programmer mendapatkan data tentang info jalur transportasi publik. Twitter API adalah aplikasi pihak ketiga yang memungkinkan programmer melakukan manipulasi dan pengolahan data di Twitter. Dengan memanfaatkan KIRI API dan Twitter API penulis akan membuat program yang dapat membalas \textit{tweet} untuk mencari jalur transportasi publik. Program yang dibuat akan bersifat \textit{real time} sehingga jika seseorang melakukan mention kepada bot pencari jalur maka bot akan menangkapnya dan membalas mention tersebut berupa jalur yang harus ditempuh.
 
 
 \section{Rumusan Masalah}
 Mengacu kepada deskripsi yang diberikan, maka rumusan masalah pada penelitian ini adalah:
 \begin{itemize}
-	\item Bagaimana membuat \textit{TwitterBot} untuk mencari jalur transportasi publik?
-	\item Bagaimana membuat \textit{TwitterBot} untuk dapat merespon secara real time?
+	\item Bagaimana membuat \textit{Twitter bots} untuk mencari jalur transportasi publik?
+	\item Bagaimana membuat \textit{Twitter bots} untuk dapat merespon secara real time?
 	\item Bagaimana memformat petunjuk rute perjalanan dalam keterbatasan tweet 140 karakter?
 \end{itemize}
 
 \section{Tujuan}
 Tujuan dari penelitian ini adalah:
 \begin{itemize}
-	\item Membuat aplikasi \textit{TwitterBot}.
+	\item Membuat aplikasi \textit{Twitter bots}.
 	\item Membuat aplikasi Twitter secara real time.
-	\item Mempermudah pengguna kendaraan umum untuk mencari jalur menggunakan \textit{TwitterBot} Kiri.travel.
 	\item Membuat algoritma untuk memecah instruksi dari KIRI API dan mengubahnya ke dalam bentuk tweet.
 \end{itemize}
 
 \section{Deskripsi Perangkat Lunak}
 Perangkat lunak akhir yang akan dibuat memiliki fitur setidaknya sebagai berikut:
 \begin{itemize}
-	\item Membaca mention dari pengguna twitter.
+	\item Mendengarkan mention dari pengguna Twitter.
 	\item Perangkat lunak dapat membaca \textit{input} yang diberikan oleh user melalui \textit{tweet}.
-	\item Perangkat lunak dapat mencari jalur yang diberikan dengan memanfaatkan Kiri API.
+	\item Perangkat lunak dapat mencari jalur yang diberikan dengan memanfaatkan KIRI API.
 	\item Perangkat lunak dapat memberikan hasil/\textit{output} berupa \textit{tweet} yang dikirimkan kepada user.
 	\item Perangkat lunak dapat berjalan sebagai server yang berjalan terus menerus hingga program dihentikan.
 \end{itemize}
@@ -74,18 +75,23 @@ Rencana kerja untuk menyelesaikan skripsi ini:
 \begin{itemize}
 	\item Pada saat mengambil kuliah AIF401 Skripsi 1
 	\begin{enumerate}
-		\item Melakukan studi literatur tentang Kiri API.
-		\item Melakukan studi literatur tentang REST API Twitter (https://dev.twitter.com/docs/api/1.1).
-		\item Melakukan studi literatur tentang Streaming API Twitter (https://dev.twitter.com/docs/api/streaming).
-		\item Mempelajari buku berjudul Server Based Java Programming.
+		\item Melakukan studi literatur, antara lain:
+		\begin{itemize}
+			\item KIRI API,
+			\item REST API Twitter (https://dev.twitter.com/docs/api/1.1),
+			\item Streaming API Twitter (https://dev.twitter.com/docs/api/streaming).
+		\end{itemize}
+		\item Mempelajari pembuatan server dalam bahasa Java.
 		\item Mempelajari bahasa Java dalam membuat sebuah server.
-		\item Mencoba membuat TwitterBot sederhana.
+		\item Mencoba membuat \textit{Twitter Bots} sederhana.
 		\item Membuat laporan dalam bentuk skripsi.
+		\item Melakukan analisis terhadap teori-teori yang sudah dipelajari, guna membangun perangkat lunak yang dimaksud.
 	\end{enumerate}
 	\item Pada saat mengambil kuliah AIF401 Skripsi 2
 	\begin{enumerate}
-		\item Merancang dan mengimplementasikan algoritma untuk \textit{TwitterBot}.
-		\item Mengimplementasikan pembangkit \textit{TwitterBot}. 
+		\item Merancang PL \textit{Twitter bots}.
+		\item Mengimplementasi PL \textit{Twitter bots}.
+		\item Mengimplementasikan pembangkit \textit{Twitter bots}. 
 		\item Melakukan pengujian dan eksperimen.
 		\item Membuat dokumentasi skripsi.
 	\end{enumerate}
@@ -95,7 +101,7 @@ Rencana kerja untuk menyelesaikan skripsi ini:
 Isi dari {\it Progress Report} Skripsi 1 yang akan diselesaikan paling lambat pada tanggal 1 Januari 2015 adalah :
 \begin{enumerate}
 	\item Pemahaman tentang Java Server.
-	\item Pemahaman tentang Kiri API.
+	\item Pemahaman tentang KIRI API.
 	\item Pemahaman tentang Twitter API.
 \end{enumerate}
 Estimasi persentase penyelesaian skripsi sampai dengan {\it Progress Report} Skripsi 1 adalah : 55\%
