@@ -1,46 +1,21 @@
-\documentclass[a4paper,twoside]{article}
-\usepackage[T1]{fontenc}
-\usepackage[bahasa]{babel}
-\usepackage{graphicx}
-\usepackage{graphics}
-\usepackage{float}
-\usepackage[cm]{fullpage}
-\pagestyle{myheadings}
-\usepackage{etoolbox}
-\usepackage{setspace} 
-\usepackage{lipsum} 
-\setlength{\headsep}{30pt}
-\usepackage[inner=2cm,outer=2.5cm,top=2.5cm,bottom=2cm]{geometry} %margin
-% \pagestyle{empty}
+\chapter{Pendahuluan}
+\label{chap:pendahuluan}
 
-\makeatletter
-\renewcommand{\@maketitle} {\begin{center} {\LARGE \textbf{ \textsc{\@title}} \par} \bigskip {\large \textbf{\textsc{\@author}} }\end{center} }
-\renewcommand{\thispagestyle}[1]{}
-\markright{\textbf{\textsc{AIF401 \textemdash Rencana Kerja Skripsi \textemdash Sem. Ganjil 2014/2015}}}
+\section{Latar Belakang}
+\label{sec:latar belakang}
 
-\onehalfspacing
- 
-\begin{document}
-
-\title{\@judultopik}
-\author{\nama \textendash \@npm} 
-
-%tulis nama dan NPM anda di sini:
-\newcommand{\nama}{Kevin Theodorus Yonathan}
-\newcommand{\@npm}{2011730037}
-\newcommand{\@judultopik}{Pembuatan \textit{Twitter Bot} Untuk Mencari Jalur Transportasi Publik} % Judul/topik anda
-\newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
-\newcommand{\tanggal}{05/16/2014}
-\maketitle
-
-\pagenumbering{arabic}
-
-\section{Deskripsi}
 Twitter adalah layanan jejaring sosial online yang memungkinkan pengguna memposting pesan berbasis teks hingga 140 karakter. Pengguna Twitter menyebutnya sebagai \textit{tweet}. \textit{Tweet} ini akan meneruskan pesan singkat yang ditujukan ke semua \textit{follower} suatu akun\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 7}.\textit{Follow} adalah salah satu istilah dalam Twitter yang bertujuan untuk mengikuti aktivitas \textit{tweet} suatu akun. Sedangkan cara seseorang untuk dapat memberi rujukan kepada akun Twitter yang lainnya adalah dengan cara \textit{reply} atau lebih dikenal dengan nama \textit{mention}\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 9}. Sebagai contoh ada akun bernama @kviniink mem-\textit{follow} @infobdg untuk mengetahui perkembangan apa saja yang tejadi di kota Bandung. Lalu akun @kviniink ingin bertanya tentang info mall yang ramai di Bandung, maka akun @kviniink membuat \textit{mention tweet} yang berisikan "@infobdg Halo saya ingin bertanya apa saja mall yang sedang ramai di Bandung yah?".
 
 \textit{Twitter bot} adalah akun Twitter yang secara otomatis menyelesaikan suatu perintah yang diberikan. \textit{Twitter bots} memiliki fitur untuk  mengingatkan tentang suatu event melalui Twitter, seperti seseorang telah berhenti memfollow suatu akun\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 59}. Salah satu yang menarik dari \textit{Twitter bots} ini adalah Twitter membuatnya agar didukung untuk pesan teks(\textit{text messaging}). Jadi \textit{Twitter bot} dapat memanfaatkan pesan teks untuk memungkinkan akun menyelesaikan tugas atau perintah dari ponsel mereka.
 
-KIRI API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} mendapatkan data tentang info jalur transportasi publik. Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Dengan memanfaatkan KIRI API dan Twitter API penulis akan membuat program yang dapat membalas \textit{tweet} untuk mencari jalur transportasi publik. Program yang dibuat akan bersifat \textit{real time} sehingga jika seseorang melakukan mention kepada bot pencari jalur maka bot akan menangkapnya dan membalas mention tersebut berupa jalur yang harus ditempuh. Contoh dari jalannya program adalah ketika akun bernama @kviniink melakukan \textit{mention} kepada @kiriupdate untuk bertanya jalur transportasi publik "@kiriupdate #find bip to ip". Maka Twitter bot @kiriupdate akan mendengarkan mention dari akun @kviniink lalu mention tersebut akan diolah oleh server dan akan di-reply dengan tweet "@kviniink Walk about 135 meter from your starting point to Jalan Aceh." , "@kviniink Take angkot Ciroyom - Antapani at Jalan Aceh, and alight at Jalan Pajajaran about 3.6 kilometer later.", "@kviniink Walk about 93 meter from Jalan Pajajaran to your destination.". Karena keterbatasan 140 karakter maka tweet akan dipecah sesuai dengan instruksi yang dikirimkan dari KIRI API.
+KIRI API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} mendapatkan data tentang info jalur transportasi publik. Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Dengan memanfaatkan KIRI API dan Twitter API penulis akan membuat program yang dapat membalas \textit{tweet} untuk mencari jalur transportasi publik. Program yang dibuat akan bersifat \textit{real time} sehingga jika seseorang melakukan mention kepada bot pencari jalur maka bot akan menangkapnya dan membalas mention tersebut berupa jalur yang harus ditempuh. Contoh dari jalannya program adalah ketika akun bernama @kviniink melakukan \textit{mention} kepada @kiriupdate untuk bertanya jalur transportasi publik "@kiriupdate #find bip to ip". Maka Twitter bot @kiriupdate akan mendengarkan mention dari akun @kviniink lalu mention tersebut akan diolah oleh server dan akan di-reply dengan tweet "@kviniink istana plaza to bandung indah plaza", "@kviniink Walk about 135 meter from your starting point to Jalan Aceh." , "@kviniink Take angkot Ciroyom - Antapani at Jalan Aceh, and alight at Jalan Pajajaran about 3.6 kilometer later.", "@kviniink Walk about 93 meter from Jalan Pajajaran to your destination.". Karena keterbatasan 140 karakter maka tweet akan dipecah sesuai dengan instruksi yang dikirimkan dari KIRI API.
+
+\begin{figure}
+	\centering
+		\includegraphics{C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Template Skripsi FTIS v7/Gambar/contoh 1.1.png}
+	\caption{Gambar 1.1}
+	\label{fig: Gambar 1.1}
+\end{figure}
 
 
 \section{Rumusan Masalah}
@@ -95,38 +70,3 @@ Rencana kerja untuk menyelesaikan skripsi ini:
 		\item Membuat dokumentasi skripsi.
 	\end{enumerate}
 \end{itemize}
-
-\section{Isi {\it Progress Report} Skripsi 1}
-Isi dari {\it Progress Report} Skripsi 1 yang akan diselesaikan paling lambat pada tanggal 1 Januari 2015 adalah :
-\begin{enumerate}
-	\item Pemahaman tentang Java Server.
-	\item Pemahaman tentang KIRI API.
-	\item Pemahaman tentang Twitter API.
-\end{enumerate}
-Estimasi persentase penyelesaian skripsi sampai dengan {\it Progress Report} Skripsi 1 adalah : 55\%
-\vspace{1.5cm}
-
-\centering Bandung, \tanggal\\
-\vspace{2cm} \nama \\ 
-\vspace{1cm}
-
-Menyetujui, \\
-\ifdefstring{\jumpemb}{2}{
-\vspace{1.5cm}
-\begin{centering} Menyetujui,\\ \end{centering} \vspace{0.75cm}
-\begin{minipage}[b]{0.45\linewidth}
-% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013 \\
-\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Utama
-\end{minipage} \hspace{0.5cm}
-\begin{minipage}[b]{0.45\linewidth}
-% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
-\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Pendamping
-\end{minipage}
-\vspace{0.5cm}
-}{
-% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
-\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Tunggal
-}
-`
-\end{document}
-
