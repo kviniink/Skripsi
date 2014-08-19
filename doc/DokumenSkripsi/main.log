@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.12)  19 AUG 2014 21:21
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.12)  19 AUG 2014 21:47
 entering extended mode
 **main.tex
 (C:\Users\Kvin\git\Skripsi\doc\DokumenSkripsi\main.tex
@@ -688,6 +688,31 @@ Package pdftex.def Info: Gambar/logo-unpar.png used on input line 473.
 ]
 (C:\Users\Kvin\git\Skripsi\doc\DokumenSkripsi\Bab/bab1.tex
 Bab 1.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.7 ...shop, dan lain lain. Menurut Kemkoinfo\left
+                                                  (8 mei 2014\right): penggu...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.8 
+    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (1409.83444pt too wide) in paragraph at lines 7--8
+\T1/cmr/m/n/10.95 Ban-king, onli-ne shop, dan la-in la-in. Me-nu-rut Kemkoinfo$[] \OT1/cmr/m/n/10.95 : \OML/cmm/m/it/10.
+95 penggunainternetdiIndonesiacapai\OT1/cmr/m/n/10.95 82\OML/cmm/m/it/10.95 Jutaorang; delapanpuluhpersendiantaranyaadal
+ahremaja:HalinimenunjukkanbahwainternetsudahtidakasinglagiuntukmasyarakatdiIndonesiaini:Sebagaiinformasitambahanbahwapen
+ggunainternetdiIndonesia\OT1/cmr/m/n/10.95 95\OML/cmm/m/it/10.95 persennyadigunakanuntuksocialmediaataujejaringsocialonl
+ine:$ 
+ []
+
 [1
 
 
@@ -697,15 +722,18 @@ File: Gambar/contohpercakapan.png Graphic file (type png)
  <use Gambar/contohpercakapan.png>
 Package pdftex.def Info: Gambar/contohpercakapan.png used on input line 19.
 (pdftex.def)             Requested size: 275.88718pt x 412.97041pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 26.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/contohpercakapan.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 26.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
- [2] [3 <C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/contohpercakapan.png>]) [4] (C:\Users\Kvin\git\Skripsi\doc\
-DokumenSkripsi\main.bbl
+ [3]) [4]
+(C:\Users\Kvin\git\Skripsi\doc\DokumenSkripsi\main.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
@@ -719,17 +747,27 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 496.
  (C:\Users\Kvin\git\Skripsi\doc\DokumenSkripsi\main.aux (C:\Users\Kvin\git\Skripsi\doc\DokumenSkripsi\Bab/bab1.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 496.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 496.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B0CBF269EC0886F0A658E0D88A77BED7;1288.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: B0CBF269EC0886F0A658E0D88A77BED7;1288
+(rerunfilecheck)             After:  E05D0337547CF2E17282690268DE6DBB;1288.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 11592 strings out of 494045
- 158149 string characters out of 3148390
- 366646 words of memory out of 3000000
+ 11586 strings out of 494045
+ 158107 string characters out of 3148390
+ 367646 words of memory out of 3000000
  14626 multiletter control sequences out of 15000+200000
  21611 words of font info for 49 fonts, out of 3000000 for 9000
  719 hyphenation exceptions out of 8191
- 45i,11n,43p,1475b,421s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,11n,43p,1475b,436s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Kvin\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1000.pk> <C:\Users\Kvin\AppData\Local\
 MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0900.pk> <C:\Users\Kvin\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
 pen\ec\dpi600\ecrm0900.pk> <C:\Users\Kvin\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.pk> <C:\U
@@ -740,10 +778,12 @@ n\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\U
 \pk\ljfour\jknappen\ec\dpi600\ecbi1200.pk> <C:\Users\Kvin\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
 rm1095.pk> <C:\Users\Kvin\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Kvin\AppDat
 a\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1440.pk> <C:\Users\Kvin\AppData\Local\MiKTeX\2.9\fonts\pk\ljfo
-ur\jknappen\ec\dpi600\ecbx1440.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (25 pages, 347923 bytes).
+ur\jknappen\ec\dpi600\ecbx1440.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb>
+Output written on main.pdf (25 pages, 370144 bytes).
 PDF statistics:
- 584 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
+ 579 PDF objects out of 1000 (max. 8388607)
+ 44 named destinations out of 1000 (max. 500000)
  99 words of extra memory for PDF output out of 10000 (max. 10000000)
 
