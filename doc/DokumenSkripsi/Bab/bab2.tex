@@ -1,0 +1,94 @@
+\chapter{Dasar Teori}
+\label{chap:dasar teori}
+
+Sebelum bisa membuat Twitter bot untuk mencari jalur transportasi publik, berikut diberikan beberapa definisi yang berkaitan dengan pembuatan Twitter bot. Bab ini akan menjelaskan Twitter, Twitter API, KIRI, KIRI API, dan Twitter4j.
+
+\section{Twitter}
+\label{sec:twitter}
+
+Twitter adalah layanan yang memungkinkan pengguna untuk mengirim pesan menggunakan 140 karakter atau kurang. Pesan tersebut dapat diadaptasikan melalui teks, aplikasi \textit{mobile}, atau web. (referensi dari buku Sams teach yourself the twitter api) Berikut ini adalah daftar istilah umum pada Twitter:
+
+Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengguna memposting pesan berbasis teks hingga 140 karakter (referensi dari buku The Twitter Book).
+\begin{itemize}
+	\item Tweet 
+	
+	Posting pada Twitter disebut sebagai \textit{tweet}. \textit{Tweet} ini akan meneruskan pesan singkat yang ditujukan ke semua \textit{follower} suatu akun\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 7}. Contohnya adalah seorang akun @kviniink ingin menuliskan bahwa hari ini cuaca cerah, maka @kviniink akan men-tweet 'Hari ini cerah yah..' Tweet juga bisa menyertakan link ke video, foto, atau media lain di internet selain teks biasa. URL link teks termasuk ke dalam 140 batas karakter, \textbf{tetapi URL yang disertakan akan dibuat menjadi link pendek}.
+	\item Follow
+	
+	Follow adalah satu istilah dalam Twitter yang bertujuan untuk mengikuti aktivitas \textit{tweet} suatu akun. Following adalah ketika sebuah akun mengikuti akun orang lain, dan Follower adalah ketika sebuah akun melakukan aksi follow kepada akun anda.
+	\item Reply 
+	
+	Reply adalah cara seseorang untuk dapat memberi rujukan kepada akun Twitter yang lainnya atau lebih dikenal dengan nama \textit{mention}\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 9}. Sebagai contoh, diketahui akun bernama @kviniink mem-\textit{follow} @infobdg untuk mengetahui perkembangan apa saja yang tejadi di kota Bandung. Lalu akun @kviniink ingin bertanya tentang info mall yang ramai di Bandung, maka akun @kviniink membuat \textit{mention tweet} yang berisikan "@infobdg Halo saya ingin bertanya apa saja mall yang sedang ramai di Bandung yah?".
+	\item Retweet
+	
+	Retweet ini merupakan salah satu yang paling penting dari Twitter(referensi the twitter book halaman 47). Retweet ini berguna ketika pengguna menemukan tweet menarik dan berbagi tweet tersebut dengan follower akun tersebut (\textit{follower}). Retweet ini juga secara tidak langsung mengatakan bahwa "saya menghormati anda dan pesan yang anda buat".
+	
+	\item Hastag
+	
+	Sebuah fitur yang diciptakan oleh Twitter untuk membantu pencarian kata kunci dan penandaan suatu diskusi.
+	
+	\item Direct Message(DM)
+	
+	Direct message digunakan untuk mengirim pesan yang bersifat private antara dua orang. Orang yang mengirim direct message ini hanya bisa untuk orang yang mengikuti akun tersebut.
+\end{itemize}
+
+
+	
+
+\section{Twitter API}
+Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Twitter API tidak seperti API pada umumnya karena Twitter memaparkan hampir semuanya termasuk setup account dan informasi kustumisasi. Ini adalah salah satu bentuk pendekatan dari Twitter yang berfokus pada jaringan dan memungkinkan developer memiliki hak untuk berpikir 'out of the box' untuk membuat aplikasi yang mereka inginkan. Tetapi tetap akan terjadi keterbatasan yang dimiliki Twitter API, yaitu :
+\begin{itemize}
+	\item Hanya bisa men-update 1000 per harinya, baik melalui handphone, website, API, dan sebagainya.
+	\item Total pesan hanya bisa sebanyak 250 per harinya, pada setiap dan semua perangkat.
+	\item 150 permintaan API per jam.
+	\item OAuth diijinkan 350 permintaan per jam.
+\end{itemize}
+
+Twitter API sendiri dibagi menjadi dua yaitu REST API dan Streaming API.
+
+
+REST API menyediakan akses program untuk membaca dan menulis data Twitter. Data tersebut seperti menuliskan tweet baru, membaca profile, melihat follower, dan lainnya. REST API mengidentifikasi aplikasi Twitter dan pengguna menggunakan OAuth.
+
+Streamming API adalah contoh \textit{real-time} API. API ini ditujukan bagi para pengembang dengan kebutuhan data yang intensif. Contohnya jika mencari cara untuk membangun sebuah data produk data-mining atau tertarik dalam analisis penelitian. Streaming API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti tweet) secara langsung atau \textit{real-time}.
+
+Twitter menawarkan beberapa endpoint streaming, disesuaikan dengan kasus yang terjadi. 
+\begin{itemize}
+	\item Public stream
+	
+	Steaming data publik yang mengalir melalui Twitter. Dipergunakan untuk mengikuti sebuah akun atau topik tertentu. Selain itu juga public stream digunakan untuk data mining.
+	\item User Stream
+	
+	Single-user streams, mengandung hampir semua data korespondensi ...
+	
+	\item Site Stream
+	
+	Versi dari multi-user stream. Site stream harus terhubung dengan server yang terkoneksi dengan twitter atas nama banyak pengguna.
+\end{itemize}
+
+Perbedaan antara Streaming API dan REST API yaitu ...
+
+\section{KIRI}
+\label{sec:kiri}
+KIRI adalah sebuah situs atau \textit{website} yang memberi panduan tentang jalur transportasi publik. Alasan KIRI dapat berdiri adalah karenanya global warming, kemacetan, harga bensin yang semakin mahal. Ketiga alasan tersebut yang menjadi masalah sekarang ini, dan semua itu dapat diatasi dengan menaiki transportasi publik. 
+
+Peran dari KIRI ini adalah memberitahukan seseorang jalur transportasi publik dari satu tempat ke tempat yang dituju. Adapula format yang harus diisi dalam melakukan pencarian ini yaitu
+\begin{enumerate}
+	\item kota,
+	\item tempat awal,
+	\item tempat tujuan.
+\end{enumerate}
+
+\section{KIRI API}
+KIRI API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} mendapatkan data tentang info jalur transportasi publik. KIRI API dapat diakses dengan beberapa cara. Semua request harus berisikan API key, yang dapat diambil melalui KIRI API Management Dashboard. Berikut adalah spesifikasi dari KIRI API
+
+\begin{itemize}
+	\item Web Service
+	\item Routing Web Service
+	\item Search Place Web Service
+	\item Nearest Transports Web Service
+	\item KIRI Widget
+	\item URL Linking “Smart Direction”
+\end{itemize}
+
+
+\section{Pembuatan Server}
