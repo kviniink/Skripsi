@@ -23,7 +23,7 @@ Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengg
 	
 	Retweet ini merupakan salah satu yang paling penting dari Twitter(referensi the twitter book halaman 47). Retweet ini berguna ketika pengguna menemukan tweet menarik dan berbagi tweet tersebut dengan follower akun tersebut (\textit{follower}). Retweet ini juga secara tidak langsung mengatakan bahwa "saya menghormati anda dan pesan yang anda buat".
 	
-	\item Hastag
+	\item Hashtag
 	
 	Sebuah fitur yang diciptakan oleh Twitter untuk membantu pencarian kata kunci dan penandaan suatu diskusi.
 	
@@ -49,28 +49,7 @@ Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} m
 
 Twitter API sendiri dibagi menjadi dua yaitu REST API dan Streaming API.
 
-
-REST API menyediakan akses program untuk membaca dan menulis data Twitter. Data tersebut seperti menuliskan tweet baru, membaca profile, melihat follower, dan lainnya. REST API mengidentifikasi aplikasi Twitter dan pengguna menggunakan OAuth.
-
-Streamming API adalah contoh \textit{real-time} API. API ini ditujukan bagi para pengembang dengan kebutuhan data yang intensif. Contohnya jika mencari cara untuk membangun sebuah data produk data-mining atau tertarik dalam analisis penelitian. Streaming API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti tweet) secara langsung atau \textit{real-time}.
-
-Twitter menawarkan beberapa endpoint streaming, disesuaikan dengan kasus yang terjadi. 
-\begin{itemize}
-	\item Public stream
-	
-	Steaming data publik yang mengalir melalui Twitter. Dipergunakan untuk mengikuti sebuah akun atau topik tertentu. Selain itu juga public stream digunakan untuk data mining.
-	\item User Stream
-	
-	Single-user streams, mengandung hampir semua data korespondensi ...
-	
-	\item Site Stream
-	
-	Versi dari multi-user stream. Site stream harus terhubung dengan server yang terkoneksi dengan twitter atas nama banyak pengguna.
-\end{itemize}
-
-Perbedaan antara Streaming API dan REST API yaitu ...
-
-\section{OAuth}
+\subsection{OAuth}
 \label{sec:oauth}
 Dengan semakin berkembangnya website, semakin banyak situs yang bergantung pada layanan distribusi dan \textit{cloud computing}. Contohnya adalah menggunakan jejaring sosial dengan menggunakan account media sosial lainnya seperti Google untuk mencari teman-teman yang sudah tersimpan pada kontak Google. Atau bisa juga menggunakan pihak ketiga yang memanfaatkan API dari beberapa layanan.
 
@@ -92,7 +71,7 @@ Twitter OAuth yang diberikan memiliki fitur
 
 Twitter sekarang memanfaatkan OAuth 1.0A . Otententikasi aplikasi pengguna adalah bentuk paling umum dari otentikasi resource dalam pelaksanaan OAuth 1.0A Twitter sampai saat ini. Permintaan anda menandatangani baik untuk mengidentifikasi identitas aplikasi anda yang akan menyertakan izin untuk diberikan kepada pengguna. Hal ini bertujuan untuk dapat membuat panggilan API atas nama anda yang diwakili oleh akses token.
 
-\subsection{Application-only authentication}
+\subsubsection{Application-only authentication}
 Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentifikasi atas nama aplikasi itu sendiri. Dengan menggunakan Application-only authentication  anda tidak mempunyai konteks dari otentikafikasi pengguna dan ini berarti setiap request API untuk endpoint akan membutuhkan konteks user, seperti memposting tweet tidak akan bekerja. Aplikasi yang akan di dapat adalah: 
 
 \begin{itemize}
@@ -136,6 +115,70 @@ SSL benar-benar dibutuhkan karena ini adalah cara otentifikasi yang aman. Oleh k
 Tidak ada konteks pengguna. Ketika mengeluarkan permintaan menggunakan application-only auth, tidak ada konsep \textit{'current-user'}. Karena itu endpoint seperti POST status / update tidak akan berfungsi dengan application-only auth.
 
 \textit{Rate limiting}. \textit{Request} yang dibuat atas nama pengguna tidak akan menguras ketersediaan \textit{rate limit} dan \textit{request} tidak akan menguras batas penggunaan \textbf{limit} dalam \textit{user-based auth}.
+
+
+\subsubsection{3-legged authorization}
+Cara kerja dari 3-legged authorization adalah dengan memberikan aplikasi yang anda buat untuk mengambil \textit{access token} dengan cara melakukan \textit{redirect} user dengan Twitter dan memberikan mereka sebuah otorisasi dari aplikasi yang anda buat. Cara kerja ini hampir identik dengan cara kerja yang dijelaskan pada implementasi \textit{Sign in} dengan Twitter, hanya saja terdapat dua pengecualian yaitu:
+
+\begin{itemize}
+	\item \textit{GET oauth endpoint} digunakan sebagai pengganti GET oauth
+	\item User akan selalu diminta untuk mengotorisasi akses ke aplikasi anda, bahkan jika akses sebelumnya telah diberikan
+\end{itemize}
+
+Beginilah ilustrasi interaksi \textit{sign in} dengan menggunakan \textit{following flowchart}
+
+\begin{figure}[hp]
+	\centering
+		\includegraphics[width=1.00\textwidth]{C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/sign-in-flow3-3legged.png}
+	\caption{Ilustrasi sign in}
+	\label{fig:sign-in-flow3-3legged}
+\end{figure}
+
+\subsubsection{PIN-based authorization}
+cara kerja dari PIN-based authorization ini ditujukan untuk aplikasi yang tidak bisa mengakses atau menanamkan \textit{web browser} untuk mengarahkan user kepada \textit{authorization endpoint}. Contohnya adalah aplikasi yang bersifat \textit{command-line}, \textit{embedded systems}, \textit{game} konsol, dan beberapa jenis aplikasi \textit{mobile}.
+
+
+Implementasi
+
+
+Implementasi PIN-based ini memiliki cara kerja yang sama seperti implementasi Sign in dengan Twitter dan \textit{3-legged authorization}, perbedaannya terletak pada nilai dari \textit{oauth$_$callback} yang harus di set menjadi \textit{oob} saat proses pemanggilan \textit{POST oauth/request$_$token}.
+
+Setelah applikasi anda telah mendapatkan \textit{GET oauth/authenticate} atau \textit{GET oauth/authorize URL}, tampilkan URL kepada user agar mereka dapat menggunakan web browser untuk mengakses Twitter.
+
+Ketika \textit{callback oob} diminta dan user pengunjungi Twitter, user tidak akan dipindahkan secara otomatis ke aplikasi setelah menyetujui akses. Sebaliknya, mereka akan melihat PIN code, dengan instruksi untuk kembali ke aplikasi dan memasukkan nilai dari PIN code tersebut.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics{C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/pin.png}
+	\label{fig:pin}
+\end{figure}
+
+Aplikasi anda harus memungkinkan user untuk memasukkan \textit{PIN code} ini untuk menyelesaikan flow tersebut.Nilai dari \textit{PIN code} harus lolos sebagai oauth$_$verifier untuk \textit{POST oauth/access$_$token request}. semua request akan berjalan normal kedepannya.
+
+\subsection{REST API}
+
+REST API menyediakan akses program untuk membaca dan menulis data Twitter. Data tersebut seperti menuliskan tweet baru, membaca profile, melihat follower, dan lainnya. REST API mengidentifikasi aplikasi Twitter dan pengguna menggunakan OAuth.
+
+\subsection{Streamming API}
+Streamming API adalah contoh \textit{real-time} API. API ini ditujukan bagi para pengembang dengan kebutuhan data yang intensif. Contohnya jika mencari cara untuk membangun sebuah data produk data-mining atau tertarik dalam analisis penelitian. Streaming API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti tweet) secara langsung atau \textit{real-time}.
+
+Twitter menawarkan beberapa endpoint streaming, disesuaikan dengan kasus yang terjadi. 
+\begin{itemize}
+	\item Public stream
+	
+	Steaming data publik yang mengalir melalui Twitter. Dipergunakan untuk mengikuti sebuah akun atau topik tertentu. Selain itu juga public stream digunakan untuk data mining.
+	\item User Stream
+	
+	Single-user streams, mengandung hampir semua data korespondensi ...
+	
+	\item Site Stream
+	
+	Versi dari multi-user stream. Site stream harus terhubung dengan server yang terkoneksi dengan twitter atas nama banyak pengguna.
+\end{itemize}
+
+Perbedaan antara Streaming API dan REST API yaitu ...
+
+
 
 %\section{KIRI}
 %\label{sec:kiri}
