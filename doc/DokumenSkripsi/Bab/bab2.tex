@@ -36,10 +36,8 @@ Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengg
 \end{itemize}
 
 
-	
-
 \section{Twitter API}
-Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Twitter API tidak seperti API pada umumnya karena Twitter memaparkan hampir semuanya termasuk setup account dan informasi kustumisasi. Ini adalah salah satu bentuk pendekatan dari Twitter yang berfokus pada jaringan dan memungkinkan developer memiliki hak untuk berpikir 'out of the box' untuk membuat aplikasi yang mereka inginkan. Tetapi tetap akan terjadi keterbatasan yang dimiliki Twitter API, yaitu :
+Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Twitter API tidak seperti API pada umumnya karena Twitter memaparkan hampir semuanya termasuk \textit{setup account} dan informasi kostumisasi\cite{Twitter}. Ini adalah salah satu bentuk pendekatan dari Twitter yang berfokus pada jaringan dan memungkinkan developer memiliki hak untuk berpikir 'out of the box' untuk membuat aplikasi yang mereka inginkan. Tetapi tetap akan terjadi keterbatasan yang dimiliki Twitter API, yaitu :
 \begin{itemize}
 	\item Hanya bisa men-update 1000 per harinya, baik melalui handphone, website, API, dan sebagainya.
 	\item Total pesan hanya bisa sebanyak 250 per harinya, pada setiap dan semua perangkat.
@@ -47,32 +45,271 @@ Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} m
 	\item OAuth diijinkan 350 permintaan per jam.
 \end{itemize}
 
-Twitter API sendiri dibagi menjadi dua yaitu REST API dan Streaming API.
+\subsection{Search API}
 
+Twitter Search API memungkinkan melakukan pencarian terhadap tweet baru ataupun tweet populer. Tetapi Twitter Search API ini bukan fitur yang tersedia pada Twitter itu sendiri. API ini difokuskan kepada relefansi, bukan terhadap kelengkapan data. Ini berarti bahwa beberapa Tweet dan pengguna akan hilang dari hasil pencarian.
+
+\paragraph{Bagaimana cara membuat sebuah query}
+Cara berbaik dalam membuat sebuah query dan melakukan percobaan yang valid dan mengembalikan tweet yang sesuai dengan yang dilakukan pada twitter.com/search. URL yang ditampilkan pada browser akan berisi sintaks query yang sesuai agar dapat digunakan kempali pada API endpoint. Berikut adalah contohnya:
+
+\begin{enumerate}
+	\item Melakukan pencarian untuk tweet yang direferensikan kepada akun @twitterapi. Pertama kita harus melakukan pencarian pada twitter.com/search.
+	\item Lakukan pengecekan dan salin URL yang ditampilkan. Sebagai contoh didapatkan URL seperti ini, https://twitter.com/search?q=\%40twitterapi
+	\item Ganti "https://twitter.com/search" dengan "https://api.twitter.com/1.1/search/tweets.json" dan akan didapatkan "https://api.twitter.com/1.1/search/tweets.json?q=\%40twitterapi"
+	\item Eksekusi URL tersebut untuk melakukan pencarian di dalam API.
+\end{enumerate}
+
+API v1.1 mewajibkan bahwa request harus diotentifikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di twitter.com dapat menghasilkan hasil yang sudah sangat lama, sedangkan Search API hanya melayani tweet dari seminggu terakhir.
+
+\begin{table}[h]
+\begin{tabular}{ll}
+Operator                   & Finds tweets                                                             \\
+watching now               & containing both "watching" and "now". This is the default operator.       \\
+"happy hour"               & containing the exact phrase "happy hour".                                 \\
+love OR hate               & containing either "love" or "hate" (or both).                             \\
+beer -root                 & containing "beer" but not "root".                                         \\
+\#haiku                    & ontaining the hashtag "haiku".                                            \\
+from:alexiskold            & sent from person "alexiskold".                                            \\
+to:techcrunch              & sent to person "techcrunch".                                              \\
+@mashable                  & referencing person "mashable".                                            \\
+superhero since:2010-12-27 & containing "superhero" and sent since date "2010-12-27" (year-month-day). \\
+ftw until:2010-12-27       & containing "ftw" and sent before the date "2010-12-27".                   \\
+movie -scary :)            & containing "movie", but not "scary", and with a positive attitude.        \\
+flight :(                  & containing "flight" and with a negative attitude.                         \\
+traffic ?                  & containing "traffic" and asking a question.                               \\
+hilarious filter:links     & containing "hilarious" and linking to URL.                                \\
+news source:twitterfeed    & containing "news" and entered via TwitterFeed                            
+\end{tabular}
+\end{table}
+
+Dipastikan bahwa melakukan pengkodean URL terhadap query terlebih dahulu sebelum melakukan request. Tabel berikut memberikan contoh mapping dari search query ke query pengkodean URL.
+
+\begin{table}[h]
+\begin{tabular}{ll}
+Search query     & URL encoded query                 \\
+\#haiku \#poetry & \%23haiku+\%23poetry              \\
+"happy hour" :)  & \%22happy\%20hour\%22\%20\%3A\%29
+\end{tabular}
+\end{table}
+
+\paragraph{Additional parameters}
+Terdapat parameter tambahan yang dipergunakan untuk hasil pencarian yang lebih baik. Berikut adalah penjelasan dari parameter tambahan tersebut :
+
+\begin{itemize}
+	\item \textbf{\textit{Result Type}}. Seperti hasil yang terdapat pada twitter.com/search, parameter result\_type memungkinkan hasil pencarian akan berdasarkan tweet yang paling baru atau tweet yang paling poluler atau bahkan gabungan dari keduanya.
+	\item \textit{\textbf{Geolocatization}}. Pencarian tempat tidak tersedia pada API, tetapi ada beberapa cara yang tepat untuk membatasi query dengan cara menggunakan parameter geocode lalu mementukan "latitude, longitude, radius". Contohnya adalah "37.781157,-122.398720,1mi". Ketika pencarian lokasi pencarian API pertama akan mencoba menemukan tweet yang memiliki latitude yang sudah dimasukan kedalam query geocode, jika tidak berhasil maka API akan mencoba menemukan tweet yang dibuat oleh pengguna yang lokasi profilenya terdapat pada latitude tersebut. Artinya adalah hasil pencarian mungkin menerima tweet yang tidak mencakup informasi latidute atau longitude.
+	\item \textit{\textbf{Language}}. Bahasa dapat dijadikan parameter untuk mencari tweet yang sesuai dengan bahasa tersebut.
+	\item \textbf{\textit{Iterating in a result set}}. Parameter seperti count, until, since\_id, max\_id memungkinkan untuk mengkontrol bagaimana iterasi melalui hasil pencarian.
+\end{itemize}
+
+\paragraph{Rate limits}
+User pada saat ini diwakilkan oleh \textit{access tokens} yang dapat membuat 180 \textit{request} per 15 menit. Tetapi kita bisa membuat 450 request per 15 menit dengan cara menggunakan \textit{application-only authentication} atas nama sendiri tanpa konteks pengguna.
+
+\paragraph{Contoh Pencarian}
+Ketika anda mengikuti suatu acara yang sedang berlangsung, anda tertarik untuk mencarinya dengan melihat tweet yang paling baru dan menggunakan hastag dari acara tersebut, maka langkah-langkah yang dilakukan adalah:
+\begin{itemize}
+	\item Anda ingin mencari tweet yang paling baru dengan menggunakan hastag \#superbowl
+	\item Maka search URL akan seperti ini:
+	https://api.twitter.com/1.1/search/tweets.json?q=\%23superbowl\&result\_type=recent
+\end{itemize}
+
+Ketika anda ingin mengetahui tweet yang datang dari suatu lokasi dengan bahasa yang spesifik, maka langkah-langkah yang dilakukan adalah:
+\begin{itemize}
+	\item Anda ingin mencari tweet yang paling baru dalam Bahasa Portugal, yang lokasinya dekat Maracanã soccer stadium yang terletak di Rio de Janeiro.
+	\item Maka search URL akan seperti ini:
+	\vtop{\hbox{\strut https://api.twitter.com/1.1/search/tweets.json?}\hbox{\strutq=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent }}
+	%%%https://api.twitter.com/1.1/search/tweets.json?q=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent
+	
+Ketika anda ingin mencari tweet yang sedang poluler dari spesifik user dan tweet tersebut terdapat sebuah hashtag tertentu:
+\begin{itemize}
+	\item Anda ingin mencari tweet yang poluler yang berasal dari @kviniink yang terdapat hashtag \#nasa.
+	\item Maka search URL akan seperti ini:
+	https://api.twitter.com/1.1/search/tweets.json?q=from\%3Akviniink\%20\%23nasa\&result\_type=popular
+\end{itemize}
+\end{itemize}
+
+\subsection{Streamming API}
+Streamming API adalah contoh \textit{real-time} API. API ini ditujukan bagi para pengembang dengan kebutuhan data yang intensif. Contohnya jika mencari cara untuk membangun sebuah data produk data-mining atau tertarik dalam analisis penelitian. Streaming API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti tweet) secara langsung atau \textit{real-time}.
+
+Twitter menawarkan beberapa endpoint streaming, disesuaikan dengan kasus yang terjadi. 
+\begin{itemize}
+	\item Public stream
+	
+	Steaming data publik yang mengalir melalui Twitter. Dipergunakan untuk mengikuti sebuah akun atau topik tertentu. Selain itu juga public stream digunakan untuk data mining.
+	\item User Stream
+	
+	Single-user streams, mengandung hampir semua data yang berhubungan dengan satu user tertentu.
+	
+	\item Site Stream
+	
+	Versi dari multi-user stream. Site stream harus terhubung dengan server yang terkoneksi dengan twitter atas nama banyak pengguna.
+\end{itemize}
+
+
+\subsection{Public Streams}
+Stream ini menawarkan sampel data publik yang mengalir melalui Twitter. Ketika aplikasi membuat sambungan ke streaming endpoint, aplikasi akan menyampaikan umpan Tweet tanpa perlu khawatir akan keterbatasan rate limit.
+
+\paragraph{Endpoints}
+\begin{itemize}
+	\item POST statuses / filter
+	\item GET statuses / sample
+	\item GET statuses / firehose
+\end{itemize}
+
+\paragraph{POST statuses/filter}
+POST filter ini mengembalikan status publik yang sesuai dengan satu atau lebih predikat yang telah di filter. \textit{Multiple parameter} memungkinkan klien untuk menggunakan koneksi tunggal untuk ke Streaming API. Antara GET dan POST \textit{request} keduanya didukung tetapi GET \textit{request} yang memiliki parameter yang terlalu banyak mungkin akan ditolak karena URL yang terlalu panjang. Gunakanlah POST request untuk menghindari URL yang panjang.
+Track, follow, dan lokasi harus dipertimbangkan untuk dapat digabungkan dengan operator OR. track=foo\&follow=1234 ini mengembalikan tweet yang memiliki kata "foo" atau dibuat oleh user 1234.
+Hal ini memungkinkan akses hingga 400 kata kunci, 5000 \textit{follow users}, dan 250.1-360 derajat kotak lokasi.
+
+\paragraph{Resource Information}
+\begin{table}[h]
+\begin{tabular}{|l|l|}
+Response formats         & JSON                    \\
+Requires authentication? & Ya (hanya \textit{user context}) \\
+Rate limited?            & Ya                    
+\end{tabular}
+\end{table}
+
+
+\paragraph{Parameter}
+Perlu diperhatikan bahwa salah satu parameter (follow, location, atau track) harus diisi secara spesifik.
+
+\begin{table}[h]
+\begin{tabular}{ll}
+follow          & Tanda koma memisahkan list user ID, hal ini menunjukkan pengguna untuk kembali ke status untuk stream. \\
+track           & Kata pencarian untuk track. Fase kata kunci dipisahkan oleh tanda koma.                \\
+locations       & Menentukan lokasi yang dilacak.                                                    \\
+delimited       & Menentukan apakah pesan harus dibatasi limitnya.                                         \\
+stall\_warnings & Menentukan apakah pesan warning harus dikirim atau tidak.                                         
+\end{tabular}
+\end{table}
+
+
+\paragraph{GET statuses/sample}
+Mengembalikan \textit{random} sampel dari semua status public. Tweet akan dikembalikan dengan cara seperti biasa, jadi jika terdapat dua client yang terhubung dengan \textit{endpoint} ini, maka mereka akan melihat Tweet yang sama.
+
+\paragraph{Resource Information}
+\begin{table}[h]
+\begin{tabular}{|l|l|}
+Response formats         & JSON                    \\
+Requires authentication? & Ya (hanya \textit{user context}) \\
+Rate limited?            & Ya                    
+\end{tabular}
+\end{table}
+
+
+\paragraph{Parameter}
+
+\begin{table}[h]
+\begin{tabular}{ll}
+delimited          & Menentukan apakah pesan harus dibatasi limitnya. \\
+stall\_warning           & Menentukan apakah pesan warning harus dikirim atau tidak.                \\            
+\end{tabular}
+\end{table}
+
+
+\paragraph{GET statuses/firehose}
+Mengembalikan semua status public. Beberapa aplikasi membutuhan akses ini. Teknik ini diolah secara kreatif dengan cara menggabungkan sumber informasi yang ada dengan berbagai sumber lainnya maka dapat memuaskan pengguna.
+
+\paragraph{Resource Information}
+\begin{table}[h]
+\begin{tabular}{|l|l|}
+Response formats         & JSON                    \\
+Requires authentication? & Ya (hanya \textit{user context}) \\
+Rate limited?            & Ya                    
+\end{tabular}
+\end{table}
+
+
+\paragraph{Parameter}
+
+\begin{table}[h]
+\begin{tabular}{ll}
+count & Kumpulan pesan untuk dijadikan bahan materi \\
+delimited          & Menentukan apakah pesan harus dibatasi limitnya. \\
+stall\_warning           & Menentukan apakah pesan warning harus dikirim atau tidak.                \\            
+\end{tabular}
+\end{table}
+
+
+\paragraph{Menggunakan Streaming API}
+Proses menggunakan Streaming API adalah dengan cara menghubungkan endpoint yang sudah tercantum di atas dengan parameter yang sudah di list kepada streaming endpoint dan juga request parameter streaming API. Proses pengembalian data oleh streaming API dilakukan dengan cara mengikuti petunjuk dalam pengolahan data streaming.
+
+\paragraph{Koneksi}
+Setiap akun hanya dapat membuat satu koneksi yang terbuhung dengan \textit{public endpoint} dan jika melakukan koneksi ke public stream lebih dari satu kali dengan menggunakan akun yang sama akan menyebabkan koneksi terlama akan putus. Klien yang membuat koneksi secara berlebihan baik berhasil ataupun tidak maka IP mereka otomatis akan di \textit{banned}.
+
+%User Streams
+\subsection{User Streams}
+User Stream memberikan aliran(\textit{stream}) data dan event yang spesific untuk pengguna yang sudah diotentifikasi. User Stream tidak dimaksudkan untuk koneksi server ke server, Jika anda perlu membuat koneksi atas nama beberapa user dari mesin yang sama maka lebih baik menggunakan site stream.
+
+\paragraph{Endpoints}
+\begin{itemize}
+	\item GET user
+\end{itemize}
+\paragraph{Resource Information}
+\begin{table}[h]
+\begin{tabular}{|l|l|}
+Response formats         & JSON                    \\
+Requires authentication? & Ya (hanya user context) \\
+Rate limited?            & Ya                    
+\end{tabular}
+\end{table}
+
+\paragraph{Parameter}
+\begin{table}[h]
+\begin{tabular}{|l|l|}
+delimited              & Menentukan apakah pesan harus dibatasi limitnya.																																					\\
+stall\_warnings        & Menentukan apakah pesan warning harus dikirim atau tidak.                                                                        \\
+with                   & Menentukan apakah pesan informasi harus dikembalikan untuk user yang sudah diotentifikasi atau dikirim juga kepada akun yang difollow oleh akun yang sudah diotentifikasi tersebut.\\
+replies                & Menentukan apakah harus mengembalikan @replies.                                                                             \\
+follow                 & Termasuk tweet public tambahan dari daftar yang disediakan ID pengguna.														\\
+track                  & Termasuk tweet tambahan yang cocok dengan kata kunci tertentu.     \\
+locations              & Termasuk tweet tambahan yang termasuk dalam batasan lokasi tertentu.                                                      \\
+stringify\_friend\_ids & Mengirim list teman yang diterdiri dari array of integer dan array of string.                          
+\end{tabular}
+\end{table}
+
+\paragraph{Koneksi}
+Meminimalkan jumlah koneksi suatu aplikasi untuk membuat user stream. Setiap akun Twitter terbatas hanya untuk beberapa koneksi user streams per aplikasi OAuth, terlepas dari IP. Setelah mencapai batasnya maka koneksi tertua atau terlama akan diberhentikan secara otomatis. Akun login dari beberapa instansi dari aplikasi AOuth yang sama akan mengalami siklus koneksi yaitu akan dihubungan dan diputuskan satu sama lain.
+
+Sebuah aplikasi harus dapat mengatasi HTTP 420 error code yang memberitahukan bahwa suatu akun sudah terlalu sering login. Oleh karena itu user yang seperti itu akan secara otomatis di \textit{banned} dari User Stream untuk tingkat login yang berlebihan. Untuk memulihkan akses streaming user harus menutup aplikasi tambahan yang ada, mungkin berjalan di perangkat atau device yang berbeda.
+
+Perhatikan bahwa setiap aplikasi memiliki alokasinya masing-masing, sehingga login dari aplikasi pertama tidak akan mempengaruhi applikasi ke dua begitu juga sebaliknya. Tetapi menjalankan terlalu banyak salinan aplikasi pertama maupun ke dua akan menimbulkan masalah. Perhatikan juga bahwa jumlah koneksi yang serentak per alamat IP masih terbatas terlepas dari aplikasi yang ada.
+
+%OAuth
 \subsection{OAuth}
 \label{sec:oauth}
-Dengan semakin berkembangnya website, semakin banyak situs yang bergantung pada layanan distribusi dan \textit{cloud computing}. Contohnya adalah menggunakan jejaring sosial dengan menggunakan account media sosial lainnya seperti Google untuk mencari teman-teman yang sudah tersimpan pada kontak Google. Atau bisa juga menggunakan pihak ketiga yang memanfaatkan API dari beberapa layanan.
+Dengan semakin berkembangnya website, semakin banyak situs yang bergantung pada layanan distribusi dan \textit{cloud computing}. Contohnya adalah menggunakan jejaring sosial dengan menggunakan akun media sosial lainnya seperti Google untuk mencari teman-teman yang sudah tersimpan pada kontak Google. Atau bisa juga menggunakan pihak ketiga yang memanfaatkan API dari beberapa layanan.
 
-OAuth menyediakan suatu metode bagi pengguna untuk memberi akses pihak ketiga untuk resources (sumber daya) mereka tanpa berbagi password mereka.Cara ini juga memberikan cara untuk memberikan akses yang terbatas(dalam satu lingkup atau durasi) Sebagai contoh, seorang pengguna web dapat memberikan layanan percetakan(client) untuk mengakses foto pribadinya yang disimpan di layanan berbagi foto(server) tanpa harus memberikan username dan passwordnya. Ia akan mengotentikasi langsung dengan layanan berbagi foto tersebut yang mengeluarkan layanan percetakan.
+OAuth menyediakan suatu metode bagi pengguna untuk memberi akses pihak ketiga untuk \textit{resources} (sumber daya) mereka tanpa berbagi password mereka.Cara ini juga memberikan cara untuk memberikan akses yang terbatas(dalam satu lingkup atau durasi) Sebagai contoh, seorang pengguna web dapat memberikan layanan percetakan(client) untuk mengakses foto pribadinya yang disimpan di layanan berbagi foto(server) tanpa harus memberikan username dan passwordnya. Ia akan mengotentikasi langsung dengan layanan berbagi foto tersebut yang mengeluarkan layanan percetakan.
 
-Dalam model otentikasi client-server tradisional, klian menggunakan kredensial untuk mengakses recources hosted oleh server. Di dalam model OAuth, klien (bukan pemilik resource, tetapi bertindak atas namanya) meminta aksesn ke resource yang dikenalkan oleh pemilik resource namun diselenggarakan oleh server.
+Dalam model otentikasi client-server tradisional, klian menggunakan kredensial untuk mengakses \textit{recources hosted} oleh server. Di dalam model OAuth, klien (bukan pemilik resource, tetapi bertindak atas namanya) meminta akses ke \textit{resource} yang dikenalkan oleh pemilik \textit{resource} namun diselenggarakan oleh server.
 
-Agar klien dapat mengakses resource, pertama-tama ia harus mendapatkan izin dari si pemilik resource. Izin ini dinyatakan dalam bentuk token dan mencocokan \textit{shared-secret}. tujuan dari token ini adalah untuk membuat pemilik resource untuk berbagi kepercayaan kepada klien. Berbeda dengan kepercayaan pemilik resource. Token dapat dikeluarkan dalam ruang lingkup terbatas, durasi yang terbatas, dan akan dicabut secara independen. Reverensi(http://hueniverse.com/oauth/guide/intro/)
+Agar klien dapat mengakses \textit{resource}, pertama-tama ia harus mendapatkan izin dari si pemilik \textit{resource}. Izin ini dinyatakan dalam bentuk token dan mencocokan \textit{shared-secret}. Tujuan dari token ini adalah untuk membuat pemilik \textit{resource} untuk berbagi kepercayaan kepada klien. Berbeda dengan kepercayaan pemilik \textit{resource}. Token dapat dikeluarkan dalam ruang lingkup terbatas, durasi yang terbatas, dan akan dicabut secara independen. Reverensi(http://hueniverse.com/oauth/guide/intro/)
 
 Twitter OAuth yang diberikan memiliki fitur
 \begin{itemize}
-	\item secure
+	\item \textit{Secure}
 	
 	Pengguna tidak harus berbagi password mereka dengan aplikasi pihak ketiga untuk meningkatkan keamanan akun.
-	\item Standard
+	\item \textit{Standard}
 	
 	Contoh code yang diberikan sudah kompatibel dengan implementasi Twitter OAuth.
 \end{itemize}
 
-Twitter sekarang memanfaatkan OAuth 1.0A . Otententikasi aplikasi pengguna adalah bentuk paling umum dari otentikasi resource dalam pelaksanaan OAuth 1.0A Twitter sampai saat ini. Permintaan anda menandatangani baik untuk mengidentifikasi identitas aplikasi anda yang akan menyertakan izin untuk diberikan kepada pengguna. Hal ini bertujuan untuk dapat membuat panggilan API atas nama anda yang diwakili oleh akses token.
+\textit{API v1.1's Authentication Model}
+Otentifikasi model baru terdapat dalam dua bentuk, dan keduanya masih memanfaatkan OAuth 1.0A
+
+
+\textit{Application-user authentication}
+\textit{Application-user authentication} adalah bentuk paling umum dari otentikasi \textit{resource} dalam pelaksanaan OAuth 1.0A Twitter sampai saat ini. Permintaan anda menandatangani baik untuk mengidentifikasi identitas aplikasi anda yang akan menyertakan izin untuk diberikan kepada pengguna. Hal ini bertujuan untuk dapat membuat panggilan API atas nama anda yang diwakili oleh akses token.
+
+\textit{Application-only authentication}
+\textit{Application-only authentication} adalah bentuk dari otentifikasi dimana aplikasi anda membuat \textit{API request} atas nama aplikasi itu sendiri tanpa adanya konteks dari pengguna. Pemanggilan API masih terbatas dalam setiap \textit{API method} .
+
 
 \subsubsection{Application-only authentication}
-Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentifikasi atas nama aplikasi itu sendiri. Dengan menggunakan Application-only authentication  anda tidak mempunyai konteks dari otentikafikasi pengguna dan ini berarti setiap request API untuk endpoint akan membutuhkan konteks user, seperti memposting tweet tidak akan bekerja. Aplikasi yang akan di dapat adalah: 
+Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentifikasi atas nama aplikasi itu sendiri. Dengan menggunakan \textit{Application-only authentication} anda tidak mempunyai konteks dari otentikafikasi pengguna dan ini berarti setiap request API untuk endpoint akan membutuhkan konteks user, seperti memposting tweet tidak akan bekerja. Aplikasi yang akan di dapat adalah: 
 
 \begin{itemize}
 	\item Melihat timeline
@@ -82,22 +319,22 @@ Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentifikasi atas
 \end{itemize}
 
 
-Tetapi application-only authentication tidak bisa melakukan :
+Tetapi \textit{application-only authentication} tidak bisa melakukan :
 
 \begin{itemize}
 	\item Posting tweet
-	\item Melakukan koneksi dengan Streaming endpoint
+	\item Melakukan koneksi dengan \textbf{Streaming endpoint}
 	\item Mencari akun seseorang
-	\item menggunakan geo endpoint manapun
-	\item mengakses DM
+	\item Menggunakan geo endpoint
+	\item Mengakses DM
 \end{itemize}
 
-Auth Flow
-Langkah-langkah dari application-only auth terdiri dari beberapa langkah yaitu :
+\paragraph{\textit{Auth Flow}}
+Langkah-langkah dari \textit{application-only auth} terdiri dari beberapa langkah yaitu :
 Sebuah aplkasi dikodekan berdasarkan \textit{consumer key} dan \textit{secret} ke dalam satu set khusus yang dikodekan secara kredensial.
-Aplikasi membuat \textit{request} ke POST OAuth2/token endpoint untuk merubah kredensial tersebut untuk \textit{token bearer}.
+Aplikasi membuat \textit{request} ke POST OAuth2/\textit{token endpoint} untuk merubah kredensial tersebut untuk \textit{token bearer}.
 Ketika mengakses REST API, aplikasi menggunakan \textit{token bearer} untuk otentifikasi.
-Kerena tidak ada kebutuhan duntuk menandatangani request, pendekatan ini lebih sederhana dari model standar OAuth 1.0a
+Kerena tidak ada kebutuhan duntuk menandatangani \textit{request}, pendekatan ini lebih sederhana dari model standar OAuth 1.0a
 
 \begin{figure}
 	\centering
@@ -107,18 +344,18 @@ Kerena tidak ada kebutuhan duntuk menandatangani request, pendekatan ini lebih s
 \end{figure}
 
 
-Tentang application-only auth
-Token adalah \textit{password}. Perlu diingat bahwa \textit{consumer key} dan \textit{secret, bearer token credential}, dan \textit{the bearer token} itu sendiri memberikan akses untuk membuat permintaan atas nama aplikasi itu sendiri. Point-point ini harus dianggap sensitif layaknya password dan tidak boleh dibagikan atau didistribusikan kepada pihak yang tidak dipercaya atau tidak berkepentingan
+\paragraph{Tentang Application-only Authentication}
+Token adalah \textit{password}. Perlu diingat bahwa \textit{consumer key} dan \textit{secret, bearer token credential}, dan \textit{the bearer token} itu sendiri memberikan akses untuk membuat permintaan atas nama aplikasi itu sendiri. Point-point ini harus dianggap sensitif layaknya \textit{password} dan tidak boleh dibagikan atau didistribusikan kepada pihak yang tidak dipercaya atau tidak berkepentingan
 
 SSL benar-benar dibutuhkan karena ini adalah cara otentifikasi yang aman. Oleh karena itu semua \textit{request} (baik untuk mendapatkan atau menggunakan token) harus menggunakan endpoint HTTPS, yang juga merupakan syarat untuk menggunakan API v1.1.
 
-Tidak ada konteks pengguna. Ketika mengeluarkan permintaan menggunakan application-only auth, tidak ada konsep \textit{'current-user'}. Karena itu endpoint seperti POST status / update tidak akan berfungsi dengan application-only auth.
+Tidak ada konteks pengguna. Ketika mengeluarkan permintaan menggunakan application-only auth, tidak ada konsep \textit{'current-user'}. Karena itu endpoint seperti POST status / update tidak akan berfungsi dengan \textit{application-only auth}.
 
 \textit{Rate limiting}. \textit{Request} yang dibuat atas nama pengguna tidak akan menguras ketersediaan \textit{rate limit} dan \textit{request} tidak akan menguras batas penggunaan \textbf{limit} dalam \textit{user-based auth}.
 
 
 \subsubsection{3-legged authorization}
-Cara kerja dari 3-legged authorization adalah dengan memberikan aplikasi yang anda buat untuk mengambil \textit{access token} dengan cara melakukan \textit{redirect} user dengan Twitter dan memberikan mereka sebuah otorisasi dari aplikasi yang anda buat. Cara kerja ini hampir identik dengan cara kerja yang dijelaskan pada implementasi \textit{Sign in} dengan Twitter, hanya saja terdapat dua pengecualian yaitu:
+Cara kerja dari \textit{3-legged authorization} adalah dengan memberikan aplikasi yang anda buat untuk mengambil \textit{access token} dengan cara melakukan \textit{redirect} user dengan Twitter dan memberikan mereka sebuah otorisasi dari aplikasi yang anda buat. Cara kerja ini hampir identik dengan cara kerja yang dijelaskan pada implementasi \textit{Sign in} dengan Twitter, hanya saja terdapat dua pengecualian yaitu:
 
 \begin{itemize}
 	\item \textit{GET oauth endpoint} digunakan sebagai pengganti GET oauth
@@ -134,16 +371,15 @@ Beginilah ilustrasi interaksi \textit{sign in} dengan menggunakan \textit{follow
 	\label{fig:sign-in-flow3-3legged}
 \end{figure}
 
-\subsubsection{PIN-based authorization}
+\paragraph{PIN-based authorization}
 cara kerja dari PIN-based authorization ini ditujukan untuk aplikasi yang tidak bisa mengakses atau menanamkan \textit{web browser} untuk mengarahkan user kepada \textit{authorization endpoint}. Contohnya adalah aplikasi yang bersifat \textit{command-line}, \textit{embedded systems}, \textit{game} konsol, dan beberapa jenis aplikasi \textit{mobile}.
 
 
 Implementasi
 
+Implementasi \textit{PIN-based} ini memiliki cara kerja yang sama seperti \textit{3-legged authorization}, perbedaannya terletak pada nilai dari \textit{oauth\_callback} yang harus di set menjadi \textit{oob} saat proses pemanggilan \textit{POST oauth atau request\_token}.
 
-Implementasi PIN-based ini memiliki cara kerja yang sama seperti implementasi Sign in dengan Twitter dan \textit{3-legged authorization}, perbedaannya terletak pada nilai dari \textit{oauth$_$callback} yang harus di set menjadi \textit{oob} saat proses pemanggilan \textit{POST oauth/request$_$token}.
-
-Setelah applikasi anda telah mendapatkan \textit{GET oauth/authenticate} atau \textit{GET oauth/authorize URL}, tampilkan URL kepada user agar mereka dapat menggunakan web browser untuk mengakses Twitter.
+Setelah applikasi anda telah mendapatkan \textit{GET oauth/authenticate} atau \textit{GET oauth/authorize URL}, tampilkan URL kepada user agar mereka dapat menggunakan \textit{web browser} untuk mengakses Twitter.
 
 Ketika \textit{callback oob} diminta dan user pengunjungi Twitter, user tidak akan dipindahkan secara otomatis ke aplikasi setelah menyetujui akses. Sebaliknya, mereka akan melihat PIN code, dengan instruksi untuk kembali ke aplikasi dan memasukkan nilai dari PIN code tersebut.
 
@@ -153,31 +389,7 @@ Ketika \textit{callback oob} diminta dan user pengunjungi Twitter, user tidak ak
 	\label{fig:pin}
 \end{figure}
 
-Aplikasi anda harus memungkinkan user untuk memasukkan \textit{PIN code} ini untuk menyelesaikan flow tersebut.Nilai dari \textit{PIN code} harus lolos sebagai oauth$_$verifier untuk \textit{POST oauth/access$_$token request}. semua request akan berjalan normal kedepannya.
-
-\subsection{REST API}
-
-REST API menyediakan akses program untuk membaca dan menulis data Twitter. Data tersebut seperti menuliskan tweet baru, membaca profile, melihat follower, dan lainnya. REST API mengidentifikasi aplikasi Twitter dan pengguna menggunakan OAuth.
-
-\subsection{Streamming API}
-Streamming API adalah contoh \textit{real-time} API. API ini ditujukan bagi para pengembang dengan kebutuhan data yang intensif. Contohnya jika mencari cara untuk membangun sebuah data produk data-mining atau tertarik dalam analisis penelitian. Streaming API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti tweet) secara langsung atau \textit{real-time}.
-
-Twitter menawarkan beberapa endpoint streaming, disesuaikan dengan kasus yang terjadi. 
-\begin{itemize}
-	\item Public stream
-	
-	Steaming data publik yang mengalir melalui Twitter. Dipergunakan untuk mengikuti sebuah akun atau topik tertentu. Selain itu juga public stream digunakan untuk data mining.
-	\item User Stream
-	
-	Single-user streams, mengandung hampir semua data korespondensi ...
-	
-	\item Site Stream
-	
-	Versi dari multi-user stream. Site stream harus terhubung dengan server yang terkoneksi dengan twitter atas nama banyak pengguna.
-\end{itemize}
-
-Perbedaan antara Streaming API dan REST API yaitu ...
-
+Aplikasi anda harus memungkinkan user untuk memasukkan \textit{PIN code} ini untuk menyelesaikan flow tersebut. Nilai dari \textit{PIN code} harus lolos sebagai oauth\_verifier untuk \textit{POST oauth/access\_token request}. semua request akan berjalan normal kedepannya.
 
 
 %\section{KIRI}
@@ -191,11 +403,171 @@ Perbedaan antara Streaming API dan REST API yaitu ...
 %	\item tempat tujuan.
 %\end{enumerate}
 
-\section{KIRI API}
-KIRI API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} mendapatkan data tentang info jalur transportasi publik. KIRI API dapat diakses dengan beberapa cara. Semua request harus berisikan API key, yang dapat diambil melalui KIRI API Management Dashboard. Berikut adalah spesifikasi dari KIRI API
+\subsection{KIRI API}
+KIRI API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} mendapatkan data tentang info jalur transportasi publik. KIRI API dapat diakses dengan beberapa cara. Semua \textit{request} harus berisikan API key, yang dapat diambil melalui KIRI API \textit{Management Dashboard}. Berikut adalah spesifikasi dari KIRI API
 
 \begin{itemize}
 	\item Routing Web Service
 	\item Search Place Web Service
 	\item Nearest Transports Web Service
+\end{itemize}
+
+\subsubsection{Routing Web Service}
+Routing Web Service adalah salah satu KIRI API yang digunakan untuk mendapatkan langkah perjalanan dari lokasi asal menuju lokasi tujuan.
+
+Berikut ini adalah parameter request yang diperlukan:
+
+\begin{tabular}{ |l|l|l| }
+	\hline
+	Parameter & Valid values & Description \\ \hline \hline
+  version & 2 & \vtop{\hbox{\strut Memberitahukan bahwa layanan yang dipakai} \hbox{\strut adalah protokol versi 2}} \\ \hline
+  mode & "findroute" & Mengintruksikan layanan untuk mencari rute \\ \hline
+  locale & "en" or "id" & Respon bahasa yang digunakan \\ \hline
+	start & lat,lng (both are decimal values) & Titik awal \textit{Latitude} dan \textit{longitude} \\ \hline
+  finish & lat,lng (both are decimal values) & Titik akhir \textit{Latitude} dan \textit{longitude}  \\ \hline
+  presentation & "mobile" or "desktop" & \vtop{\hbox{\strut Menentukan tipe presentasi untuk hasil keluaran.}\hbox{\strut Contoh, jika tipe presentasi "mobile", }\hbox{\strut maka link "tel:" akan ditambahkan di hasil.}} \\ \hline
+	apikey & 16-digit hexadecimals & API key yang digunakan \\ \hline
+\end{tabular}
+
+\begin{lstlisting} [caption= code \textit{respond} pencarian rute]
+{ 
+    "status": "ok" or "error" 
+    "routingresults": [ 
+        {
+            "steps": [
+                [
+                    "walk" or "none" or others,
+                    "walk" or vehicle_id or "none",
+                    ["lat_1,lon_1", "lan_2,lon_2", ... "lat_n,lon_n"],
+                    "human readable description, dependant on locale",
+                    URL for ticket booking or null (future)
+                ],
+                [
+                    "walk" or "none" or others,
+                    "walk" or vehicle_id or "none",
+                    ["lat_1,lon_1", "lan_2,lon_2", ... "lat_n,lon_n"],
+                    "human readable description, dependant on locale",
+                    URL for ticket booking or null (future)
+                ]
+            ],
+            "traveltime": any text string, null if and only if route is not found.
+        } ,
+        {
+            "steps": [ ... ],
+            "traveltime": "..."
+        } ,
+        {
+            "steps": [ ... ],
+            "traveltime": "..."
+        } ,
+        ...     
+    ]
+}
+\end{lstlisting}
+
+Ketika pencarian route berhasil yaitu dengan memberitahukan bahwa status "ok" seperti pada baris 2, maka server juga harus memberikan hasil dari rute, yang berisikan langkah-langkah yang disimpan di dalam array. Berikut ini adalah keterangan dari array tersebut:
+
+\begin{itemize}
+	\item Index 0 (baris ke) berisikan "walk" atau "none" atau "others". Arti dari "walk" adalah jalan kaki, "none" berarti rute jalan tidak ditemukan, dan "others" berarti menggunakan kendaraan.
+	\item Index ke 1 merupakan detail dari index ke 0 yang memiliki arti:
+	\begin{itemize}
+		\item Jika berisikan "walk" berarti index ini pun harus berisikan "walk",
+		\item jika berisikan "none" maka index ini pun harus berisikan "none",
+		\item selain itu, maka field ini berisikan id kendaraan yang dapat digunakan untuk menambilkan gambar dari id kendaraan tersebut.
+	\end{itemize}
+	\item Index ke 2 berisikan array of string, yang berisikan jalur dalam format "lat,lon". Lat adalah latitude, dan lon adalah longitude yaitu titik awal dan titik akhir.
+	\item Index ke 3 merupakan bentuk yang dapat dibaca oleh manusia lalu akan ditampilkan kepada pengguna. Informasi tersebut dapat berupa:
+	\begin{itemize}
+		\item \% toicon \= sebuah ikon penanda yang menunjukkan titik awal atau "from". Biasanya digunakan untuk mode presentasi perangkat bergerak.
+		\item \% toicon \= sebuah ikon penanda yang menunjukkan titik akhir atau "to". Biasanya digunakan untuk mode presentasi perangkat bergerak.
+	\end{itemize}
+	\item Index ke 4 berisi URL untuk pemesanan tiket untuk travel jika tersedia. Jika tidak ada maka nilai dari index ini bernilai null.
+\end{itemize}
+
+
+\subsubsection{Search Place Web Service}
+Routing Web Service berguna untuk menemukan rute perjalanan berdasarkan latitute dan longitude koordinat, yang tidak nyaman bagi pengguna akhir. Layanan Search Place Web Service ini membantu untuk mengubah string teks untuk latitude dan longitude. Untuk permintaan routing, berikut parameter request yang diperlukan berikut penjelasannya:
+
+\begin{tabular}{ |l |l |l| }
+	\hline
+  version & 2 & \vtop{\hbox{\strut Memberitahukan bahwa layanan yang dipakai} \hbox{\strut adalah protokol veris 2}} \\ \hline
+  mode & "searchplace" & mengintruksikan layanan untuk mencari tempat \\ \hline
+  region & "cgk" or "bdo" or "sub" & kota yang akan dicari tempatnya \\ \hline
+	querystring & \vtop{\hbox{\strut text apa saja dengan minimum} \hbox{\strut text satu karakter}} & \vtop{\hbox{\strut query string yang akan dicari menggunakan}  \hbox{\strut layanan ini}} \\ \hline
+	apikey & 16-digit hexadecimals & API key yang digunakan \\ \hline
+\end{tabular}
+
+Berikut format kembalian dari Kiri API:
+\begin{lstlisting} [caption= code \textit{respond} pencarian lokasi]
+{
+    "status": "ok" or "error"
+    "searchresult": [
+        {
+            "placename": "place name"
+            "location": "lat,lon"
+        },
+        {
+            "placename": "place name"
+            "location": "lat,lon"
+        },
+        ...
+    ]
+    "attributions": [
+        "attribution_1", "attribution_2", ...
+    ]
+}
+\end{lstlisting}
+
+Ketika \textit{request find place} berhasil, server akan mengembalikan \textit{place result}, yang merupakan array dari langkah-langkah dan masing-masing berisi tentang deskripsi dalam format pemetaan:
+\begin{itemize}
+	\item searchresult - berisikan array dari hasil objek:
+	\begin{itemize}
+		\item placename - nama dari suatu tempat
+		\item location : latitude dan longitude dari suatu tempat
+	\end{itemize}
+	\item attributions - berisikan array string dan atribut tambahan yang akan ditampilkan
+\end{itemize}
+
+\subsection{Nearest Transports Web Service}
+Nearest Transports Web Service digunakan untuk menemukan rute transportasi terdekat dengan titik yang diberikan.
+
+Berikut parameter \textit{request} yang diperlukan berikut penjelasanya:
+
+\begin{tabular}{ |l |l |l| }
+	\hline
+  version & 2 & \vtop{\hbox{\strut Memberitahukan bahwa layanan yang dipakai} \hbox{\strut adalah protokol veris 2}} \\ \hline
+  mode & "nearbytransports" & \vtop{\hbox{\strut mengintruksikan layanan untuk mencari rute} \hbox{\strut transportasi terdekat}} \\ \hline
+  start & \vtop{\hbox{\strut latitude dan longitude} \hbox{\strut (keduanya menggunakan nilai desimal)}} & kota yang akan dicari tempatnya \\ \hline
+	apikey & 16-digit hexadecimals & API key yang digunakan \\ \hline
+\end{tabular}
+
+
+Berikut format kembalian dari Kiri API:
+
+\begin{lstlisting} [caption= code \textit{respond} menemukan lokasi terdekat]
+{
+    "status": "ok" or "error"
+    "nearbytransports": [
+        [
+            "walk" or "none" or others,
+            "walk" or vehicle_id or "none",
+            text string,
+            decimal value
+        ],
+        [
+            "walk" or "none" or others,
+            "walk" or vehicle_id or "none",
+            text string,
+            decimal value
+        ],
+        ...     
+    ]
+}\end{lstlisting}
+
+Pencarian akan memberitahukan status berhasil ("ok") atau tidak ("error"), jika sukses maka respon akan mengembalikan array yang berisikan transportasi terdekat yang diurutkan dari yang terdeket ke yang terjauh. Berikut keterangan dari setiap array tersebut: 
+\begin{itemize}
+	\item Index ke 0 dapat berisi "walk" atau "none" atau "others". Artinya  jika isi dari array tersebut "walk" berarti berjalan kaki, "none" jika rute tidak ditemukan dan "others" berarti menggunakan kendaran.
+	\item Index ke 1 merupakan detail dari index 0. Artinya jika index 0 "walk" berarti index 1 harus "walk", "none" berarti index 1 harus "none" dan selain itu menyatakan id kendaraan yang mana bisa dipakai untuk ditampilkan gambarnya.
+	\item Index ke 2 berisi nama kendaraan yang dapat dibaca oleh pengguna.
+	\item Index ke 3 berisi jarak dalam satuan kilometer.
 \end{itemize}
