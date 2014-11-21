@@ -117,7 +117,7 @@ Ketika anda ingin mengetahui tweet yang datang dari suatu lokasi dengan bahasa y
 \begin{itemize}
 	\item Anda ingin mencari tweet yang paling baru dalam Bahasa Portugal, yang lokasinya dekat Maracanã soccer stadium yang terletak di Rio de Janeiro.
 	\item Maka search URL akan seperti ini:
-	\vtop{\hbox{\strut https://api.twitter.com/1.1/search/tweets.json?}\hbox{\strutq=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent }}
+	\vtop{\hbox{\strut https://api.twitter.com/1.1/search/tweets.json?}\hbox{\strut q=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent }}
 	%%%https://api.twitter.com/1.1/search/tweets.json?q=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent
 	
 Ketika anda ingin mencari tweet yang sedang poluler dari spesifik user dan tweet tersebut terdapat sebuah hashtag tertentu:
@@ -128,8 +128,8 @@ Ketika anda ingin mencari tweet yang sedang poluler dari spesifik user dan tweet
 \end{itemize}
 \end{itemize}
 
-\subsection{Streamming API}
-Streamming API adalah contoh \textit{real-time} API. API ini ditujukan bagi para pengembang dengan kebutuhan data yang intensif. Contohnya jika mencari cara untuk membangun sebuah data produk data-mining atau tertarik dalam analisis penelitian. Streaming API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti tweet) secara langsung atau \textit{real-time}.
+\subsection{Streaming API}
+Streaming API adalah contoh \textit{real-time} API. API ini ditujukan bagi para pengembang dengan kebutuhan data yang intensif. Contohnya jika mencari cara untuk membangun sebuah data produk data-mining atau tertarik dalam analisis penelitian. Streaming API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti tweet) secara langsung atau \textit{real-time}.
 
 Twitter menawarkan beberapa endpoint streaming, disesuaikan dengan kasus yang terjadi. 
 \begin{itemize}
@@ -468,25 +468,25 @@ Berikut ini adalah parameter request yang diperlukan:
 Ketika pencarian route berhasil yaitu dengan memberitahukan bahwa status "ok" seperti pada baris 2, maka server juga harus memberikan hasil dari rute, yang berisikan langkah-langkah yang disimpan di dalam array. Berikut ini adalah keterangan dari array tersebut:
 
 \begin{itemize}
-	\item Index 0 (baris ke) berisikan "walk" atau "none" atau "others". Arti dari "walk" adalah jalan kaki, "none" berarti rute jalan tidak ditemukan, dan "others" berarti menggunakan kendaraan.
-	\item Index ke 1 merupakan detail dari index ke 0 yang memiliki arti:
+	\item Indeks 0 (baris ke) berisikan "walk" atau "none" atau "others". Arti dari "walk" adalah jalan kaki, "none" berarti rute jalan tidak ditemukan, dan "others" berarti menggunakan kendaraan.
+	\item Indeks ke 1 merupakan detail dari index ke 0 yang memiliki arti:
 	\begin{itemize}
 		\item Jika berisikan "walk" berarti index ini pun harus berisikan "walk",
 		\item jika berisikan "none" maka index ini pun harus berisikan "none",
 		\item selain itu, maka field ini berisikan id kendaraan yang dapat digunakan untuk menambilkan gambar dari id kendaraan tersebut.
 	\end{itemize}
-	\item Index ke 2 berisikan array of string, yang berisikan jalur dalam format "lat,lon". Lat adalah latitude, dan lon adalah longitude yaitu titik awal dan titik akhir.
-	\item Index ke 3 merupakan bentuk yang dapat dibaca oleh manusia lalu akan ditampilkan kepada pengguna. Informasi tersebut dapat berupa:
+	\item Indeks ke 2 berisikan array of string, yang berisikan jalur dalam format "lat,lon". Lat adalah latitude, dan lon adalah longitude yaitu titik awal dan titik akhir.
+	\item Indeks ke 3 merupakan bentuk yang dapat dibaca oleh manusia lalu akan ditampilkan kepada pengguna. Informasi tersebut dapat berupa:
 	\begin{itemize}
-		\item \% toicon \= sebuah ikon penanda yang menunjukkan titik awal atau "from". Biasanya digunakan untuk mode presentasi perangkat bergerak.
-		\item \% toicon \= sebuah ikon penanda yang menunjukkan titik akhir atau "to". Biasanya digunakan untuk mode presentasi perangkat bergerak.
+		\item \%fromicon = sebuah ikon penanda yang menunjukkan titik awal atau "from". Biasanya digunakan untuk mode presentasi perangkat bergerak.
+		\item \%toicon = sebuah ikon penanda yang menunjukkan titik akhir atau "to". Biasanya digunakan untuk mode presentasi perangkat bergerak.
 	\end{itemize}
-	\item Index ke 4 berisi URL untuk pemesanan tiket untuk travel jika tersedia. Jika tidak ada maka nilai dari index ini bernilai null.
+	\item Indeks ke 4 berisi URL untuk pemesanan tiket untuk travel jika tersedia. Jika tidak ada maka nilai dari index ini bernilai null.
 \end{itemize}
 
 
 \subsubsection{Search Place Web Service}
-Routing Web Service berguna untuk menemukan rute perjalanan berdasarkan latitute dan longitude koordinat, yang tidak nyaman bagi pengguna akhir. Layanan Search Place Web Service ini membantu untuk mengubah string teks untuk latitude dan longitude. Untuk permintaan routing, berikut parameter request yang diperlukan berikut penjelasannya:
+Search Place Web Service berguna untuk menemukan rute perjalanan berdasarkan latitute dan longitude koordinat, yang tidak nyaman bagi pengguna akhir. Layanan Search Place Web Service ini membantu untuk mengubah string teks untuk latitude dan longitude. Untuk permintaan routing, berikut parameter request yang diperlukan berikut penjelasannya:
 
 \begin{tabular}{ |l |l |l| }
 	\hline
@@ -566,8 +566,434 @@ Berikut format kembalian dari Kiri API:
 
 Pencarian akan memberitahukan status berhasil ("ok") atau tidak ("error"), jika sukses maka respon akan mengembalikan array yang berisikan transportasi terdekat yang diurutkan dari yang terdeket ke yang terjauh. Berikut keterangan dari setiap array tersebut: 
 \begin{itemize}
-	\item Index ke 0 dapat berisi "walk" atau "none" atau "others". Artinya  jika isi dari array tersebut "walk" berarti berjalan kaki, "none" jika rute tidak ditemukan dan "others" berarti menggunakan kendaran.
-	\item Index ke 1 merupakan detail dari index 0. Artinya jika index 0 "walk" berarti index 1 harus "walk", "none" berarti index 1 harus "none" dan selain itu menyatakan id kendaraan yang mana bisa dipakai untuk ditampilkan gambarnya.
-	\item Index ke 2 berisi nama kendaraan yang dapat dibaca oleh pengguna.
-	\item Index ke 3 berisi jarak dalam satuan kilometer.
+	\item Indeks ke 0 dapat berisi "walk" atau "none" atau "others". Artinya  jika isi dari array tersebut "walk" berarti berjalan kaki, "none" jika rute tidak ditemukan dan "others" berarti menggunakan kendaran.
+	\item Indeks ke 1 merupakan detail dari index 0. Artinya jika index 0 "walk" berarti index 1 harus "walk", "none" berarti index 1 harus "none" dan selain itu menyatakan id kendaraan yang mana bisa dipakai untuk ditampilkan gambarnya.
+	\item Indeks ke 2 berisi nama kendaraan yang dapat dibaca oleh pengguna.
+	\item Indeks ke 3 berisi jarak dalam satuan kilometer.
 \end{itemize}
+
+\section{Twitter4J}
+Twitter4J merupakan Java Library untuk Twitter API. Dengan adanya Twitter4J ini, kita dapat dengan mudah mengintegrasikan aplikasi Java dengan Twitter service. Twitter4J memiliki fitur-fitur sebagai berikut :
+
+\begin{itemize}
+	\item 100\% menggunakan Bahasa Java.
+	\item tersedia untuk \textit{Android platform} dan \textit{Google App Engine}
+	\item Tidak adanya dependensi, tidak memerlukan \textit{jar} tambahan.
+	\item Mendukung sistem OAuth.
+	\item Kompatibel dengan Twitter API 1.1
+\end{itemize}
+
+Dalam pembuatan aplikasi yang akan saya buat saya membutuhkan beberapa \textit{library} yang telah diberikan oleh Twitter4j. Berikut adalah \textit{library} yang diperlukan:
+\paragraph{TwitterFactory}
+	
+	\begin{itemize}
+		\item \textit{Constant}
+		
+		\begin{itemize}
+			\item public final class TwitterFactory
+			extends java.lang.Object
+			implements java.io.Serializable
+			
+			Sebuah \textit{factory class} untuk Twitter
+		\end{itemize}
+		\item \textit{Constructor}
+		
+		\begin{itemize}
+			\item TwitterFactory()
+			
+			Membuat TwitterFactory dengan konfigurasi dari sumber.
+			\item TwitterFactory(Configuration conf)
+			
+			Membuat TwitterFactory dengan konfigurasi yang diberikan.
+			\item TwitterFactory(java.lang.String configTreePath)
+			
+			Membuat TwitterFactory yang berasal dari \textit{config tree} yang spesifik.
+		\end{itemize}
+		\item \textit{Methods}
+		
+		\begin{itemize}
+			\item public Twitter getInstance()
+			
+			mengembalikan contoh yang terkait dengan konfigurasi.
+			\item public Twitter getInstance(AccessToken accessToken)
+			
+			mengembalikan OAuth yang sudah diotentifikasi.
+			\item public Twitter getInstance(Authorization auth)
+			\item public static Twitter getSingleton()
+			
+			Mengembalikan \textit{singleton} standar Twitter \textit{instance}.
+		\end{itemize}
+	\end{itemize}
+	
+	
+	\paragraph{TwitterStream}
+	\begin{itemize}
+		\item \textit{Constant}
+		
+		\begin{itemize}
+			\item public interface TwitterStream
+			extends OAuthSupport, TwitterBase
+			
+			Sebuah \textit{factory class} untuk Twitter
+		\end{itemize}
+		
+		\item \textit{Methods}
+		
+		\begin{itemize}
+			\item void addConnectionLifeCycleListener(ConnectionLifeCycleListener listener)
+			
+			Menambahkan \textit{ConnectionLifeCycleListener}
+			\item void addListener(StreamListener listener)
+			
+			Menambahkan listener.
+			\item void removeListener(StreamListener listener)
+			
+			Menghilangkan listerner.
+			\item void clearListeners()
+			
+			Menghilangkan \textit{status listener}.
+			\item void replaceListener(StreamListener toBeRemoved,StreamListener toBeAdded)
+			
+			Menimpa listener yang sudah ada sebelumnya.
+			\item void firehose(int count)
+			
+			Mendengarkan semua status publik.
+			\item void links(int count)
+			
+			Mendengarkan semua status publik yang mengandung link.
+			\item void retweet()
+			
+			Mendengarkan semua retweet.
+			\item void sample()
+			
+			Mendengarkan status publik secara acak.
+			\item void user()
+			
+			\textit{User Streams} menyediakan update dari semua data secara \textit{real-time}.
+			\item void user(java.lang.String[] track)
+			
+			\textit{User Streams} menyediakan update dari semua data secara \textit{real-time}. Parameter track merupakan kata kunci untuk kata yang akan ditampilkan.
+			\item StreamController site(boolean withFollowings, long[] follow)
+			
+			Menerima update secara \textit{real-time} untuk sejumlah pengguna tanpa perlu kerepotan dalam mengelola REST API \textit{rate limits}.
+			\item void filter(FilterQuery query)
+			
+			Menerima status publik yang telah di \textit{filter} dari satu atau lebih kata kunci.
+			\item void cleanUp()
+			
+			Menon aktifkan penggunaan \textit{thread stream}.
+			\item void shutdown()
+			
+			Menon aktifkan \textit{dispatcher thread} bersama dengan semua instansi TwitterStream.
+		\end{itemize}
+	\end{itemize}
+	\paragraph{TwitterStreamFactory}
+	
+	\begin{itemize}
+		\item \textit{Constant}
+		
+		\begin{itemize}
+			\item public final class TwitterStreamFactory
+			extends java.lang.Object
+			implements java.io.Serializable
+			
+			Sebuah \textit{factory class} untuk Twitter. Instansi dari kelas ini memiliki thread yang aman dan digunakan secara berkala lalu dapat digunakan kembali.
+		\end{itemize}
+		\item \textit{Constructor}
+		
+		\begin{itemize}
+			\item TwitterStreamFactory()
+			Membuat TwitterStreamFactory dengan konfigurasi dari sumber.
+			\item TwitterStreamFactory(Configuration conf)
+			Membuat TwitterStreamFactory dengan konfigurasi yang diberikan.
+			\item TwitterStreamFactory(java.lang.String configTreePath)
+			Membuat TwitterStreamFactory yang berasal dari \textit{config tree} yang spesifik.
+		\end{itemize}
+		\item \textit{Methods}
+		
+		\begin{itemize}
+			\item public TwitterStream getInstance()
+			
+			Mengembalikan contoh yang terkait dengan konfigurasi.
+			\item public TwitterStream getInstance(AccessToken accessToken)
+			
+			Mengembalikan OAuth yang sudah diotentifikasi.
+			\item public TwitterStream getInstance(Authorization auth)
+			
+			Mengembalikan \textit{instance}.
+			\item private TwitterStream getInstance(Configuration conf, Authorization auth)
+			
+			Mengembalikan \textit{instance} dengan konfigurasi dan autorisasi yang sesuai.
+			\item public static Twitter getSingleton()
+			
+			Mengembalikan \textit{singleton} standar Twitter \textit{instance}.
+		\end{itemize}
+	\end{itemize}
+	\paragraph{UserStreamListener}
+	
+	\begin{itemize}
+		\item \textit{Constant}
+		
+		\begin{itemize}
+			\item public interface UserStreamListener
+			extends StatusListener
+		\end{itemize}
+		\item \textit{Methods}
+		
+		\begin{itemize}
+			\item void onDeletionNotice(long directMessageId, long userId)
+			\item void onFriendList(long[] friendIds)
+			\item void onFavorite(User source, User target, Status favoritedStatus)
+			\item void onUnfavorite(User source, User target, Status unfavoritedStatus)
+			\item void onFollow(User source, User followedUser)
+			\item void onUnfollow(User source, User unfollowedUser)
+			\item void onDirectMessage(DirectMessage directMessage)
+			\item void onUserListMemberAddition(User addedMember, User listOwner, UserList list)
+			\item void onUserListMemberDeletion(User deletedMember, User listOwner, UserList list)
+			\item void onUserListSubscription(User subscriber, User listOwner, UserList list)
+			\item void onUserListUnsubscription(User subscriber, User listOwner, UserList list)
+			\item void onUserListCreation(User listOwner, UserList list)
+			\item void onUserListUpdate(User listOwner, UserList list)
+			\item void onUserListDeletion(User listOwner, UserList list)
+			\item void onUserProfileUpdate(User updatedUser)
+			\item void onBlock(User source, User blockedUser)
+			\item void onUnblock(User source, User unblockedUser)
+		\end{itemize}
+	\end{itemize}
+	\paragraph{TweetsResources}
+	
+	\begin{itemize}
+		\item \textit{Constant}
+		
+			\begin{itemize}
+				\item public interface TweetsResources
+			\end{itemize}
+		\item \textit{Methods}
+		
+		\begin{itemize}
+			\item ResponseList<Status> getRetweets(long statusId) throws TwitterException
+			
+			Mengembalikan sampai dengan 100 retweet pertama yang diberikan.
+			\item IDs getRetweeterIds(long statusId, long cursor) throws TwitterException
+			
+			Mengembalikan sampai dengan 100 ID pengguna yang telah melakukan retweet oleh parameter ID tertentu
+			\item IDs getRetweeterIds(long statusId, int count, long cursor) throws TwitterException
+			
+			Mengembalikan sampai dengan "\textit{count}" ID pengguna yang telah melakukan retweet oleh parameter ID tertentu
+			\item Status showStatus(long id) throws TwitterException
+			
+			Mengembalikan \textit{single status} yang ditentukan oleh parameter ID yang telah ditentukan.
+			\item Status destroyStatus(long statusId) throws TwitterException
+			
+			Menghapus status yang ditentukan oleh parameter ID yang telah ditentukan.
+			\item Status updateStatus(java.lang.String status) throws TwitterException
+			
+			Melakukan update status oleh user yang telah diotentifikasi
+			\item Status updateStatus(StatusUpdate latestStatus) throws TwitterException
+			
+			Melakukan update status oleh user yang telah diotentifikasi.
+			\item Status retweetStatus(long statusId) throws TwitterException
+			
+			Melakukan retweet.
+			\item OEmbed getOEmbed(OEmbedRequest req) throws TwitterException
+			Mengembalikan informasi yang dapat merepresentasikan \textit{third party} Tweet
+			
+			\item ResponseList<Status> lookup(long[] ids) throws TwitterException
+			
+			Mengembalikan \textit{fully-hydrated tweet objects} sampai dengan 100 tweet setiap \textit{request}nya.
+			\item UploadedMedia uploadMedia(java.io.File mediaFile) throws TwitterException
+			
+			Melakukan \textit{upload} media gambar yang telah di dilampirkan via updateStatus(twitter4j.StatusUpdate)
+		\end{itemize}
+	\end{itemize}
+
+	\paragraph{TweetsResources}
+	
+	\begin{itemize}
+		\item \textit{Constant}
+		
+			\begin{itemize}
+				\item public interface TweetsResources
+			\end{itemize}
+		\item \textit{Methods}
+		
+		\begin{itemize}
+			\item ResponseList<Status> getRetweets(long statusId) throws TwitterException
+			
+			Mengembalikan sampai dengan 100 retweet pertama yang diberikan.
+			\item IDs getRetweeterIds(long statusId, long cursor) throws TwitterException
+			
+			Mengembalikan sampai dengan 100 ID pengguna yang telah melakukan retweet oleh parameter ID tertentu
+			\item IDs getRetweeterIds(long statusId, int count, long cursor) throws TwitterException
+			
+			Mengembalikan sampai dengan "\textit{count}" ID pengguna yang telah melakukan retweet oleh parameter ID tertentu
+			\item Status showStatus(long id) throws TwitterException
+			
+			Mengembalikan \textit{single status} yang ditentukan oleh parameter ID yang telah ditentukan.
+			\item Status destroyStatus(long statusId) throws TwitterException
+			
+			Menghapus status yang ditentukan oleh parameter ID yang telah ditentukan.
+			\item Status updateStatus(java.lang.String status) throws TwitterException
+			
+			Melakukan update status oleh user yang telah diotentifikasi
+			\item Status updateStatus(StatusUpdate latestStatus) throws TwitterException
+			
+			Melakukan update status oleh user yang telah diotentifikasi.
+			\item Status retweetStatus(long statusId) throws TwitterException
+			
+			Melakukan retweet.
+			\item OEmbed getOEmbed(OEmbedRequest req) throws TwitterException
+			Mengembalikan informasi yang dapat merepresentasikan \textit{third party} Tweet
+			
+			\item ResponseList<Status> lookup(long[] ids) throws TwitterException
+			
+			Mengembalikan \textit{fully-hydrated tweet objects} sampai dengan 100 tweet setiap \textit{request}nya.
+			\item UploadedMedia uploadMedia(java.io.File mediaFile) throws TwitterException
+			
+			Melakukan \textit{upload} media gambar yang telah di dilampirkan via updateStatus(twitter4j.StatusUpdate)
+		\end{itemize}
+	\end{itemize}
+
+
+%\subsection{Contoh Kode}
+%Untuk menjalankan ini semua, anda harus mempunyai OAuth credential yang telah dikonfigurasi pada twitter4j.properties.
+
+%\begin{itemize}
+%	\item Melakukan Tweet
+	
+%	Anda dapat melakukan Tweet seperti "Selamat pagi" dengan menggunakan \textit{method} Twitter.updateStatus().
+%	\begin{lstlisting} [caption= code untuk melakukan Tweet]
+%	{
+%			Twitter twitter = TwitterFactory.getSingleton();
+%			Status status = twitter.updateStatus(latestStatus);
+%			System.out.println("Successfully updated the status to [" + status.getText() + "].");
+%	}\end{lstlisting}
+%	\item Mendapatkan Timeline
+%	
+%	Berikut adalah contoh kode untuk mendapatkan \textit{timeline}
+%	\begin{lstlisting} [caption= code untuk mendapatkan \textit{timeline}]
+%	{
+%			Twitter twitter = TwitterFactory.getSingleton();
+%    List<Status> statuses = twitter.getHomeTimeline();
+%    System.out.println("Showing home timeline.");
+%    for (Status status : statuses) {
+%        System.out.println(status.getUser().getName() + ":" +
+%                           status.getText());
+%    }
+%	}\end{lstlisting}
+%	\item Mengirim dan Menerima \textit{Direct Message}
+%	
+%	Anda dapat mengirim dan menerima \textit{direct message} dengan menggunakan \textit{method} Twitter.sendDirectMessage() atau Twitter.getDirectMessages(). Berikut adalah contoh kodenya.
+%	\begin{lstlisting} [caption= code untuk mengirim \textit{direct message}]
+%	{
+%			 Twitter sender = TwitterFactory.getSingleton();
+%    DirectMessage message = sender.sendDirectMessage(recipientId, message);
+%    System.out.println("Sent: " message.getText() + " to @" + message.getRecipientScreenName());
+%    }
+%	}\end{lstlisting}
+%	\item Mencari Tweet
+%	
+%	Mencari Tweet dapat dilakukan dengan menggunakan kelas \textit{query} atau dengan menggunakan method Twitter.seach(twitter4j.Query). Berikut adalah contoh kodenya
+%	\begin{lstlisting} [caption= code untuk mencari Tweet]
+%	{
+%			 Twitter twitter = TwitterFactory.getSingleton();
+%    Query query = new Query("source:twitter4j yusukey");
+%    QueryResult result = twitter.search(query);
+%    for (Status status : result.getTweets()) {
+%        System.out.println("@" + status.getUser().getScreenName() + ":" + status.getText());
+%    }
+%    }
+%	}\end{lstlisting}
+%	\item OAuth support
+%	
+%	Dengan menggunakan skema OAuth authorization, sebuah aplikasi dapat mengakses akun user tanpa menggunakan userid dan password. Anda hanya perlu melakukan registrasi %pada aplikasi anda ke http://twitter.com/oauth\_clients/new untuk mendapatkan \textit{consumer key}, dan \textit{consumer secret } terlebih dahulu. \textit{Key / %secret pair} dapat di set menggunakan Twitter\#setOAuthConsumer() atau mengikuti petunjuk \textit{system properties}:
+%	\begin{itemize}
+%		\item Dtwitter4j.oauth.consumerKey=[consumer key]
+%%		\item Dtwitter4j.oauth.consumerSecret=[consumer secret]
+%	\end{itemize}
+%	Anda tidak perlu memiliki izin untuk mengakses sebuah akun tetapi harus memiliki \textit{access token} dengan mengarahkan user ke URL \textit{authorization} sebagai %berikut:
+%	\begin{lstlisting} [caption= code untuk mengarahkan user ke URL \textit{authorization}]
+%	{
+%			 public static void main(String args[]) throws Exception{
+%    // The factory instance is re-useable and thread safe.
+%    Twitter twitter = TwitterFactory.getSingleton();
+%    twitter.setOAuthConsumer("[consumer key]", "[consumer secret]");
+%    RequestToken requestToken = twitter.getOAuthRequestToken();
+%    AccessToken accessToken = null;
+%    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+%    while (null == accessToken) {
+%      System.out.println("Open the following URL and grant access to your account:");
+%      System.out.println(requestToken.getAuthorizationURL());
+%      System.out.print("Enter the PIN(if aviailable) or just hit enter.[PIN]:");
+%      String pin = br.readLine();
+%      try{
+%         if(pin.length() > 0){
+%           accessToken = twitter.getOAuthAccessToken(requestToken, pin);
+%         }else{
+%           accessToken = twitter.getOAuthAccessToken();
+%         }
+%      } catch (TwitterException te) {
+%        if(401 == te.getStatusCode()){
+%          System.out.println("Unable to get the access token.");
+%        }else{
+%          te.printStackTrace();
+%        }
+%      }
+%    }
+%    //persist to the accessToken for future reference.
+%    storeAccessToken(twitter.verifyCredentials().getId() , accessToken);
+%    Status status = twitter.updateStatus(args[0]);
+%    System.out.println("Successfully updated the status to [" + status.getText() + "].");
+%    System.exit(0);
+%  }
+%  private static void storeAccessToken(int useId, AccessToken accessToken){
+%    //store accessToken.getToken()
+%    //store accessToken.getTokenSecret()
+%  }
+%    }
+%	\end{lstlisting}
+%	Setelah mendapatkan \textit{Access Token}, maka \textit{Request Token} sudah tidak berlaku lagi. Anda dapat menggunakan Access Token untuk sistem \textit{file} dengan melakukan seriliasi objek, atau dengan mendapatkan token dan secret dari AccesToken\#getToken() dan AccessToken\#getTokenSecret().
+%	\begin{lstlisting} [caption= code untuk mmendapatkan \textit{token} dan \textit{tokenSecret}]
+%	{
+%		public static void main(String args[]) throws Exception{
+%			// The factory instance is re-useable and thread safe.
+%			TwitterFactory factory = new TwitterFactory();
+%			AccessToken accessToken = loadAccessToken(Integer.parseInt(args[0]));
+%			Twitter twitter = factory.getInstance);
+%			twitter.setOAuthConsumerKey("[consumer key]", "[consumer secret]");
+%			twitter.setOAuthAccessToken(accessToken);
+%			Status status = twitter.updateStatus(args[1]);
+%			System.out.println("Successfully updated the status to [" + status.getText() + "].");
+%			System.exit(0);
+%		}
+%		private static AccessToken loadAccessToken(int useId){
+%			String token = // load from a persistent store
+%			String tokenSecret = // load from a persistent store
+%			return new AccessToken(token, tokenSecret);
+%		}
+%  }
+%	\end{lstlisting}
+	
+%	\item \textit{Streaming API}
+%	\textit{TwitterStream class} memiliki beberapa method yang telah disiapkan untuk \textit{Streaming API}. Yang anda perlukan hanya mengimplementasikan \textit{StatusListener}. Berikut adalah contoh kodenya:
+%	\begin{lstlisting} [caption= contoh code untuk Streaming API]
+%	{
+%		public static void main(String[] args) throws TwitterException, IOException{
+%			StatusListener listener = new StatusListener(){
+%					public void onStatus(Status status) {
+%							System.out.println(status.getUser().getName() + " : " + status.getText());
+%					}
+%					public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {}
+%					public void onTrackLimitationNotice(int numberOfLimitedStatuses) {}
+%					public void onException(Exception ex) {
+%							ex.printStackTrace();
+%					}
+%			};
+%			TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
+%			twitterStream.addListener(listener);
+%			// sample() method internally creates a thread which manipulates TwitterStream and calls these adequate listener methods continuously.
+%			twitterStream.sample();
+%		}
+%  }
+%	\end{lstlisting}
+%\end{itemize}
