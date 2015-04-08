@@ -332,21 +332,21 @@
 \cleardoublepage
 
 %cover ENG
-\begin{center}
-	{\Large\bf \vstaENG \\} 	\vspace{1.5cm}
-	{\Large \bf \vjudulENG \\} \vspace{2.5cm}
-	\includegraphics[scale=0.4]{Gambar/logo-unpar}\\ \vspace{1cm}
-	{\Large \bf \vnama \\} \vspace{0.5cm}
-	{\Large \bf NPM: \vnpm \\}
-	\vfill
-	\Large{ \textbf { 
-		DEPARTMENT OF \vprodiENG \\
-		FACULTY OF INFORMATION TECHNOLOGY AND SCIENCES\\
-		PARAHYANGAN CATHOLIC UNIVERSITY\\
-		\vtahun 
-	}}
-\end{center}
-\cleardoublepage
+%\begin{center}
+%	{\Large\bf \vstaENG \\} 	\vspace{1.5cm}
+%	{\Large \bf \vjudulENG \\} \vspace{2.5cm}
+%	\includegraphics[scale=0.4]{Gambar/logo-unpar}\\ \vspace{1cm}
+%	{\Large \bf \vnama \\} \vspace{0.5cm}
+%	{\Large \bf NPM: \vnpm \\}
+%	\vfill
+%	\Large{ \textbf { 
+%		DEPARTMENT OF \vprodiENG \\
+%		FACULTY OF INFORMATION TECHNOLOGY AND SCIENCES\\
+%		PARAHYANGAN CATHOLIC UNIVERSITY\\
+%		\vtahun 
+%	}}
+%\end{center}
+%\cleardoublepage
 
 
 % Lembar pengesahan
@@ -486,15 +486,17 @@ Atas pernyataan ini, saya siap menanggung segala risiko dan sanksi yang dijatuhk
 \ifdefstring{\vbaba}{1}{\include{Bab/bab1}}{}
 \ifdefstring{\vbaba}{1}{\include{Bab/bab2}}{}
 \ifdefstring{\vbaba}{1}{\include{Bab/bab3}}{}
+\ifdefstring{\vbaba}{1}{\include{Bab/bab4}}{}
 
 %\bibliographystyle{ieeetr}
 %\bibliography{pustaka}
 \begin{thebibliography}{1}
 	\bibitem{Twitter} Twitter {\em Twitter Documentation} 2014 : \url{https://dev.twitter.com/overview/documentation}.
-	\bibitem{TwitterBook} Tim O'Reilly {\em The Twitter Book} 2009: O’Reilly Media, Inc
+	\bibitem{TwitterBook} Tim O'Reilly {\em The Twitter Book} 2009: O'Reilly Media, Inc
 	\bibitem{KIRI} Kiri Team {\em KIRI API v2 Documentation} 2014 : \url{https://bitbucket.org/projectkiri/kiri\_
 api/wiki/KIRI\%20API\%20v2\%20Documentation}
-	\bibitem{Twitter4J} Twitter4J {\em Twitter4J Documentation}  2007 : \url{http://twitter4j.org/javadoc/index.html} %Ini referensinya yg doc ato yg index biasa? Kalo index biasa si penjelasan twitter4j nya dikasih footnote ato reverensi tambahan?
+	\bibitem{Twitter4J} Twitter4J {\em Twitter4J Documentation}  2007 : \url{http://twitter4j.org/javadoc/index.html}
+	\bibitem{OAuth} OAuth {\em Hueniverse Documentation}  2010 : \url{http://hueniverse.com/oauth/guide/intro/}
 \end{thebibliography}
 
 \appendix

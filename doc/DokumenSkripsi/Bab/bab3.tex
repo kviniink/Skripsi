@@ -27,7 +27,7 @@ Berikut adalah contoh pemanfaatan KIRI API :
 \begin{itemize}
 	\item \textit{Search Place Web Service}
 	
-	Format \textit{Search Place Web Service} yang dikirim melalui URL adalah kiri.travel/handle.php?version=2\&mode=searchplace\&region=cgk/bdo/sub\&querystring="string"\&apikey=889C2C8FBB82C7E6.
+	Format \textit{Search Place Web Service} yang dikirim melalui URL adalah \url{kiri.travel/handle.php?version=2\&mode=searchplace\&region=cgk/bdo/sub\&querystring="string"\&apikey=889C2C8FBB82C7E6}.
 	
 	Parameter yang dikirimkan adalah :
 	
@@ -201,6 +201,7 @@ Untuk menggunakan Twitter4J diperlukan \textit{properties} untuk proses konfigur
 		oauth.accessToken=313287708-NO5SPbreQvoOxtXUD5EcKlubIfCBNfCb6aRqYBlZ
 		oauth.accessTokenSecret=LVfDgtlfeht5yjBJGSgvSvtMYcFMoEdYOspYoOptc****
 	}
+	\end{lstlisting}
 	\item via \textit{ConfigurationBuilder}
 	
 	Menggunakan \textit{ConfigurationBuilder class} untuk melakukan konfigurasi Twitter4J.
@@ -215,6 +216,7 @@ Untuk menggunakan Twitter4J diperlukan \textit{properties} untuk proses konfigur
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		Twitter twitter = tf.getInstance();
 	}
+	\end{lstlisting}
 	\item via \textit{System Properties}
 	
 	Menggunakan \textit{System Properties} untuk melakukan konfigurasi Twitter4J.
@@ -254,16 +256,18 @@ Spesifikasi kebutuhan perangkat lunak yang akan dibangun untuk membuat Twitter B
 Skenario ini hanya memiliki satu aktor yaitu pengguna. \textit{Tweet} mencari informasi transportasi publik pada skenario ini dilakukan dengan melakukan \textit{tweet} kepada user @kiriupdate berisikan format yang sesuai untuk pencarian rute transportasi. 
 
 \begin{table}[h]
-\begin{tabular}{|l|l|}
-\hline
-Nama           & \textit{Tweet} mencari informasi transportasi publik      											                                                                                                              \\ \hline
-Aktor          & Pengguna                                                                                                                       \\ \hline
-Deskripsi      & \begin{tabular}[c]{@{}l@{}}Melakukan \textit{Tweet}\\ (\textit{Tweet} berupa lokasi asal dan lokasi tujuan)\end{tabular}                         \\ \hline
-Kondisi Awal   & Belum menuliskan \textit{Tweet} pada kolom update                                                                                       \\ \hline
-Kondisi Akhir  & Sudah melakukan \textit{Tweet} kepada user @kiriupdate                                                                                  \\ \hline
-Skenario Utama & \begin{tabular}[c]{@{}l@{}}Pengguna melakukan \textit{Tweet} kepada \textit{user}\\ @kiriupdate dengan format yang sudah ditentukan\end{tabular} \\ \hline
-Eksepsi        & Format penulisan salah                                                                                                         \\ \hline
-\end{tabular}
+	\begin{tabular}{|l|l|}
+	\hline
+	Nama           & \textit{Tweet} mencari informasi transportasi publik      											                                                                                                              \\ \hline
+	Aktor          & Pengguna                                                                                                                       \\ \hline
+	Deskripsi      & \begin{tabular}[c]{@{}l@{}}Melakukan \textit{Tweet}\\ (\textit{Tweet} berupa lokasi asal dan lokasi tujuan)\end{tabular}                         \\ \hline
+	Kondisi Awal   & Belum menuliskan \textit{Tweet} pada kolom update                                                                                       \\ \hline
+	Kondisi Akhir  & Sudah melakukan \textit{Tweet} kepada user @kiriupdate                                                                                  \\ \hline
+	Skenario Utama & \begin{tabular}[c]{@{}l@{}}Pengguna melakukan \textit{Tweet} kepada \textit{user}\\ @kiriupdate dengan format yang sudah ditentukan\end{tabular} \\ \hline
+	Eksepsi        & Format penulisan salah                                                                                                         \\ \hline
+	\end{tabular}
+	\caption{Skenario \textit{Tweet} mencari informasi transportasi }
+	\label{tab:SkenarioTweetMencariInformasiTransportasi}
 \end{table}
 
 \subsection{\textit{Class Diagram}}

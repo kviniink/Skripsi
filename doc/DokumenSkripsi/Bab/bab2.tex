@@ -55,15 +55,14 @@ Cara berbaik dalam membuat sebuah \textit{query}, melakukan percobaan yang valid
 \begin{enumerate}
 	\item Melakukan pencarian untuk \textit{tweet} yang direferensikan kepada akun @twitterapi. Pertama kita harus melakukan pencarian pada \url{twitter.com/search}.
 	\item Lakukan pengecekan dan salin URL yang ditampilkan. Sebagai contoh didapatkan URL seperti ini, \url{https://twitter.com/search?q=\%40twitterapi}.
-	\item Ganti "\url{https://twitter.com/search}" dengan "\url{https://api.twitter.com/1.1/search/tweets.json}" dan akan didapatkan "\url{https://api.twitter.com/1.1/search/tweets.json?q=\%40twitterapi}"
+	\item Ganti \url{https://twitter.com/search} dengan \url{https://api.twitter.com/1.1/search/tweets.json} dan akan didapatkan \url{https://api.twitter.com/1.1/search/tweets.json?q=\%40twitterapi}
 	\item Eksekusi URL tersebut untuk melakukan pencarian di dalam API.
 \end{enumerate}
 
-API v1.1 mewajibkan bahwa \textit{request} sudah diotentifikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan hasil yang sudah sangat lama, sedangkan Search API hanya melayani tweet dari seminggu terakhir.
+API v1.1 mewajibkan bahwa \textit{request} sudah diotentifikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan hasil yang sudah sangat lama, sedangkan Search API hanya melayani tweet dari seminggu terakhir. Berikut adalah contoh berbagai macam pencarian :
 
 \begin{table}[h]
-\caption{Contoh berbagai macam pencarian \textit{tweet}}
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \textbf{Operator}          					& \textbf{Finds \textit{tweets}}                                            \\ \hline
 \textit{watching now}               & Mengandung kata "\textit{watching}" dan "\textit{now}". 						       \\
@@ -82,9 +81,11 @@ API v1.1 mewajibkan bahwa \textit{request} sudah diotentifikasi. Perlu diingat j
 \textit{hilarious filter:links}     & Mengandung kata "\textit{hilarious}" yang di sambungkan dengan URL.                                \\
 \textit{news source:twitterfeed}    & Mengandung kata "\textit{news}" yang dipost melalui twitterfeed.						\\        \hline                     
 \end{tabular}
+\caption{Contoh berbagai macam pencarian \textit{tweet}}
+\label{tab:MacamPencarianTweet}
 \end{table}
 
-Dipastikan bahwa pengkodean URL terhadap \textit{query} dilakukan terlebih dahulu sebelum melakukan \textit{request}. Tabel berikut memberikan contoh \textit{mapping} dari \textit{search quer}y ke \textit{query} pengkodean URL.
+Dipastikan bahwa pengkodean URL terhadap \textit{query} dilakukan terlebih dahulu sebelum melakukan \textit{request}. Tabel \ref{tab:ContohMappingDariSeachQuery} memberikan contoh \textit{mapping} dari \textit{search query} ke \textit{query} pengkodean URL.
 
 \begin{table}[h]
 \begin{tabular}{|l|l|}
@@ -93,6 +94,8 @@ Dipastikan bahwa pengkodean URL terhadap \textit{query} dilakukan terlebih dahul
 \#haiku \#poetry & \%23haiku+\%23poetry              \\
 "\textit{happy hour}" :)  & \%22\textit{happy}\%20\textit{hour}\%22\%20\%3A\%29 \\ \hline
 \end{tabular}
+\caption{Contoh \textit{mapping} dari \textit{search query} ke \textit{query} pengkodean URL}
+\label{tab:ContohMappingDariSeachQuery}
 \end{table}
 
 \paragraph{\textit{Additional parameters}}
@@ -118,9 +121,9 @@ Ketika anda mengikuti suatu acara yang sedang berlangsung, anda tertarik untuk m
 
 Ketika anda ingin mengetahui \textit{tweet} yang datang dari suatu lokasi dengan bahasa yang spesifik, maka langkah-langkah yang dilakukan adalah:
 \begin{itemize}
-	\item Anda ingin mencari \textit{tweet} yang paling baru dalam Bahasa Portugal, yang lokasinya dekat Maracanã soccer stadium yang terletak di Rio de Janeiro.
+	\item Anda ingin mencari \textit{tweet} yang paling baru dalam Bahasa Portugal, yang lokasinya dekat Maracana soccer stadium yang terletak di Rio de Janeiro.
 	\item Maka search URL akan seperti ini:
-	\vtop{\hbox{\strut \url{https://api.twitter.com/1.1/search/tweets.json?}\hbox{\strut q=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent}}}
+	\url{https://api.twitter.com/1.1/search/tweets.json?q=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent}
 	%%%https://api.twitter.com/1.1/search/tweets.json?q=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent
 	
 Ketika anda ingin mencari \textit{tweet} yang sedang poluler dari spesifik \textit{user} dan \textit{tweet} tersebut terdapat sebuah hashtag tertentu:
@@ -162,24 +165,21 @@ Twitter menawarkan beberapa \textit{endpoint streaming}, disesuaikan dengan kasu
 \paragraph{POST statuses/\textit{filter}}
 POST \textit{filter} ini mengembalikan status publik yang sesuai dengan satu atau lebih predikat yang telah di filter. \textit{Multiple parameter} memungkinkan klien untuk menggunakan koneksi tunggal untuk ke \textit{Streaming} API. Antara GET dan POST \textit{request} keduanya didukung tetapi GET \textit{request} yang memiliki parameter yang terlalu banyak mungkin akan ditolak karena URL yang terlalu panjang. Gunakanlah POST request untuk menghindari URL yang panjang.
 \textit{Track, follow}, dan lokasi harus dipertimbangkan untuk dapat digabungkan dengan operator OR. \textit{track}=foo\&\textit{follow}=1234 ini mengembalikan \textit{tweet} yang memiliki kata "foo" atau dibuat oleh \textit{user} 1234.
-Hal ini memungkinkan akses hingga 400 kata kunci, 5000 \textit{follow users}.
+Hal ini memungkinkan akses hingga 400 kata kunci, 5000 \textit{follow users}. Perintah ini dikembalikan dalam format JSON, memerlukan otentifikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter untuk parameter ini dapat dilihat pada tabel \ref{table:ParameterPostStatusesFilter}
 
-\paragraph{\textit{Resource Information}}
-\begin{table}[h]
-\begin{tabular}{|l|l|}
-\hline
-\textit{Response formats}         & JSON                    \\ \hline
-\textit{Requires authentication}? & Ya (hanya \textit{user context}) \\ \hline
-\textit{Rate limited}?            & Ya                    \\ \hline
-\end{tabular}
-\end{table}
+%\paragraph{\textit{Resource Information}}
+%\begin{table}[!htbp]
+%\begin{tabular}{|l|l|}
+%\hline
+%\textit{Response formats}         & JSON                    \\ \hline
+%\textit{Requires authentication}? & Ya (hanya \textit{user context}) \\ \hline
+%\textit{Rate limited}?            & Ya                    \\ \hline
+%\end{tabular}
+%\end{table}
 
-
-\paragraph{Parameter}
-Perlu diperhatikan bahwa salah satu parameter (\textit{follow, location, atau track}) harus diisi secara spesifik.
 
 \begin{table}[h]
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{3cm}|p{11cm}|}
 \hline
 \textit{follow}          & Tanda koma memisahkan list user ID, hal ini menunjukkan pengguna untuk kembali ke status untuk stream. \\ \hline
 \textit{track}           & Kata pencarian untuk track. Fase kata kunci dipisahkan oleh tanda koma.                \\ \hline
@@ -187,24 +187,13 @@ Perlu diperhatikan bahwa salah satu parameter (\textit{follow, location, atau tr
 \textit{delimited}       & Menentukan apakah pesan harus dibatasi limitnya.                                         \\ \hline
 \textit{stall\_warnings} & Menentukan apakah pesan warning harus dikirim atau tidak. \\ \hline                                        
 \end{tabular}
+\caption{Parameter POST statuses/\textit{filter}}
+\label{table:ParameterPostStatusesFilter}
 \end{table}
 
 
 \paragraph{GET \textit{statuses/sample}}
-Mengembalikan \textit{random} sampel dari semua status publik. \textit{Tweet} akan dikembalikan dengan cara seperti biasa, jadi jika terdapat dua client yang terhubung dengan \textit{endpoint} ini, maka mereka akan melihat Tweet yang sama.
-
-\paragraph{\textit{Resource Information}}
-\begin{table}[h]
-\begin{tabular}{|l|l|}
-\hline
-\textit{Response formats}         & JSON                    \\ \hline
-\textit{Requires authentication}? & Ya (hanya \textit{user context}) \\ \hline
-\textit{Rate limited}?            & Ya           \\ \hline         
-\end{tabular}
-\end{table}
-
-
-\paragraph{Parameter}
+Mengembalikan \textit{random} sampel dari semua status publik. \textit{Tweet} akan dikembalikan dengan cara seperti biasa, jadi jika terdapat dua client yang terhubung dengan \textit{endpoint} ini, maka mereka akan melihat Tweet yang sama. Perintah ini dikembalikan dalam format JSON, memerlukan otentifikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter untuk parameter ini dapat dilihat pada tabel \ref{table:ParameterGetStatusesSample}
 
 \begin{table}[h]
 \begin{tabular}{|l|l|}
@@ -212,24 +201,14 @@ Mengembalikan \textit{random} sampel dari semua status publik. \textit{Tweet} ak
 \textit{delimited}          & Menentukan apakah pesan harus dibatasi limitnya. \\ \hline
 \textit{stall\_warning}           & Menentukan apakah pesan warning harus dikirim atau tidak.                \\   \hline          
 \end{tabular}
+\caption{Parameter GET \textit{statuses/sample}}
+\label{table:ParameterGetStatusesSample}
 \end{table}
 
 
 \paragraph{GET \textit{statuses/firehose}}
-Mengembalikan semua status publik. Beberapa aplikasi membutuhan akses ini. Teknik ini diolah secara kreatif dengan cara menggabungkan sumber informasi yang ada dengan berbagai sumber lainnya maka dapat memuaskan pengguna.
+Mengembalikan semua status publik. Beberapa aplikasi membutuhan akses ini. Teknik ini diolah secara kreatif dengan cara menggabungkan sumber informasi yang ada dengan berbagai sumber lainnya maka dapat memuaskan pengguna. Perintah ini dikembalikan dalam format JSON, memerlukan otentifikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter untuk parameter ini dapat dilihat pada tabel \ref{table:ParameterGetStatusesFirehose}
 
-\paragraph{\textit{Resource Information}}
-\begin{table}[h]
-\begin{tabular}{|l|l|}
-\hline
-\textit{Response formats}         & JSON                    \\ \hline
-\textit{Requires authentication}? & Ya (hanya \textit{user context}) \\ \hline
-\textit{Rate limited}?            & Ya                 \\ \hline   
-\end{tabular}
-\end{table}
-
-
-\paragraph{Parameter}
 
 \begin{table}[h]
 \begin{tabular}{|l|l|}
@@ -238,6 +217,8 @@ Mengembalikan semua status publik. Beberapa aplikasi membutuhan akses ini. Tekni
 \textit{delimited}          & Menentukan apakah pesan harus dibatasi limitnya. \\ \hline
 \textit{stall\_warning}           & Menentukan apakah pesan warning harus dikirim atau tidak.                \\     \hline        
 \end{tabular}
+\caption{Parameter GET \textit{statuses/firehose}}
+\label{table:ParameterGetStatusesFirehose}
 \end{table}
 
 
@@ -249,26 +230,16 @@ Setiap \textit{user} hanya dapat membuat satu koneksi yang terbuhung dengan \tex
 
 %User Streams
 \paragraph{\textit{User Streams}}
-\textit{User Stream} memberikan aliran(\textit{stream}) data dan event yang spesific untuk pengguna yang sudah diotentifikasi. \textit{User Stream} tidak dimaksudkan untuk koneksi server ke server, Jika anda perlu membuat koneksi atas nama beberapa user dari mesin yang sama maka lebih baik menggunakan \textit{site stream}.
+\textit{User Stream} memberikan aliran(\textit{stream}) data dan event yang spesific untuk pengguna yang sudah diotentifikasi. \textit{User Stream} tidak dimaksudkan untuk koneksi server ke server, Jika anda perlu membuat koneksi atas nama beberapa user dari mesin yang sama maka lebih baik menggunakan \textit{site stream}. Perintah ini dikembalikan dalam format JSON, memerlukan otentifikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter untuk parameter ini dapat dilihat pada tabel \ref{table:ParameterGetUser}
+
 
 \paragraph{\textit{Endpoints}}
 \begin{itemize}
 	\item GET \textit{user}
 \end{itemize}
 
-\paragraph{\textit{Resource Information}}
 \begin{table}[h]
-\begin{tabular}{|l|l|}
-\hline
-\textit{Response formats}         & JSON                    \\ \hline
-\textit{Requires authentication}? & Ya (hanya user context) \\ \hline
-\textit{Rate limited}?            & Ya                    \\ \hline
-\end{tabular}
-\end{table}
-
-\paragraph{Parameter}
-\begin{table}[h]
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \textit{delimited}              & Menentukan apakah pesan harus dibatasi limitnya.																												\\ \hline
 \textit{stall\_warnings}        & Menentukan apakah pesan warning harus dikirim atau tidak.                                                               \\ \hline
@@ -279,6 +250,8 @@ Setiap \textit{user} hanya dapat membuat satu koneksi yang terbuhung dengan \tex
 \textit{locations}              & Termasuk tweet tambahan yang termasuk dalam batasan lokasi tertentu.                                                      \\ \hline
 \textit{stringify\_friend\_ids} & Mengirim list teman yang diterdiri dari array of integer dan array of string.              \\ \hline            
 \end{tabular}
+\caption{Parameter GET \textit{user}}
+\label{table:ParameterGetUser}
 \end{table}
 
 \paragraph{Koneksi}
@@ -297,7 +270,7 @@ OAuth menyediakan suatu metode bagi pengguna untuk memberi akses pihak ketiga un
 
 Dalam model otentikasi \textit{client-server} tradisional, klian menggunakan kredensial untuk mengakses \textit{recources hosted} oleh server. Di dalam model OAuth, klien (bukan pemilik \textit{resource}, tetapi bertindak atas namanya) meminta akses ke \textit{resource} yang dikenalkan oleh pemilik \textit{resource} namun diselenggarakan oleh server.
 
-Agar klien dapat mengakses \textit{resource}, pertama-tama ia harus mendapatkan izin dari si pemilik \textit{resource}. Izin ini dinyatakan dalam bentuk token dan mencocokan \textit{shared-secret}. Tujuan dari token ini adalah untuk membuat pemilik \textit{resource} untuk berbagi kepercayaan kepada klien. Berbeda dengan kepercayaan pemilik \textit{resource}. Token dapat dikeluarkan dalam ruang lingkup terbatas, durasi yang terbatas, dan akan dicabut secara independen. Reverensi(http://hueniverse.com/oauth/guide/intro/)
+Agar klien dapat mengakses \textit{resource}, pertama-tama ia harus mendapatkan izin dari si pemilik \textit{resource}. Izin ini dinyatakan dalam bentuk token dan mencocokan \textit{shared-secret}. Tujuan dari token ini adalah untuk membuat pemilik \textit{resource} untuk berbagi kepercayaan kepada klien. Berbeda dengan kepercayaan pemilik \textit{resource}. Token dapat dikeluarkan dalam ruang lingkup terbatas, durasi yang terbatas, dan akan dicabut secara independen.
 
 Twitter OAuth yang diberikan memiliki fitur
 \begin{itemize}
@@ -350,7 +323,7 @@ Kerena tidak ada kebutuhan duntuk menandatangani \textit{request}, pendekatan in
 
 \begin{figure}
 	\centering
-		\includegraphics[width=1.00\textwidth]{C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/flow application-only authentication.png}
+		\includegraphics[width=1.00\textwidth]{C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/flowApplication-onlyAuthentication.png}
 	\caption{flow application-only authentication}
 	\label{fig:flow application-only authentication}
 \end{figure}
@@ -376,7 +349,7 @@ Cara kerja dari \textit{3-legged authorization} adalah dengan memberikan aplikas
 
 Beginilah ilustrasi interaksi \textit{sign in} dengan menggunakan \textit{following flowchart}
 
-\begin{figure}[hp]
+\begin{figure}[H]
 	\centering
 		\includegraphics[width=1.00\textwidth]{C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/sign-in-flow3-3legged.png}
 	\caption{Ilustrasi sign in}
@@ -387,7 +360,7 @@ Beginilah ilustrasi interaksi \textit{sign in} dengan menggunakan \textit{follow
 cara kerja dari \textit{PIN-based authorization} ini ditujukan untuk aplikasi yang tidak bisa mengakses atau menanamkan \textit{web browser} untuk mengarahkan \textit{user} kepada \textit{authorization endpoint}. Contohnya adalah aplikasi yang bersifat \textit{command-line}, \textit{embedded systems}, \textit{game} konsol, dan beberapa jenis aplikasi \textit{mobile}.
 
 
-Implementasi
+\paragraph{Implementasi}
 
 Implementasi \textit{PIN-based authorization} ini memiliki cara kerja yang sama seperti \textit{3-legged authorization}, perbedaannya terletak pada nilai dari \textit{oauth\_callback} yang harus di set menjadi \textit{oob} saat proses pemanggilan \textit{POST oauth} atau \textit{request\_token}.
 
@@ -395,10 +368,10 @@ Setelah applikasi anda telah mendapatkan \textit{GET oauth/authenticate} atau \t
 
 Ketika \textit{callback oob} diminta dan user pengunjungi Twitter, \textit{user} tidak akan dipindahkan secara otomatis ke aplikasi setelah menyetujui akses. Sebaliknya, mereka akan melihat kode PIN, dengan instruksi untuk kembali ke aplikasi dan memasukkan nilai dari kode PIN tersebut.
 
-\begin{figure}[htbp]
-	\centering
-		\includegraphics{C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/pin.png}
-	\caption{Contoh PIN-based authorization}
+\begin{figure}[H]
+\centering
+\includegraphics{C:/Users/Kvin/git/Skripsi/doc/DokumenSkripsi/Gambar/pin.png}
+\caption{Contoh PIN-based authorization}
 	\label{fig:pin}
 \end{figure}
 
@@ -430,18 +403,22 @@ KIRI API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} mend
 
 Berikut ini adalah parameter \textit{request} yang diperlukan:
 
-\begin{tabular}{ |l|l|l| }
+\begin{table}[h]
+\begin{tabular}{ |p{3cm}|p{3cm}|p{8cm}| }
 	\hline
 	\textit{Parameter} & \textit{Valid values} & \textit{Description} \\ \hline \hline
-  \textit{version} & 2 & \vtop{\hbox{\strut Memberitahukan bahwa layanan yang dipakai} \hbox{\strut adalah protokol versi 2}} \\ \hline
+  \textit{version} & 2 & Memberitahukan bahwa layanan yang dipakaiadalah protokol versi 2 \\ \hline
   \textit{mode} & "\textit{findroute}" & Mengintruksikan layanan untuk mencari rute \\ \hline
   \textit{locale} & "en" or "id" & Respon bahasa yang digunakan \\ \hline
 	\textit{start} & lat,lng (\textit{both are decimal values}) & Titik awal \textit{Latitude} dan \textit{longitude} \\ \hline
   \textit{finish} & lat,lng (\textit{both are decimal value}s) & Titik akhir \textit{Latitude} dan \textit{longitude}  \\ \hline
-  \textit{presentation} & "\textit{mobile}" or "\textit{desktop}" & \vtop{\hbox{\strut Menentukan tipe presentasi untuk hasil keluaran.}\hbox{\strut Contoh, jika tipe presentasi "\textit{mobile}", }\hbox{\strut maka link "tel:" akan ditambahkan di hasil.}} \\ \hline
+  \textit{presentation} & "\textit{mobile}" or "\textit{desktop}" & Menentukan tipe presentasi untuk hasil keluaran. Contoh, jika tipe presentasi "\textit{mobile}",  maka link "tel:" akan ditambahkan di hasil. \\ \hline
 	\textit{apikey} & 16-digit \textit{hexadecimals} & API \textit{key} yang digunakan \\ \hline
 \end{tabular}
-
+	\caption{Parameter \textit{Routing Web Service}}
+	\label{tab:TabelParameterRoutingWebService}
+	\end{table}
+	
 \begin{lstlisting} [caption= code \textit{respond} pencarian rute]
 { 
     "status": "ok" or "error" 
@@ -501,6 +478,7 @@ Ketika pencarian route berhasil yaitu dengan memberitahukan bahwa status "ok" se
 \subsection{\textit{Search Place Web Service}}
 \textit{Search Place Web Service} berguna untuk menemukan rute perjalanan berdasarkan \textit{latitute} dan \textit{longitude} koordinat, yang tidak nyaman bagi pengguna akhir. Layanan \textit{Search Place Web Service} ini membantu untuk mengubah string teks untuk \textit{latitude} dan \textit{longitude}. Untuk permintaan \textit{routing}, berikut parameter \textit{request} yang diperlukan berikut penjelasannya:
 
+\begin{table}[h]
 \begin{tabular}{ |l |l |l| }
 	\hline
   \textit{version} & 2 & \vtop{\hbox{\strut Memberitahukan bahwa layanan yang dipakai} \hbox{\strut adalah protokol veris 2}} \\ \hline
@@ -509,6 +487,9 @@ Ketika pencarian route berhasil yaitu dengan memberitahukan bahwa status "ok" se
 	\textit{querystring} & \vtop{\hbox{\strut text apa saja dengan minimum} \hbox{\strut text satu karakter}} & \vtop{\hbox{\strut \textit{query string} yang akan dicari menggunakan}  \hbox{\strut layanan ini}} \\ \hline
 	\textit{apikey} & 16-digit \textit{hexadecimals} & API \textit{key} yang digunakan \\ \hline
 \end{tabular}
+\caption{Tabel parameter \textit{Search Place Web Service}}
+	\label{tab:TabelParameterSeachPlaceWebService}
+\end{table}
 
 Berikut format kembalian dari Kiri API:
 \begin{lstlisting} [caption= code \textit{respond} pencarian lokasi]
@@ -545,7 +526,7 @@ Ketika \textit{request find place} berhasil, server akan mengembalikan \textit{p
 \textit{Nearest Transports Web Service} digunakan untuk menemukan rute transportasi terdekat dengan titik yang diberikan.
 
 Berikut parameter \textit{request} yang diperlukan berikut penjelasanya:
-
+\begin{table}[h]
 \begin{tabular}{ |l |l |l| }
 	\hline
   \textit{version} & 2 & \vtop{\hbox{\strut Memberitahukan bahwa layanan yang dipakai} \hbox{\strut adalah protokol veris 2}} \\ \hline
@@ -553,6 +534,9 @@ Berikut parameter \textit{request} yang diperlukan berikut penjelasanya:
   \textit{start} & \vtop{\hbox{\strut \textit{latitude} dan \textit{longitude}} \hbox{\strut (keduanya menggunakan nilai desimal)}} & kota yang akan dicari tempatnya \\ \hline
 	\textit{apikey} & 16-digit \textit{hexadecimals} & API \textit{key} yang digunakan \\ \hline
 \end{tabular}
+\caption{Tabel parameter \textit{Nearest Transports Web Service}}
+	\label{tab:TabelParameterNearestTransportWebService}
+\end{table}
 
 
 Berikut format kembalian dari Kiri API:
@@ -774,6 +758,7 @@ Dalam pembuatan aplikasi yang akan saya buat saya membutuhkan beberapa \textit{l
 			\item void onUnblock(User source, User unblockedUser)
 		\end{itemize}
 	\end{itemize}
+	\textit{Tidak ada penjelasan yang diberikan oleh Twitter4J}
 	
 	\subsection{TweetsResources}
 	\begin{itemize}
