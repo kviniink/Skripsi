@@ -59,7 +59,7 @@ Cara berbaik dalam membuat sebuah \textit{query}, melakukan percobaan yang valid
 	\item Eksekusi URL tersebut untuk melakukan pencarian di dalam API.
 \end{enumerate}
 
-API v1.1 mewajibkan bahwa \textit{request} sudah diotentifikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan hasil yang sudah sangat lama, sedangkan Search API hanya melayani tweet dari seminggu terakhir. Berikut adalah contoh berbagai macam pencarian :
+API v1.1 mewajibkan bahwa \textit{request} sudah diotentifikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan hasil yang sudah sangat lama, sedangkan Search API hanya melayani tweet dari seminggu terakhir. Contoh berbagai macam pencarian dapat dilihat pada tabel \ref{tab:MacamPencarianTweet}:
 
 \begin{table}[h]
 \begin{tabular}{|p{5cm}|p{9cm}|}
@@ -294,7 +294,7 @@ Otentifikasi model baru terdapat dalam dua bentuk, dan keduanya masih memanfaatk
 
 
 \subsection{Application-only authentication}
-Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentifikasi atas nama aplikasi itu sendiri. Dengan menggunakan \textit{Application-only authentication} anda tidak mempunyai konteks dari otentikafikasi pengguna dan ini berarti setiap \textit{request} API untuk endpoint akan membutuhkan konteks \textit{user}, seperti memposting \textit{tweet} tidak akan bekerja. Aplikasi yang akan di dapat adalah: 
+Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentifikasi atas nama aplikasi itu sendiri. Dengan menggunakan \textit{Application-only authentication} anda tidak mempunyai konteks dari otentifikasi pengguna dan ini berarti setiap \textit{request} API untuk endpoint akan membutuhkan konteks \textit{user}, seperti memposting \textit{tweet} tidak akan bekerja. Aplikasi yang akan di dapat adalah: 
 
 \begin{itemize}
 	\item Melihat \textit{timeline}
@@ -320,14 +320,6 @@ Sebuah aplkasi dikodekan berdasarkan \textit{consumer key} dan \textit{secret} k
 Aplikasi membuat \textit{request} ke POST OAuth2/\textit{token endpoint} untuk merubah kredensial tersebut untuk \textit{token bearer}.
 Ketika mengakses REST API, aplikasi menggunakan \textit{token bearer} untuk otentifikasi.
 Kerena tidak ada kebutuhan duntuk menandatangani \textit{request}, pendekatan ini lebih sederhana dari model standar OAuth 1.0a
-
-\begin{figure}
-	\centering
-		\includegraphics[width=1.00\textwidth]{Gambar/flowApplication-onlyAuthentication.png}
-	\caption{flow application-only authentication}
-	\label{fig:flow application-only authentication}
-\end{figure}
-
 
 \paragraph{Tentang \textit{Application-only Authentication}}
 Token adalah \textit{password}. Perlu diingat bahwa \textit{consumer key} dan \textit{secret, bearer token credential}, dan \textit{the bearer token} itu sendiri memberikan akses untuk membuat permintaan atas nama aplikasi itu sendiri. Point-point ini harus dianggap sensitif layaknya \textit{password} dan tidak boleh dibagikan atau didistribusikan kepada pihak yang tidak dipercaya atau tidak berkepentingan
@@ -364,7 +356,7 @@ cara kerja dari \textit{PIN-based authorization} ini ditujukan untuk aplikasi ya
 
 Implementasi \textit{PIN-based authorization} ini memiliki cara kerja yang sama seperti \textit{3-legged authorization}, perbedaannya terletak pada nilai dari \textit{oauth\_callback} yang harus di set menjadi \textit{oob} saat proses pemanggilan \textit{POST oauth} atau \textit{request\_token}.
 
-Setelah applikasi anda telah mendapatkan \textit{GET oauth/authenticate} atau \textit{GET oauth/authorize URL}, tampilkan URL kepada user agar mereka dapat menggunakan \textit{web browser} untuk mengakses Twitter.
+Setelah aplikasi anda telah mendapatkan \textit{GET oauth/authenticate} atau \textit{GET oauth/authorize URL}, tampilkan URL kepada user agar mereka dapat menggunakan \textit{web browser} untuk mengakses Twitter.
 
 Ketika \textit{callback oob} diminta dan user pengunjungi Twitter, \textit{user} tidak akan dipindahkan secara otomatis ke aplikasi setelah menyetujui akses. Sebaliknya, mereka akan melihat kode PIN, dengan instruksi untuk kembali ke aplikasi dan memasukkan nilai dari kode PIN tersebut.
 

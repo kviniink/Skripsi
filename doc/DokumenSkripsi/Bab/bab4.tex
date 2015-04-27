@@ -6,7 +6,15 @@ Pada bab ini akan dibahas tentang penjelasan perancangan perangkat lunak untuk m
 \section{Perancangan Perangkat Lunak}
 
 \subsection{Perancangan Kelas}
-Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibuat.
+Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibuat pada aplikasi Pembuatan Twitter Bot untuk Mencari Jalur Transportasi Publik. Untuk lebih jelas mengenai kelas yang ada pada aplikasi ini, penulis menyajikan gambar diagram kelas yang dapat dilihat pada gambar ...
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/classDiagramSkripsi.PNG}
+	\caption{Class Diagram Pembuatan Twitter Bot untuk Mencari Jalur Transportasi Publik}
+	\label{fig:classDiagramSkripsi}
+\end{figure}
+
 
 \begin{itemize}
 		\item Kelas Main, merupakan kelas yang berfungsi untuk membuat koneksi dengan Twitter ketika program dijalankan.
@@ -132,17 +140,20 @@ Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibua
 				\end{itemize}
 \end{itemize}
 
-\begin{figure}[htbp]
-	\centering
-		\includegraphics{C:/Users/Kevin/Desktop/Skripsi/doc/DokumenSkripsi/Gambar/classDiagramSkripsi.PNG}
-	\label{fig:class Diagram Skripsi}
-\end{figure}
 
 
 
 \subsection{Sequence Diagram}
 
-Pada subbab ini, akan dijelaskan alur program dengan menggunakan \textit{sequence diagram}
+Pada subbab ini, akan dijelaskan alur program dengan menggunakan \textit{sequence diagram} pada ...
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/diagramSequence2.PNG}
+	\caption{Sequence Diagram Pembuatan Twitter Bot untuk Mencari Jalur Transportasi Publik}
+	\label{fig:diagramSequence2}
+\end{figure}
+
 
 Pertama, program akan menjalankan melakukan \textit{streaming} pada saat kelas \textit{main} dijalankan. Kelas \textit{main} akan membuka gerbang untuk mengakses \textit{Twitter API}, lalu \textit{steaming} akan dilakukan dengan melakukan \textit{track} dengan katakunci @kiriupdate. Program akan terus menangkap semua \textit{tweet} yang dirujuk kepada @kiriupdate.
 
@@ -151,3 +162,8 @@ Kelas TwitterGateway akan memproses \textit{tweet} ketika terdapat \textit{tweet
 Kelas KIRIGateway akan memanggil \textit{method GetLatLon} untuk pencarian koordinat. Setelah didapatkan koordinat dari masing-masing lokasi maka kelas TwitterGateway akan mengolahnya terlebih dahulu karena kembalian dari \textit{method GetLatLon} ini berupa JSON. Setelah itu maka hasilnya akan dikembalikan kepada kelas KIRIGateway untuk dicari jalurnya menggunakan \textit{method GetTrack}. Hasil dari \textit{method GetTrack} lalu disimpan pada atribut \textit{step, steps}, dan \textit{routingResult}.
 
 Setelah semuanya selesai maka langkah-langkah jalur transportasi publik siap di \textit{reply}. Kelas TwitterGateway memanggil \textit{method Tweet} untuk di-\textit{reply tweet} yang berisikan langkah-langkah dari jalur transportasi publik. \textit{Tweet} akan di-\textit{reply} satu per satu sesuai dengan banyaknya \textit{step} yang ada. Setelah semuanya selesai, program akan menunggu \textit{tweet} selanjutnya.
+
+\subsection{Perancangan Antar Muka}
+
+Pada sub bab ini akan dibahas mengenai antarmuka pada aplikasi Pembuatan Twitter Bot untuk Mencari Jalur Transportasi Publik. Aplikasi ini memiliki perancangan antar muka berbasis \textit{text}. Sedangkan user dapat mencoba aplikasi ini secara langsung menggunakan Twitter, baik menggunakan website Twitter ataupun aplikasi Twitter.
+

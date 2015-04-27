@@ -4,11 +4,11 @@
 \section{Latar Belakang}
 \label{sec:latar belakang}
 
-Seiring dengan perkembangan zaman, perkembangan internet di Indonesia sudah semakin maju.  Banyak orang sudah menggunakan fasilitas internet untuk berbagai macam kebutuhan. Contoh dari penggunaan internet adalah untuk mencari informasi, email, bermain jejaring sosial online, Internet Banking, online shop, dan lain lain. Menurut Kemkoinfo	(8 mei 2014)	 pengguna internet di Indonesia capai 82 Juta orang, delapan puluh persen diantaranya adalah remaja. Hal ini menunjukkan bahwa internet sudah tidak asing lagi untuk masyarakat di Indonesia ini. Sebagai informasi tambahan bahwa pengguna internet di Indonesia 95 persennya digunakan untuk social media atau jejaring social online.
+Seiring dengan perkembangan zaman, perkembangan internet di Indonesia sudah semakin maju.  Banyak orang sudah menggunakan fasilitas internet untuk berbagai macam kebutuhan. Contoh dari penggunaan internet adalah untuk mencari informasi, email, bermain jejaring sosial online, Internet Banking, online shop, dan lain lain. Menurut Kominfo pengguna internet di Indonesia capai 82 Juta orang, delapan puluh persen diantaranya adalah remaja\footnote{Kominfo bint005 , Pengguna Internet di Indonesia Capai 82 Juta, \url{http://www.aviationtoday.com/rw/military/attack/High-Sea-Piracy-Crisis-in-Aden_32500.html}, pada tanggal 15 April 2015 pukul 12.58}. Hal ini menunjukkan bahwa internet sudah tidak asing lagi untuk masyarakat di Indonesia ini. Sebagai informasi tambahan bahwa pengguna internet di Indonesia 95 persennya digunakan untuk social media atau jejaring social online.
 
 Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengguna memposting pesan berbasis teks hingga 140 karakter. Pengguna Twitter menyebutnya sebagai \textit{tweet}. \textit{Tweet} ini akan meneruskan pesan singkat yang ditujukan ke semua \textit{follower} suatu akun\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 7}.\textit{Follow} adalah salah satu istilah dalam Twitter yang bertujuan untuk mengikuti aktivitas \textit{tweet} suatu akun. Sedangkan cara seseorang untuk dapat memberi rujukan kepada akun Twitter yang lainnya adalah dengan cara \textit{reply} atau lebih dikenal dengan nama \textit{mention}\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 9}. Sebagai contoh, diketahui akun bernama @kviniink mem-\textit{follow} @infobdg untuk mengetahui perkembangan apa saja yang tejadi di kota Bandung. Lalu akun @kviniink ingin bertanya tentang info mall yang ramai di Bandung, maka akun @kviniink membuat \textit{mention tweet} yang berisikan "@infobdg Halo saya ingin bertanya apa saja mall yang sedang ramai di Bandung yah?".
 
-Transportasi publik sudah banyak digunakan oleh kebanyakan orang di dunia, bukan hanya di Indonesia saja transportasi publik ini sudah banyak digunakan di luar negeri. Menurut data, angkutan umum di Kota Bandung pada tahun 2013 sudah lebih dari 12000 unit kendaraan. Keuntungan memakai transportasi publik sudah banyak dirasakan di seluruh dunia yaitu untuk mengatasi kemacetan dan mengurangi pemanasan global. Seiring dengan perkembangan teknologi, menaiki transportasi publik menjadi semakin mudah. Seiring dengan perkembangan teknologi, menaiki transportasi publik menjadi semakin mudah. Dengan adanya KIRI di Indonesia terutama di daerah Bandung, masyarakat dapat naik transportasi publik tanpa harus mengetahui terlebih dahulu kendaraan yang harus dinaikinya. Dengan adanya KIRI, pengguna hanya perlu tahu tempat asal dan tempat tujuan untuk dapat menaiki transportasi publik di Bandung ini.
+Transportasi publik sudah banyak digunakan oleh kebanyakan orang di dunia, bukan hanya di Indonesia saja transportasi publik ini sudah banyak digunakan di luar negeri. Menurut data, angkutan umum di Kota Bandung pada tahun 2013 sudah lebih dari 12000 unit kendaraan\footnote{Oris Riswan , Wow... Jumlah Angkot di Bandung hampir 12 Ribu Unit, \url{http://news.okezone.com/read/2013/11/17/526/898175/wow-jumlah-angkot-di-bandung-hampir-12-ribu-unit}, pada tanggal 15 April 2015 pukul 13.15}. Keuntungan memakai transportasi publik sudah banyak dirasakan di seluruh dunia yaitu untuk mengatasi kemacetan dan mengurangi pemanasan global. Seiring dengan perkembangan teknologi, menaiki transportasi publik menjadi semakin mudah. Seiring dengan perkembangan teknologi, menaiki transportasi publik menjadi semakin mudah. Dengan adanya KIRI di Indonesia terutama di daerah Bandung, masyarakat dapat naik transportasi publik tanpa harus mengetahui terlebih dahulu kendaraan yang harus dinaikinya. Dengan adanya KIRI, pengguna hanya perlu tahu tempat asal dan tempat tujuan untuk dapat menaiki transportasi publik di Bandung ini.
 
 KIRI API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} mendapatkan data tentang info jalur transportasi publik. Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Dengan memanfaatkan KIRI API dan Twitter API peneliti akan membuat program yang dapat membalas \textit{tweet} untuk mencari jalur transportasi publik. Program yang dibuat akan bersifat \textit{real time} sehingga jika seseorang melakukan mention kepada bot pencari jalur maka bot akan menangkapnya dan membalas mention tersebut berupa jalur yang harus ditempuh. Contoh dari jalannya program adalah ketika akun bernama @kviniink melakukan \textit{mention} kepada @kiriupdate untuk bertanya jalur transportasi publik "@kiriupdate \#find bip to ip". Maka Twitter bot @kiriupdate akan mendengarkan mention dari akun @kviniink lalu mention tersebut akan diolah oleh server dan akan di-reply dengan tiga buah tweet "@kviniink istana plaza to bandung indah plaza", "@kviniink Walk about 135 meter from your starting point to Jalan Aceh." , "@kviniink Take angkot Ciroyom - Antapani at Jalan Aceh, and alight at Jalan Pajajaran about 3.6 kilometer later.", "@kviniink Walk about 93 meter from Jalan Pajajaran to your destination.". Karena keterbatasan 140 karakter maka tweet akan dipecah sesuai dengan instruksi yang dikirimkan dari KIRI API.
 
@@ -22,6 +22,14 @@ Mengacu kepada deskripsi yang diberikan, maka rumusan masalah pada penelitian in
 	\item Bagaimana memformat petunjuk rute perjalanan dalam keterbatasan tweet 140 karakter?
 \end{itemize}
 
+\section{Tujuan}
+Tujuan dari penelitian ini adalah:
+\begin{itemize}
+	\item Membuat aplikasi \textit{Twitter bot} untuk mencari jalur transportasi publik.
+	\item Membuat aplikasi Twitter yang bekerja secara \textit{real time}.
+	\item Membuat algoritma untuk memecah instruksi dari KIRI API dan mengubahnya ke dalam bentuk tweet.
+\end{itemize}
+
 \section{Batasan Masalah}
 Pada pembuatan perangkat lunak ini, masalah-masalah yang ada akan dibatasi menjadi:
 \begin{itemize}
@@ -30,14 +38,6 @@ Pada pembuatan perangkat lunak ini, masalah-masalah yang ada akan dibatasi menja
 	\item Hasil yang dikeluarkan berupa tweet jalur transportasi publik.
 	\item Media transportasi publik yang digunakan adalah angkutan umum.
 	\item Pencarian jalur memanfaatkan KIRI API.
-\end{itemize}
-
-\section{Tujuan}
-Tujuan dari penelitian ini adalah:
-\begin{itemize}
-	\item Membuat aplikasi \textit{Twitter bot} untuk mencari jalur transportasi publik.
-	\item Membuat aplikasi Twitter yang bekerja secara \textit{real time}.
-	\item Membuat algoritma untuk memecah instruksi dari KIRI API dan mengubahnya ke dalam bentuk tweet.
 \end{itemize}
 
 \section{Metode Penelitian}
