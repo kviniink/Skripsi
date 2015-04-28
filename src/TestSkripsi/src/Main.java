@@ -26,6 +26,6 @@ public class Main {
 
         twitterStream.addListener(twittergateway);
         twitterStream.filter(fq);
-//        twittergateway.tweetMoreThan140("KvinIink", "Revolver Espresso is one of the coolest coffee joints in Seminyak, Bali. If you love coffee, and enjoy cafe-hopping, you have to drop by Revolver for a cuppa when you are exploring Jalan Laksmana. One will be hard-pressed to find Revolver Espresso unless they are in the know, or stumble on it entirely by accident. The easiest way is to look out for Bali Clinic as they are tucked in a lane opposite the clinic. Alternatively, you can enter from the back of Home Store or This is a Love store.");
+//        twittergateway.Tweet("KvinIink", " Revolver Espresso is one of the coolest coffee joints in Seminyak, Bali. If you love coffee, and enjoy cafe-hopping, you have to drop by Revolver for a cuppa when you are exploring Jalan Laksmana. One will be hard-pressed to find Revolver Espresso unless they are in the know, or stumble on it entirely by accident. The easiest way is to look out for Bali Clinic as they are tucked in a lane opposite the clinic. Alternatively, you can enter from the back of Home Store or This is a Love store.");
     }
 }

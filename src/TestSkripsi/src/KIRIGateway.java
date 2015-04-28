@@ -41,7 +41,6 @@ public class KIRIGateway {
         public static String GetTrack(String dest1, String dest2) throws Exception {
             //presentation == desktop! BIAR GA ADA %toicon and %fromicon
             String url = "http://kiri.travel/handle.php?version=2&mode=findroute&locale=id&start="+dest1+"&finish="+dest2+"&presentation=desktop&apikey=889C2C8FBB82C7E6";
-            System.out.println(url);
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
