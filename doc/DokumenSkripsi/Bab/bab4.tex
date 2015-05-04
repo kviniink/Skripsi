@@ -1,12 +1,12 @@
 \chapter{Perancangan Perangkat Lunak}
 \label{chap:perancangan perangkat lunak}
 
-Pada bab ini akan dibahas tentang penjelasan perancangan aplikasi untuk membuat \textit{Twitter Bot} untuk mencari jalur transportasi publik sesuai analisa yang sudah dibahas pada bab 3.
+Pada bab ini akan dibahas mengenai perancangan aplikasi untuk membuat \textit{Twitter Bot} untuk mencari jalur transportasi publik sesuai analisa yang sudah dibahas pada bab 3.
 
 \section{Perancangan Perangkat Lunak}
 
 \subsection{Perancangan Kelas}
-Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibuat pada aplikasi Pembuatan Twitter Bot untuk Mencari Jalur Transportasi Publik. Untuk lebih jelas mengenai kelas yang ada pada aplikasi ini, penulis menyajikan gambar diagram kelas yang dapat dilihat pada gambar ~\ref{fig:classDiagramSkripsi}
+Pada sub bab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibuat pada aplikasi pembuatan Twitter Bot untuk mencari jalur transportasi publik. Untuk lebih jelas mengenai kelas yang ada pada aplikasi ini, penulis menyajikan gambar diagram kelas yang dapat dilihat pada gambar ~\ref{fig:classDiagramSkripsi}
 
 \begin{figure}[htbp]
 	\centering
@@ -28,7 +28,7 @@ Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibua
 									\end{itemize}
 				\end{itemize}
 		
-		\item Kelas Twitter Gateway, merupakan kelas yang berfungsi untuk menangkap dan membalas Tweet
+		\item Kelas Twitter Gateway, merupakan kelas untuk menangkap dan membalas Tweet. Kelas Twitter Gateway ini mengimplementasikan \textit{StatusListener}.
 		
 		
 				\begin{itemize}
@@ -36,28 +36,28 @@ Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibua
 							
 							
 									\begin{itemize}
-												\item String user, digunakan untuk menampung nama user
-												\item String location[], berupa array yang digunakan untuk menampung lokasi awal dan lokasi tujuan
-												\item String latlon[], berupa array yang digunakan untuk menampung koordinat lokasi awal dan koordinat lokasi tujuan
-												\item RoutingResponse routingResponse, merupakan variable yang digunakan untuk menampung hasil yang diberikan oleh KIRI API
-												\item Step[] step, berupa array yang berguna untung menampung informasi dari langkah-langkah informasi perjalanan
-												\item Steps paramSteps, marupakan variable yang berguna untung menampung semua step.
+												\item String user, digunakan untuk menampung nama user.
+												\item String location[], berupa \textit{array} yang digunakan untuk menampung lokasi awal dan lokasi tujuan.
+												\item String latlon[], berupa \textit{array} yang digunakan untuk menampung koordinat lokasi awal dan koordinat lokasi tujuan.
+												\item RoutingResponse routingResponse, merupakan atribut ??/ variabel?? yang digunakan untuk menampung hasil yang diberikan oleh KIRI API.
+												\item Step[] step, berupa \textit{array} yang berguna untuk menampung langkah-langkah informasi perjalanan.
+												\item Steps steps, merupakan atribut ??/ variabel?? yang berguna untuk menampung semua step.
 									\end{itemize}
 							
 							\item Method
 							
 									\begin{itemize}
-												\item public void onStatus(Status status), merupakan method yang menangkap tweet dan memproses tweet tersebut
+												\item public void onStatus(Status status), merupakan \textit{method} yang menangkap \textit{tweet} dan memproses \textit{tweet} tersebut. Ketika ada \textit{tweet} yang masuk, \textit{tweet} tersebut akan diolah isinya. Jika \textit{tweet} yang diterima merupakan \textit{tweet} untuk mencari jalur transportasi publik maka \textit{tweet} tersebut akan dimasukan ke atribut yang sudah disediakan yaitu \textit{user}, lokasi awal dan lokasi tujuan. Setelah mendapatkan lokasi awal dan lokasi tujuan barulah proses pencarian dimulai dengan menggunakan \textit{method GetLatLong} dan \textit{method GetTrack} yang terdapat di kelas KIRIGateway. Hasil pencarian akan dimasukan ke dalam atribut \textit{routingResponse}, \textit{step}, dan \textit{steps}. Setelah itu akan dilakukan pemanggilan \textit{method Tweet} untuk melakukan proses balasan.
 												\item public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice),
-												\item public void onTrackLimitationNotice(int numberOfLimitedStatuses)
-												\item public void onScrubGeo(long userId, long upToStatusId)
-												\item public void onException(Exception ex), merupakan method yang berguna untuk menangkap \textit{exception}
-												\item public void onStallWarning(StallWarning sw)
-												\item public void Tweet(String user, String paramStatusUpdate), merupakan method untuk melakukan tweet balasan kepada user yang dituju.
+												\item public void onTrackLimitationNotice(int numberOfLimitedStatuses),
+												\item public void onScrubGeo(long userId, long upToStatusId),
+												\item public void onException(Exception ex), merupakan method yang berguna untuk menangkap \textit{exception}.
+												\item public void onStallWarning(StallWarning sw),
+												\item public void Tweet(String user, String paramStatusUpdate), merupakan method untuk melakukan \textit{tweet} balasan atau \textit{reply} yang ditujukan kepada \textit{user} tertentu. Twitter sendiri hanya dapat melakukan tweet dengan batas 140 karakter, oleh karena itu method ini akan mengatasi keterbatasan tweet tersebut dengan cara ??memecah-mecah?? tweet. Method ini juga akan memberi waktu yang sesuai dengan server di setiap akhir tweet, hal ini bertujuan untuk menghindari adanya duplikat tweet.
 									\end{itemize}
 				\end{itemize}
 		
-		\item Kelas KIRIGateway, merupakan kelas untuk memanggil KIRI API
+		\item Kelas KIRIGateway, merupakan kelas untuk memanggil KIRI API. Pemanggilan KIRI API ini digunakan untuk mendapatkan koordinat suatu lokasi dan mencari jalur transportasi publik.
 		
 		
 				\begin{itemize}
@@ -65,8 +65,8 @@ Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibua
 							
 							
 									\begin{itemize}
-												\item public static String GetLatLong(String destination), method yang digunakan untuk mencari koordinat dari suatu lokasi
-												\item public static String GetTrack(String dest1, String dest2), method yang digunakan untuk memcari jalur transportasi publik dari lokasi awal ke lokasi tujuan
+												\item public static String GetLatLong(String destination), merupakan \textit{method} yang digunakan untuk mencari koordinat dari suatu lokasi. Hasil kembalian dari \textit{method} ini berupa \textit{latitude} and \textit{longitude} yang diberikan oleh KIRI API lalu diubah ke dalam bentuk \textit{String}.
+												\item public static String GetTrack(String dest1, String dest2), merupakan \textit{method} yang digunakan untuk mencari jalur transportasi publik dari lokasi awal ke lokasi tujuan. Hasil kembalian dari method ini adalah langkah-langkah perjalanan dari lokasi awal ke lokasi tujuan dengan menggunakan transportasi publik.
 									\end{itemize}
 				\end{itemize}
 		
@@ -75,20 +75,20 @@ Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibua
 		
 		
 				\begin{itemize}
-							\item Atribute
+							\item Atribut
 					
 					
 									\begin{itemize}
-												\item status, digunakan untuk menyimpan apakah status ok atau tidak
-												\item routingResult, digunakan untuk menyimpan langkah-langkah perjalanan
+												\item status, digunakan untuk menyimpan apakah status dari hasil pencarian.
+												\item routingResult, digunakan untuk menyimpan langkah-langkah perjalanan.
 									\end{itemize}
 					
 							\item Method
 					
 					
 									\begin{itemize}
-												\item public RoutingResponse(String paramStatus, Steps paramRoutingResult), merupakan konstruktor dari kelas RoutingResult yang memiliki parameter untuk status dan routingResult.
-												\item public RoutingResponse(), merupakan konstruktor dari kelas RoutingResult.
+												\item public RoutingResponse(String paramStatus, Steps paramRoutingResult), merupakan \textit{constructor} dari kelas RoutingResult.
+												\item public RoutingResponse(), merupakan \textit{constructor} dari kelas RoutingResult.
 												\item public String getStatus(), merupakan \textit{getter} dari atribut status.
 												\item public void setStatus(String status), merupakan \textit{setter} dari atribut status.
 												\item public Steps getRoutingResult(), merupakan \textit{getter} dari atribut routingResult.
@@ -96,15 +96,37 @@ Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibua
 									\end{itemize}
 				\end{itemize}
 		
-		\item Kelas Steps, merupakan kelas untuk menampung kumpulan step. (Merupakan pecahan dari hasil RoutingResult)
+		\item Kelas Step, merupakan kelas untuk menampung jalur perjalanan dari lokasi awal ke lokasi tujuan dengan menggunakan transportasi publik yang diberikan oleh KIRI API.
 		
 		
 				\begin{itemize}
-							\item Atribute
+							\item Atribut
 					
 					
 									\begin{itemize}
-												\item Step[] steps, merupakan atribut yang berisi \textit{array} dari step
+												\item String humanDescription, merupakan atribut untuk menjelaskan cara perjalanan yang bahasanya dimengerti oleh pengguna.
+									\end{itemize}
+					
+							\item Method
+					
+					
+									\begin{itemize}
+												\item public Step(), merupakan \textit{constructor} dari kelas Step.
+												\item public Step(String paramHumanDescription), merupakan \textit{constructor} dari kelas Step.
+												\item public String getHumanDescription(), merupakan \textit{getter} dari atribut humanDescription.
+												\item public void setHumanDescription(String humanDescription), merupakan \textit{setter} dari atribut humanDescription.
+									\end{itemize}
+				\end{itemize}
+		
+		\item Kelas Steps, merupakan kelas untuk menampung kumpulan step.
+		
+		
+				\begin{itemize}
+							\item Atribut
+					
+					
+									\begin{itemize}
+												\item Step[] steps, merupakan atribut yang berisi \textit{array} step
 									\end{itemize}
 					
 							\item Method
@@ -116,28 +138,6 @@ Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibua
 												\item public void setSteps(Step[] steps), merupakan \textit{setter} dari atribut steps.
 									\end{itemize}
 				\end{itemize}
-		
-		\item Kelas Step, merupakan kelas untuk menampung jalur perjalanan / menampung hasil dari KIRI API
-		
-		
-				\begin{itemize}
-							\item Atribute
-					
-					
-									\begin{itemize}
-												\item String humanDescription, merupakan atribut untuk menjelaskan cara perjalanan yang bahasanya dimengerti oleh pengguna.
-									\end{itemize}
-					
-							\item Method
-					
-					
-									\begin{itemize}
-												\item public Step(), merupakan konstruktor dari kelas Step.
-												\item public Step(String paramHumanDescription), merupakan konstruktor dari kelas Step yang memiliki parameter humanDescription.
-												\item public String getHumanDescription(), merupakan \textit{getter} dari atribut humanDescription.
-												\item public void setHumanDescription(String humanDescription), merupakan \textit{setter} dari atribut humanDescription.
-									\end{itemize}
-				\end{itemize}
 \end{itemize}
 
 
@@ -145,7 +145,7 @@ Pada subbab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibua
 
 \subsection{Sequence Diagram}
 
-Pada subbab ini, akan dijelaskan alur program dengan menggunakan \textit{sequence diagram} pada ~\ref{fig:diagramSequence2}
+Pada sub bab ini, akan dijelaskan alur program dengan menggunakan \textit{sequence diagram} pada ~\ref{fig:diagramSequence2}
 
 \begin{figure}[htbp]
 	\centering
