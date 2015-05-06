@@ -6,7 +6,7 @@ Pada bab ini akan dibahas mengenai perancangan aplikasi untuk membuat \textit{Tw
 \section{Perancangan Perangkat Lunak}
 
 \subsection{Perancangan Kelas}
-Pada sub bab ini akan dibahas rancangan kelas dan \textit{method} yang akan dibuat pada aplikasi pembuatan Twitter Bot untuk mencari jalur transportasi publik. Untuk lebih jelas mengenai kelas yang ada pada aplikasi ini, penulis menyajikan gambar diagram kelas yang dapat dilihat pada gambar ~\ref{fig:classDiagramSkripsi}
+Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan dibuat pada aplikasi pembuatan Twitter Bot untuk mencari jalur transportasi publik. Untuk lebih jelas mengenai kelas yang ada pada aplikasi ini, penulis menyajikan gambar diagram kelas yang dapat dilihat pada gambar ~\ref{fig:classDiagramSkripsi}
 
 \begin{figure}[htbp]
 	\centering
@@ -155,30 +155,33 @@ Pada sub bab ini, akan dijelaskan alur program dengan menggunakan \textit{sequen
 \end{figure}
 
 
-Pertama, program akan menjalankan melakukan \textit{streaming} pada saat kelas \textit{main} dijalankan. Kelas \textit{main} akan membuka gerbang untuk mengakses \textit{Twitter API}, lalu \textit{steaming} akan dilakukan dengan melakukan \textit{track} dengan katakunci @kiriupdate. Program akan terus menangkap semua \textit{tweet} yang dirujuk kepada @kiriupdate.
+Pertama, program akan melakukan \textit{streaming} pada saat kelas \textit{main} dijalankan. Kelas \textit{main} akan membuka gerbang untuk mengakses \textit{Twitter API}, dengan menggunakan \textit{Streaming} API aplikasi akan menangkap semua \textit{tweet} yang memiliki kata kunci @kviniink. Aplikasi akan terus melakukan \textit{streaming tweet} hingga aplikasi dinon-aktifkan.
 
-Kelas TwitterGateway akan memproses \textit{tweet} ketika terdapat \textit{tweet} yang dirujuk (\textit{mention}) kepada @kiriupdate. Melalui \textit{method onStatus} maka \textit{tweet} tersebut akan disimpan nama user pengirimnya, dan diperiksa apakah \textit{tweet} tersebut dilakukan untuk mencari jalur transportasi publik atau bukan. Jika benar maka alamat dari lokasi awal dan lokasi tujuan akan disimpan lalu akan dicari koordinat dari masing-masing lokasi menggunakan KIRI API. Proses pencarian koordinat ini dilakukan oleh kelas KIRIGateway.
+Kelas TwitterGateway akan memproses \textit{tweet} ketika terdapat \textit{tweet} yang dirujuk (\textit{mention}) kepada @kviniink. \textit{Method onStatus} akan melakukan pengecekan apakah \textit{tweet} tersebut merupakan \textit{tweet} untuk mencari jalur transportasi publik atau bukan. Jika benar maka nama \textit{user} pengirim, alamat dari lokasi awal dan lokasi tujuan akan disimpan lalu akan dicari koordinat dari masing-masing lokasi menggunakan KIRI API. Proses mencari koordinat ini dilakukan oleh kelas KIRIGateway.
 
-Kelas KIRIGateway akan memanggil \textit{method GetLatLon} untuk pencarian koordinat. Setelah didapatkan koordinat dari masing-masing lokasi maka kelas TwitterGateway akan mengolahnya terlebih dahulu karena kembalian dari \textit{method GetLatLon} ini berupa JSON. Setelah itu maka hasilnya akan dikembalikan kepada kelas KIRIGateway untuk dicari jalurnya menggunakan \textit{method GetTrack}. Hasil dari \textit{method GetTrack} lalu disimpan pada atribut \textit{step, steps}, dan \textit{routingResult}.
+Kelas KIRIGateway akan memanggil \textit{method GetLatLon} untuk mencari koordinat suatu lokasi. Setelah didapatkan koordinat dari masing-masing lokasi maka kelas TwitterGateway akan mengolahnya terlebih dahulu dikarenakan hasil dari \textit{method GetLatLon} ini berupa JSON. Setelah itu maka hasilnya akan dikembalikan kepada kelas KIRIGateway untuk dicari jalur transportasi publik dari lokasi awal menuju lokasi tujuan menggunakan \textit{method GetTrack}. Hasil dari \textit{method GetTrack} akan disimpan pada atribut \textit{step, steps}, dan \textit{routingResult}.
 
-Setelah semuanya selesai maka langkah-langkah jalur transportasi publik siap di \textit{reply}. Kelas TwitterGateway memanggil \textit{method Tweet} untuk di-\textit{reply tweet} yang berisikan langkah-langkah dari jalur transportasi publik. \textit{Tweet} akan di-\textit{reply} satu per satu sesuai dengan banyaknya \textit{step} yang ada. Setelah semuanya selesai, program akan menunggu \textit{tweet} selanjutnya.
+Setelah selesai, langkah-langkah jalur transportasi publik siap di \textit{reply}. Proses \textit{reply} dilakukan oleh \textit{method tweet} yang terdapat pada kelas TwitterGateway. Tweet tersebut berisi tentang jalur transportasi publik dari lokasi awal menuju lokasi tujuan.\textit{Tweet} akan di-\textit{reply} satu per satu sesuai dengan banyaknya \textit{step} yang ada. Aplikasi akan terus melakukan proses tersebut hingga aplikasi dinon-aktifkan.
 
 \subsection{Perancangan Antar Muka}
-
-Pada sub bab ini akan dibahas mengenai antarmuka pada aplikasi Pembuatan Twitter Bot untuk Mencari Jalur Transportasi Publik. Aplikasi ini memiliki perancangan antarmuka berbasis \textit{text} yang dapat dilihat pada gambar ~\ref{fig:StartingProgram}. Sedangkan user dapat mencoba aplikasi ini secara langsung menggunakan Twitter, baik menggunakan website Twitter ataupun aplikasi Twitter yang dapat dilihat pada gambar ~\ref{fig:tweet}.
+Aplikasi yang akan disusun ini tidak memiliki rancangan antarmuka. Oleh karena itu, interaksi dengan pengguna dapat dilakukan melalui website atau aplikasi Twitter. Gambar ~\ref{fig:Homepage Mobile Twitter} adalah tampilan antar muka dari Twitter yang diakses melalui mobile. Dari situlah, pengguna dapat melakukan tweet untuk mencari jalur transportasi publik. Tweet dilakukan dengan cara menuliskan tweet kepada user @kviniink.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/tweet.PNG}
-	\caption{Tampilan Website Twitter}
-	\label{fig:tweet}
+		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Homepage Mobile Twitter.PNG}
+	\caption{Homepage Twitter versi mobile}
+	\label{fig:Homepage Mobile Twitter}
 \end{figure}
 
-\begin{figure}
+Gambar ~\ref{fig:Textbox Mobile Tweet} menunjukan menu untuk melakukan tweet. Pertama, format yang dimasukan harus benar. Format dari penulisan tweet adalah "`lokasi awal"' to "`lokasi tujuan"'. Ketika user melakukan tweet maka Twitter Bot untuk mencari jalur transportasi publik akan menangkap tweet tersebut dan akan memproses tweet tersebut, hasil tangkapan tweet dapat dilihat pada gambar ??.
+
+\begin{figure}[hp]
 	\centering
-		\includegraphics{C:/Skripsi/doc/DokumenSkripsi/Gambar/StartingProgram.PNG}
-	\caption{Tampilan Aplikasi Pada Saat Program Dijalankan}
-	\label{fig:StartingProgram}
+		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Textbox Mobile Tweet.PNG}
+	\caption{Tampilan untuk melakukan tweet}
+	\label{fig:Textbox Mobile Tweet}
 \end{figure}
+
+
 
 
