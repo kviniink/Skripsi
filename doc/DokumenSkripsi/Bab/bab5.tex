@@ -6,7 +6,7 @@ Pada bab 5 akan dibahas implementasi dan pengujian aplikasi pembuatan \textit{Tw
 \section{Lingkungan Pembangunan}
 Lingkungan perangkat lunak dan perangkat keras yang digunakan untuk membangun dan menguji aplikasi pembuatan \textit{Twitter Bot} untuk mencari jalur transportasi publik ini adalah:
 \begin{itemize}
-	\item Komuter
+	\item Komputer
 	
 	
 	\begin{itemize}
@@ -20,30 +20,66 @@ Lingkungan perangkat lunak dan perangkat keras yang digunakan untuk membangun da
 \end{itemize}
 
 \section{Hasil Tampilan Antarmuka}
-Pada aplikasi pembuatan \textit{Twitter Bot} untuk mencari jalur transportasi publik ini memiliki tampilan antarmuka berbasis \textit{text} yang berguna untuk melihat hasil penangkapan tweet, proses aplikasi pembuatan \textit{Twitter Bot} untuk mencari jalur transportasi publik, dan hasil tweet yang diberikan. Sedangkan user dapat mencoba aplikasi ini secara langsung menggunakan Twitter, baik menggunakan website Twitter ataupun aplikasi Twitter. 
+Pada aplikasi pembuatan \textit{Twitter Bot} untuk mencari jalur transportasi publik ini memiliki tampilan antarmuka berbasis teks yang berguna untuk melihat hasil penangkapan tweet, dan hasil tweet yang diberikan kepada user. Sedangkan user dapat mencoba aplikasi ini secara langsung menggunakan Twitter, baik menggunakan website Twitter ataupun aplikasi Twitter. 
 
-Tampilan Twitter pada saat berada di \textit{home page} dapat dilihat pada gambar ~\ref{fig:homePageTwitter}. Setelah itu user akan menekan tombol tweet pada pojok kanan atas dan akan memberikan tampilan seperti pada gambar ~\ref{fig:textboxTweetKlik}.
-
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/homePageTwitter.PNG}
-	\caption{Home Page Twitter}
-	\label{fig:homePageTwitter}
-\end{figure}
+Tampilan \textit{home page} Twitter dapat dilihat pada gambar ~\ref{fig:Homepage Mobile Twitter}. Disini peneliti menggunakan website Twitter versi mobile agar lebih mudah dilihat karena tampilan website Twitter versi mobile lebih sederhana dibandingkan website Twitter versi desktop. Setelah itu user akan menekan tombol tweet pada pojok kanan atas dan akan memberikan tampilan seperti pada gambar ~\ref{fig:Textbox Mobile Tweet}. Dari situ user dapat melakukan tweet kepada Twitter Bot untuk mencari jalur transportasi publik.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/textboxTweetKlik.PNG}
-	\caption{Tampilan untuk User Melakukan Tweet}
-	\label{fig:textboxTweetKlik}
+		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Homepage Mobile Twitter.PNG}
+	\caption{Homepage Twitter versi mobile}
+	\label{fig:Homepage Mobile Twitter}
 \end{figure}
 
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Textbox Mobile Tweet.PNG}
+	\caption{Tampilan untuk melakukan tweet}
+	\label{fig:Textbox Mobile Tweet}
+\end{figure}
+
+Setelah ada \textit{mention} yang ditujukan kepada Twitter Bot, aplikasi akan menangkap \textit{tweet} tersebut dan ditampilkan dalam bentuk pesan \textit{tweet} yang diterima oleh aplikasi. Hasil \textit{tweet} yang diterima aplikasi dapat dilihat pada gambar ~\ref{fig:HasilTangkapanTweetBerbasisTeks}. Setelah itu \textit{tweet} akan diperiksa oleh aplikasi apakah \textit{tweet} tersebut bertujuan untuk mencari jalur transportasi publik atau tidak. Jika benar, maka aplikasi akan melakukan proses pencarian jalur transportasi publik dan melakukan \textit{reply} atau balasan kepada pengguna. \textit{Reply tweet} tersebut berisikan jalur transportasi publik yang harus ditempuh kepada \textit{user}. Selain melakukan \textit{reply}, aplikasi juga menampilkan \textit{tweet} tersebut yang dapat dilihat pada gambar ~\ref{fig:HasilTweetBerbasisTeks}.
+
+\begin{figure}
+	\centering
+		\includegraphics{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilTangkapanTweetBerbasisTeks.PNG}
+	\caption{Hasil streaming tweet}
+	\label{fig:HasilTangkapanTweetBerbasisTeks}
+\end{figure}
+
+\begin{figure}
+	\centering
+		\includegraphics{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilTweetBerbasisTeks.PNG}
+	\caption{Hasil balasan tweet kepada user}
+	\label{fig:HasilTweetBerbasisTeks}
+\end{figure}
 
 
 \section{Pengujian}
-\subsection{Pengujian Fungtional}
-Pada subbab ini, akan dilakukan pengujian terhadap aplikasi pembuatan \textit{Twitter Bot} untuk mencari jalur transportasi publik.
+Pada bagian ini akan dibahas mengenai hasil pengujian yang telah dilakukan terhadap aplikasi yang dibangun oleh penulis. Pengujian tersebut terdiri dari dua bagian, yaitu pengujian fungsional dan pengujian experimental. Pengujian fungsional bertujuan untuk memastikan semua fungsi aplikasi berjalan sesuai harapan. Sementara pengujian eksperimental bertujuan untuk mengetahui keberhasilan proses kerja dari aplikasi yang dibangun.
 
+Untuk pengujian Twitter Bot, penulis menggunakan \textit{user} @kviniink. Lalu untuk penguji, penulis menggunakan user @kviniinktest123.
+
+\subsection{Pengujian Fungsional}
+Pengujian fungsional dilakukan pada fungsionalitas yang tersedia pada aplikasi yang dibangun. Pengujian ini dilakukan untuk mengetahui kesesuaian reaksi nyata dengan reaksi yang diharapkan dari aplikasi yang dibangun. Hasil pengujian ditunjukan pada tabel ~\ref{tab:TabelHasilPengujianFungsionalitasPadaAplikasiTwitterBotUntukMencariJalurTransportasiPublik}.
+
+\begin{table}[h]
+		\begin{tabular}{|p{1cm}|p{5cm}|p{5cm}|p{2cm}|}
+			\hline
+				No & Pengujian & Reaksi yang Diharapkan & Reaksi Aplikasi  \\ \hline
+				1 & Melakukan otentikasi menggunakan \textit{3-legged authorization} & Membuka gerbang agar Twitter Bot dapat melakukan \textit{streaming tweet} dan membalas \textit{tweet} &  sesuai \\ \hline
+				2 & Melakukan \textit{streaming tweet} & Menangkap semua \textit{tweet} yang dimention kepada \textit{user} @kviniink & sesuai  \\ \hline
+				3 & Membaca \textit{tweet} yang ditangkap & Melakukan pengecekan tweet apakah tweet tersebut untuk mencari transportasi publik atau bukan & sesuai  \\ \hline
+				4 & Melakukan pencarian koordinat lokasi menggunakan KIRI API & Mendapatkan hasil koordinat \textit{latitude} dan \textit{longitude} dari lokasi yang dicari & sesuai  \\ \hline
+				5 & Melakukan pencarian jalur transportasi publik menggunakan KIRI API & Mendapatkan jalur-jalur yang harus ditempuh dari lokasi awal menuju lokasi tujuan &  sesuai \\ \hline
+				5 & Melakukan tweet balasan & Membalas tweet dengan memberikan hasil pencarian jalur transportasi publik dengan format yang sudah ditentukan &  sesuai \\ \hline
+		\end{tabular}
+	\caption{Tabel Hasil pengujian fungsionalitas pada Aplikasi Twitter Bot untuk mencari jalur transportasi publik}
+	\label{tab:TabelHasilPengujianFungsionalitasPadaAplikasiTwitterBotUntukMencariJalurTransportasiPublik}
+\end{table}
+
+\iffalse
 Pertama kali aplikasi dijalankan, aplikasi akan melakukan otentifikasi untuk melakukan Twitter \textit{stream} yang dapat dilihat pada gambar ~\ref{fig:StartingProgram}.
 
 \begin{figure}[htbp]
@@ -53,7 +89,7 @@ Pertama kali aplikasi dijalankan, aplikasi akan melakukan otentifikasi untuk mel
 	\label{fig:StartingProgram}
 \end{figure}
 
-??Textbox \textit{tweet}?? berfungsi untuk melakukan \textit{tweet}, disini user dapat menggunakannya untuk mencari jalur transportasi publik dengan cara melakukan \textit{mention} kepake @kiriupdate seperti yang ada di gambar ~\ref{fig:textboxTweet}.
+Tweet dapat dilakukan dengan cara menuliskan pesan pada kotak yang sudah diset, disini user dapat menggunakannya untuk mencari jalur transportasi publik dengan cara melakukan \textit{mention} kepake @kiriupdate seperti yang ada di gambar ~\ref{fig:textboxTweet}.
 
 \begin{figure}[htbp]
 	\centering
@@ -84,6 +120,6 @@ Setelah melakukan \textit{tweet}, dapat dilihat pada gambar ~\ref{fig:SuccessTwe
 	\caption{Tweet Rute Jalur Transportasi Publik}
 	\label{fig:HasilTweet}
 \end{figure}
-
+\fi
 \subsection{Pengujian Eksperimental}
 Pada subbab ini akan dilakukan pengujian \textit{Twitter Bot} untuk mencari jalur transportasi publik selama 12 jam.
