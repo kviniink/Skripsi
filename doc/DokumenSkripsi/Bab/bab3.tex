@@ -17,7 +17,7 @@ Setelah melakukan analisis, perangkat lunak yang akan dibangun akan menggunakan 
 \end{itemize}
 
 \subsection{Analisis OAuth}
-Setelah melakukan analisis, OAuth yang digunakan dalam pembuatan Twitter Bot untuk mencari jalur transportasi publik adalah \textit{3-legged authorization}. Penggunaan \textit{3-legged authorization}ini digunakan untuk mengotorisasi akun @kiriupdate, tetapi tidak perlu ada otentifikasi ke user karena Twitter Bot yang dibuat menggunakan otentifikasi langsung dari developer. \textit{Application-only authentication} tidak bisa digunakan karena \textit{application-only authentication} tidak bisa melakukan \textit{posting} \textit{tweet} dan tidak bisa melakukan koneksi dengan \textit{streaming endpoint}. Sedangkan dalam kasus Twitter Bot untuk mencari jalur transportasi publik dibutuhkan otentifikasi yang dapat memposting \textit{tweet} dan melakukan koneksi dengan \textit{streaming endpoint}. Lalu untuk otentifikasi \textit{PIN-based authorization} tidak cocok karena otentifikasi sudah dilakukan langsung dari developer tidak lagi meminta PIN untuk proses otentifikasi.
+Setelah melakukan analisis, OAuth yang digunakan dalam pembuatan Twitter Bot untuk mencari jalur transportasi publik adalah \textit{3-legged authorization}. Penggunaan \textit{3-legged authorization} ini digunakan untuk mengotorisasi akun @kiriupdate, tetapi proses otentifikasi tidak perlu dilakukan kepada pengguna karena Twitter Bot yang dibuat menggunakan otentikasi langsung dari developer. \textit{Application-only authentication} tidak bisa digunakan karena \textit{application-only authentication} tidak bisa melakukan \textit{posting} \textit{tweet} dan tidak bisa melakukan koneksi dengan \textit{streaming endpoint}. Sedangkan dalam kasus Twitter Bot untuk mencari jalur transportasi publik dibutuhkan otentikasi yang dapat memposting \textit{tweet} dan melakukan koneksi dengan \textit{streaming endpoint}. Lalu untuk otentikasi \textit{PIN-based authorization} tidak cocok karena otentikasi sudah dilakukan langsung dari developer tidak lagi meminta PIN untuk proses otentikasi.
 
 \subsection{Analisis KIRI API}
 KIRI API menyediakan tiga layanan yang dapat digunakan, untuk aplikasi Twitter Bot akan membutuhkan dua layanan yang diberikan KIRI API. Layanan tersebut adalah \textit{Routing Web Service} dan \textit{Search Place Web Service}. \textit{Routing Web Service} adalah layanan yang digunakan untuk mendapatkan langkah perjalanan dari lokasi asal ke lokasi tujuan. Sedangkan \textit{Search Place Web Service} berguna untuk menemukan rute perjalanan berdasarkan \textit{latitute} dan \textit{longitude} koordinat,  layanan \textit{Search Place Web Service} ini juga membantu untuk mengubah string teks untuk \textit{latitude} dan \textit{longitude}.
@@ -234,14 +234,16 @@ Untuk menggunakan Twitter4J diperlukan \textit{properties} untuk proses konfigur
 
 \section{Analisis Perangkat Lunak}
 
-Perangkat lunak yang akan dibangun adalah Twitter Bot untuk mencari jalur transportasi publik. Perangkat lunak yang dibuat merupakan sebuah Twitter Bot yang berguna untuk membalas \textit{tweet} secara \textit{real-time} kepada \textit{user} untuk memberitahukan jalur-jalur yang harus ditempuh menggunakan transportasi publik. Aplikasi yang digunakan untuk membangun Twitter Bot Untuk Mencari Jalur Transportasi Publik adalah NetBeans IDE 8.0. Pada sub bab ini akan dibahas kebutuhan aplikasi, diagram \textit{use case}, skenario, dan\textit{ diagram class} dari perangkat lunak yang akan dibangun.
+Perangkat lunak yang akan dibangun adalah Twitter Bot untuk mencari jalur transportasi publik. Twitter Bot yang akan dibangun dapat membalas \textit{tweet} secara \textit{real-time} kepada \textit{user} untuk memberitahukan jalur-jalur yang harus ditempuh menggunakan transportasi publik. Aplikasi yang digunakan untuk membangun Twitter Bot Untuk Mencari Jalur Transportasi Publik adalah NetBeans IDE 8.0.2 dan akun yang digunakan untuk pengujian Twitter Bot adalah akun @kviniink. Pada sub bab ini akan dibahas kebutuhan aplikasi, diagram \textit{use case}, skenario, dan\textit{ diagram class} dari perangkat lunak yang akan dibangun.
 
 \subsection{Spesifikasi Kebutuhan Fungsional}
 Spesifikasi kebutuhan perangkat lunak yang akan dibangun untuk membuat Twitter Bot adalah
 \begin{enumerate}
-	\item Dapat menerima dan membaca \textit{tweet} yang di \textit{mention} kepada user @kiriupdate
-	\item Dapat melakukan proses pencarian jalur transportasi publik
-	\item Dapat membalas \textit{tweet} dengan memberikan hasil pencarian jalur transportasi publik dengan format yang sudah ditentukan
+	\item Perangkat lunak dapat melakukan otentikasi untuk akun Twitter Bot yang digunakan.
+	\item ??Perangkat lunak?? dapat menerima dan membaca \textit{tweet} yang di \textit{mention} kepada user @kviniink
+	\item Dapat Melakukan proses pencarian koordinat suatu lokasi
+	\item Dapat melakukan proses pencarian jalur transportasi publik dari lokasi awal menuju lokasi tujuan
+	\item Dapat membalas \textit{tweet} pencarian jalur transportasi publik yang diterima oleh Twitter bot dengan melakukan \textit{reply} tweet yang berisikan hasil pencarian jalur transportasi publik dengan format yang sudah ditentukan.
 \end{enumerate}
 
 \subsection{\textit{Use Case Diagram}}

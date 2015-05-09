@@ -17,8 +17,20 @@ Lingkungan perangkat lunak dan perangkat keras yang digunakan untuk membangun da
 	\end{itemize}
 	\item Sistem operasi: Windows 7 Professional
 	\item Platform: NetBeans: IDE 8.0.2
+	
+	\item Akun Twitter Bot
+	\begin{itemize}
+		\item Nama akun: kviniink
+		\item ConsumerKey : 3iT8duMItTTrdaU1qTHxwDIUl
+		\item ConsumerSecret : YUIgJTbQT3i5tYA5RE0L38dPT9HaDhuBTifvVmKDYeOgJ*****
+		\item AccessToken : 313287708-NO5SPbreQvoOxtXUD5EcKlubIfCBNfCb6aRqYBlZ
+		\item AccessTokenSecret : LVfDgtlfeht5yjBJGSgvSvtMYcFMoEdYOspYoOpt*****
+	\end{itemize}
+	
+	\item Akun Twitter penguji : kviniinktest123
 \end{itemize}
 
+\iffalse
 \section{Hasil Tampilan Antarmuka}
 Pada aplikasi pembuatan \textit{Twitter Bot} untuk mencari jalur transportasi publik ini memiliki tampilan antarmuka berbasis teks yang berguna untuk melihat hasil penangkapan tweet, dan hasil tweet yang diberikan kepada user. Sedangkan user dapat mencoba aplikasi ini secara langsung menggunakan Twitter, baik menggunakan website Twitter ataupun aplikasi Twitter. 
 
@@ -54,26 +66,24 @@ Setelah ada \textit{mention} yang ditujukan kepada Twitter Bot, aplikasi akan me
 	\caption{Hasil balasan tweet kepada user}
 	\label{fig:HasilTweetBerbasisTeks}
 \end{figure}
-
+\fi
 
 \section{Pengujian}
 Pada bagian ini akan dibahas mengenai hasil pengujian yang telah dilakukan terhadap aplikasi yang dibangun oleh penulis. Pengujian tersebut terdiri dari dua bagian, yaitu pengujian fungsional dan pengujian experimental. Pengujian fungsional bertujuan untuk memastikan semua fungsi aplikasi berjalan sesuai harapan. Sementara pengujian eksperimental bertujuan untuk mengetahui keberhasilan proses kerja dari aplikasi yang dibangun.
-
-Untuk pengujian Twitter Bot, penulis menggunakan \textit{user} @kviniink. Lalu untuk penguji, penulis menggunakan user @kviniinktest123.
 
 \subsection{Pengujian Fungsional}
 Pengujian fungsional dilakukan pada fungsionalitas yang tersedia pada aplikasi yang dibangun. Pengujian ini dilakukan untuk mengetahui kesesuaian reaksi nyata dengan reaksi yang diharapkan dari aplikasi yang dibangun. Hasil pengujian ditunjukan pada tabel ~\ref{tab:TabelHasilPengujianFungsionalitasPadaAplikasiTwitterBotUntukMencariJalurTransportasiPublik}.
 
 \begin{table}[h]
-		\begin{tabular}{|p{1cm}|p{5cm}|p{5cm}|p{2cm}|}
+		\begin{tabular}{|p{0.5cm}|p{3cm}|p{5cm}|p{5cm}|}
 			\hline
 				No & Pengujian & Reaksi yang Diharapkan & Reaksi Aplikasi  \\ \hline
-				1 & Melakukan otentikasi menggunakan \textit{3-legged authorization} & Membuka gerbang agar Twitter Bot dapat melakukan \textit{streaming tweet} dan membalas \textit{tweet} &  sesuai \\ \hline
-				2 & Melakukan \textit{streaming tweet} & Menangkap semua \textit{tweet} yang dimention kepada \textit{user} @kviniink & sesuai  \\ \hline
-				3 & Membaca \textit{tweet} yang ditangkap & Melakukan pengecekan tweet apakah tweet tersebut untuk mencari transportasi publik atau bukan & sesuai  \\ \hline
-				4 & Melakukan pencarian koordinat lokasi menggunakan KIRI API & Mendapatkan hasil koordinat \textit{latitude} dan \textit{longitude} dari lokasi yang dicari & sesuai  \\ \hline
-				5 & Melakukan pencarian jalur transportasi publik menggunakan KIRI API & Mendapatkan jalur-jalur yang harus ditempuh dari lokasi awal menuju lokasi tujuan &  sesuai \\ \hline
-				5 & Melakukan tweet balasan & Membalas tweet dengan memberikan hasil pencarian jalur transportasi publik dengan format yang sudah ditentukan &  sesuai \\ \hline
+				1 & Melakukan otentikasi terhadap akun Twitter Bot & Otentikasi berhasil dilakukan antara Twitter dengan akun Twitter Bot. Otentikasi dilakukan dengan melakukan pemeriksaan terhadap \textit{ConsumerKey}, \textit{CustomerSecret}, \textit{AccessToken}, dan \textit{AccessTokenSecret} &  Otentikasi berhasil dilakukan \\ \hline
+				2 & Melakukan \textit{streaming tweet} & Menangkap semua \textit{tweet} yang di\textit{mention} kepada akun @kviniink & Setiap \textit{tweet} yang di\textit{mention} kepada akun @kviniink dapat diterima secara \textit{realtime}\\ \hline
+				3 & Membaca \textit{tweet} yang ditangkap & Melakukan pemeriksaan terhadap \textit{tweet} yang ditangkap, apakah \textit{tweet} tersebut merupakan \textit{tweet} untuk mencari transportasi publik atau bukan & Perangkat lunak dapat membedakan tweet untuk mencari jalur transportasi publik dengan tweet yang bukan bertujuan untuk mencari jalur transportasi publik  \\ \hline
+				4 & Melakukan pencarian koordinat suatu lokasi menggunakan KIRI API & Mendapatkan hasil koordinat \textit{latitude} dan \textit{longitude} dari lokasi yang dicari & Perangkat lunak mendapatkan koordinat \textit{latitude} dan \textit{longitude} dari lokasi yang dicari  \\ \hline
+				5 & Melakukan pencarian jalur transportasi publik menggunakan KIRI API & Mendapatkan jalur-jalur transportasi publik yang harus ditempuh dari lokasi awal menuju lokasi tujuan &  Perangkat lunak mendapatkan jalur-jalur transportasi publik yang harus ditempuh dari lokasi awal menuju lokasi tujuan \\ \hline
+				6 & Melakukan tweet balasan & Membalas tweet dengan memberikan hasil pencarian jalur transportasi publik dengan format yang sudah ditentukan &  Akun @kviniink melakukan reply kepada akun penguji @kviniinktest123, reply tersebut berisikan jalur transportasi publik yang harus ditempuh dari lokasi awal menuju lokasi tujuan.\\ \hline
 		\end{tabular}
 	\caption{Tabel Hasil pengujian fungsionalitas pada Aplikasi Twitter Bot untuk mencari jalur transportasi publik}
 	\label{tab:TabelHasilPengujianFungsionalitasPadaAplikasiTwitterBotUntukMencariJalurTransportasiPublik}
@@ -122,4 +132,5 @@ Setelah melakukan \textit{tweet}, dapat dilihat pada gambar ~\ref{fig:SuccessTwe
 \end{figure}
 \fi
 \subsection{Pengujian Eksperimental}
-Pada subbab ini akan dilakukan pengujian \textit{Twitter Bot} untuk mencari jalur transportasi publik selama 12 jam.
+Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk mencari jalur transportasi publik. Peneliti meminta kepada beberapa orang untuk melakukan pencarian jalur transportasi publik kepada Twitter Bot untuk mencari jalur transportasi publik. Peneliti juga mencoba melakukan tweet pencarian melalui akun @kviniinktest123.
+
