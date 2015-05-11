@@ -78,7 +78,7 @@ Pengujian fungsional dilakukan pada fungsionalitas yang tersedia pada aplikasi y
 		\begin{tabular}{|p{0.5cm}|p{3cm}|p{5cm}|p{5cm}|}
 			\hline
 				No & Pengujian & Reaksi yang Diharapkan & Reaksi Aplikasi  \\ \hline
-				1 & Melakukan otentikasi terhadap akun Twitter Bot & Otentikasi berhasil dilakukan antara Twitter dengan akun Twitter Bot. Otentikasi dilakukan dengan melakukan pemeriksaan terhadap \textit{ConsumerKey}, \textit{CustomerSecret}, \textit{AccessToken}, dan \textit{AccessTokenSecret} &  Otentikasi berhasil dilakukan \\ \hline
+				1 & Melakukan otentikasi terhadap akun Twitter Bot & Otentikasi berhasil dilakukan antara Twitter dengan akun Twitter Bot. Otentikasi dilakukan dengan melakukan pemeriksaan terhadap \textit{ConsumerKey}, \textit{CustomerSecret}, \textit{AccessToken}, dan \textit{AccessTokenSecret} &  \textit{ConsumerKey}, \textit{CustomerSecret}, \textit{AccessToken}, dan \textit{AccessTokenSecret} yang diberikan Twitter berhasil diotentikasi oleh aplikasi \\ \hline
 				2 & Melakukan \textit{streaming tweet} & Menangkap semua \textit{tweet} yang di\textit{mention} kepada akun @kviniink & Setiap \textit{tweet} yang di\textit{mention} kepada akun @kviniink dapat diterima secara \textit{realtime}\\ \hline
 				3 & Membaca \textit{tweet} yang ditangkap & Melakukan pemeriksaan terhadap \textit{tweet} yang ditangkap, apakah \textit{tweet} tersebut merupakan \textit{tweet} untuk mencari transportasi publik atau bukan & Perangkat lunak dapat membedakan tweet untuk mencari jalur transportasi publik dengan tweet yang bukan bertujuan untuk mencari jalur transportasi publik  \\ \hline
 				4 & Melakukan pencarian koordinat suatu lokasi menggunakan KIRI API & Mendapatkan hasil koordinat \textit{latitude} dan \textit{longitude} dari lokasi yang dicari & Perangkat lunak mendapatkan koordinat \textit{latitude} dan \textit{longitude} dari lokasi yang dicari  \\ \hline
@@ -132,5 +132,64 @@ Setelah melakukan \textit{tweet}, dapat dilihat pada gambar ~\ref{fig:SuccessTwe
 \end{figure}
 \fi
 \subsection{Pengujian Eksperimental}
-Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk mencari jalur transportasi publik. Peneliti meminta kepada beberapa orang untuk melakukan pencarian jalur transportasi publik kepada Twitter Bot untuk mencari jalur transportasi publik. Peneliti juga mencoba melakukan tweet pencarian melalui akun @kviniinktest123.
+Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk mencari jalur transportasi publik. Peneliti meminta kepada beberapa orang untuk melakukan pencarian jalur transportasi publik kepada Twitter Bot untuk mencari jalur transportasi publik. Selain itu juga peneliti mencoba melakukan tweet pencarian melalui akun @kviniinktest123.
 
+\begin{enumerate}
+	\item Pengujian 1
+	
+	Pada pengujian 1, peneliti mencoba untuk mencari jalur transportasi publik untuk lokasi yang umum dikunjungi yaitu \textit{mall}. Pencarian dilakukan dengan lokasi awal adalah BIP (Bandung Indah Plaza) menuju lokasi tujuan adalah IP (Istana Plaza). Akun penguji @kviniinktest123 melakukan tweet kepada Twitter Bot akun @kviniink yang dapat dilihat pada gambar ~\ref{fig:Tweet1}. Setelah proses \textit{tweet} dilakukan, Twitter Bot akan menangkap tweet tersebut dan memproses \textit{tweet}. Setelah proses pencarian selesai dilakukan, lalu Twitter Bot akun @kviniink melakukan \textit{reply} kepada akun @kviniinktest yang dapat dilihat pada gambar ~\ref{fig:HasilTweet1}. 
+	Pencarian ke dua dilakukan pencarian dengan lokasi awal adalah BIP (Bandung Indah Plaza) dan lokasi tujuan ada PVJ (Paris van Java). Dapat dilihat pada gambar ~\ref{fig:Tweet2}, akun @kviniinktest123 melakukan \textit{tweet} pencarian jalur transportasi publik yang di \textit{mention} kepada akun @kviniink dengan lokasi awal adalah BIP dan lokasi tujuan adalah PVJ. Setelah itu tweet tersebut proses oleh aplikasi untuk dicari jalur transportasi publiknya, lalu Twitter Bot akun @kviniink melakukan \textit{reply} kepada akun @kviniinktest. Reply tweet tersebut merupakan jalur transportasi publik yang harus ditempuh, \textit{reply tweet} tersebut dapat dilihat pada gambar ~\ref{fig:HasilTweet2}. Pada pencarian ke dua dapat dilihat pada tweet pertama terjadi ketidak sesuaian hasil dari KIRI API dengan hasil tweet.
+	Peneliti lalu melakukan pencarian melalui website KIRI yaitu http://kiri.travel. Pencarian pertama dilakukan dengan lokasi awal adalah BIP dan lokasi tujuan adalah IP. Hasil pencarian KIRI tersebut dapat dilihat pada gambar ~\ref{fig:HasilKiri1}. Lalu pencarian kedua dilakukan dengan lokasi awal adalah BIP dan lokasi tujuan adalah PVJ. Hasil pencarian KIRI dari BIP menuju PVJ dapat dilihat pada gambar ~\ref{fig:HasilKiri2}. Setelah dilihat dari hasil keduanya, Twitter Bot melakukan \textit{duplicate tweet} pada \textit{tweet} pertama pencarian ke dua. Untuk menghindari adanya duplicate tweet, peneliti menaruh waktu untuk jam, menit, dan detik di setiap tweet yang dilakukan oleh Twitter Bot agar membuat setiap tweet tersebut bersifat unik.
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Tweet1.PNG}
+		\caption{Tweet dari BIP menuju IP}
+		\label{fig:Tweet1}
+	\end{figure}
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilTweet1.PNG}
+		\caption{Hasil Pencarian Rute Transportasi Publik dari BIP menuju IP}
+		\label{fig:HasilTweet1}
+	\end{figure}
+	
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Tweet2.PNG}
+		\caption{Tweet dari BIP menuju PVJ}
+		\label{fig:Tweet2}
+	\end{figure}
+	
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilTweet2.PNG}
+		\caption{Hasil Pencarian Rute Transportasi Publik dari BIP menuju PVJ}
+		\label{fig:HasilTweet2}
+	\end{figure}
+	
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilKiri1.PNG}
+		\caption{Hasil Pencarian Jalur Transportasi Publik dari BIP menuju IP Melalui Website KIRI}
+		\label{fig:HasilKiri1}
+	\end{figure}
+	
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilKiri2.PNG}
+		\caption{Hasil Pencarian Jalur Transportasi Publik dari BIP menuju PVJ Melalui Website KIRI}
+		\label{fig:HasilKiri2}
+	\end{figure}
+	
+	\item Pengujian 2
+	
+	Pada pengujian 2, peneliti mencoba menjalankan aplikasi selama 24 jam dan meminta bantuan orang lain untuk melakukan tweet pencarian jalur transportasi publik. Setelah ditambahkan waktu jam, menit, dan detik pada setiap tweet aplikasi Twitter Bot berjalan dengan lancar. Berikut adalah hasil reply dari Twitter Bot untuk mencari jalur transportasi publik.
+	
+	
+\end{enumerate}
