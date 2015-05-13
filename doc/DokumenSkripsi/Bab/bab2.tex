@@ -6,38 +6,37 @@ Sebelum bisa membuat Twitter bot untuk mencari jalur transportasi publik, beriku
 \section{Twitter}
 \label{sec:twitter}
 
-Twitter adalah layanan yang memungkinkan pengguna untuk mengirim pesan menggunakan 140 karakter atau kurang. Pesan tersebut dapat diadaptasikan melalui teks, aplikasi \textit{mobile}, atau web. (referensi dari buku Sams teach yourself the twitter api) Berikut ini adalah daftar istilah umum pada Twitter:
+Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengguna melakukan \textit{posting} pesan berbasis teks hingga 140 karakter\cite{TwitterBook}. Berikut ini adalah daftar istilah umum pada Twitter:
 
-Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengguna melakukan \textit{posting} pesan berbasis teks hingga 140 karakter\cite{TwitterBook}.
+
 \begin{itemize}
 	\item \textit{Tweet} 
 	
-	Posting pada Twitter disebut sebagai \textit{tweet}. \textit{Tweet} ini akan meneruskan pesan singkat yang ditujukan ke semua \textit{follower} suatu akun\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 7}. Contohnya adalah seorang akun @kviniink ingin menuliskan bahwa hari ini cuaca cerah, maka @kviniink akan men-\textit{tweet} 'Hari ini cerah yah..'. \textit{Tweet} juga bisa menyertakan \textit{link} ke video, foto, atau media lain di internet selain teks biasa. URL \textit{link} teks termasuk ke dalam 140 batas karakter, namun URL tersebut akan menghabisnya tempat/\textit{space} dari keterbatasan karakter tweet. Oleh karena itu URL akan dibuat versi singkatnya, contoh saat pengguna memasukkan link \url{http://www.chacha.com/gallery/7253/15-movies-that-make-guys-cry}, maka akan dibuat menjadi \url{bit.ly/1uRi8vV}. 
+	Posting pada Twitter disebut sebagai \textit{tweet}. \textit{Tweet} ini akan meneruskan pesan singkat yang ditujukan ke semua \textit{follower} suatu akun\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 7}. Contohnya adalah seorang akun @kviniink ingin menuliskan bahwa hari ini cuaca cerah, maka akun @kviniink akan melakukan \textit{tweet} 'Hari ini cerah yah..'. \textit{Tweet} juga bisa menyertakan \textit{link} untuk video, foto, atau media lain di internet selain teks biasa. URL \textit{link} teks termasuk ke dalam 140 batas karakter, namun URL tersebut akan menghabisnya tempat/\textit{space} dari keterbatasan karakter tweet. Oleh karena itu URL akan dibuat versi singkatnya, contohnya pada saat pengguna memasukkan link \url{http://www.chacha.com/gallery/7253/15-movies-that-make-guys-cry}, maka link tersebut akan dibuat menjadi \url{bit.ly/1uRi8vV}. 
 	\item \textit{Follow}
 	
 	\textit{Follow} adalah satu istilah dalam Twitter yang bertujuan untuk mengikuti aktivitas \textit{tweet} suatu akun. \textit{Following} adalah ketika sebuah akun mengikuti akun orang lain, dan \textit{Follower} adalah ketika sebuah akun melakukan aksi \textit{follow} kepada akun anda.
 	\item \textit{Reply} 
 	
-	\textit{Reply} adalah cara seseorang untuk dapat memberi rujukan kepada akun Twitter yang lainnya atau lebih dikenal dengan nama \textit{mention}\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 9}. Sebagai contoh, diketahui akun bernama @kviniink mem-\textit{follow} @infobdg untuk mengetahui perkembangan apa saja yang tejadi di Kota Bandung. Lalu akun @kviniink ingin bertanya tentang info mall yang ramai di Kota Bandung, maka akun @kviniink membuat \textit{mention tweet} yang berisikan "@infobdg Halo saya ingin bertanya apa saja mall yang sedang ramai di Bandung yah?".
+	\textit{Reply} adalah cara seseorang untuk dapat memberi rujukan kepada akun Twitter yang lainnya atau lebih dikenal dengan nama \textit{mention}\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 9}. Sebagai contoh, diketahui akun bernama @kviniink mem-\textit{follow} @infobdg untuk mengetahui perkembangan apa saja yang tejadi di Kota Bandung. Lalu akun @kviniink ingin bertanya tentang info mall yang sedang ramai dikunjungi di Kota Bandung, maka akun @kviniink membuat \textit{mention tweet} yang berisikan "@infobdg Halo saya ingin bertanya apa saja mall yang sedang ramai dikunjungi di Bandung yah?".
 	\item \textit{Retweet}
 	
-	\textit{Retweet} ini merupakan salah satu yang paling penting dari Twitter. \textit{Retweet} ini berguna ketika pengguna menemukan \textit{tweet} menarik dan berbagi \textit{tweet} tersebut dengan \textit{follower} akun tersebut (\textit{follower}). \textit{Retweet} ini juga secara tidak langsung mengatakan bahwa "saya menghormati anda dan pesan yang anda buat". \textit{Retweet}.
-	%\footnote{Tim O’Reilly, \textit{The Twitter Book}, oreilly, 2009, page 47}
+	\textit{Retweet} ini merupakan salah satu istilah penting dari Twitter. \textit{Retweet} ini berguna ketika pengguna menemukan \textit{tweet} menarik dan ingin  berbagi \textit{tweet} tersebut dengan \textit{follower} akun tersebut. \textit{Retweet} ini juga secara tidak langsung mengatakan bahwa "saya menghormati anda dan pesan yang anda buat" \footnote{Tim O’Reilly, \textit{The Twitter Book}, oreilly, 2009, page 47}.
 	\item \textit{Hashtag}
 	
 	Sebuah fitur yang diciptakan oleh Twitter untuk membantu pencarian kata kunci dan penandaan suatu diskusi.
 	
 	\item \textit{Direct Message}(DM)
 	
-	\textit{Direct message} digunakan untuk mengirim pesan yang bersifat \textit{private} antara dua orang. Orang yang mengirim \textit{direct message} ini hanya bisa untuk orang yang mengikuti akun tersebut.
+	\textit{Direct message} digunakan untuk mengirim pesan yang bersifat \textit{private} antara dua akun Twitter. Syarat agar dapat melakukan \textit{direct message} adalah melakukan aksi follow terhadap akun yang akan dikirimkan \textit{direct message}.
 	\item \textit{Timeline}
 	
-	\textit{Timeline} adalah sekumpulan \textit{tweet} dari semua orang yang anda \textit{follow} lalu akan ditampilkan di halaman utama.
+	\textit{Timeline} adalah sekumpulan \textit{tweet} dari semua akun yang di \textit{follow}. \textit{Timeline }ditampilkan di halaman utama.
 \end{itemize}
 
 
 \section{Twitter API}
-Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Twitter API tidak seperti API pada umumnya karena Twitter memaparkan hampir semuanya termasuk \textit{setup account} dan informasi kostumisasi\cite{Twitter}. Ini adalah salah satu bentuk pendekatan dari Twitter yang berfokus pada jaringan dan memungkinkan developer memiliki hak untuk berpikir '\textit{out of the box}' untuk membuat aplikasi yang mereka inginkan. Tetapi tetap akan terjadi keterbatasan yang dimiliki Twitter API, yaitu :
+Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Twitter API adalah salah satu bentuk pendekatan dari Twitter yang berfokus pada jaringan dan memungkinkan developer memiliki hak untuk berpikir '\textit{out of the box}' untuk membuat aplikasi yang mereka inginkan. Tetapi tetap akan terjadi keterbatasan yang dimiliki Twitter API, yaitu :
 \begin{itemize}
 	\item Hanya bisa men-update 1000 per harinya, baik melalui handphone, website, API, dan sebagainya.
 	\item Total pesan hanya bisa sebanyak 250 per harinya, pada setiap dan semua perangkat.
@@ -47,39 +46,39 @@ Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} m
 
 \subsection{\textit{Search} API}
 
-Twitter \textit{Search} API memungkinkan melakukan pencarian terhadap \textit{tweet} baru ataupun \textit{tweet} populer. Tetapi Twitter \textit{Search} API ini bukan fitur yang tersedia pada Twitter itu sendiri. API ini difokuskan kepada relefansi, bukan terhadap kelengkapan data. Ini berarti bahwa beberapa \textit{Tweet} dan pengguna akan hilang dari hasil pencarian.
+Twitter \textit{Search} API memungkinkan melakukan pencarian terhadap \textit{tweet} baru ataupun \textit{tweet} populer. Tetapi Twitter \textit{Search} API ini bukan fitur yang tersedia pada Twitter itu sendiri. API ini difokuskan kepada relefansi, bukan terhadap kelengkapan data. Ini berarti bahwa ada beberapa \textit{Tweet} atau akun akan hilang dari hasil pencarian.
 
 \paragraph{Bagaimana cara membuat sebuah \textit{query}}
-Cara berbaik dalam membuat sebuah \textit{query}, melakukan percobaan yang valid dan mengembalikan tweet yang sesuai adalah dengan mencobanya di \url{twitter.com/search}. URL yang ditampilkan pada browser akan berisi sintaks \textit{query} yang sesuai agar dapat digunakan kempali pada API \textit{endpoint}. Berikut adalah contohnya:
+Cara terbaik dalam membuat sebuah \textit{query} adalah melakukan percobaan yang valid dan mengembalikan tweet yang sesuai. Cara mencobanya dapat dilakukan di \url{twitter.com/search}. URL yang ditampilkan pada browser akan berisi sintaks \textit{query} yang sesuai agar dapat digunakan kembali pada Twitter API. Berikut adalah contohnya:
 
 \begin{enumerate}
-	\item Melakukan pencarian untuk \textit{tweet} yang direferensikan kepada akun @twitterapi. Pertama kita harus melakukan pencarian pada \url{twitter.com/search}.
-	\item Lakukan pengecekan dan salin URL yang ditampilkan. Sebagai contoh didapatkan URL seperti ini, \url{https://twitter.com/search?q=\%40twitterapi}.
+	\item Melakukan pencarian untuk \textit{tweet} yang di-\textit{mention} kepada akun @twitterapi. Pencarian dilakukan di \url{twitter.com/search}.
+	\item Lakukan pengecekan dan salin URL yang ditampilkan pada browser. Sebagai contoh didapatkan URL seperti berikut, \url{https://twitter.com/search?q=\%40twitterapi}.
 	\item Ganti \url{https://twitter.com/search} dengan \url{https://api.twitter.com/1.1/search/tweets.json} dan akan didapatkan \url{https://api.twitter.com/1.1/search/tweets.json?q=\%40twitterapi}
 	\item Eksekusi URL tersebut untuk melakukan pencarian di dalam API.
 \end{enumerate}
 
-API v1.1 mewajibkan bahwa \textit{request} sudah diotentifikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan hasil yang sudah sangat lama, sedangkan Search API hanya melayani tweet dari seminggu terakhir. Contoh berbagai macam pencarian dapat dilihat pada tabel \ref{tab:MacamPencarianTweet}:
+API v1.1 mewajibkan \textit{request} yang sudah diotentifikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan data yang sudah sangat lama, sedangkan Search API hanya melayani tweet dari seminggu terakhir. Contoh berbagai macam pencarian dapat dilihat pada tabel \ref{tab:MacamPencarianTweet}:
 
 \begin{table}[h]
 \begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \textbf{Operator}          					& \textbf{Finds \textit{tweets}}                                            \\ \hline
-\textit{watching now}               & Mengandung kata "\textit{watching}" dan "\textit{now}". 						       \\
+\textit{watching now}               & Mengandung kata "\textit{watching}" dan "\textit{now}".						       \\
 "\textit{happy hour}"               & Mengandung frase "\textit{happy hour}" yang tepat.                                 \\
-\textit{love OR hate}               & Mengandung kata "\textit{love}" atau "\textit{hate}" (atau keduanya).                             \\
-\textit{beer -root}                 & Mengandung kata "\textit{beer}" tanpa kata "\textit{root}".                                         \\
+\textit{love OR hate}               & Mengandung kata "\textit{love}" atau "\textit{hate}" atau keduanya.                             \\
+\textit{beer -root}                 & Mengandung kata "\textit{beer}" tanpa adanya kata "\textit{root}".                                         \\
 \#haiku                    					& Mengandung \textit{hashtag} "\textit{haiku}".                                            \\
-\textit{from}:alexiskold            & Dikirim melalui \textit{user} "alexiskold".                                            \\
-\textit{to}:techcrunch              & Dikirimkan kepada \textit{user} "techcrunch".                                              \\
-@mashable                  					& Mereferensikan kepada \textit{user} "mashable".                                            \\
+\textit{from}:alexiskold            & Dikirim melalui akun "alexiskold".                                            \\
+\textit{to}:techcrunch              & Dikirimkan kepada akun "techcrunch".                                              \\
+@mashable                  					& Mereferensi kepada akun "mashable".                                            \\
 \textit{superhero since}:2010-12-27 & Mengandung kata "\textit{superhero}" dari tanggal "2010-12-27" (tahun-bulan-hari). \\
 \textit{ftw until}:2010-12-27       & Mengandung kata "\textit{ftw}" sebelum tanggal "2010-12-27".                   \\
-\textit{movie -scary} :)            & Mengandung kata "\textit{movie}", tanpa kata "\textit{scary}", dengan pencarian yang positif.        \\
+\textit{movie -scary} :)            & Mengandung kata "\textit{movie}", tanpa adanya kata "\textit{scary}", dengan pencarian yang positif.        \\
 \textit{flight} :(                  & Mengandung kata "\textit{flight}" dengan pencarian yang negatif.                         \\
 \textit{traffic} ?                  & Mengandung kata "\textit{traffic}" dan mengandung pertanyaan.                               \\
 \textit{hilarious filter:links}     & Mengandung kata "\textit{hilarious}" yang di sambungkan dengan URL.                                \\
-\textit{news source:twitterfeed}    & Mengandung kata "\textit{news}" yang dipost melalui twitterfeed.						\\        \hline                     
+\textit{news source:twitterfeed}    & Mengandung kata "\textit{news}" yang di-\textit{posting} melalui \textit{twitterfeed}.						\\        \hline                     
 \end{tabular}
 \caption{Contoh berbagai macam pencarian \textit{tweet}}
 \label{tab:MacamPencarianTweet}
@@ -103,16 +102,16 @@ Terdapat parameter tambahan yang dipergunakan untuk hasil pencarian yang lebih b
 
 \begin{itemize}
 	\item \textbf{\textit{Result Type}}. Seperti hasil yang terdapat pada \url{twitter.com/search}, parameter \textit{result\_type} memungkinkan hasil pencarian akan berdasarkan \textit{tweet} yang paling baru atau \textit{tweet} yang paling poluler atau bahkan gabungan dari keduanya.
-	\item \textit{\textbf{Geolocatization}}. Pencarian tempat tidak tersedia pada API, tetapi ada beberapa cara yang tepat untuk membatasi \textit{query} dengan cara menggunakan parameter geocode lalu menentukan "\textit{latitude, longitude, radius}". Contohnya adalah "37.781157,-122.398720,1mi". Ketika pencarian lokasi pencarian API pertama akan mencoba menemukan \textit{tweet} yang memiliki \textit{latitude} yang sudah dimasukan kedalam \textit{query} geocode, jika tidak berhasil maka API akan mencoba menemukan \textit{tweet} yang dibuat oleh pengguna yang lokasi profilenya terdapat pada \textit{latitude} tersebut. Artinya adalah hasil pencarian mungkin menerima \textit{tweet} yang tidak mencakup informasi \textit{latidute} atau \textit{longitude}.
+	\item \textit{\textbf{Geolocatization}}. Pencarian tempat tidak tersedia pada API, tetapi ada beberapa cara yang tepat untuk membatasi \textit{query} dengan cara menggunakan parameter geocode lalu menentukan "\textit{latitude, longitude, radius}". Contohnya adalah "37.781157,-122.398720,1mi". Ketika pencarian lokasi, pencarian API akan mencoba menemukan \textit{tweet} yang memiliki \textit{latitude} dan \textit{longitude} yang sudah dimasukan kedalam \textit{query geocode}, jika tidak berhasil maka API akan mencoba menemukan \textit{tweet} yang dibuat oleh pengguna yang lokasi profilenya terdapat pada \textit{latitude} dan \textit{longitude} tersebut. Kesimpulannya adalah hasil pencarian dapat menerima \textit{tweet} yang tidak mencakup informasi \textit{latidute} atau \textit{longitude}.
 	\item \textit{\textbf{Language}}. Bahasa dapat dijadikan parameter untuk mencari tweet yang sesuai dengan bahasa tersebut.
-	\item \textbf{\textit{Iterating in a result set}}. Parameter seperti \textit{count, until, since\_id, max\_id} memungkinkan untuk mengkontrol bagaimana iterasi melalui hasil pencarian.
+	\item \textbf{\textit{Iterating in a result set}}. Parameter seperti \textit{count, until, since\_id, max\_id} memungkinkan untuk melakukan kontrol bagaimana iterasi melalui hasil pencarian.
 \end{itemize}
 
 \paragraph{\textit{Rate limits}}
-\textit{User} pada saat ini diwakilkan oleh \textit{access tokens} yang dapat membuat 180 \textit{request} per 15 menit. Tetapi kita bisa membuat 450 \textit{request} per 15 menit dengan cara menggunakan \textit{application-only authentication} atas nama sendiri tanpa konteks pengguna.
+\textit{User} pada saat ini diwakilkan oleh \textit{access tokens} yang dapat membuat 180 \textit{request} per 15 menit. Tetapi kita bisa membuat 450 \textit{request} per 15 menit dengan menggunakan \textit{application-only authentication} atas nama sendiri tanpa konteks pengguna.
 
 \paragraph{Contoh Pencarian}
-Ketika anda mengikuti suatu acara yang sedang berlangsung, anda tertarik untuk mencarinya dengan melihat tweet yang paling baru dan menggunakan \textit{hastag} dari acara tersebut, maka langkah-langkah yang dilakukan adalah:
+Ketika anda mengikuti suatu acara yaitu superbowl, lalu anda tertarik untuk mencari hal yang sedang terjadi di acara tersebut dengan melihat \textit{tweet} yang paling baru dan menggunakan \textit{hastag} dari acara tersebut, maka langkah-langkah yang dilakukan adalah:
 \begin{itemize}
 	\item Anda ingin mencari \textit{tweet} yang paling baru dengan menggunakan hastag \#\textit{superbowl}
 	\item Maka \textit{search} URL akan seperti ini:
@@ -124,9 +123,8 @@ Ketika anda ingin mengetahui \textit{tweet} yang datang dari suatu lokasi dengan
 	\item Anda ingin mencari \textit{tweet} yang paling baru dalam Bahasa Portugal, yang lokasinya dekat Maracana soccer stadium yang terletak di Rio de Janeiro.
 	\item Maka search URL akan seperti ini:
 	\url{https://api.twitter.com/1.1/search/tweets.json?q=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent}
-	%%%https://api.twitter.com/1.1/search/tweets.json?q=\&geocode=-22.912214,-43.230182,1km\&lang=pt\&result\_type=recent
 	
-Ketika anda ingin mencari \textit{tweet} yang sedang poluler dari spesifik \textit{user} dan \textit{tweet} tersebut terdapat sebuah hashtag tertentu:
+Ketika anda ingin mencari \textit{tweet} yang sedang poluler dari spesifik \textit{user} dan \textit{tweet} tersebut terdapat sebuah hashtag tertentu, maka langkah-langkah yang dilakukan adalah:
 \begin{itemize}
 	\item Anda ingin mencari \textit{tweet} yang poluler yang berasal dari \textit{user} @kviniink yang terdapat \textit{hashtag} \#nasa.
 	\item Maka \textit{search} URL akan seperti ini:
@@ -135,20 +133,20 @@ Ketika anda ingin mencari \textit{tweet} yang sedang poluler dari spesifik \text
 \end{itemize}
 
 \subsection{Streaming API}
-\textit{Streaming} API adalah contoh \textit{real-time} API. API ini ditujukan bagi para pengembang dengan kebutuhan data yang intensif. Contohnya jika mencari cara untuk membangun sebuah data produk \textit{data-mining} atau tertarik dalam analisis penelitian. \textit{Streaming} API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti \textit{tweet}) secara langsung atau \textit{real-time}.
+\textit{Streaming} API adalah contoh \textit{real-time} API. API ini ditujukan bagi para developer dengan kebutuhan data yang intensif. \textit{Streaming} API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti \textit{tweet}) secara langsung atau \textit{real-time}.
 
-Twitter menawarkan beberapa \textit{endpoint streaming}, disesuaikan dengan kasus yang terjadi. 
+Twitter menawarkan beberapa \textit{endpoint streaming}, disesuaikan dengan kasus yang dibutuhkan. 
 \begin{itemize}
 	\item \textit{Public stream}
 	
-	\textit{Steaming} data publik yang mengalir melalui Twitter. Dipergunakan untuk mengikuti sebuah \textit{user} atau topik tertentu. Selain itu juga \textit{public stream} digunakan untuk \textit{data mining}.
+	\textit{Steaming} data publik yang mengalir melalui Twitter. Dipergunakan untuk mengikuti sebuah \textit{user} atau topik tertentu. \textit{Public stream} biasa  digunakan untuk \textit{data mining}.
 	\item \textit{User Stream}
 	
 	\textit{Single-user streams}, mengandung hampir semua data yang berhubungan dengan satu \textit{user} tertentu.
 	
 	\item \textit{Site Stream}
 	
-	Versi dari \textit{multi-user stream}. \textit{Site stream} harus terhubung dengan server yang terkoneksi dengan Twitter atas nama banyak pengguna.
+	Versi dari \textit{multi-user stream}. \textit{Site stream} terhubung dengan server yang terkoneksi dengan Twitter atas nama banyak pengguna.
 \end{itemize}
 
 
@@ -156,16 +154,17 @@ Twitter menawarkan beberapa \textit{endpoint streaming}, disesuaikan dengan kasu
 \textit{Stream} ini menawarkan sampel data publik yang mengalir melalui Twitter. Ketika aplikasi membuat sambungan ke \textit{streaming endpoint}, aplikasi akan menyampaikan umpan Tweet tanpa perlu khawatir akan keterbatasan \textit{rate limit}.
 
 \paragraph{\textit{Endpoints}}
-\begin{itemize}
-	\item POST statuses / \textit{filter}
-	\item GET statuses / \textit{sample}
-	\item GET statuses / \textit{firehose}
-\end{itemize}
+	
+	\begin{itemize}
+		\item POST statuses / \textit{filter}
+		\item GET statuses / \textit{sample}
+		\item GET statuses / \textit{firehose}
+	\end{itemize}
 
 \paragraph{POST statuses/\textit{filter}}
-POST \textit{filter} ini mengembalikan status publik yang sesuai dengan satu atau lebih predikat yang telah di filter. \textit{Multiple parameter} memungkinkan klien untuk menggunakan koneksi tunggal untuk ke \textit{Streaming} API. Antara GET dan POST \textit{request} keduanya didukung tetapi GET \textit{request} yang memiliki parameter yang terlalu banyak mungkin akan ditolak karena URL yang terlalu panjang. Gunakanlah POST request untuk menghindari URL yang panjang.
+POST \textit{filter} ini mengembalikan status publik yang sesuai dengan satu atau lebih predikat yang telah di filter. \textit{Multiple parameter} memungkinkan klien untuk menggunakan koneksi tunggal untuk ke \textit{Streaming} API. Antara GET \textit{request} dan POST \textit{request} keduanya didukung oleh POST statuses / \textit{filter} tetapi untuk GET \textit{request} yang memiliki parameter yang terlalu banyak mungkin akan ditolak karena URL yang terlalu panjang. Gunakanlah POST request untuk menghindari URL yang panjang.
 \textit{Track, follow}, dan lokasi harus dipertimbangkan untuk dapat digabungkan dengan operator OR. \textit{track}=foo\&\textit{follow}=1234 ini mengembalikan \textit{tweet} yang memiliki kata "foo" atau dibuat oleh \textit{user} 1234.
-Hal ini memungkinkan akses hingga 400 kata kunci, 5000 \textit{follow users}. Perintah ini dikembalikan dalam format JSON, memerlukan otentifikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter untuk parameter ini dapat dilihat pada tabel \ref{table:ParameterPostStatusesFilter}
+Akses standar mengijinkan pencarian hingga 400 kata kunci, dan 5000 \textit{follow userids}. Perintah ini dikembalikan dalam format JSON, memerlukan otentifikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter untuk POST statuses/\textit{filter} dapat dilihat pada tabel \ref{table:ParameterPostStatusesFilter}
 
 %\paragraph{\textit{Resource Information}}
 %\begin{table}[!htbp]
@@ -181,8 +180,8 @@ Hal ini memungkinkan akses hingga 400 kata kunci, 5000 \textit{follow users}. Pe
 \begin{table}[h]
 \begin{tabular}{|p{3cm}|p{11cm}|}
 \hline
-\textit{follow}          & Tanda koma memisahkan list user ID, hal ini menunjukkan pengguna untuk kembali ke status untuk stream. \\ \hline
-\textit{track}           & Kata pencarian untuk track. Fase kata kunci dipisahkan oleh tanda koma.                \\ \hline
+\textit{follow}          & Menentukan pencarian \textit{tweet} dari suatu akun \\ \hline
+\textit{track}           & Kata kunci pencarian untuk di-\textit{track}.              \\ \hline
 \textit{locations}       & Menentukan lokasi yang dilacak.                                                    \\ \hline
 \textit{delimited}       & Menentukan apakah pesan harus dibatasi limitnya.                                         \\ \hline
 \textit{stall\_warnings} & Menentukan apakah pesan warning harus dikirim atau tidak. \\ \hline                                        
@@ -223,14 +222,14 @@ Mengembalikan semua status publik. Beberapa aplikasi membutuhan akses ini. Tekni
 
 
 \paragraph{Menggunakan \textit{Streaming} API}
-Proses menggunakan \textit{streaming} API adalah dengan cara menghubungkan \textit{endpoint} yang sudah tercantum di atas dengan parameter yang sudah di \textit{list} kepada \textit{streaming endpoint} dan juga \textit{request} parameter \textit{streaming} API. Proses pengembalian data oleh \textit{streaming} API dilakukan dengan cara mengikuti petunjuk dalam pengolahan data \textit{streaming}.
+Proses menggunakan \textit{streaming} API adalah dengan cara menghubungkan \textit{endpoint} yang sudah tercantum di atas dengan parameter yang sudah di \textit{list} kepada \textit{streaming endpoint} dan juga \textit{request} parameter \textit{streaming} API.
 
 \paragraph{Koneksi}
 Setiap \textit{user} hanya dapat membuat satu koneksi yang terbuhung dengan \textit{public endpoint} dan jika melakukan koneksi ke \textit{public stream} lebih dari satu kali dengan menggunakan \textit{user} yang sama akan menyebabkan koneksi terlama akan putus. Klien yang membuat koneksi secara berlebihan baik berhasil ataupun tidak maka IP mereka otomatis akan di \textit{banned}.
 
 %User Streams
 \paragraph{\textit{User Streams}}
-\textit{User Stream} memberikan aliran(\textit{stream}) data dan event yang spesific untuk pengguna yang sudah diotentifikasi. \textit{User Stream} tidak dimaksudkan untuk koneksi server ke server, Jika anda perlu membuat koneksi atas nama beberapa user dari mesin yang sama maka lebih baik menggunakan \textit{site stream}. Perintah ini dikembalikan dalam format JSON, memerlukan otentifikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter untuk parameter ini dapat dilihat pada tabel \ref{table:ParameterGetUser}
+\textit{User Stream} memberikan aliran(\textit{stream}) data dan event yang spesific untuk akun yang sudah diotentikasi. Perintah ini dikembalikan dalam format JSON, memerlukan otentifikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter untuk parameter ini dapat dilihat pada tabel \ref{table:ParameterGetUser}
 
 
 \paragraph{\textit{Endpoints}}
@@ -255,11 +254,11 @@ Setiap \textit{user} hanya dapat membuat satu koneksi yang terbuhung dengan \tex
 \end{table}
 
 \paragraph{Koneksi}
-Meminimalkan jumlah koneksi suatu aplikasi untuk membuat \textit{user stream}. Setiap user Twitter terbatas hanya untuk beberapa koneksi \textit{user streams} per aplikasi OAuth, terlepas dari IP. Setelah mencapai batasnya maka koneksi tertua atau terlama akan diberhentikan secara otomatis. \textit{User} login dari beberapa instansi dari aplikasi AOuth yang sama akan mengalami siklus koneksi yaitu akan dihubungan dan diputuskan satu sama lain.
+Jika suatu perangkat lunak menggunakan \textit{user stream} maka sebisa mungkin untuk meminimalkan jumlah koneksi suatu perangkat lunak. Setiap akun Twitter terbatas hanya untuk beberapa koneksi \textit{user stream} per otantikasi perangkat lunak, terlepas dari IP. Setelah mencapai batasnya maka koneksi tertua atau terlama akan diberhentikan secara otomatis. \textit{User} \textit{login} dari beberapa instansi dari otentikasi perangkat lunak yang sama akan mengalami siklus koneksi yaitu akan dihubungan dan diputuskan satu sama lain.
 
-Sebuah aplikasi harus dapat mengatasi HTTP 420 \textit{error code} yang memberitahukan bahwa suatu akun sudah terlalu sering \textit{login}. Oleh karena itu \textit{user} yang seperti itu akan secara otomatis di \textit{banned} dari \textit{User Stream} untuk tingkat \textit{login} yang berlebihan. Untuk memulihkan akses \textit{streaming user} harus menutup aplikasi tambahan yang ada, mungkin berjalan di perangkat atau \textit{device} yang berbeda.
+Sebuah aplikasi harus dapat mengatasi HTTP 420 \textit{error code} yang memberitahukan bahwa suatu akun sudah terlalu sering \textit{login}. Oleh karena itu akun yang seperti itu akan secara otomatis di \textit{banned} dari \textit{User Stream} untuk tingkat \textit{login} yang berlebihan. Untuk memulihkan akses \textit{streaming user} harus menutup perangkat lunak tambahan yang ada, mungkin berjalan di perangkat atau \textit{device} yang berbeda.
 
-Perhatikan bahwa setiap aplikasi memiliki alokasinya masing-masing, sehingga \textit{login} dari aplikasi pertama tidak akan mempengaruhi aplikasi ke dua begitu juga sebaliknya. Tetapi menjalankan terlalu banyak salinan aplikasi pertama maupun ke dua akan menimbulkan masalah. Perhatikan juga bahwa jumlah koneksi yang serentak per alamat IP masih terbatas terlepas dari aplikasi yang ada.
+Perhatikan bahwa setiap aplikasi memiliki alokasinya masing-masing, sehingga \textit{login} dari perangkat lunak yang pertama tidak akan mempengaruhi koneksi untuk perangkat lunak ke dua begitu juga sebaliknya. Tetapi menjalankan terlalu banyak salinan perangkat lunak yang pertama maupun ke dua akan menimbulkan masalah. Perhatikan juga bahwa jumlah koneksi yang serentak per alamat IP masih terbatas terlepas dari perangkat lunak yang ada. Jika anda perlu membuat koneksi atas nama beberapa user dari mesin yang sama maka lebih baik menggunakan \textit{site stream}.
 
 %OAuth
 \section{OAuth}
@@ -294,13 +293,13 @@ Otentifikasi model baru terdapat dalam dua bentuk, dan keduanya masih memanfaatk
 
 
 \subsection{Application-only authentication}
-Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentifikasi atas nama aplikasi itu sendiri. Dengan menggunakan \textit{Application-only authentication} anda tidak mempunyai konteks dari otentifikasi pengguna dan ini berarti setiap \textit{request} API untuk endpoint akan membutuhkan konteks \textit{user}, seperti memposting \textit{tweet} tidak akan bekerja. Aplikasi yang akan di dapat adalah: 
+Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentifikasi atas nama aplikasi itu sendiri. Dengan menggunakan \textit{Application-only authentication} anda tidak mempunyai konteks dari otentifikasi pengguna dan ini berarti setiap \textit{request} API untuk endpoint akan membutuhkan konteks akun, seperti memposting \textit{tweet} tidak akan bekerja. Aplikasi yang akan di dapat adalah: 
 
 \begin{itemize}
 	\item Melihat \textit{timeline}
 	\item Mengakses \textit{following} dan \textit{follower} dari suatu \textit{akun}
 	\item Mencari dalam \textit{tweet}
-	\item mengambil informasi dari \textit{user} manapun
+	\item mengambil informasi dari akun Twitter manapun
 \end{itemize}
 
 
@@ -309,7 +308,7 @@ Tetapi \textit{application-only authentication} tidak bisa melakukan :
 \begin{itemize}
 	\item Posting \textit{tweet}
 	\item Melakukan koneksi dengan \textit{Streaming endpoint}
-	\item Mencari \textit{user} seseorang
+	\item Mencari akun seseorang
 	\item Menggunakan geo endpoint
 	\item Mengakses DM
 \end{itemize}
@@ -336,7 +335,7 @@ Cara kerja dari \textit{3-legged authorization} adalah dengan memberikan aplikas
 
 \begin{itemize}
 	\item \textit{GET oauth endpoint} digunakan sebagai pengganti GET oauth
-	\item User akan selalu diminta untuk mengotorisasi akses ke aplikasi anda, bahkan jika akses sebelumnya telah diberikan
+	\item Akun akan selalu diminta untuk mengotorisasi akses ke aplikasi anda, bahkan jika akses sebelumnya telah diberikan
 \end{itemize}
 
 Beginilah ilustrasi interaksi \textit{sign in} dengan menggunakan \textit{following flowchart}
@@ -349,16 +348,16 @@ Beginilah ilustrasi interaksi \textit{sign in} dengan menggunakan \textit{follow
 \end{figure}
 
 \subsection{\textit{PIN-based authorization}}
-cara kerja dari \textit{PIN-based authorization} ini ditujukan untuk aplikasi yang tidak bisa mengakses atau menanamkan \textit{web browser} untuk mengarahkan \textit{user} kepada \textit{authorization endpoint}. Contohnya adalah aplikasi yang bersifat \textit{command-line}, \textit{embedded systems}, \textit{game} konsol, dan beberapa jenis aplikasi \textit{mobile}.
+cara kerja dari \textit{PIN-based authorization} ini ditujukan untuk aplikasi yang tidak bisa mengakses atau menanamkan \textit{web browser} untuk mengarahkan user kepada \textit{authorization endpoint}. Contohnya adalah aplikasi yang bersifat \textit{command-line}, \textit{embedded systems}, \textit{game} konsol, dan beberapa jenis aplikasi \textit{mobile}.
 
 
 \paragraph{Implementasi}
 
 Implementasi \textit{PIN-based authorization} ini memiliki cara kerja yang sama seperti \textit{3-legged authorization}, perbedaannya terletak pada nilai dari \textit{oauth\_callback} yang harus di set menjadi \textit{oob} saat proses pemanggilan \textit{POST oauth} atau \textit{request\_token}.
 
-Setelah aplikasi anda telah mendapatkan \textit{GET oauth/authenticate} atau \textit{GET oauth/authorize URL}, tampilkan URL kepada user agar mereka dapat menggunakan \textit{web browser} untuk mengakses Twitter.
+Setelah aplikasi anda telah mendapatkan \textit{GET oauth/authenticate} atau \textit{GET oauth/authorize URL}, tampilkan URL kepada akun agar mereka dapat menggunakan \textit{web browser} untuk mengakses Twitter.
 
-Ketika \textit{callback oob} diminta dan user pengunjungi Twitter, \textit{user} tidak akan dipindahkan secara otomatis ke aplikasi setelah menyetujui akses. Sebaliknya, mereka akan melihat kode PIN, dengan instruksi untuk kembali ke aplikasi dan memasukkan nilai dari kode PIN tersebut.
+Ketika \textit{callback oob} diminta, akun tidak akan dipindahkan secara otomatis ke aplikasi setelah menyetujui akses. Sebaliknya, mereka akan melihat kode PIN untuk dikembalikan kepada perangkat lunak tersebut dengan cara memasukkan nilai dari kode PIN tersebut.
 
 \begin{figure}[H]
 \centering
@@ -367,7 +366,7 @@ Ketika \textit{callback oob} diminta dan user pengunjungi Twitter, \textit{user}
 	\label{fig:pin}
 \end{figure}
 
-Aplikasi anda harus memungkinkan \textit{user} untuk memasukkan \textit{PIN code} ini untuk menyelesaikan \textit{flow} tersebut. Nilai dari \textit{PIN code} harus lolos sebagai \textit{oauth\_verifier} untuk \textit{POST oauth/access\_token request}. Semua \textit{request} akan berjalan normal kedepannya.
+Aplikasi anda harus memungkinkan akun untuk memasukkan \textit{PIN code} ini untuk menyelesaikan \textit{flow} tersebut. Nilai dari \textit{PIN code} harus lolos sebagai \textit{oauth\_verifier} untuk \textit{POST oauth/access\_token request}. Semua \textit{request} akan berjalan normal kedepannya.
 
 
 %\section{KIRI}
