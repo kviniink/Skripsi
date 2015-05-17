@@ -420,9 +420,11 @@ Atas pernyataan ini, saya siap menanggung segala risiko dan sanksi yang dijatuhk
 \ifdefempty{\vabstrakina}{}
 	  { \vspace*{4cm}
 		\begin{abstract}
+		
+
 			%\noindent \normalsize{\onehalfspacing{\vabstrakina \vspace*{1cm}\\
 			\noindent \normalsize{\vabstrakina \vspace*{1cm}\\
-			{\bfseries Kata-kata kunci:\ } \vkunciina}
+			{\bfseries Kata-kata kunci: \ } \vkunciina}
 		\end{abstract}
   		\cleardoublepage
 	  }
@@ -430,6 +432,7 @@ Atas pernyataan ini, saya siap menanggung segala risiko dan sanksi yang dijatuhk
 	  { \def\abstractname{Abstract}
 		\vspace*{4cm}
 		\begin{abstract}
+		
 			%\noindent \normalsize{\onehalfspacing{\vabstrakeng \vspace*{1cm}\\
 			\noindent \normalsize{\vabstrakeng \vspace*{1cm}\\
 			{\bfseries Keywords:\ } \vkuncieng}
@@ -488,6 +491,7 @@ Atas pernyataan ini, saya siap menanggung segala risiko dan sanksi yang dijatuhk
 \ifdefstring{\vbaba}{1}{\include{Bab/bab3}}{}
 \ifdefstring{\vbaba}{1}{\include{Bab/bab4}}{}
 \ifdefstring{\vbaba}{1}{\include{Bab/bab5}}{}
+\ifdefstring{\vbaba}{1}{\include{Bab/bab6}}{}
 
 %\bibliographystyle{ieeetr}
 %\bibliography{pustaka}

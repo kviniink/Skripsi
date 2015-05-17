@@ -137,9 +137,7 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk me
 \begin{enumerate}
 	\item Pengujian 1
 	
-	Pada pengujian 1, peneliti mencoba untuk mencari jalur transportasi publik untuk lokasi yang umum dikunjungi yaitu \textit{mall}. Pencarian dilakukan dengan lokasi awal adalah BIP (Bandung Indah Plaza) menuju lokasi tujuan adalah IP (Istana Plaza). Akun penguji @kviniinktest123 melakukan tweet kepada Twitter Bot akun @kviniink yang dapat dilihat pada gambar ~\ref{fig:Tweet1}. Setelah proses \textit{tweet} dilakukan, Twitter Bot akan menangkap tweet tersebut dan memproses \textit{tweet}. Setelah proses pencarian selesai dilakukan, lalu Twitter Bot akun @kviniink melakukan \textit{reply} kepada akun @kviniinktest yang dapat dilihat pada gambar ~\ref{fig:HasilTweet1}. 
-	Pencarian ke dua dilakukan pencarian dengan lokasi awal adalah BIP (Bandung Indah Plaza) dan lokasi tujuan ada PVJ (Paris van Java). Dapat dilihat pada gambar ~\ref{fig:Tweet2}, akun @kviniinktest123 melakukan \textit{tweet} pencarian jalur transportasi publik yang di \textit{mention} kepada akun @kviniink dengan lokasi awal adalah BIP dan lokasi tujuan adalah PVJ. Setelah itu tweet tersebut proses oleh aplikasi untuk dicari jalur transportasi publiknya, lalu Twitter Bot akun @kviniink melakukan \textit{reply} kepada akun @kviniinktest. Reply tweet tersebut merupakan jalur transportasi publik yang harus ditempuh, \textit{reply tweet} tersebut dapat dilihat pada gambar ~\ref{fig:HasilTweet2}. Pada pencarian ke dua dapat dilihat pada tweet pertama terjadi ketidak sesuaian hasil dari KIRI API dengan hasil tweet.
-	Peneliti lalu melakukan pencarian melalui website KIRI yaitu http://kiri.travel. Pencarian pertama dilakukan dengan lokasi awal adalah BIP dan lokasi tujuan adalah IP. Hasil pencarian KIRI tersebut dapat dilihat pada gambar ~\ref{fig:HasilKiri1}. Lalu pencarian kedua dilakukan dengan lokasi awal adalah BIP dan lokasi tujuan adalah PVJ. Hasil pencarian KIRI dari BIP menuju PVJ dapat dilihat pada gambar ~\ref{fig:HasilKiri2}. Setelah dilihat dari hasil keduanya, Twitter Bot melakukan \textit{duplicate tweet} pada \textit{tweet} pertama pencarian ke dua. Untuk menghindari adanya duplicate tweet, peneliti menaruh waktu untuk jam, menit, dan detik di setiap tweet yang dilakukan oleh Twitter Bot agar membuat setiap tweet tersebut bersifat unik.
+	Pada pengujian 1, peneliti mencoba untuk mencari jalur transportasi publik untuk lokasi yang umum dikunjungi yaitu \textit{mall}. Pencarian dilakukan dengan lokasi awal adalah BIP (Bandung Indah Plaza) menuju lokasi tujuan adalah IP (Istana Plaza). Akun penguji @kviniinktest123 melakukan tweet kepada Twitter Bot akun @kviniink yang dapat dilihat pada gambar ~\ref{fig:Tweet1}.
 	
 	\begin{figure}
 		\centering
@@ -148,6 +146,9 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk me
 		\label{fig:Tweet1}
 	\end{figure}
 	
+	Setelah proses \textit{tweet} dilakukan, Twitter Bot akan menangkap tweet tersebut dan memproses \textit{tweet}. Setelah proses pencarian selesai dilakukan, lalu Twitter Bot akun @kviniink melakukan \textit{reply} kepada akun @kviniinktest yang dapat dilihat pada gambar ~\ref{fig:HasilTweet1}. 
+	
+		
 	\begin{figure}
 		\centering
 			\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilTweet1.PNG}
@@ -155,6 +156,7 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk me
 		\label{fig:HasilTweet1}
 	\end{figure}
 	
+	Pencarian ke dua dilakukan pencarian dengan lokasi awal adalah BIP (Bandung Indah Plaza) dan lokasi tujuan ada PVJ (Paris van Java). Dapat dilihat pada gambar ~\ref{fig:Tweet2}, akun @kviniinktest123 melakukan \textit{tweet} pencarian jalur transportasi publik yang di \textit{mention} kepada akun @kviniink dengan lokasi awal adalah BIP dan lokasi tujuan adalah PVJ.
 	
 	\begin{figure}
 		\centering
@@ -162,6 +164,8 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk me
 		\caption{Tweet dari BIP menuju PVJ}
 		\label{fig:Tweet2}
 	\end{figure}
+	
+	Setelah itu tweet tersebut proses oleh aplikasi untuk dicari jalur transportasi publiknya, lalu Twitter Bot akun @kviniink melakukan \textit{reply} kepada akun @kviniinktest. Reply tweet tersebut merupakan jalur transportasi publik yang harus ditempuh, \textit{reply tweet} tersebut dapat dilihat pada gambar ~\ref{fig:HasilTweet2}.
 	
 	
 	\begin{figure}
@@ -171,6 +175,9 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk me
 		\label{fig:HasilTweet2}
 	\end{figure}
 	
+	Pada pencarian ke dua dapat dilihat pada tweet pertama terjadi ketidak sesuaian hasil dari KIRI API dengan hasil tweet.
+	Peneliti lalu melakukan pencarian melalui website KIRI yaitu http://kiri.travel. Pencarian pertama dilakukan dengan lokasi awal adalah BIP dan lokasi tujuan adalah IP. Hasil pencarian KIRI tersebut dapat dilihat pada gambar ~\ref{fig:HasilKiri1}.
+	
 	
 	\begin{figure}
 		\centering
@@ -179,6 +186,7 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk me
 		\label{fig:HasilKiri1}
 	\end{figure}
 	
+	Lalu pencarian kedua dilakukan dengan lokasi awal adalah BIP dan lokasi tujuan adalah PVJ. Hasil pencarian KIRI dari BIP menuju PVJ dapat dilihat pada gambar ~\ref{fig:HasilKiri2}. Setelah dilihat dari hasil keduanya, Twitter Bot melakukan \textit{duplicate tweet} pada \textit{tweet} pertama pencarian ke dua. Untuk menghindari adanya duplicate tweet, peneliti menaruh waktu untuk jam, menit, dan detik di setiap tweet yang dilakukan oleh Twitter Bot agar membuat setiap tweet tersebut bersifat unik.
 	
 	\begin{figure}
 		\centering
@@ -186,10 +194,50 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter Bot} untuk me
 		\caption{Hasil Pencarian Jalur Transportasi Publik dari BIP menuju PVJ Melalui Website KIRI}
 		\label{fig:HasilKiri2}
 	\end{figure}
+	\clearpage
 	
 	\item Pengujian 2
 	
-	Pada pengujian 2, peneliti mencoba menjalankan aplikasi selama 24 jam dan meminta bantuan orang lain untuk melakukan tweet pencarian jalur transportasi publik. Setelah ditambahkan waktu jam, menit, dan detik pada setiap tweet aplikasi Twitter Bot berjalan dengan lancar. Berikut adalah hasil reply dari Twitter Bot untuk mencari jalur transportasi publik.
+	Pada pengujian 2, peneliti mencoba menjalankan aplikasi selama 24 jam dan meminta bantuan orang lain untuk melakukan \textit{tweet} pencarian jalur transportasi publik. Setelah ditambahkan waktu jam, menit, dan detik pada setiap \textit{tweet}, aplikasi \textit{Twitter bot} berjalan dengan lancar. \textit{Twitter bot} dapat memberitahu bahwa suatu lokasi pencarian tidak ditemukan yang dapat dilihat pada gambar ~\ref{fig:HasilFinal1}, akun @cla\_amour mencari lokasi tki dan kopo tetapi lokasi pencarian tidak ditemukan. Akun @cla\_amour juga mencari jalur transportasi publik yang lokasinya ditemukan tetapi tidak ada rute transportasi publiknya, hasil \textit{reply Twitter bot} dapat dilihat pada salah satu reply yang terdapat pada gambar ~\ref{fig:HasilFinal1}. Twitter bot tidak akan mendapatkan error ketika akun Twitter Bot @kviniink mendapat banyak mention dalam satu tweet seperti pada gambar ~\ref{fig:testTweet}, jika format penulisan benar maka Twitter bot akan tetap mencari jalur transportasi publiknya yang dapat dilihar pada gambar ~\ref{fig:hasilTestTweet}.
 	
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.9\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilFinal1.PNG}
+		\caption{Hasil Reply Twitter Bot}
+		\label{fig:HasilFinal1}
+	\end{figure}
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.9\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/testTweet.PNG}
+		\caption{Akun Twitter Bot Mendapat Banyak Mention Dalam Satu Tweet}
+		\label{fig:testTweet}
+	\end{figure}
+	
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.9\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/hasilTestTweet.PNG}
+		\caption{Hasil Reply Twitter Bot}
+		\label{fig:hasilTestTweet}
+	\end{figure}
+
+	Gambar ~\ref{fig:HasilFinal1} , gambar ~\ref{fig:HasilFinal2} , dan gambar ~\ref{fig:HasilFinal3} merupakan beberapa hasil reply dari Twitter Bot.
+	
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.9\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilFinal2.PNG}
+			\caption{Hasil Reply Twitter Bot}
+		\label{fig:HasilFinal2}
+	\end{figure}
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.9\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/HasilFinal3.PNG}
+			\caption{Hasil Reply Twitter Bot}
+		\label{fig:HasilFinal3}
+	\end{figure}
 	
 \end{enumerate}

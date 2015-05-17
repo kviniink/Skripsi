@@ -38,7 +38,7 @@ Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengg
 \section{Twitter API}
 Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} melakukan manipulasi dan pengolahan data di Twitter. Twitter API adalah salah satu bentuk pendekatan dari Twitter yang berfokus pada jaringan dan memungkinkan developer memiliki hak untuk berpikir '\textit{out of the box}' untuk membuat aplikasi yang mereka inginkan. Tetapi tetap akan terjadi keterbatasan yang dimiliki Twitter API, yaitu :
 \begin{itemize}
-	\item Hanya bisa men-update 1000 per harinya, baik melalui handphone, website, API, dan sebagainya.
+	\item Hanya bisa melakukan \textit{tweet} 1000 per harinya, baik melalui handphone, website, API, dan sebagainya.
 	\item Total pesan hanya bisa sebanyak 250 per harinya, pada setiap dan semua perangkat.
 	\item 150 permintaan API per jam.
 	\item OAuth diijinkan 350 permintaan per jam.
@@ -49,16 +49,16 @@ Twitter API adalah aplikasi pihak ketiga yang memungkinkan \textit{programmer} m
 Twitter \textit{Search} API memungkinkan melakukan pencarian terhadap \textit{tweet} baru ataupun \textit{tweet} populer. Tetapi Twitter \textit{Search} API ini bukan fitur yang tersedia pada Twitter itu sendiri. API ini difokuskan kepada relefansi, bukan terhadap kelengkapan data. Ini berarti bahwa ada beberapa \textit{Tweet} atau akun akan hilang dari hasil pencarian.
 
 \paragraph{Bagaimana cara membuat sebuah \textit{query}}
-Cara terbaik dalam membuat sebuah \textit{query} adalah melakukan percobaan yang valid dan mengembalikan tweet yang sesuai. Cara mencobanya dapat dilakukan di \url{twitter.com/search}. URL yang ditampilkan pada browser akan berisi sintaks \textit{query} yang sesuai agar dapat digunakan kembali pada Twitter API. Berikut adalah contohnya:
+Cara terbaik dalam membuat sebuah \textit{query} adalah melakukan percobaan yang valid dan mengembalikan \textit{tweet} yang sesuai. Cara mencobanya dapat dilakukan pada \url{twitter.com/search}. URL yang ditampilkan pada browser akan berisi sintaks \textit{query} yang sesuai agar dapat digunakan kembali pada Twitter API. Berikut adalah contohnya:
 
 \begin{enumerate}
-	\item Melakukan pencarian untuk \textit{tweet} yang di-\textit{mention} kepada akun @twitterapi. Pencarian dilakukan di \url{twitter.com/search}.
+	\item Melakukan pencarian untuk \textit{tweet} yang di-\textit{mention} kepada akun @twitterapi. Pencarian dilakukan pada \url{twitter.com/search}.
 	\item Lakukan pengecekan dan salin URL yang ditampilkan pada browser. Sebagai contoh didapatkan URL seperti berikut, \url{https://twitter.com/search?q=\%40twitterapi}.
 	\item Ganti \url{https://twitter.com/search} dengan \url{https://api.twitter.com/1.1/search/tweets.json} dan akan didapatkan \url{https://api.twitter.com/1.1/search/tweets.json?q=\%40twitterapi}
 	\item Eksekusi URL tersebut untuk melakukan pencarian di dalam API.
 \end{enumerate}
 
-API v1.1 mewajibkan \textit{request} yang sudah diotentifikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan data yang sudah sangat lama, sedangkan Search API hanya melayani tweet dari seminggu terakhir. Contoh berbagai macam pencarian dapat dilihat pada tabel \ref{tab:MacamPencarianTweet}:
+API v1.1 mewajibkan \textit{request} yang sudah diotentikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan data yang sudah sangat lama, sedangkan \textit{Search} API hanya melayani tweet dari seminggu terakhir. Contoh berbagai macam pencarian dapat dilihat pada tabel \ref{tab:MacamPencarianTweet}:
 
 \begin{table}[h]
 \begin{tabular}{|p{5cm}|p{9cm}|}
