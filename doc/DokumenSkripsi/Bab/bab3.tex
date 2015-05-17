@@ -5,22 +5,20 @@ Pada bab ini akan dibahas mengenai analisis Twitter API, OAuth, KIRI API, Twitte
 
 \section{Analisis Data}
 
-Pada sub bab ini, akan dilakukan analisa tentang Twitter API, OAuth, KIRI API, dan Twitter4j. Setelah membaca dan menganalisis maka peneliti akan menentukan hal-hal  yang akan digunakan dalam membangun Twitter Bot untuk mencari jalur transportasi publik.
+Pada sub bab ini, akan dilakukan analisa tentang Twitter API, OAuth, KIRI API, dan Twitter4j. Setelah membaca dan menganalisis maka penulis akan menentukan hal-hal  yang akan digunakan dalam membangun \textit{Twitter bot} untuk mencari jalur transportasi publik.
 
 \subsection{Analisis Twitter API}
 Setelah melakukan analisis, perangkat lunak yang akan dibangun akan menggunakan \textit{Streaming} API, karena:
 \begin{itemize}
-	\item Streaming API adalah \textit{real-time} API, sedangkan Search API hanya dapat menangkap \textit{tweet} setiap beberapa waktu sekali. Pada aplikasi yang akan dibuat skenarionya adalah pengguna akan menanyakan rute transportasi publik dalam bentuk \textit{tweet} yang dikirimkan kepada user @kiriupdate, dalam skenario seperti ini dibutuhkanlah jawaban yang \textit{real-time}.
-	\item Menggunakan \textit{Public Stream} dalam \textit{endpoint streaming}. \textit{Public Stream} mengambil semua data publik, sehingga semua \textit{tweet} bisa ditangkap menggunakan \textit{Public Stream}. Dalam pembuatan \textit{Twitter Bot} untuk mencari jalur transportasi publik pungguna akan melakukan \textit{mention tweet} kepada akun @kiriupdate untuk dapat memperoleh balasan \textit{tweet} yang berisikan hasil pencarian jalur transportasi publik. Public Stream mempunyai fitur bernama \textit{track}, fitur ini berguna untuk menyaring \textit{tweet} berdasarkan \textit{keyword} yang sudah di \textit{track}. \textit{Keyword} yang akan di \textit{track} adalah @kiriupdate jadi program hanya menerima \textit{tweet} yang di \textit{mention} kepada akun @kiriupdate saja. \textit{User Stream} mengandung semua data yang berhubungan dengan satu akun tertentu seperti \textit{update status}, \textit{mention}, dan \textit{direct message}. Dalam kasus ini bisa saja menggunakan \textit{User Stream} tetapi kurang efisien karena \textit{tweet update status} dan \textit{direct message} tidak dibutuhkan. \textit{Site stream} merupakan \textit{multi-user stream}, dalam kasus Twitter Bot untuk mencari jalur transportasi publik ini akun yang dipakai untuk Twitter Bot hanya satu akun saja. Jadi penggunaan \textit{site stream} dalam kasus ini kurang efisien.
-	
-	\item Menggunakan \textit{User Stream} dalam \textit{endpoint streaming}. \textit{User Stream} mengandung hampir semua data yang berhubungan dengan satu user tertentu. Dalam pembuatan Twitter Bot untuk mencari jalur transportasi publik pengguna hanya dapat melakukan \textit{mention tweet} kepada user @kiriupdate untuk dapat memperoleh balasan \textit{tweet} yang berisikan hasil pencarian jalur transportasi publik. Sedangkan \textit{public stream} ini mengambil semua data publik, dalam kasus ini bisa saja menggunakan \textit{public stream} tetapi tidak efisien. \textit{Site stream} merupakan \textit{multi-user stream}, dalam kasus Twitter Bot untuk mencari jalur transportasi publik ini akun yang dipakai untuk Twitter Bot hanya satu akun saja. Jadi penggunaan \textit{site stream} dalam kasus ini kurang efisien.
+	\item Streaming API adalah \textit{real-time} API, sedangkan Search API hanya dapat menangkap \textit{tweet} setiap beberapa waktu sekali. Pada aplikasi yang akan dibuat skenarionya adalah pengguna akan menanyakan rute transportasi publik dalam bentuk \textit{tweet} yang dikirimkan kepada akun \textit{Twitter bot}, dalam skenario seperti ini dibutuhkanlah jawaban yang \textit{real-time}.
+	\item Menggunakan \textit{Public Stream} dalam \textit{endpoint streaming}. \textit{Public Stream} mengambil semua data publik, sehingga semua \textit{tweet} bisa ditangkap menggunakan \textit{Public Stream}. Dalam pembuatan \textit{Twitter Bot} untuk mencari jalur transportasi publik pungguna akan melakukan \textit{mention tweet} kepada akun \textit{Twitter bot} untuk dapat memperoleh balasan \textit{tweet} yang berisikan hasil pencarian jalur transportasi publik. Public Stream mempunyai fitur bernama \textit{track}, fitur ini berguna untuk menyaring \textit{tweet} berdasarkan \textit{keyword} tertentu. \textit{Keyword} yang akan di \textit{track} adalah nama akun dari \textit{Twitter bot}, jadi perangkat lunak hanya menerima \textit{tweet} yang di \textit{mention} kepada akun \textit{Twitter bot} saja. \textit{User stream} mengandung semua data yang berhubungan dengan satu akun tertentu seperti \textit{update status}, \textit{mention}, dan \textit{direct message}. Dalam kasus ini bisa saja menggunakan \textit{user stream} tetapi penggunaannya kurang efisien. Pengambilan \textit{tweet update status} dan \textit{direct message} tidak dibutuhkan dalam pembuatan perangkat lunak \textit{Twitter bot}. \textit{Site stream} merupakan versi \textit{multi-user stream}, dalam kasus \textit{Twitter bot} untuk mencari jalur transportasi publik ini akun yang digunakan untuk menjadi \textit{Twitter bot} hanya satu akun saja. Jadi penggunaan \textit{site stream} dalam kasus ini kurang efisien.
 \end{itemize}
 
 \subsection{Analisis OAuth}
-Setelah melakukan analisis, OAuth yang digunakan dalam pembuatan Twitter Bot untuk mencari jalur transportasi publik adalah \textit{3-legged authorization}. Penggunaan \textit{3-legged authorization} ini digunakan untuk mengotorisasi akun @kiriupdate, tetapi proses otentifikasi tidak perlu dilakukan kepada pengguna karena Twitter Bot yang dibuat menggunakan otentikasi langsung dari developer. \textit{Application-only authentication} tidak bisa digunakan karena \textit{application-only authentication} tidak bisa melakukan \textit{posting} \textit{tweet} dan tidak bisa melakukan koneksi dengan \textit{streaming endpoint}. Sedangkan dalam kasus Twitter Bot untuk mencari jalur transportasi publik dibutuhkan otentikasi yang dapat memposting \textit{tweet} dan melakukan koneksi dengan \textit{streaming endpoint}. Lalu untuk otentikasi \textit{PIN-based authorization} tidak cocok karena otentikasi sudah dilakukan langsung dari developer tidak lagi meminta PIN untuk proses otentikasi.
+Setelah melakukan analisis, OAuth yang digunakan dalam pembuatan \textit{Twitter bot} untuk mencari jalur transportasi publik adalah \textit{3-legged authorization}. Penggunaan \textit{3-legged authorization} ini digunakan untuk melakukan otentikasi akun \textit{Twitter bot}. Proses otentikasi tidak perlu dilakukan kepada pengguna, karena Twitter Bot yang dibuat menggunakan otentikasi langsung dari developer. \textit{Application-only authentication} tidak bisa digunakan karena \textit{application-only authentication} tidak bisa melakukan \textit{posting} \textit{tweet} dan tidak bisa melakukan koneksi dengan \textit{streaming endpoint}. Sedangkan dalam kasus \textit{Twitter bot} untuk mencari jalur transportasi publik dibutuhkan otentikasi yang dapat memposting \textit{tweet} dan melakukan koneksi dengan \textit{streaming endpoint}. Lalu untuk otentikasi \textit{PIN-based authorization} tidak cocok karena otentikasi sudah dilakukan langsung dari developer tidak lagi meminta PIN untuk proses otentikasi.
 
 \subsection{Analisis KIRI API}
-KIRI API menyediakan tiga layanan yang dapat digunakan, untuk aplikasi Twitter Bot akan membutuhkan dua layanan yang diberikan KIRI API. Layanan tersebut adalah \textit{Routing Web Service} dan \textit{Search Place Web Service}. \textit{Routing Web Service} adalah layanan yang digunakan untuk mendapatkan langkah perjalanan dari lokasi asal ke lokasi tujuan. Sedangkan \textit{Search Place Web Service} berguna untuk menemukan rute perjalanan berdasarkan \textit{latitute} dan \textit{longitude} koordinat,  layanan \textit{Search Place Web Service} ini juga membantu untuk mengubah string teks untuk \textit{latitude} dan \textit{longitude}.
+KIRI API menyediakan tiga layanan yang dapat digunakan. Twitter bot yang akan dibangun membutuhkan dua layanan yang diberikan KIRI API. Layanan tersebut adalah \textit{Routing Web Service} dan \textit{Search Place Web Service}. \textit{Routing Web Service} adalah layanan yang digunakan untuk mendapatkan langkah perjalanan dari lokasi asal ke lokasi tujuan. Sedangkan \textit{Search Place Web Service} berguna untuk menemukan rute perjalanan berdasarkan \textit{latitute} dan \textit{longitude} koordinat. Layanan \textit{Search Place Web Service} ini membantu mengubah \textit{latitude} dan \textit{longitude} kedalam bentuk string.
 
 Untuk setiap permintaan terhadap KIRI API dibutuhkan \textit{API key}. \textit{API key} ini sendiri berguna sebagai \textit{password} untuk mengakses KIRI API. \textit{API key} ini sendiri dapat didapatkan di https:\/\/dev.kiri.travel\/bukitjarian\/. Dalam pembuatan Twitter Bot untuk mencari jalur transportasi publik ini KIRI memberikan \textit{API key} khusus yaitu 889C2C8FBB82C7E6.
 
@@ -29,7 +27,7 @@ Berikut adalah contoh pemanfaatan KIRI API :
 \begin{itemize}
 	\item \textit{Search Place Web Service}
 	
-	Format \textit{Search Place Web Service} yang dikirim melalui URL adalah \url{kiri.travel/handle.php?version=2\&mode=searchplace\&region=cgk/bdo/sub\&querystring="string"\&apikey=889C2C8FBB82C7E6}.
+	Format \textit{Search Place Web Service} yang dikirim melalui URL adalah \url{kiri.travel\/handle.php?version=2\&mode=searchplace\&region=cgk\/bdo\/sub\&querystring="string"\&apikey=889C2C8FBB82C7E6}.
 	
 	Parameter yang dikirimkan adalah :
 	
@@ -125,16 +123,16 @@ Berikut adalah contoh pemanfaatan KIRI API :
 		\item finish
 		
 		Merupakan koordinat tujuan. Parameter ini berupa latitude dan longitude.
-		\item presentation : "mobile"
+		\item presentation : "desktop"
 		
-		Parameter \textit{presentation} ini terdapat dua jenis yaitu "mobile" untuk perangkat bergerak dan "desktop" untuk komputer. Karena perangkat lunak ini dirancang untuk Twitter Bot yang kebanyakan penggunanya menggunakan perangkat bergerak maka parameter dari \textit{presentation} yang cocok adalah "mobile".
+		Parameter \textit{presentation} ini terdapat dua jenis yaitu "mobile" untuk perangkat bergerak dan "desktop" untuk komputer. Perbedaan mobile dan desktop terletak pada icon yang diberikan. Jika menggunakan presentation "mobile" maka hasil kembalian akan terdapat \%toicon dan \%fromicom, hasil tersebut tidak dibutuhkan oleh pengguna karena pengguna \textit{Twitter bot} tidak dapat melihat map jalur transportasi publik yang diberikan.
 		\item apikey : 889C2C8FBB82C7E6
 		
 		Merupakan password yang digunakan untuk mengakses KIRI API.
 	\end{enumerate}
 	
 	Penulis mencoba mencari langkah perjalanan dari pvj menuju bip. Layanan dikirimkan ke URL kiri.travel/handle.php. Berikut adalah format layanan yang dituliskan:
-	\url{http://kiri.travel/handle.php?version=2\&mode=findroute\&locale=en\&start=-6.88923,107.59615\&finish=-6.90864,107.61108\&presentation=mobile\&apikey=889C2C8FBB82C7E6}.
+	\url{http://kiri.travel/handle.php?version=2\&mode=findroute\&locale=en\&start=-6.88923,107.59615\&finish=-6.90864,107.61108\&presentation=desktop\&apikey=889C2C8FBB82C7E6}.
 	
 	Berikut adalah hasil kembalian dari KIRI API:
 	
@@ -148,28 +146,49 @@ Berikut adalah contoh pemanfaatan KIRI API :
 						"walk",
 						"walk",
 						["-6.88923,107.59615","-6.88958,107.59691"],
-						"Walk about 92 meter from your starting point \%fromicon to Jalan Sukajadi \%toicon.",
+						"Walk about 92 meter from your starting point to Jalan Sukajadi.",
 						null
 					],
 					[
 						"angkot",
 						"kalapakarangsetra",
-						["-6.88958,107.59691","-6.89052,107.59696","-6.89146,107.59701","-6.89239,107.59706","-6.89333,107.59711","-6.89333,107.59711","-6.89466,107.59719","-6.89598,107.59727","-6.89598,107.59727","-6.89700,107.59731","-6.89801,107.59735","-6.89903,107.59740","-6.90005,107.59744","-6.90005,107.59744","-6.90113,107.59747","-6.90222,107.59751","-6.90331,107.59754","-6.90439,107.59757","-6.90439,107.59757","-6.90540,107.59760","-6.90641,107.59763","-6.90641,107.59763","-6.90650,107.59781","-6.90667,107.59887","-6.90684,107.59992","-6.90684,107.59992","-6.90690,107.60086","-6.90696,107.60179","-6.90696,107.60179","-6.90704,107.60306","-6.90711,107.60433"],
-						"Take angkot Kalapa - Karang Setra at Jalan Sukajadi \%fromicon, and alight at Jalan Pajajaran \%toicon about 2.6 kilometer later.",
+						["-6.88958,107.59691","-6.89052,107.59696","-6.89146,107.59701",
+						"-6.89239,107.59706","-6.89333,107.59711","-6.89333,107.59711",
+						"-6.89466,107.59719","-6.89598,107.59727","-6.89598,107.59727",
+						"-6.89700,107.59731","-6.89801,107.59735","-6.89903,107.59740",
+						"-6.90005,107.59744","-6.90005,107.59744","-6.90113,107.59747",
+						"-6.90222,107.59751","-6.90331,107.59754","-6.90439,107.59757",
+						"-6.90439,107.59757","-6.90540,107.59760","-6.90641,107.59763",
+						"-6.90641,107.59763","-6.90650,107.59781","-6.90667,107.59887",
+						"-6.90684,107.59992","-6.90684,107.59992","-6.90690,107.60086",
+						"-6.90696,107.60179","-6.90696,107.60179","-6.90704,107.60306",
+						"-6.90711,107.60433"],
+						"Take angkot Kalapa - Karang Setra at Jalan Sukajadi, and alight at Jalan Pajajaran about 2.6 kilometer later.",
 						null
 					],
 					[
 						"angkot",
 						"ciroyomantapani",
-						["-6.90713,107.60441","-6.90713,107.60441","-6.90679,107.60440","-6.90563,107.60438","-6.90448,107.60435","-6.90448,107.60435","-6.90429,107.60448","-6.90422,107.60487","-6.90403,107.60527","-6.90397,107.60564","-6.90402,107.60608","-6.90436,107.60671","-6.90488,107.60725","-6.90522,107.60749","-6.90588,107.60771","-6.90625,107.60772","-6.90642,107.60783","-6.90658,107.60806","-6.90678,107.60929","-6.90678,107.60929","-6.90685,107.60939","-6.90787,107.60939","-6.90889,107.60939","-6.90889,107.60939","-6.90913,107.60920","-6.90918,107.60878","-6.90924,107.60847","-6.90934,107.60843","-6.91008,107.60880","-6.91026,107.60890","-6.91030,107.60905","-6.91029,107.60923","-6.91020,107.60951","-6.90976,107.61056","-6.90976,107.61056","-6.90974,107.61091"],
-						"Take angkot Ciroyom - Antapani at Jalan Pajajaran \%fromicon, and alight at Jalan Aceh \%toicon about 1.7 kilometer later.",
+						["-6.90713,107.60441","-6.90713,107.60441","-6.90679,107.60440",
+						"-6.90563,107.60438","-6.90448,107.60435","-6.90448,107.60435",
+						"-6.90429,107.60448","-6.90422,107.60487","-6.90403,107.60527",
+						"-6.90397,107.60564","-6.90402,107.60608","-6.90436,107.60671",
+						"-6.90488,107.60725","-6.90522,107.60749","-6.90588,107.60771",
+						"-6.90625,107.60772","-6.90642,107.60783","-6.90658,107.60806",
+						"-6.90678,107.60929","-6.90678,107.60929","-6.90685,107.60939",
+						"-6.90787,107.60939","-6.90889,107.60939","-6.90889,107.60939",
+						"-6.90913,107.60920","-6.90918,107.60878","-6.90924,107.60847",
+						"-6.90934,107.60843","-6.91008,107.60880","-6.91026,107.60890",
+						"-6.91030,107.60905","-6.91029,107.60923","-6.91020,107.60951",
+						"-6.90976,107.61056","-6.90976,107.61056","-6.90974,107.61091"],
+						"Take angkot Ciroyom - Antapani at Jalan Pajajaran, and alight at Jalan Aceh about 1.7 kilometer later.",
 						null
 					],
 					[
 						"walk",
 						"walk",
 						["-6.90974,107.61091","-6.90864,107.61108"],
-						"Walk about 124 meter from Jalan Aceh \%fromicon to your destination \%toicon.",
+						"Walk about 124 meter from Jalan Aceh to your destination.",
 						null
 					]
 					],
@@ -180,13 +199,13 @@ Berikut adalah contoh pemanfaatan KIRI API :
 \end{itemize}
 
 \subsection{Analisis Twitter4J}
-Setelah melakukan analisis, \textit{library} yang digunakan untuk membuat Twitter Bot untuk mencari jalur transportasi publik terdiri dari :
+Setelah melakukan analisis, \textit{library} yang digunakan untuk membuat \textit{Twitter bot} untuk mencari jalur transportasi publik terdiri dari :
 \begin{itemize}
-	\item \textit{TwitterStream}
-	\item \textit{UserStreamListener}
-	\item \textit{TwitterFactory}
-	\item \textit{RequestToken}
-	\item \textit{Status}
+	\item Twitter
+	\item StatusListener
+	\item StatusUpdate
+	\item TwitterFactory
+	\item TwitterStream
 \end{itemize}
 
 Untuk menggunakan Twitter4J diperlukan \textit{properties} untuk proses konfigurasi. Konfigurasi dapat dilakukan dengan cara membuat \textit{file} twitter4j.properties , kelas \textit{ConfigurationBuilder}, dan \textit{System Property}. Ketiganya dapat digunakan untuk melakukan konfigurasi Twitter4J, tetapi penulis menggunakan \textit{file} twitter4j.properties karena lebih praktis dalam pemakaiannya. Berikut adalah contoh penggunaan dari ketiganya :
@@ -234,20 +253,20 @@ Untuk menggunakan Twitter4J diperlukan \textit{properties} untuk proses konfigur
 
 \section{Analisis Perangkat Lunak}
 
-Perangkat lunak yang akan dibangun adalah Twitter Bot untuk mencari jalur transportasi publik. Twitter Bot yang akan dibangun dapat membalas \textit{tweet} secara \textit{real-time} kepada \textit{user} untuk memberitahukan jalur-jalur yang harus ditempuh menggunakan transportasi publik. Aplikasi yang digunakan untuk membangun Twitter Bot Untuk Mencari Jalur Transportasi Publik adalah NetBeans IDE 8.0.2 dan akun yang digunakan untuk pengujian Twitter Bot adalah akun @kviniink. Pada sub bab ini akan dibahas kebutuhan aplikasi, diagram \textit{use case}, skenario, dan\textit{ diagram class} dari perangkat lunak yang akan dibangun.
+Perangkat lunak yang dibangun adalah \textit{Twitter bot} untuk mencari jalur transportasi publik. \textit{Twitter bot} yang dibangun dapat membalas \textit{tweet} secara \textit{real-time} kepada pengguna untuk memberitahukan jalur-jalur yang harus ditempuh menggunakan transportasi publik. Perangkat lunak yang digunakan untuk membangun Twitter Bot Untuk Mencari Jalur Transportasi Publik adalah NetBeans IDE 8.0.2 dan akun yang digunakan untuk pengujian Twitter Bot adalah akun @kviniink. Pada sub bab ini akan dibahas kebutuhan aplikasi, diagram \textit{use case}, skenario, dan\textit{ diagram class} dari perangkat lunak yang akan dibangun.
 
 \subsection{Spesifikasi Kebutuhan Fungsional}
 Spesifikasi kebutuhan perangkat lunak yang akan dibangun untuk membuat Twitter Bot adalah
 \begin{enumerate}
-	\item Perangkat lunak dapat melakukan otentikasi untuk akun Twitter Bot yang digunakan.
-	\item ??Perangkat lunak?? dapat menerima dan membaca \textit{tweet} yang di \textit{mention} kepada user @kviniink
-	\item Dapat Melakukan proses pencarian koordinat suatu lokasi
+	\item Dapat melakukan otentikasi untuk akun \textit{Twitter bot} yang digunakan.
+	\item Dapat menerima dan membaca \textit{tweet} yang di \textit{mention} kepada akun \textit{Twitter bot} @kviniink
+	\item Dapat melakukan proses pencarian koordinat suatu lokasi
 	\item Dapat melakukan proses pencarian jalur transportasi publik dari lokasi awal menuju lokasi tujuan
-	\item Dapat membalas \textit{tweet} pencarian jalur transportasi publik yang diterima oleh Twitter bot dengan melakukan \textit{reply} tweet yang berisikan hasil pencarian jalur transportasi publik dengan format yang sudah ditentukan.
+	\item Dapat membalas \textit{tweet} pencarian jalur transportasi publik yang diterima oleh \textit{Twitter bot} dengan melakukan \textit{reply} \textit{tweet} yang berisikan hasil pencarian jalur transportasi publik dengan format yang sudah ditentukan.
 \end{enumerate}
 
 \subsection{\textit{Use Case Diagram}}
-\textit{Use case Diagram} pada perangkat lunak yang akan dibangun ini mengandung satu aktor, yaitu pengguna. \textit{Use case diagram} dapat dilihat pada gambar.
+Perangkat lunak yang dibangun akan memiliki satu figur utama, yaitu tweet mencari informasi transportasi publik. \textit{Use case Diagram} pada perangkat lunak yang akan dibangun ini mengandung satu aktor, yaitu pengguna. Gambar ~\ref{fig:usecase} menunjukkan diagram \textit{use case} dari perangkat lunak.
 
 \begin{figure}[htbp]
 	\centering
@@ -257,7 +276,7 @@ Spesifikasi kebutuhan perangkat lunak yang akan dibangun untuk membuat Twitter B
 \end{figure}
 
 \paragraph{Skenario \textit{Use Case}}
-Skenario ini hanya memiliki satu aktor yaitu pengguna. \textit{Tweet} mencari informasi transportasi publik pada skenario ini dilakukan dengan melakukan \textit{tweet} kepada user @kiriupdate berisikan format yang sesuai untuk pencarian rute transportasi. 
+Skenario ini hanya memiliki satu aktor yaitu pengguna. \textit{Tweet} mencari informasi transportasi publik pada skenario ini dilakukan dengan melakukan \textit{tweet} kepada akun \textit{Twitter bot} @kviniink berisikan format yang sesuai untuk pencarian rute transportasi. 
 
 \begin{table}[h]
 	\begin{tabular}{|l|l|}
@@ -275,13 +294,13 @@ Skenario ini hanya memiliki satu aktor yaitu pengguna. \textit{Tweet} mencari in
 \end{table}
 
 \subsection{\textit{Class Diagram}}
-Untuk membuat \textit{class diagram} Twitter Bot untuk mencari jalur transportasi publik, dibutuhkan kebutuhan kelas dari skrenario. Pada skenario masukan akan terjadi hal-hal seperti dibawah ini:
+Untuk membuat \textit{class diagram Twitter bot} untuk mencari jalur transportasi publik, dibutuhkan kebutuhan kelas dari skenario. Pada skenario ~\ref{tab:SkenarioTweetMencariInformasiTransportasi}, masukan akan terjadi hal-hal seperti dibawah ini:
 \begin{enumerate}
-	\item Perangkat lunak akan berjalan terus untuk menjalankan Twitter Bot.
-	\item Pengguna melakukan \textit{Tweet} mencari informasi transportasi dengan cara melakukan \textit{mention} kepada \textit{user} @kiriupdate dengan format yang sesuai dengan ketentuan.
-	\item Perangkat lunak menerima mention dari pengguna.
-	\item Perangkat lunak akan mencari jalur transportasi umum.
-	\item Melalukan \textit{reply} kepada pengguna berupa jalur transportasi publik yang harus ditempuh. 
+	\item \textit{Twitter bot} akan berjalan terus hingga di non-aktifkan.
+	\item Pengguna melakukan \textit{Tweet} mencari informasi transportasi dengan cara melakukan \textit{mention} kepada akun \textit{Twitter bot} @kviniink dengan format yang sesuai dengan ketentuan.
+	\item \textit{Twitter bot} menerima \textit{mention} dari pengguna.
+	\item \textit{Twitter bot} akan mencari jalur transportasi publik.
+	\item \textit{Twitter bot} melalukan \textit{reply} kepada pengguna yang berisikan jalur transportasi publik yang harus ditempuh. 
 \end{enumerate}
 
 Berikut adalah \textit{class diagram} sederhana:
