@@ -47,13 +47,13 @@ Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan 
 							\item Method
 							
 									\begin{itemize}
-												\item public void onStatus(Status status), merupakan \textit{method} berguna yang menangkap \textit{tweet} dan memproses \textit{tweet} tersebut. Jika ada \textit{tweet} yang di-\textit{mention} kepada akun \textit{Twitter bot} dan \textit{tweet} yang diterima merupakan \textit{tweet} untuk mencari jalur transportasi publik maka \textit{tweet} tersebut akan dimasukan ke atribut yang sudah disediakan. Atribut tersebut antara lain adalah \textit{user}, lokasi awal dan lokasi tujuan. Setelah mendapatkan lokasi awal dan lokasi tujuan barulah proses pencarian dimulai dengan menggunakan \textit{method GetLatLong} dan \textit{method GetTrack} yang terdapat di kelas KIRIGateway. Hasil pencarian akan dimasukan ke dalam atribut \textit{routingResponse}, \textit{step}, dan \textit{steps}. Setelah itu akan dilakukan pemanggilan \textit{method Tweet} untuk melakukan proses \textit{reply}.
-												\item public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice), merupakan method overload dari kelas \textit{interface} \textit{StatusListener}.
-												\item public void onTrackLimitationNotice(int numberOfLimitedStatuses), merupakan method overload dari kelas \textit{interface} \textit{StatusListener}.
-												\item public void onScrubGeo(long userId, long upToStatusId), merupakan method overload dari kelas \textit{interface} \textit{StatusListener}.
-												\item public void onException(Exception ex), merupakan method yang berguna untuk menangkap \textit{exception}.
-												\item public void onStallWarning(StallWarning sw), merupakan method overload dari kelas \textit{interface} \textit{StatusListener}.
-												\item public void Tweet(String user, String paramStatusUpdate), merupakan \textit{method} untuk melakukan \textit{reply} yang ditujukan kepada \textit{user} pengguna \textit{Twitter bot}. Twitter hanya dapat melakukan \textit{tweet} dengan batas 140 karakter, oleh karena itu method ini akan mengatasi keterbatasan \textit{tweet} tersebut dengan melakukan pembagian tweet. Method ini akan memberi tambahan waktu yang sesuai dengan server di setiap akhir \textit{tweet}, hal ini bertujuan untuk menghindari adanya duplikat tweet.
+												\item public void onStatus(Status status), merupakan \textit{method} yang berguna untuk menangkap \textit{tweet} dan memproses \textit{tweet} tersebut. Jika ada \textit{tweet} yang di-\textit{mention} kepada akun \textit{Twitter bot} dan \textit{tweet} yang diterima merupakan \textit{tweet} untuk mencari jalur transportasi publik, maka \textit{tweet} tersebut akan dimasukan ke atribut yang sudah disediakan. Atribut tersebut antara lain adalah \textit{user}, lokasi awal dan lokasi tujuan. Setelah mendapatkan lokasi awal dan lokasi tujuan barulah proses pencarian dimulai dengan menggunakan \textit{GetLatLong method} dan \textit{GetTrack method} yang terdapat di kelas KIRIGateway. Hasil pencarian akan dimasukan ke dalam atribut \textit{routingResponse}, \textit{step}, dan \textit{steps}. Setelah itu akan dilakukan pemanggilan \textit{Tweet method} untuk melakukan proses \textit{reply}.
+												\item public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice), merupakan \textit{overload method} dari kelas \textit{interface} \textit{StatusListener}.
+												\item public void onTrackLimitationNotice(int numberOfLimitedStatuses), merupakan \textit{overload method} dari kelas \textit{interface} \textit{StatusListener}.
+												\item public void onScrubGeo(long userId, long upToStatusId), merupakan \textit{overload method} dari kelas \textit{interface} \textit{StatusListener}.
+												\item public void onException(Exception ex), merupakan \textit{method} yang berguna untuk menangkap \textit{exception}.
+												\item public void onStallWarning(StallWarning sw), merupakan \textit{overload method} dari kelas \textit{interface} \textit{StatusListener}.
+												\item public void Tweet(String user, String paramStatusUpdate), merupakan \textit{method} untuk melakukan \textit{reply} yang ditujukan kepada akun pengguna \textit{Twitter bot}. Twitter hanya dapat melakukan \textit{tweet} dengan batas 140 karakter, oleh karena itu \textit{method} ini akan mengatasi keterbatasan \textit{tweet} tersebut dengan melakukan pembagian \textit{tweet}. Method ini akan memberi tambahan waktu yang sesuai dengan \textit{server} di setiap akhir \textit{tweet}, hal ini bertujuan untuk menghindari adanya \textit{duplicate tweet}.
 									\end{itemize}
 				\end{itemize}
 		
@@ -66,7 +66,7 @@ Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan 
 							
 									\begin{itemize}
 												\item public static String GetLatLong(String destination), merupakan \textit{method} yang digunakan untuk mencari koordinat dari suatu lokasi. Hasil kembalian dari \textit{method} ini berupa \textit{latitude} and \textit{longitude} yang diberikan oleh KIRI API lalu diubah ke dalam bentuk \textit{String}.
-												\item public static String GetTrack(String dest1, String dest2), merupakan \textit{method} yang digunakan untuk mencari jalur transportasi publik dari lokasi awal ke lokasi tujuan. Hasil kembalian dari method ini adalah langkah-langkah perjalanan dari lokasi awal ke lokasi tujuan dengan menggunakan transportasi publik.
+												\item public static String GetTrack(String dest1, String dest2), merupakan \textit{method} yang digunakan untuk mencari jalur transportasi publik dari lokasi awal ke lokasi tujuan. Hasil kembalian dari \textit{method} ini adalah langkah-langkah perjalanan dari lokasi awal ke lokasi tujuan dengan menggunakan transportasi publik.
 									\end{itemize}
 				\end{itemize}
 		
@@ -141,11 +141,8 @@ Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan 
 \end{itemize}
 
 
-
-
 \subsection{Sequence Diagram}
-
-Pada sub bab ini, akan dijelaskan alur program dengan menggunakan \textit{sequence diagram} pada ~\ref{fig:Sequence Diagram Final}
+Pada sub bab ini, akan dijelaskan alur program dengan menggunakan \textit{sequence diagram} pada gambar ~\ref{fig:Sequence Diagram Final}
 
 \begin{sidewaysfigure}[htbp]
 	\centering
@@ -155,34 +152,23 @@ Pada sub bab ini, akan dijelaskan alur program dengan menggunakan \textit{sequen
 \end{sidewaysfigure}
 
 
-Pertama, program akan melakukan \textit{streaming} pada saat kelas \textit{main} dijalankan. Kelas \textit{main} akan membuka gerbang untuk mengakses \textit{Twitter API}, dengan menggunakan \textit{Streaming} API aplikasi akan menangkap semua \textit{tweet} yang \textit{mention} kepada akun \textit{Twitter bot} @kviniink. Aplikasi akan terus melakukan \textit{streaming tweet} hingga aplikasi dinon-aktifkan.
+Pertama, perangkat lunak akan melakukan \textit{streaming} pada saat kelas \textit{main} dijalankan. Kelas \textit{main} akan membuka gerbang untuk mengakses \textit{Twitter API}, dengan menggunakan \textit{Streaming} API perangkat lunak akan menangkap semua \textit{tweet} yang melakukan \textit{mention} kepada akun \textit{Twitter bot} @kviniink. Perangkat lunak akan terus melakukan \textit{streaming tweet} hingga perangkat lunak dinon-aktifkan.
 
-Kelas TwitterGateway akan memproses \textit{tweet} yang di-\textit{mention} kepada akun \textit{Twitter bot} @kviniink. \textit{Method onStatus} akan melakukan pengecekan apakah \textit{tweet} tersebut merupakan \textit{tweet} untuk mencari jalur transportasi publik atau bukan. Jika benar maka nama \textit{user} pengirim, lokasi awal dan lokasi tujuan akan disimpan di atribut yang sudah disediakan lalu akan dicari koordinat dari masing-masing lokasi menggunakan KIRI API. Proses mencari koordinat ini dilakukan oleh kelas KIRIGateway.
+Kelas TwitterGateway akan memproses \textit{tweet} yang di-\textit{mention} kepada akun \textit{Twitter bot} @kviniink. \textit{onStatus Method} akan melakukan pengecekan apakah \textit{tweet} tersebut merupakan \textit{tweet} untuk mencari jalur transportasi publik atau bukan. Jika benar, maka nama akun pengirim, lokasi awal, dan lokasi tujuan akan disimpan di atribut yang sudah disediakan. Setelah itu akan dicari koordinat dari masing-masing lokasi menggunakan KIRI API. Proses pencariian koordinat dilakukan oleh kelas KIRIGateway.
 
-Kelas KIRIGateway akan memanggil \textit{method GetLatLon} untuk mencari koordinat suatu lokasi. Setelah didapatkan koordinat lokasi awal dan lokasi tujuan, kelas TwitterGateway akan mengubah hasil dari \textit{method GetLatLon} yang berupa \textit{JSON} menjadi format \textit{String}. Setelah didapatkan koordinat lokasi awal dan koordinat lokasi tujuan maka hasil dari masing-masing koordinat dikembalikan kepada kelas KIRIGateway untuk dicari jalur transportasi publik dari lokasi awal menuju lokasi tujuan menggunakan \textit{method GetTrack}. Hasil dari \textit{method GetTrack} akan disimpan pada atribut \textit{step, steps}, dan \textit{routingResult}.
+Kelas KIRIGateway akan memanggil \textit{GetLatLon method} untuk mencari koordinat suatu lokasi. Setelah didapatkan koordinat lokasi awal dan lokasi tujuan, kelas TwitterGateway akan mengubah hasil dari \textit{GetLatLon method} yang berupa \textit{JSON} menjadi format \textit{String}. Setelah didapatkan koordinat lokasi awal dan koordinat lokasi tujuan maka hasil dari masing-masing koordinat dikembalikan kepada kelas KIRIGateway untuk dicari jalur transportasi publik dari lokasi awal menuju lokasi tujuan menggunakan \textit{GetTrack method}. Hasil dari \textit{GetTrack method} akan disimpan pada atribut \textit{step, steps}, dan \textit{routingResult}.
 
-Setelah selesai, langkah-langkah jalur transportasi publik siap di \textit{reply} kepada pengguna. Proses \textit{reply} dilakukan oleh \textit{method tweet} yang terdapat pada kelas TwitterGateway. Tweet tersebut berisi tentang jalur transportasi publik dari lokasi awal menuju lokasi tujuan.\textit{Tweet} akan di-\textit{reply} satu per satu sesuai dengan banyaknya \textit{step} yang ada. Aplikasi akan terus melakukan proses tersebut hingga aplikasi di\textit{non-aktifkan}.
+Setelah selesai, langkah-langkah jalur transportasi publik siap untuk di \textit{reply} kepada pengguna. Proses \textit{reply} dilakukan oleh \textit{tweet method} yang terdapat pada kelas TwitterGateway. Tweet tersebut berisi tentang jalur transportasi publik dari lokasi awal menuju lokasi tujuan.\textit{Tweet} akan di-\textit{reply} satu per satu sesuai dengan banyaknya \textit{step} yang ada. Perangkat lunak akan terus melakukan proses tersebut hingga perangkat lunak dinon-aktifkan.
 
-\iffalse
+\newpage
 \subsection{Perancangan Antar Muka}
-Aplikasi yang akan dibangun tidak memiliki antarmuka. Interaksi dengan pengguna dapat dilakukan melalui website atau aplikasi Twitter. Gambar ~\ref{fig:Homepage Mobile Twitter} adalah tampilan antar muka dari Twitter yang diakses melalui mobile. Dari situlah, pengguna dapat melakukan tweet untuk mencari jalur transportasi publik. Tweet dilakukan dengan cara menuliskan tweet kepada user @kviniink.
+Perangkat lunak yang akan dibangun memiliki antar muka berbasis teks, tetapi tampilan antar muka untuk pengguna berbeda-beda. Interaksi dengan pengguna dapat dilakukan melalui \textit{website} atau aplikasi Twitter. Gambar ~\ref{fig:Homepage Mobile Twitter} adalah tampilan antar muka dari Twitter yang diakses melalui \textit{website mobile} Twitter \url{https://mobile.twitter.com/}. Antar muka \textit{Twitter bot} akan menampilkan \textit{tweet} yang diterima oleh perangkat lunak, dan menampilkan hasil \textit{tweet} yang di-\textit{reply} \textit{Twitter bot} kepada pengguna.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Homepage Mobile Twitter.PNG}
-	\caption{Homepage Twitter versi mobile}
+		\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Homepage Mobile Twitter.PNG}
+	\caption{Homepage Twitter yang Diakses Melalui Mobile Twitter}
 	\label{fig:Homepage Mobile Twitter}
 \end{figure}
-
-Gambar ~\ref{fig:Textbox Mobile Tweet} menunjukan menu untuk melakukan tweet. Pertama, format yang dimasukan harus benar. Format dari penulisan tweet adalah "`lokasi awal"' to "`lokasi tujuan"'. Ketika user melakukan tweet maka \textit{Twitter bot} untuk mencari jalur transportasi publik akan menangkap tweet tersebut dan akan memproses tweet tersebut, rancangan dari hasil tangkapan tweet dapat dilihat pada gambar ??. Sedangkan rancangan dari hasil pencarian dapat dilihat pada gambar ??.
-
-\begin{figure}[hp]
-	\centering
-		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Textbox Mobile Tweet.PNG}
-	\caption{Tampilan untuk melakukan tweet}
-	\label{fig:Textbox Mobile Tweet}
-\end{figure}
-\fi
-
 
 

@@ -7,6 +7,7 @@
 		import java.io.InputStreamReader;
 		import java.net.HttpURLConnection;
 		import java.net.URL;
+		import java.net.URLEncoder;
 
 		/**
 		 *
@@ -14,7 +15,7 @@
 		 */
 		public class KIRIGateway {
 				public static String GetLatLong(String destination) throws Exception {
-								String url = "http://kiri.travel/handle.php?version=2&mode=searchplace&region=bdo&querystring="+destination+"&apikey=889C2C8FBB82C7E6";
+								String url = "http://kiri.travel/handle.php?version=2&mode=searchplace&region=bdo&querystring=" + URLEncoder.encode(destination.trim(), "UTF-8")+"&apikey=889C2C8FBB82C7E6";
 
 								URL obj = new URL(url);
 								HttpURLConnection con = (HttpURLConnection) obj.openConnection();
