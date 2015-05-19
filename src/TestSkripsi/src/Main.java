@@ -1,6 +1,5 @@
 
 import twitter4j.FilterQuery;
-import twitter4j.TwitterException;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
 

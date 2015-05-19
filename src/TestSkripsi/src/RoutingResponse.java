@@ -37,7 +37,4 @@ public class RoutingResponse {
     public void setRoutingResult(Steps routingResult) {
         this.routingResult = routingResult;
     }
-
-    
-    
 }
