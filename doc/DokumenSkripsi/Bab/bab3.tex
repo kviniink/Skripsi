@@ -199,7 +199,7 @@ Berikut adalah contoh pemanfaatan KIRI API :
 \end{itemize}
 
 \subsection{Analisis Twitter4J}
-Setelah melakukan analisis, \textit{library} yang digunakan untuk membuat \textit{Twitter bot} untuk mencari jalur transportasi publik terdiri dari :
+Setelah melakukan analisis, kelas yang digunakan untuk membuat \textit{Twitter bot} untuk mencari jalur transportasi publik terdiri dari :
 \begin{itemize}
 	\item Twitter
 	\item StatusListener
@@ -208,52 +208,20 @@ Setelah melakukan analisis, \textit{library} yang digunakan untuk membuat \texti
 	\item TwitterStream
 \end{itemize}
 
-Untuk menggunakan Twitter4J diperlukan \textit{properties} untuk proses konfigurasi. Konfigurasi dapat dilakukan dengan cara membuat \textit{file} twitter4j.properties , kelas \textit{ConfigurationBuilder}, dan \textit{System Property}. Ketiganya dapat digunakan untuk melakukan konfigurasi Twitter4J, tetapi penulis menggunakan \textit{file} twitter4j.properties. Penggunaan twitter4j.properties lebih praktis dalam pemakaiannya. Berikut adalah contoh penggunaan dari ketiganya :
+Menggunakan \textit{file} twitter4j.properties. Penggunaan twitter4j.properties lebih praktis dalam pemakaiannya karena memiliki file tersendiri khusus untuk menyimpan \textit{consumerKey}, \textit{consumerSecret}, \textit{accessToken}, dan \textit{accessTokenSecret}.
+
+\subsection{Analisis \textit{Tweet}}
+Setelah melakukan analisis, \textit{username} dari Twitter memiliki minimal 3 karakter dan maksimal 15 karakter. Dikarenakan keterbatasan 140 karakter pada setiap \textit{tweet}, maka diperlukan algoritma untuk memecah-mecah instruksi dari KIRI dan membuatnya ke dalam bentuk \textit{tweet}. \textit{Routing web service} pada KIRI API akan mengembalikan rute transportasi publik dari lokasi awal menuju lokasi tujuan dalam bentuk JSON. Terdapat kemungkinan bahwa hasil JSON dari KIRI API setelah ditambah dengan \textit{username} pengguna \textit{Twitter bot} akan lebih dari 140 karakter. Berikut adalah penjelasan dari algoritma untuk memecah \textit{tweet}.
 
 \begin{enumerate}
-	\item via twitter4j.properties
-	
-	Menyimpan standar \textit{properties} \textit{file} yang diberi nama "twitter4j.properties". \textit{File} ini diletakkan pada \textit{folder} yang sama dengan pembuatan perangkat lunak.
-	\begin{lstlisting} [caption= isi dari twitter4j.properties]
-	{
-		debug=false
-		oauth.consumerKey=3iT8duMItTTrdaU1qTHxwDIUl
-		oauth.consumerSecret=YUIgJTbQT3i5tYA5RE0L38dPT9HaDhuBTifvVmKDYeOgJ7t313
-		oauth.accessToken=313287708-NO5SPbreQvoOxtXUD5EcKlubIfCBNfCb6aRqYBlZ
-		oauth.accessTokenSecret=LVfDgtlfeht5yjBJGSgvSvtMYcFMoEdYOspYoOptcuR4i
-	}
-	\end{lstlisting}
-	\item via \textit{ConfigurationBuilder}
-	
-	Menggunakan \textit{ConfigurationBuilder class} untuk melakukan konfigurasi Twitter4J.
-	\begin{lstlisting} [caption= isi dari twitter4j.properties]
-	{
-		ConfigurationBuilder cb = new ConfigurationBuilder();
-		cb.setDebugEnabled(true)
-			.setOAuthConsumerKey("3iT8duMItTTrdaU1qTHxwDIUl")
-			.setOAuthConsumerSecret("YUIgJTbQT3i5tYA5RE0L38dPT9HaDhuBTifvVmKDYeOgJ7****")
-			.setOAuthAccessToken("313287708-NO5SPbreQvoOxtXUD5EcKlubIfCBNfCb6aRqYBlZ")
-			.setOAuthAccessTokenSecret("LVfDgtlfeht5yjBJGSgvSvtMYcFMoEdYOspYoOptc****");
-		TwitterFactory tf = new TwitterFactory(cb.build());
-		Twitter twitter = tf.getInstance();
-	}
-	\end{lstlisting}
-	\item via \textit{System Properties}
-	
-	Menggunakan \textit{System Properties} untuk melakukan konfigurasi Twitter4J.
-	\begin{lstlisting} [caption= isi dari twitter4j.properties]
-		$ export twitter4j.debug=true
-		$ export twitter4j.oauth.consumerKey=3iT8duMItTTrdaU1qTHxwDIUl
-		$ export twitter4j.oauth.consumerSecret=YUIgJTbQT3i5tYA5RE0L38dPT9HaDhuBTifvVmKDYeOgJ7****
-		$ export twitter4j.oauth.accessToken=313287708-NO5SPbreQvoOxtXUD5EcKlubIfCBNfCb6aRqYBlZ
-		$ export twitter4j.oauth.accessTokenSecret=LVfDgtlfeht5yjBJGSgvSvtMYcFMoEdYOspYoOptc****
-		$ java -cp twitter4j-core-4.0.2.jar:yourApp.jar yourpackage.Main
-	\end{lstlisting}
+	\item Menghitung panjang maksimal dari setiap \textit{tweet} setelah dikurangi dengan panjang \textit{username} pengguna. Contohnya adalah akun @infobdg dan akun @kviniinktest123,  panjang \textit{username} @infobdg memiliki panjang kata sepanjang tujuh huruf, sedangkan panjang \textit{username} @kviniinktest123 memiliki panjang kata sepanjang 15 huruf. Tentu saja kedua akun ini memiliki batas kata \textit{tweet} yang berbeda, oleh karena itu perhitungan panjang maksimal \textit{tweet} dilakukan dengan cara mengurangi batas maksimal \textit{tweet} dengan panjang \textit{username} pengguna lalu dikurangi dua untuk simbol @ didepan kata \textit{username} dan spasi diakhir kata username. Contoh panjang maksimal \textit{tweet} untuk akun @infobdg adalah 140 dikurangi 7 dikurangi 2, maka menghasilkan 131 karakter. Sedangkan panjang maksimal \textit{tweet} untuk akun @kviniinktest123 adalah 140 dikurangi 15 dikurangi 2, maka menghasilkan 123 karakter.
+	\item Membuat hasil kembalian dari KIRI API menjadi \textit{array} dari kata. Sebagai contoh terdapat kalimat "Jalan sedikit di Jalan Pasirkaliki.", maka kalimat tersebut akan dibuat menjadi \textit{array} dari kata yang memiliki lima panjang \textit{array}.
+	\item Melakukan \textit{looping} untuk memasukan \textit{array of} kata kedalam variable status. Di dalam \textit{looping} tersebut akan dilakukan pengecekan apakah \textit{variable} status sudah melebihi panjang maksimal \textit{tweet} atau belum. Jika belum maka kata akan ditambahkan kedalam \textit{variable} status, jika sudah melebihi maka akan dibuat \textit{tweet} baru.
 \end{enumerate}
 
 \section{Analisis Perangkat Lunak}
 
-Perangkat lunak yang dibangun adalah \textit{Twitter bot} untuk mencari jalur transportasi publik. \textit{Twitter bot} yang dibangun dapat membalas \textit{tweet} secara \textit{real-time} kepada pengguna untuk memberitahukan jalur-jalur yang harus ditempuh menggunakan transportasi publik. Perangkat lunak yang digunakan untuk membangun Twitter Bot Untuk Mencari Jalur Transportasi Publik adalah NetBeans IDE 8.0.2 dan akun yang digunakan untuk pengujian \textit{Twitter bot} adalah akun @kviniink. Pada sub bab ini akan dibahas kebutuhan aplikasi, diagram \textit{use case}, skenario, dan\textit{ diagram class} dari perangkat lunak yang akan dibangun.
+Perangkat lunak yang dibangun adalah \textit{Twitter bot} untuk mencari jalur transportasi publik. \textit{Twitter bot} yang dibangun dapat membalas \textit{tweet} secara \textit{real-time} kepada pengguna untuk memberitahukan jalur-jalur yang harus ditempuh menggunakan transportasi publik. Perangkat lunak yang digunakan untuk membangun \textit{Twitter Bot} Untuk Mencari Jalur Transportasi Publik adalah NetBeans IDE 8.0.2 dan akun yang digunakan untuk pengujian \textit{Twitter bot} adalah akun @kviniink. Pada sub bab ini akan dibahas kebutuhan aplikasi, diagram \textit{use case}, skenario, dan\textit{ diagram class} dari perangkat lunak yang akan dibangun.
 
 \subsection{Spesifikasi Kebutuhan Fungsional}
 Spesifikasi kebutuhan perangkat lunak yang akan dibangun untuk membuat \textit{Twitter bot} adalah
@@ -266,7 +234,7 @@ Spesifikasi kebutuhan perangkat lunak yang akan dibangun untuk membuat \textit{T
 \end{enumerate}
 
 \subsection{\textit{Use Case Diagram}}
-Perangkat lunak yang dibangun akan memiliki satu figur utama, yaitu \textit{tweet} mencari informasi transportasi publik. Gambar ~\ref{fig:usecase} menunjukkan diagram \textit{use case} dari perangkat lunak.
+Perangkat lunak yang dibangun akan memiliki satu figur utama, yaitu \textit{tweet} mencari informasi transportasi publik. Gambar~\ref{fig:usecase} menunjukkan diagram \textit{use case} dari perangkat lunak.
 
 \begin{figure}[htbp]
 	\centering
@@ -276,21 +244,36 @@ Perangkat lunak yang dibangun akan memiliki satu figur utama, yaitu \textit{twee
 \end{figure}
 
 \paragraph{Skenario \textit{Use Case}}
-Skenario ini hanya memiliki satu aktor yaitu pengguna. \textit{Tweet} mencari informasi transportasi publik pada skenario ini dilakukan dengan melakukan \textit{tweet} kepada akun \textit{Twitter bot} @kviniink berisi format yang sesuai untuk pencarian rute transportasi. 
+Skenario ini hanya memiliki satu aktor yaitu pengguna. \textit{Tweet} mencari informasi transportasi publik pada skenario ini dilakukan dengan melakukan \textit{tweet} kepada akun \textit{Twitter bot} @kviniink berisi format yang sesuai untuk pencarian rute transportasi. Pengguna dapat melakukan \textit{tweet} bantuan kepada akun \textit{Twitter bot} @kviniink untuk mengetahui format pencarian rute transportasi publik.
 
 \begin{table}[h]
+	\caption{Skenario \textit{Tweet} mencari informasi transportasi }
+	\label{tab:SkenarioTweetMencariInformasiTransportasi}
 	\begin{tabular}{|l|l|}
 	\hline
 	Nama           & \textit{Tweet} mencari informasi transportasi publik      											                                                                                                              \\ \hline
 	Aktor          & Pengguna                                                                                                                       \\ \hline
 	Deskripsi      & \begin{tabular}[c]{@{}l@{}}Melakukan \textit{Tweet}\\ (\textit{Tweet} berupa lokasi asal dan lokasi tujuan)\end{tabular}                         \\ \hline
-	Kondisi Awal   & Belum menuliskan \textit{Tweet} pada kolom update                                                                                       \\ \hline
-	Kondisi Akhir  & Sudah melakukan \textit{Tweet} kepada user @kiriupdate                                                                                  \\ \hline
-	Skenario Utama & \begin{tabular}[c]{@{}l@{}}Pengguna melakukan \textit{Tweet} kepada \textit{user}\\ @kiriupdate dengan format yang sudah ditentukan\end{tabular} \\ \hline
+	Kondisi Awal   & Belum menuliskan \textit{Tweet} pada kolom \textit{update}                                                                                       \\ \hline
+	Kondisi Akhir  & Sudah melakukan \textit{Tweet} kepada user @kviniink                                                                                  \\ \hline
+	Skenario Utama & \begin{tabular}[c]{@{}l@{}}Pengguna melakukan \textit{Tweet} kepada \textit{user}\\ @kviniink dengan format yang sudah ditentukan\end{tabular} \\ \hline
 	Eksepsi        & Format penulisan salah                                                                                                         \\ \hline
 	\end{tabular}
-	\caption{Skenario \textit{Tweet} mencari informasi transportasi }
-	\label{tab:SkenarioTweetMencariInformasiTransportasi}
+\end{table}
+
+\begin{table}[h]
+	\caption{Skenario Bantuan}
+	\label{tab:SkenarioBantuan}
+	\begin{tabular}{|l|l|}
+	\hline
+	Nama           & Bantuan      											                                                                                                              \\ \hline
+	Aktor          & Pengguna                                                                                                                       \\ \hline
+	Deskripsi      & Melakukan \textit{Tweet} Bantuan                         \\ \hline
+	Kondisi Awal   & Belum menuliskan \textit{Tweet} pada kolom \textit{update}                                                                                       \\ \hline
+	Kondisi Akhir  & Sudah melakukan \textit{Tweet} bantuan kepada user @kviniink                                                                                  \\ \hline
+	Skenario Utama & \begin{tabular}[c]{@{}l@{}}Pengguna melakukan \textit{Tweet} bantuan\\ kepada \textit{user} @kviniink\end{tabular} \\ \hline
+	Eksepsi        & Format penulisan salah                                                                                                         \\ \hline
+	\end{tabular}
 \end{table}
 
 \subsection{\textit{Class Diagram}}
@@ -299,14 +282,16 @@ Untuk membuat \textit{class diagram Twitter bot} untuk mencari jalur transportas
 	\item \textit{Twitter bot} akan berjalan terus hingga \textit{Twitter bot} di non-aktifkan.
 	\item Pengguna melakukan \textit{tweet} mencari informasi transportasi dengan cara melakukan \textit{mention} kepada akun \textit{Twitter bot} @kviniink dengan format yang sesuai dengan ketentuan.
 	\item \textit{Twitter bot} menerima \textit{mention} dari pengguna.
-	\item \textit{Twitter bot} akan mencari jalur transportasi publik.
-	\item \textit{Twitter bot} melalukan \textit{reply} kepada pengguna yang berisi jalur transportasi publik yang harus ditempuh. 
+	\item \textit{Twitter bot} mencari jalur transportasi publik.
+	\item \textit{Twitter bot} melalukan \textit{reply} kepada pengguna yang berisi jalur transportasi publik yang harus ditempuh.
 \end{enumerate}
 
-Berikut adalah \textit{class diagram} sederhana:
+%\textit{Class diagram} sederhana dapat dilihat pada gambar ~\ref{fig:classdiagram}
 \begin{figure}[htbp]
 	\centering
 		\includegraphics{Gambar/diagramClass.jpg}
-	\caption{\textit{Class Diagram} Twitter Bot}
+	\caption{\textit{Class Diagram Twitter Bot}}
 	\label{fig:classdiagram}
 \end{figure}
+
+Gambar~\ref{fig:classdiagram} memiliki kelas \textit{main} yang berfungsi untuk membuat koneksi dengan Twitter ketika perangkat lunak dijalankan. Kelas \textit{PrintPublicStream} merupakan kelas yang berfungsi untuk menangkap \textit{tweet} yang akan di \textit{mention} kepada akun \textit{Twitter bot} @kviniink. Kelas \textit{SearchPlace} merupakan kelas yang berhubungan dengan KIRI API, semua aktifitas yang berhubungan dengan KIRI API akan dilakukan pada kelas ini. Lalu kelas \textit{Update Status} merupakan kelas yang berfungsi agar \textit{Twitter bot} dapat melakukan \textit{tweet} balasan kepada pengguna.

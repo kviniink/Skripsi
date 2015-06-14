@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{TwitterBook}
+T.~O'Reilly, {\em The Twitter Book}.
+\newblock O'Reilly Media, Inc, 2009.
+
+\bibitem{Twitter}
+``Twitter documentation.''
+  \url{https://dev.twitter.com/overview/documentation}, 2014.
+\newblock Accessed: 2014-8-20.
+
+\bibitem{Json}
+``Json documentation.'' \url{http://json.org/}, 2014.
+\newblock Accessed: 2015-4-05.
+
+\bibitem{Kiri}
+``Kiri api v2 documentation.''
+  \url{https://bitbucket.org/projectkiri/kiri_api/wiki/KIRI%20API%20v2%20Documentation},
+  2014.
+\newblock Accessed: 2014-8-21.
+
+\bibitem{Twitter4J}
+``Twitter4j documentation.'' \url{http://twitter4j.org/javadoc/index.html},
+  2014.
+\newblock Accessed: 2014-8-29.
+
+\end{thebibliography}

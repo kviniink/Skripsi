@@ -3,21 +3,19 @@
 
 Pada bab ini akan dibahas mengenai perancangan aplikasi untuk membuat \textit{Twitter bot} untuk mencari jalur transportasi publik sesuai analisa yang sudah dibahas pada bab 3.
 
-\section{Perancangan Perangkat Lunak}
-
-\subsection{Perancangan Kelas}
-Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan dibuat pada perangkat lunak \textit{Twitter bot} untuk mencari jalur transportasi publik. Untuk lebih jelas mengenai kelas yang ada pada aplikasi ini, penulis menyajikan gambar kelas diagram yang dapat dilihat pada gambar ~\ref{fig:classDiagramSkripsi}
+\section{Perancangan Kelas}
+Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan dibuat pada perangkat lunak \textit{Twitter bot} untuk mencari jalur transportasi publik. Untuk lebih jelas mengenai kelas yang ada pada aplikasi ini, penulis menyajikan gambar kelas diagram yang dapat dilihat pada Gambar~\ref{fig:classDiagramSkripsi}
 
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=1.00\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/classDiagramSkripsi.PNG}
-	\caption{Class Diagram Pembuatan \textit{Twitter bot} untuk Mencari Jalur Transportasi Publik}
+	\caption{Diagram Kelas Pembuatan \textit{Twitter bot} untuk Mencari Jalur Transportasi Publik}
 	\label{fig:classDiagramSkripsi}
 \end{figure}
 
 
 \begin{itemize}
-		\item Kelas Main, merupakan kelas yang berfungsi untuk membuat koneksi dengan Twitter ketika perangkat lunak dijalankan.
+		\item Kelas Main merupakan kelas yang berfungsi untuk membuat koneksi dengan Twitter ketika perangkat lunak dijalankan.
 		
 				\begin{itemize}
 							\item Method
@@ -57,7 +55,7 @@ Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan 
 									\end{itemize}
 				\end{itemize}
 		
-		\item Kelas KIRIGateway, merupakan kelas untuk memanggil KIRI API. Pemanggilan KIRI API ini digunakan untuk mendapatkan koordinat suatu lokasi dan mencari jalur transportasi publik.
+		\item Kelas KIRIGateway merupakan kelas untuk memanggil KIRI API. Pemanggilan KIRI API ini digunakan untuk mendapatkan koordinat suatu lokasi dan mencari jalur transportasi publik.
 		
 		
 				\begin{itemize}
@@ -71,7 +69,7 @@ Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan 
 				\end{itemize}
 		
 		
-		\item Kelas RoutingResult, merupakan kelas untuk menampung hasil kembalian dari KIRI API
+		\item Kelas RoutingResult merupakan kelas untuk menampung hasil kembalian dari KIRI API
 		
 		
 				\begin{itemize}
@@ -96,7 +94,7 @@ Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan 
 									\end{itemize}
 				\end{itemize}
 		
-		\item Kelas Step, merupakan kelas untuk menampung jalur perjalanan dari lokasi awal ke lokasi tujuan dengan menggunakan transportasi publik yang diberikan oleh KIRI API.
+		\item Kelas Step merupakan kelas untuk menampung jalur perjalanan dari lokasi awal ke lokasi tujuan dengan menggunakan transportasi publik yang diberikan oleh KIRI API.
 		
 		
 				\begin{itemize}
@@ -118,7 +116,7 @@ Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan 
 									\end{itemize}
 				\end{itemize}
 		
-		\item Kelas Steps, merupakan kelas untuk menampung kumpulan step.
+		\item Kelas Steps merupakan kelas untuk menampung kumpulan step.
 		
 		
 				\begin{itemize}
@@ -141,8 +139,8 @@ Sub bab ini akan membahas tentang rancangan kelas dan \textit{method} yang akan 
 \end{itemize}
 
 
-\subsection{Sequence Diagram}
-Pada sub bab ini, akan dijelaskan alur program dengan menggunakan \textit{sequence diagram} pada gambar ~\ref{fig:Sequence Diagram Final}
+\section{Sequence Diagram}
+Pada sub bab ini, akan dijelaskan alur program dengan menggunakan \textit{sequence diagram} pada Gambar~\ref{fig:Sequence Diagram Final}
 
 \begin{sidewaysfigure}[htbp]
 	\centering
@@ -156,19 +154,31 @@ Pertama, perangkat lunak akan melakukan \textit{streaming} pada saat kelas \text
 
 Kelas TwitterGateway akan memproses \textit{tweet} yang di-\textit{mention} kepada akun \textit{Twitter bot} @kviniink. \textit{onStatus Method} akan melakukan pengecekan apakah \textit{tweet} tersebut merupakan \textit{tweet} untuk mencari jalur transportasi publik atau bukan. Jika benar, maka nama akun pengirim, lokasi awal, dan lokasi tujuan akan disimpan di atribut yang sudah disediakan. Setelah itu akan dicari koordinat dari masing-masing lokasi menggunakan KIRI API. Proses pencariian koordinat dilakukan oleh kelas KIRIGateway.
 
-Kelas KIRIGateway akan memanggil \textit{GetLatLon method} untuk mencari koordinat suatu lokasi. Setelah didapatkan koordinat lokasi awal dan lokasi tujuan, kelas TwitterGateway akan mengubah hasil dari \textit{GetLatLon method} yang berupa \textit{JSON} menjadi format \textit{String}. Setelah didapatkan koordinat lokasi awal dan koordinat lokasi tujuan maka hasil dari masing-masing koordinat dikembalikan kepada kelas KIRIGateway untuk dicari jalur transportasi publik dari lokasi awal menuju lokasi tujuan menggunakan \textit{GetTrack method}. Hasil dari \textit{GetTrack method} akan disimpan pada atribut \textit{step, steps}, dan \textit{routingResult}.
+Kelas KIRIGateway akan memanggil \textit{GetLatLon method} untuk mencari koordinat suatu lokasi. Setelah didapatkan koordinat lokasi awal dan lokasi tujuan, kelas TwitterGateway akan mengubah hasil dari \textit{GetLatLon method} yang berupa \textit{JSON} menjadi format \textit{String}. Setelah didapatkan koordinat lokasi awal dan koordinat lokasi tujuan maka hasil dari masing-masing koordinat dikembalikan kepada kelas KIRIGateway untuk dicari jalur transportasi publik dari lokasi awal menuju lokasi tujuan menggunakan \textit{GetTrack method}. Hasil dari \textit{GetTrack method} akan disimpan pada atribut \textit{step, steps}, dan \textit{routingResult}. \textit{Method setHumanDescription} berguna untuk menyimpan hasil kembalian KIRI pada atribut \textit{step}. \textit{Method setSteps} merupakan \textit{method} untuk menyimpan \textit{step} kedalam atribut \textit{steps}. \textit{Method setStatus} merupakan \textit{method} untuk menyimpan \textit{status} hasil kembalian KIRI kedalam atribut \textit{status}. \textit{Method setRoutingResult} merupakan \textit{method} untuk menyimpan \textit{steps} kedalam atribut \textit{routingResult}.
 
-Setelah selesai, langkah-langkah jalur transportasi publik siap untuk di \textit{reply} kepada pengguna. Proses \textit{reply} dilakukan oleh \textit{tweet method} yang terdapat pada kelas TwitterGateway. Tweet tersebut berisi tentang jalur transportasi publik dari lokasi awal menuju lokasi tujuan.\textit{Tweet} akan di-\textit{reply} satu per satu sesuai dengan banyaknya \textit{step} yang ada. Perangkat lunak akan terus melakukan proses tersebut hingga perangkat lunak dinon-aktifkan.
+Setelah selesai, langkah-langkah jalur transportasi publik siap untuk di \textit{reply} kepada pengguna. Proses \textit{reply} dilakukan oleh \textit{tweet method} yang terdapat pada kelas TwitterGateway. \textit{Tweet} tersebut berisi tentang jalur transportasi publik dari lokasi awal menuju lokasi tujuan.\textit{Tweet} akan di-\textit{reply} satu per satu sesuai dengan banyaknya \textit{step} yang ada. Perangkat lunak akan terus melakukan proses tersebut hingga perangkat lunak dinon-aktifkan.
 
 \newpage
-\subsection{Perancangan Antar Muka}
-Perangkat lunak yang akan dibangun memiliki antar muka berbasis teks, tetapi tampilan antar muka untuk pengguna berbeda-beda. Interaksi dengan pengguna dapat dilakukan melalui \textit{website} atau aplikasi Twitter. Gambar ~\ref{fig:Homepage Mobile Twitter} adalah tampilan antar muka dari Twitter yang diakses melalui \textit{website mobile} Twitter \url{https://mobile.twitter.com/}. Antar muka \textit{Twitter bot} akan menampilkan \textit{tweet} yang diterima oleh perangkat lunak, dan menampilkan hasil \textit{tweet} yang di-\textit{reply} \textit{Twitter bot} kepada pengguna.
+\section{Perancangan Antarmuka}
+Perangkat lunak yang dibangun memiliki antarmuka berbasis teks. Untuk menjalankan perangkat lunak \textit{Twitter bot} cukup dengan menjalankan aplikasi. \textit{Twitter bot} akan terus berjalan hingga perangkat lunak di \textit{non}-aktifkan. Antarmuka yang akan digunakan oleh pengguna menggunakan antar muka yang disediakan oleh Twitter. Antarmuka yang disediakan oleh Twitter adalah antarmuka yang terdapat pada:
+\begin{enumerate}
+	\item \textit{website} Twitter,
+	\item Android,
+	\item iOS,
+	\item Windows Phone.
+\end{enumerate}
 
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Homepage Mobile Twitter.PNG}
-	\caption{Homepage Twitter yang Diakses Melalui Mobile Twitter}
-	\label{fig:Homepage Mobile Twitter}
-\end{figure}
+%\section{Perancangan Antar Muka}
+%Perangkat lunak yang akan dibangun memiliki antar muka berbasis teks, tetapi tampilan antar muka untuk pengguna berbeda-beda. Interaksi dengan pengguna dapat dilakukan melalui \textit{website} atau aplikasi Twitter.
+
+
+%Gambar ~\ref{fig:Homepage Mobile Twitter} adalah tampilan antar muka dari Twitter yang diakses melalui \textit{website mobile} Twitter \url{https://mobile.twitter.com/}. Antar muka \textit{Twitter bot} akan menampilkan \textit{tweet} yang diterima oleh perangkat lunak, dan menampilkan hasil \textit{tweet} yang di-\textit{reply} \textit{Twitter bot} kepada pengguna.
+
+%\begin{figure}[htbp]
+%	\centering
+%		\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/Homepage Mobile Twitter.PNG}
+%	\caption{Homepage Twitter yang Diakses Melalui Mobile Twitter}
+%	\label{fig:Homepage Mobile Twitter}
+%\end{figure}
 
 

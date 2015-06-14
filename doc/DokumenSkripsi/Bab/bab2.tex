@@ -3,28 +3,28 @@
 
 Sebelum bisa membuat \textit{Twitter bot} untuk mencari jalur transportasi publik, berikut diberikan beberapa definisi yang berkaitan dengan pembuatan \textit{Twitter bot}. Bab ini akan menjelaskan Twitter, Twitter API, KIRI, KIRI API, dan Twitter4j.
 
-\section{Twitter}
+\section{Twitter \cite{TwitterBook}}
 \label{sec:twitter}
 
-Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengguna melakukan \textit{posting} pesan berbasis teks hingga 140 karakter\cite{TwitterBook}. Berikut ini adalah daftar istilah umum pada Twitter:
+Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengguna melakukan \textit{posting} pesan berbasis teks hingga 140 karakter. Berikut ini adalah daftar istilah umum pada Twitter:
 
 
 \begin{itemize}
 	\item \textit{Tweet} 
 	
-	Posting pada Twitter disebut sebagai \textit{tweet}. \textit{Tweet} ini akan meneruskan pesan singkat yang ditujukan ke semua \textit{follower} suatu akun\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 7}. Contohnya adalah seorang akun @kviniink ingin menuliskan bahwa hari ini cuaca cerah, maka akun @kviniink akan melakukan \textit{tweet} 'Hari ini cerah yah..'. \textit{Tweet} juga bisa menyertakan \textit{link} untuk video, foto, atau media lain di internet selain teks biasa. URL(\textit{Uniform resource locator}) \textit{link} teks termasuk ke dalam 140 batas karakter, namun URL tersebut akan menghabisnya tempat/\textit{space} dari keterbatasan karakter \textit{tweet}. Oleh karena itu, URL akan dibuat versi singkatnya, contohnya pada saat pengguna memasukkan \textit{link} \url{http://www.chacha.com/gallery/7253/15-movies-that-make-guys-cry}, maka \textit{link} tersebut akan dibuat menjadi \url{bit.ly/1uRi8vV}. 
-	\item \textit{Follow}Uniform resource locator
+	Posting pada Twitter disebut sebagai \textit{tweet}. \textit{Tweet} ini akan meneruskan pesan singkat yang ditujukan ke semua \textit{follower} suatu akun. Contohnya adalah seorang akun @kviniink ingin menuliskan bahwa hari ini cuaca cerah, maka akun @kviniink akan melakukan \textit{tweet} 'Hari ini cerah yah..'. \textit{Tweet} juga bisa menyertakan \textit{link} untuk video, foto, atau media lain di internet selain teks biasa. URL(\textit{Uniform resource locator}) \textit{link} teks termasuk ke dalam 140 batas karakter, namun URL tersebut akan menghabisnya tempat/\textit{space} dari keterbatasan karakter \textit{tweet}. Oleh karena itu, URL akan dibuat versi singkatnya, contohnya pada saat pengguna memasukkan \textit{link} \url{http://www.chacha.com/gallery/7253/15-movies-that-make-guys-cry}, maka \textit{link} tersebut akan dibuat menjadi \url{bit.ly/1uRi8vV}. 
+	\item \textit{Follow}
 	
 	\textit{Follow} adalah satu istilah dalam Twitter yang bertujuan untuk mengikuti aktivitas \textit{tweet} suatu akun. \textit{Following} adalah ketika sebuah akun mengikuti akun orang lain, dan \textit{Follower} adalah ketika sebuah akun melakukan aksi \textit{follow} kepada akun anda.
 	\item \textit{Reply} 
 	
-	\textit{Reply} adalah cara seseorang untuk dapat memberi rujukan kepada akun Twitter yang lainnya atau lebih dikenal dengan nama \textit{mention}\footnote{Dusty Reagan, \textit{Twitter Application Development For Dummies}, Wiley, 2010, page 9}. Sebagai contoh, diketahui akun bernama @kviniink mem-\textit{follow} @infobdg untuk mengetahui perkembangan apa saja yang tejadi di Kota Bandung. Lalu akun @kviniink ingin bertanya tentang info \textit{mall} yang sedang ramai dikunjungi di Kota Bandung, maka akun @kviniink membuat \textit{mention tweet} yang berisikan "@infobdg Halo saya ingin bertanya apa saja mall yang sedang ramai dikunjungi di Bandung yah?".
+	\textit{Reply} adalah cara seseorang untuk dapat memberi rujukan kepada akun Twitter yang lainnya atau lebih dikenal dengan nama \textit{mention}. Sebagai contoh, diketahui akun bernama @kviniink mem-\textit{follow} @infobdg untuk mengetahui perkembangan apa saja yang tejadi di Kota Bandung. Lalu akun @kviniink ingin bertanya tentang info \textit{mall} yang sedang ramai dikunjungi di Kota Bandung, maka akun @kviniink membuat \textit{mention tweet} yang berisikan "@infobdg Halo saya ingin bertanya apa saja \textit{mall} yang sedang ramai dikunjungi di Bandung yah?". Setelah akun @infobdg membaca \textit{mention} dari @kviniink, akun @infobdg melakukan balasan kepada akun @kviniink untuk membalas pertanyaan yang diajukan oleh akun @kviniink. \textit{Tweet} tersebut berisikan "@kviniink mungkin anda bisa mengunjungi PVJ dan Ciwalk".
 	\item \textit{Retweet}
 	
-	\textit{Retweet} ini merupakan salah satu istilah penting dari Twitter. \textit{Retweet} ini berguna ketika pengguna menemukan \textit{tweet} menarik dan ingin  berbagi \textit{tweet} tersebut dengan \textit{follower} akun tersebut. \textit{Retweet} ini juga secara tidak langsung mengatakan bahwa "saya menghormati anda dan pesan yang anda buat" \cite{TwitterBook}.
+	\textit{Retweet} ini merupakan salah satu istilah penting dari Twitter. \textit{Retweet} ini berguna ketika pengguna menemukan \textit{tweet} menarik dan ingin  berbagi \textit{tweet} tersebut dengan \textit{follower} akun tersebut. \textit{Retweet} ini juga secara tidak langsung mengatakan bahwa "saya menghormati anda dan pesan yang anda buat". Contohnya adalah ketika akun @infobdg melakukan \textit{tweet} tentang penutupan jalan di Bandung dan suatu akun ingin membagian informasi tersebut kepada \textit{follower} mereka. Maka akun tersebut akan melakukan \textit{retweet} terhadap \textit{tweet} yang diposting oleh akun @infobdg.
 	\item \textit{Hashtag}
 	
-	Sebuah fitur yang diciptakan oleh Twitter untuk membantu pencarian kata kunci dan penandaan suatu diskusi.
+	Sebuah fitur yang diciptakan oleh Twitter untuk membantu pencarian kata kunci dan penandaan suatu diskusi. Contohnya adalah ketika suatu akun mendatangi suatu acara bernama IXPO, dan akun tersebut ingin memposting \textit{tweet} tentang IXPO tersebut, maka akun tersebut dapat menuliskan \#IXPO pada \textit{tweet} yang diposting.
 	
 	\item \textit{Direct Message}(DM)
 	
@@ -35,21 +35,20 @@ Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengg
 \end{itemize}
 
 
-\section{Twitter API}
+\section{Twitter API \cite{Twitter}}
 Twitter API(\textit{Application programming interface}) adalah aplikasi pihak ketiga yang memungkinkan pengembang perangkat lunak melakukan manipulasi dan pengolahan data di Twitter. Twitter API adalah salah satu bentuk pendekatan dari Twitter yang berfokus pada jaringan dan memungkinkan pengembang perangkat lunak memiliki hak untuk berpikir '\textit{out of the box}' untuk membuat aplikasi yang mereka inginkan\cite{Twitter}. Tetapi tetap akan terjadi keterbatasan yang dimiliki Twitter API, yaitu :
 \begin{itemize}
 	\item Hanya bisa melakukan \textit{tweet} 1000 per harinya, baik melalui \textit{handphone}, \textit{website}, API, dan sebagainya.
 	\item Total pesan hanya bisa sebanyak 250 per harinya, pada setiap dan semua perangkat.
 	\item 150 permintaan API per jam.
-	\item OAuth diijinkan 350 permintaan per jam.
 \end{itemize}
 
 \subsection{\textit{Search} API}
 
-Twitter \textit{Search} API memungkinkan melakukan pencarian terhadap \textit{tweet} baru ataupun \textit{tweet} populer. Tetapi Twitter \textit{Search} API ini bukan fitur yang tersedia pada Twitter itu sendiri. API ini difokuskan kepada relevansi, bukan terhadap kelengkapan data\cite{Twitter}. Ini berarti bahwa ada beberapa \textit{Tweet} atau akun akan hilang dari hasil pencarian.
+Twitter \textit{Search} API memungkinkan melakukan pencarian terhadap \textit{tweet} baru ataupun \textit{tweet} populer. Tetapi Twitter \textit{Search} API ini bukan fitur yang tersedia pada \textit{website} Twitter itu sendiri. API ini difokuskan kepada relevansi, bukan terhadap kelengkapan data\cite{Twitter}. Ini berarti bahwa ada beberapa \textit{Tweet} atau akun akan hilang dari hasil pencarian.
 
 \paragraph{Bagaimana cara membuat sebuah \textit{query}}
-Cara terbaik dalam membuat sebuah \textit{query} adalah melakukan percobaan yang valid dan mengembalikan \textit{tweet} yang sesuai. Cara mencobanya dapat dilakukan pada \url{twitter.com/search}. URL yang ditampilkan pada browser akan berisi sintaks \textit{query} yang sesuai agar dapat digunakan kembali pada Twitter API. Berikut adalah contohnya:
+Cara terbaik dalam membuat sebuah \textit{query} adalah melakukan percobaan yang valid dan mengembalikan \textit{tweet} yang sesuai. Cara mencobanya dapat dilakukan pada \url{twitter.com/search}. URL yang ditampilkan pada \textit{browser} akan berisi sintaks \textit{query} yang sesuai agar dapat digunakan kembali pada Twitter API. Berikut adalah contohnya:
 
 \begin{enumerate}
 	\item Melakukan pencarian untuk \textit{tweet} yang di-\textit{mention} kepada akun @twitterapi. Pencarian dilakukan pada \url{twitter.com/search}.
@@ -61,6 +60,8 @@ Cara terbaik dalam membuat sebuah \textit{query} adalah melakukan percobaan yang
 API v1.1 mewajibkan \textit{request} yang sudah diotentikasi. Perlu diingat juga bahwa hasil pencarian yang dilakukan di \url{twitter.com} dapat menghasilkan data yang sudah sangat lama, sedangkan \textit{Search} API hanya melayani \textit{tweet} dari seminggu terakhir. Contoh berbagai macam pencarian dapat dilihat pada tabel \ref{tab:MacamPencarianTweet}:
 
 \begin{table}[h]
+\caption{Contoh berbagai macam pencarian \textit{tweet}}
+\label{tab:MacamPencarianTweet}
 \begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \textbf{Operator}          					& \textbf{Finds \textit{tweets}}                                            \\ \hline
@@ -80,21 +81,19 @@ API v1.1 mewajibkan \textit{request} yang sudah diotentikasi. Perlu diingat juga
 \textit{hilarious filter:links}     & Mengandung kata "\textit{hilarious}" yang di sambungkan dengan URL.                                \\
 \textit{news source:twitterfeed}    & Mengandung kata "\textit{news}" yang di-\textit{posting} melalui \textit{twitterfeed}.						\\        \hline                     
 \end{tabular}
-\caption{Contoh berbagai macam pencarian \textit{tweet}}
-\label{tab:MacamPencarianTweet}
 \end{table}
 
 Dipastikan bahwa pengkodean URL terhadap \textit{query} dilakukan terlebih dahulu sebelum melakukan \textit{request}. Tabel \ref{tab:ContohMappingDariSeachQuery} memberikan contoh \textit{mapping} dari \textit{search query} ke \textit{query} pengkodean URL.
 
 \begin{table}[h]
+\caption{Contoh \textit{mapping} dari \textit{search query} ke \textit{query} pengkodean URL}
+\label{tab:ContohMappingDariSeachQuery}
 \begin{tabular}{|l|l|}
 \hline
 \textbf{\textit{Search query}}     & \textbf{\textit{URL encoded query}}                 \\ \hline
 \#haiku \#poetry & \%23haiku+\%23poetry              \\
 "\textit{happy hour}" :)  & \%22\textit{happy}\%20\textit{hour}\%22\%20\%3A\%29 \\ \hline
 \end{tabular}
-\caption{Contoh \textit{mapping} dari \textit{search query} ke \textit{query} pengkodean URL}
-\label{tab:ContohMappingDariSeachQuery}
 \end{table}
 
 \paragraph{\textit{Additional parameters}}
@@ -108,7 +107,7 @@ Terdapat parameter tambahan yang dapat digunakan untuk menghasilkan pencarian ya
 \end{itemize}
 
 \paragraph{\textit{Rate limits}}
-\textit{User} pada saat ini diwakilkan oleh \textit{access tokens} yang dapat membuat 180 \textit{request} per 15 menit. Tetapi kita bisa membuat 450 \textit{request} per 15 menit dengan menggunakan \textit{application-only authentication} atas nama sendiri tanpa konteks pengguna.
+\textit{User} pada saat ini diwakilkan oleh \textit{access tokens} yang dapat membuat 180 \textit{request} per 15 menit. Tetapi pengguna bisa membuat 450 \textit{request} per 15 menit dengan menggunakan \textit{application-only authentication} atas nama sendiri tanpa konteks pengguna.
 
 \paragraph{Contoh Pencarian}
 Ketika anda mengikuti suatu acara yaitu \textit{superbowl}, lalu anda tertarik untuk mencari hal yang sedang terjadi di acara tersebut dengan melihat \textit{tweet} yang paling baru dan menggunakan \textit{hashtag} dari acara tersebut, maka langkah-langkah yang dilakukan adalah:
@@ -133,7 +132,7 @@ Ketika anda ingin mencari \textit{tweet} yang sedang poluler dari spesifik \text
 \end{itemize}
 
 \subsection{Streaming API}
-\textit{Streaming} API adalah contoh \textit{real-time} API. API ini ditujukan bagi para developer dengan kebutuhan data yang intensif. \textit{Streaming} API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti \textit{tweet}) secara langsung atau \textit{real-time}\cite{Twitter}.
+\textit{Streaming} API adalah contoh \textit{real-time} API. API ini ditujukan bagi para developer dengan kebutuhan data yang intensif. \textit{Streaming} API memungkinkan melacak kata kunci yang ditentukan dalam jumlah besar dan melakukan suatu aksi (seperti \textit{tweet}) secara langsung atau \textit{real-time}.
 
 Twitter menawarkan beberapa \textit{endpoint streaming}, disesuaikan dengan kasus yang dibutuhkan. 
 \begin{itemize}
@@ -178,6 +177,8 @@ Akses standar mengizinkan pencarian hingga 400 kata kunci, dan 5000 \textit{foll
 
 
 \begin{table}[h]
+\caption{Parameter POST statuses/\textit{filter}}
+\label{table:ParameterPostStatusesFilter}
 \begin{tabular}{|p{3cm}|p{11cm}|}
 \hline
 \textit{follow}          & Menentukan pencarian \textit{tweet} dari suatu akun. \\ \hline
@@ -186,8 +187,6 @@ Akses standar mengizinkan pencarian hingga 400 kata kunci, dan 5000 \textit{foll
 \textit{delimited}       & Menentukan apakah pesan harus dibatasi limitnya.                                         \\ \hline
 \textit{stall\_warnings} & Menentukan apakah pesan warning harus dikirim atau tidak. \\ \hline                                        
 \end{tabular}
-\caption{Parameter POST statuses/\textit{filter}}
-\label{table:ParameterPostStatusesFilter}
 \end{table}
 
 
@@ -195,13 +194,13 @@ Akses standar mengizinkan pencarian hingga 400 kata kunci, dan 5000 \textit{foll
 Mengembalikan \textit{random} sampel dari semua status publik. Jika terdapat dua \textit{client} yang terhubung dengan \textit{endpoint} ini, maka kedua \textit{client} tersebut akan melihat \textit{tweet} yang sama. Perintah ini dikembalikan dalam format JSON, memerlukan otentikasi \textit{user context}, dan frekuensi pemakaiannya dibatasi. Parameter GET \textit{statuses/sample} dapat dilihat pada tabel \ref{table:ParameterGetStatusesSample}
 
 \begin{table}[h]
+\caption{Parameter GET \textit{statuses/sample}}
+\label{table:ParameterGetStatusesSample}
 \begin{tabular}{|l|l|}
 \hline
 \textit{delimited}          & Menentukan apakah pesan harus dibatasi limitnya. \\ \hline
 \textit{stall\_warning}           & Menentukan apakah pesan warning harus dikirim atau tidak.                \\   \hline          
 \end{tabular}
-\caption{Parameter GET \textit{statuses/sample}}
-\label{table:ParameterGetStatusesSample}
 \end{table}
 
 
@@ -210,14 +209,14 @@ Mengembalikan semua status publik. Beberapa aplikasi membutuhan akses ini. Tekni
 
 
 \begin{table}[h]
+\caption{Parameter GET \textit{statuses/firehose}}
+\label{table:ParameterGetStatusesFirehose}
 \begin{tabular}{|l|l|}
 \hline
 \textit{count} & Kumpulan pesan untuk dijadikan bahan materi \\ \hline
 \textit{delimited}          & Menentukan apakah pesan harus dibatasi limitnya. \\ \hline
 \textit{stall\_warning}           & Menentukan apakah pesan warning harus dikirim atau tidak.                \\     \hline        
 \end{tabular}
-\caption{Parameter GET \textit{statuses/firehose}}
-\label{table:ParameterGetStatusesFirehose}
 \end{table}
 
 
@@ -238,6 +237,8 @@ Setiap akun hanya dapat membuat satu koneksi yang terhubung dengan \textit{publi
 \end{itemize}
 
 \begin{table}[h]
+\caption{Parameter GET \textit{user}}
+\label{table:ParameterGetUser}
 \begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \textit{delimited}              & Menentukan apakah pesan harus dibatasi limitnya.																												\\ \hline
@@ -249,8 +250,6 @@ Setiap akun hanya dapat membuat satu koneksi yang terhubung dengan \textit{publi
 \textit{locations}              & Termasuk \textit{tweet} tambahan yang termasuk dalam batasan lokasi tertentu.                                                      \\ \hline
 \textit{stringify\_friend\_ids} & Mengirim list teman yang terdiri dari \textit{array of integer} dan \textit{array of string}.              \\ \hline            
 \end{tabular}
-\caption{Parameter GET \textit{user}}
-\label{table:ParameterGetUser}
 \end{table}
 
 \paragraph{Koneksi}
@@ -263,9 +262,9 @@ Sebuah aplikasi harus dapat mengatasi HTTP(\textit{The Hypertext Transfer Protoc
 \label{sec:oauth}
 Dengan semakin berkembangnya \textit{website}, semakin banyak situs yang bergantung pada layanan distribusi dan \textit{cloud computing}. Contohnya adalah menggunakan jejaring sosial dengan menggunakan akun media sosial lainnya seperti Google untuk mencari teman-teman yang sudah tersimpan pada kontak Google. Atau bisa juga menggunakan pihak ketiga yang memanfaatkan API dari beberapa layanan.
 
-OAuth menyediakan suatu metode bagi pengguna untuk memberi akses pihak ketiga untuk \textit{resources} (sumber daya) mereka tanpa berbagi \textit{password}. Sebagai contoh, seorang pengguna \textit{website} dapat memberikan layanan percetakan untuk mengakses foto pribadinya yang disimpan di layanan berbagi foto tanpa harus memberikan \textit{username} dan \textit{password}nya. Ia akan mengotentikasi langsung dengan layanan berbagi foto tersebut sehingga dapat dibagikan kepada layanan percetakan.
+OAuth menyediakan suatu metode bagi pengguna untuk memberi akses pihak ketiga untuk \textit{resources} (sumber daya) client tanpa berbagi \textit{password}. Sebagai contoh, seorang pengguna \textit{website} dapat memberikan layanan percetakan untuk mengakses foto pribadinya yang disimpan di layanan berbagi foto tanpa harus memberikan \textit{username} dan \textit{password}nya. Ia akan mengotentikasi langsung dengan layanan berbagi foto tersebut sehingga dapat dibagikan kepada layanan percetakan.
 
-Agar \textit{client} dapat mengakses \textit{resource} mereka, pertama-tama ia harus mendapatkan izin dari si pemilik \textit{resource}. Izin ini dinyatakan dalam bentuk token dan juga digunakan untuk mencocokkan \textit{shared-secret}. Tujuan dari token ini adalah untuk membuat pemilik \textit{resource} berbagi kepercayaan mereka kepada \textit{client}. Token dapat dikeluarkan dalam ruang lingkup terbatas, durasi yang terbatas, dan akan dicabut secara independen\footnote{Hueniverse Documentation , OAuth, \url{http://hueniverse.com/oauth/guide/intro/}, pada tanggal 20 Agustus 2014 pukul 12.58}.
+Agar \textit{client} dapat mengakses \textit{resource}, pertama-tama client harus mendapatkan izin dari si pemilik \textit{resource}. Izin ini dinyatakan dalam bentuk token dan juga digunakan untuk mencocokkan \textit{shared-secret}. Tujuan dari token ini adalah untuk membuat pemilik \textit{resource} berbagi kepercayaan mereka kepada \textit{client}. Token dapat dikeluarkan dalam ruang lingkup terbatas, durasi yang terbatas, dan akan dicabut secara independen\footnote{Hueniverse Documentation , OAuth, \url{http://hueniverse.com/oauth/guide/intro/}, pada tanggal 20 Agustus 2014 pukul 12.58}.
 
 \paragraph{Twitter OAuth}yang diberikan memiliki fitur :
 \begin{itemize}
@@ -276,6 +275,8 @@ Agar \textit{client} dapat mengakses \textit{resource} mereka, pertama-tama ia h
 	
 	Banyak \textit{library} dan contoh kode yang tersedia dengan implementasi Twitter Oauth.
 \end{itemize}
+
+Twitter API mengijinkan 350 permintaan OAuth per jam.
 
 \subsection{\textit{Application-only authentication}}
 Twitter menawarkan aplikasi yang mampu mengeluarkan permintaan otentikasi atas nama aplikasi itu sendiri. Dengan menggunakan \textit{application-only authentication}, perangkat lunak tidak mempunyai konteks dari otentikasi pengguna dan ini berarti setiap \textit{request} API untuk endpoint akan membutuhkan konteks pengguna, seperti memposting \textit{tweet} tidak akan bekerja. \textit{Application-only authentication} dapat melakukan berbagai macam aktivitas, seperti : 
@@ -330,7 +331,7 @@ Implementasi \textit{PIN-based authorization} ini memiliki cara kerja yang sama 
 
 Setelah perangkat lunak telah mendapatkan \textit{GET oauth/authenticate} atau \textit{GET oauth/authorize URL}, aplikasi akan memberi URL kepada pengguna. URL tersebut dimasukkan oleh pengguna menggunakan \textit{web browser} untuk mengakses URL tersebut.
 
-Ketika \textit{callback oob} diminta, pengguna tidak akan dipindahkan secara otomatis ke perangkat lunak setelah menyetujui akses seperti yang dilakukan 3-\textit{legged authorization}. Akan tetapi jika menggunakan \textit{PIN-based authorization}, pengguna akan melihat kode PIN untuk dikembalikan kepada perangkat lunak dengan cara memasukkan nilai dari kode PIN yang sudah diberikan. Gambar ~\ref{fig:pin} merupakan contoh nilai kode yang diberikan.
+Ketika \textit{callback oob} diminta, pengguna tidak akan dipindahkan secara otomatis ke perangkat lunak setelah menyetujui akses seperti yang dilakukan 3-\textit{legged authorization}. Akan tetapi jika menggunakan \textit{PIN-based authorization}, pengguna akan melihat kode PIN untuk dikembalikan kepada perangkat lunak dengan cara memasukkan nilai dari kode PIN yang sudah diberikan. Gambar~\ref{fig:pin} merupakan contoh nilai kode yang diberikan.
 
 \begin{figure}[H]
 \centering
@@ -341,19 +342,46 @@ Ketika \textit{callback oob} diminta, pengguna tidak akan dipindahkan secara oto
 
 Perangkat lunak harus dirancang agar memungkinkan pengguna untuk memasukkan \textit{PIN code}. Nilai dari \textit{PIN code} harus lolos sebagai \textit{oauth\_verifier} untuk \textit{POST oauth/access\_token request}. Semua \textit{request} akan berjalan normal kedepannya.
 
+\section{JSON\cite{Json}}
+JSON(\textit{JavaScript Object Notation}) adalah suatu format pertukaran data komputer berbasis teks. JSON digunakan untuk merepresentasikan struktur data sederhana karena formatnya mudah dibaca oleh manusia. Selain itu juga format JSON mudah digunakan oleh suatu perangkat lunak  untuk melakukan \textit{parse} dan \textit{generate}. JSON didasarkan pada subset bahasa pemrograman \textit{JavaScript}. JSON dianggap sebagai format data yang tak tergantung pada suatu bahasa. Beberapa bahasa pemograman telah menyediakan \textit{library} untuk pengolahan data JSON.
 
-%\section{KIRI}
-%\label{sec:kiri}
-%KIRI adalah sebuah situs atau \textit{website} yang memberi panduan tentang jalur transportasi publik. Alasan KIRI dapat berdiri adalah karenanya global warming, kemacetan, harga bensin yang semakin mahal. Ketiga alasan tersebut yang menjadi masalah sekarang ini, dan semua itu dapat diatasi dengan menaiki transportasi publik. 
+JSON dibangun dengan dua struktur, yaitu:
+\begin{enumerate}
+	\item Nama. Nama ini direalisasikan sebagai objek, \textit{record}, kamus, tabel \textit{hash}, \textit{keyed list}, atau \textit{associative array}.
+	\item Nilai. Nilai ini direalisasikan sebagai \textit{array}, vektor, \textit{list}, atau \textit{sequence}.
+\end{enumerate}
 
-%Peran dari KIRI ini adalah memberitahukan seseorang jalur transportasi publik dari satu tempat ke tempat yang dituju. Adapula format yang harus diisi dalam melakukan pencarian ini yaitu
-%\begin{enumerate}
-%	\item kota,
-%	\item tempat awal,
-%	\item tempat tujuan.
-%\end{enumerate}
+Listing ~\ref{lst:DataSeorangMahasiswaUNPAR} menunjukkan representasi JSON untuk suatu objek yang mendeskripsikan seseorang mahasiswa UNPAR.
 
-\section{KIRI API}
+\begin{lstlisting} [caption= {Data Seorang Mahasiswa UNPAR},label={lst:DataSeorangMahasiswaUNPAR}]
+{ 
+    {
+     "namaDepan": "Kevin",
+     "namaBelakang": "Theodorus",
+		 "NPM" : "2011730037",
+		 "Jurusan" : "Teknik Informatika"
+     "alamat": {
+         "namaJalan": "Jl. Mekar Sederhana 17",
+         "kota": "Bandung",
+         "kodePos": 40237
+     },
+     "nomerTelepon": [ 
+         "089676821932",
+				 "5233901"
+     ]
+		}
+}
+\end{lstlisting} 
+Listing ~\ref{lst:DataSeorangMahasiswaUNPAR} menunjukan data seorang mahasiswa UNPAR. Berikut ini adalah keterangan dari data seorang mahasiswa UNPAR tersebut:
+\begin{itemize}
+	\item Index 0 berisikan nama depan dari mahasiswa UNPAR. Nilai dari nama depan adalah Kevin.
+	\item Index 1 berisikan nama belakang dari mahasiswa UNPAR. Nilai dari nama belakang adalah Theodorus.
+	\item Index 2 berisikan NPM(Nomor Pokok Mahasiswa) dari mahasiswa UNPAR. Nilai dari NPM adalah 2011730037.
+	\item Index 3 berisikan alamat dari mahasiswa UNPAR. Terdapat tiga objek di dalam alamat yaitu nama jalan, kota, dan kode pos. Nama jalan memiliki nilai Jl. Mekar Sederhana 17, kota memiliki nilai Bandung, dan kode pos memiliki nilai 40237.
+	\item Index 4 berisikan nomor telepon dari mahasiswa UNPAR. Nomor telepon memiliki nilai \textit{array}, nilai yang pertama adalah 089676821932 dan nilai yang ke dua adalah 5233901.
+\end{itemize}
+
+\section{KIRI API\cite{Kiri}}
 KIRI API adalah aplikasi pihak ketiga yang memungkinkan pengembang perangkat lunak mendapatkan data tentang info jalur transportasi publik. Semua \textit{request} harus berisi API \textit{key} yang dapat diambil melalui KIRI API \textit{Management Dashboard}. Berikut adalah spesifikasi dari KIRI API :
 
 \begin{itemize}
@@ -368,6 +396,8 @@ KIRI API adalah aplikasi pihak ketiga yang memungkinkan pengembang perangkat lun
 Berikut ini adalah parameter \textit{request} yang diperlukan:
 
 \begin{table}[h]
+	\caption{Parameter \textit{Routing Web Service}}
+	\label{tab:TabelParameterRoutingWebService}
 \begin{tabular}{ |p{3cm}|p{3cm}|p{8cm}| }
 	\hline
 	\textit{Parameter} & \textit{Valid values} & \textit{Description} \\ \hline \hline
@@ -379,8 +409,6 @@ Berikut ini adalah parameter \textit{request} yang diperlukan:
   \textit{presentation} & "\textit{mobile}" or "\textit{desktop}" & Menentukan tipe presentasi untuk hasil keluaran. \\ \hline
 	\textit{apikey} & 16-digit \textit{hexadecimals} & API \textit{key} yang digunakan \\ \hline
 \end{tabular}
-	\caption{Parameter \textit{Routing Web Service}}
-	\label{tab:TabelParameterRoutingWebService}
 	\end{table}
 	
 \begin{lstlisting} [caption= {kode respon pencarian rute},label={lst:codeResponPencarianRute}]
@@ -443,6 +471,8 @@ Listing ~\ref{lst:codeResponPencarianRute} menunjukan hasil yang akan diberikan 
 \textit{Search Place Web Service} berguna untuk menemukan rute perjalanan berdasarkan \textit{latitute} dan \textit{longitude} koordinat. Layanan \textit{Search Place Web Service} ini membantu mengubah string teks untuk \textit{latitude} dan \textit{longitude}. Untuk dapat melakukan permintaan rute, berikut parameter \textit{request} yang diperlukan:
 
 \begin{table}[h]
+\caption{Tabel parameter \textit{Search Place Web Service}}
+	\label{tab:TabelParameterSeachPlaceWebService}
 \begin{tabular}{ |l |l |l| }
 	\hline
   \textit{version} & 2 & \vtop{\hbox{\strut Memberitahukan bahwa layanan yang dipakai} \hbox{\strut adalah protokol versi 2}} \\ \hline
@@ -451,8 +481,6 @@ Listing ~\ref{lst:codeResponPencarianRute} menunjukan hasil yang akan diberikan 
 	\textit{querystring} & \vtop{\hbox{\strut text apa saja dengan minimum} \hbox{\strut text satu karakter}} & \vtop{\hbox{\strut \textit{query string} yang akan dicari menggunakan}  \hbox{\strut layanan ini}} \\ \hline
 	\textit{apikey} & 16-digit \textit{hexadecimals} & API \textit{key} yang digunakan \\ \hline
 \end{tabular}
-\caption{Tabel parameter \textit{Search Place Web Service}}
-	\label{tab:TabelParameterSeachPlaceWebService}
 \end{table}
 
 Berikut format kembalian dari KIRI API:
@@ -491,6 +519,8 @@ Ketika \textit{request find place} berhasil, \textit{server} akan mengembalikan 
 
 Berikut parameter \textit{request} yang diperlukan berikut penjelasanya:
 \begin{table}[h]
+\caption{Tabel parameter \textit{Nearest Transports Web Service}}
+	\label{tab:TabelParameterNearestTransportWebService}
 \begin{tabular}{ |l |l |l| }
 	\hline
   \textit{version} & 2 & \vtop{\hbox{\strut Memberitahukan bahwa layanan yang dipakai} \hbox{\strut adalah protokol versi 2}} \\ \hline
@@ -498,8 +528,6 @@ Berikut parameter \textit{request} yang diperlukan berikut penjelasanya:
   \textit{start} & \vtop{\hbox{\strut \textit{latitude} dan \textit{longitude}} \hbox{\strut (keduanya menggunakan nilai desimal)}} & kota yang akan dicari tempatnya \\ \hline
 	\textit{apikey} & 16-digit \textit{hexadecimals} & API \textit{key} yang digunakan \\ \hline
 \end{tabular}
-\caption{Tabel parameter \textit{Nearest Transports Web Service}}
-	\label{tab:TabelParameterNearestTransportWebService}
 \end{table}
 
 
@@ -533,8 +561,8 @@ Pencarian akan memberitahukan status berhasil ("\textit{ok}") atau tidak ("\text
 	\item \textit{Index} ke 3 berisi jarak dalam satuan kilometer.
 \end{itemize}
 
-\section{Twitter4J}
-Twitter4J merupakan \textit{Java Library} untuk Twitter API. Dengan adanya Twitter4J ini, kita dapat dengan mudah mengintegrasikan aplikasi Java dengan Twitter \textit{service}. Twitter4J memiliki fitur-fitur sebagai berikut :
+\section{Twitter4J\cite{Twitter4J}}
+Twitter4J merupakan \textit{Java Library} untuk Twitter API. Dengan adanya Twitter4J ini, pengguna dapat dengan mudah mengintegrasikan aplikasi Java dengan Twitter \textit{service}. Twitter4J memiliki fitur-fitur sebagai berikut :
 
 \begin{itemize}
 	\item 100\% menggunakan Bahasa Java.
@@ -544,9 +572,9 @@ Twitter4J merupakan \textit{Java Library} untuk Twitter API. Dengan adanya Twitt
 	\item Kompatibel dengan Twitter API 1.1
 \end{itemize}
 
-Dalam pembuatan aplikasi yang akan penulis buat, penulis membutuhkan beberapa \textit{library} yang telah diberikan oleh Twitter4J. Berikut adalah \textit{library} yang diberikan Twitter4J :
+Dalam pembuatan aplikasi yang akan penulis buat, penulis membutuhkan beberapa kelas yang telah diberikan oleh Twitter4J. Berikut adalah kelas-kelas yang diberikan Twitter4J :
 \subsection{Twitter}
-	
+	Merupakan kelas \textit{interface} untuk Twitter.
 	\begin{itemize}
 		\item \textit{Constant}
 		
@@ -560,25 +588,53 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 		
 		\begin{itemize}
 			\item TimelinesResources timelines()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} TimelinesResources.
 			\item TweetsResources tweets()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} tweets.
 			\item SearchResource search()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} search.
 			\item DirectMessagesResources directMessages()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} directMessages.
 			\item FriendsFollowersResources friendsFollowers()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} friendsFollowers.
 			\item UsersResources users()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} users.
 			\item SuggestedUsersResources suggestedUsers()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} suggestedUsers.
 			\item FavoritesResources favorites()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} favorites.
 			\item ListsResources list()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} list.
 			\item SavedSearchesResources savedSearches()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} savedSearches.
 			\item PlacesGeoResources placesGeo()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} placesGeo.
 			\item TrendsResources trends()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} trends.
 			\item SpamReportingResource spamReporting()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} spamReporting.
 			\item HelpResources help()
+			
+			Merupakan \textit{method} yang digunakan untuk mengembalikan \textit{interface} help.
 		\end{itemize}
 		\textit{Tidak ada penjelasan yang diberikan oleh Twitter4J}
 	\end{itemize}
 	
 \subsection{TwitterFactory}
-	
+	Merupakan kelas \textit{final} untuk Twitter Factory.
 	\begin{itemize}
 		\item \textit{Constant}
 		
@@ -620,6 +676,7 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 	
 	
 	\subsection{TwitterStream}
+	Merupakan kelas \textit{interface} untuk melakukan \textit{streaming}.
 	\begin{itemize}
 		\item \textit{Constant}
 		
@@ -656,7 +713,7 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 			Mendengarkan semua status publik yang mengandung link.
 			\item void retweet()
 			
-			Mendengarkan semua retweet.
+			Mendengarkan semua \textit{retweet}.
 			\item void sample()
 			
 			Mendengarkan status publik secara acak.
@@ -682,7 +739,7 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 	\end{itemize}
 	
 	\subsection{TwitterStreamFactory}
-	
+	Merupakan kelas final untuk Twitter \textit{Stream Factory}.
 	\begin{itemize}
 		\item \textit{Constant}
 		
@@ -724,39 +781,8 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 		\end{itemize}
 	\end{itemize}
 	
-	\subsection{UserStreamListener}
-	\begin{itemize}
-		\item \textit{Constant}
-		
-		\begin{itemize}
-			\item public interface UserStreamListener
-			extends StatusListener
-		\end{itemize}
-		\item \textit{Methods}
-		
-		\begin{itemize}
-			\item void onDeletionNotice(long directMessageId, long userId)
-			\item void onFriendList(long[] friendIds)
-			\item void onFavorite(User source, User target, Status favoritedStatus)
-			\item void onUnfavorite(User source, User target, Status unfavoritedStatus)
-			\item void onFollow(User source, User followedUser)
-			\item void onUnfollow(User source, User unfollowedUser)
-			\item void onDirectMessage(DirectMessage directMessage)
-			\item void onUserListMemberAddition(User addedMember, User listOwner, UserList list)
-			\item void onUserListMemberDeletion(User deletedMember, User listOwner, UserList list)
-			\item void onUserListSubscription(User subscriber, User listOwner, UserList list)
-			\item void onUserListUnsubscription(User subscriber, User listOwner, UserList list)
-			\item void onUserListCreation(User listOwner, UserList list)
-			\item void onUserListUpdate(User listOwner, UserList list)
-			\item void onUserListDeletion(User listOwner, UserList list)
-			\item void onUserProfileUpdate(User updatedUser)
-			\item void onBlock(User source, User blockedUser)
-			\item void onUnblock(User source, User unblockedUser)
-		\end{itemize}
-	\textit{Tidak ada penjelasan yang diberikan oleh Twitter4J}
-	\end{itemize}
-	
 	\subsection{StatusListener}
+	Merupakan kelas \textit{interface} untuk \textit{status listener}
 	\begin{itemize}
 		\item \textit{Constant}
 		
@@ -780,11 +806,11 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 			\item void onStallWarning(StallWarning warning)
 			
 			Method untuk memberitahukan pesan \textit{warning}.
-			\item 
 		\end{itemize}
 	\end{itemize}
 	
 	\subsection{StatusUpdate}
+	Merupakan kelas untuk melakukan \textit{update} status
 	\begin{itemize}
 		\item \textit{Constant}
 		
@@ -815,32 +841,49 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 			\item private void appendParameter(java.lang.String name, double value, java.util.List<HttpParameter> params) 
 			\item private void appendParameter(java.lang.String name, long value, java.util.List<HttpParameter> params) 
 			\item private void appendParameter(java.lang.String name, java.lang.String value, java.util.List<HttpParameter> params) 
-			\item (package private) HttpParameter[] asHttpParameterArray() 
-			\item StatusUpdate displayCoordinates(boolean displayCoordinates) 
 			\item boolean equals(java.lang.Object o) 
 			\item long getInReplyToStatusId() 
+			
+			Merupakan \textit{getter} untuk atribut inReplyToStatusId.
 			\item GeoLocation getLocation() 
+			
+			Merupakan \textit{getter} untuk atribut location.
 			\item java.lang.String getPlaceId() 
+			
+			Merupakan \textit{getter} untuk atribut placeId.
 			\item java.lang.String getStatus() 
-			\item int hashCode() 
-			\item StatusUpdate inReplyToStatusId(long inReplyToStatusId) 
+			
+			Merupakan \textit{getter} untuk atribut status.
 			\item boolean isDisplayCoordinates() 
-			\item (package private) boolean isForUpdateWithMedia() 
-			\item boolean isPossiblySensitive() 
-			\item StatusUpdate location(GeoLocation location) 
-			\item StatusUpdate media(java.io.File file) 
-			\item StatusUpdate media(java.lang.String name, java.io.InputStream body) 
-			\item StatusUpdate placeId(java.lang.String placeId) 
-			\item StatusUpdate possiblySensitive(boolean possiblySensitive) 
-			\item void setDisplayCoordinates(boolean displayCoordinates) 
+			
+			Merupakan \textit{getter} untuk atribut displayCoordinates.
+			\item void setDisplayCoordinates(boolean displayCoordinates)
+			
+			Merupakan \textit{setter} untuk atribut displayCoordinates.
 			\item void setInReplyToStatusId(long inReplyToStatusId) 
+			
+			Merupakan \textit{setter} untuk atribut inReplyToStatusId.
 			\item void setLocation(GeoLocation location) 
+			
+			Merupakan \textit{setter} untuk atribut location.
 			\item void setMedia(java.io.File file) 
+			
+			Merupakan \textit{setter} untuk atribut mediaFile.
 			\item void setMedia(java.lang.String name, java.io.InputStream body) 
+			
+			Merupakan \textit{setter} untuk atribut mediaFile.
 			\item void setMediaIds(long[] mediaIds) 
+			
+			Merupakan \textit{setter} untuk atribut mediaIds.
 			\item void setPlaceId(java.lang.String placeId) 
+			
+			Merupakan \textit{setter} untuk atribut placeId.
 			\item void setPossiblySensitive(boolean possiblySensitive) 
+			
+			Merupakan \textit{setter} untuk atribut possiblySensitive.
 			\item java.lang.String 	toString() 
+			
+			Merupakan \textit{method} untuk mengubah \textit{status update} ke dalam bentuk \textit{string}
 		\end{itemize}
 	\textit{Tidak ada penjelasan yang diberikan oleh Twitter4J}
 	\end{itemize}
@@ -857,13 +900,13 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 		\begin{itemize}
 			\item ResponseList<Status> getRetweets(long statusId) throws TwitterException
 			
-			Mengembalikan sampai dengan 100 retweet pertama yang diberikan.
+			Mengembalikan sampai dengan 100 \textit{retweet} pertama yang diberikan.
 			\item IDs getRetweeterIds(long statusId, long cursor) throws TwitterException
 			
-			Mengembalikan sampai dengan 100 ID pengguna yang telah melakukan retweet oleh parameter ID tertentu
+			Mengembalikan sampai dengan 100 ID pengguna yang telah melakukan \textit{retweet} oleh parameter ID tertentu
 			\item IDs getRetweeterIds(long statusId, int count, long cursor) throws TwitterException
 			
-			Mengembalikan sampai dengan "\textit{count}" ID pengguna yang telah melakukan retweet oleh parameter ID tertentu
+			Mengembalikan sampai dengan "\textit{count}" ID pengguna yang telah melakukan \textit{retweet} oleh parameter ID tertentu
 			\item Status showStatus(long id) throws TwitterException
 			
 			Mengembalikan \textit{single status} yang ditentukan oleh parameter ID yang telah ditentukan.
@@ -878,13 +921,13 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 			Melakukan update status oleh user yang telah diotentikasi.
 			\item Status retweetStatus(long statusId) throws TwitterException
 			
-			Melakukan retweet.
+			Melakukan \textit{retweet}.
 			\item OEmbed getOEmbed(OEmbedRequest req) throws TwitterException
-			Mengembalikan informasi yang dapat merepresentasikan \textit{third party} Tweet
+			Mengembalikan informasi yang dapat merepresentasikan \textit{third party} \textit{Tweet}
 			
 			\item ResponseList<Status> lookup(long[] ids) throws TwitterException
 			
-			Mengembalikan \textit{fully-hydrated tweet objects} sampai dengan 100 tweet setiap \textit{request}nya.
+			Mengembalikan \textit{fully-hydrated tweet objects} sampai dengan 100 \textit{tweet} setiap \textit{request}nya.
 			\item UploadedMedia uploadMedia(java.io.File mediaFile) throws TwitterException
 			
 			Melakukan \textit{upload} media gambar yang telah di dilampirkan via updateStatus(twitter4j.StatusUpdate)
@@ -892,6 +935,7 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 	\end{itemize}
 
 	\subsection{OAuthSupport}
+	Merupakan kelas untuk membantu proses otentikasi.
 	\begin{itemize}
 		\item \textit{Constant}
 		
@@ -934,65 +978,9 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 			Melakukan pengaturan pada \textit{access token}
 		\end{itemize}
 	\end{itemize}
-
-\subsection{RequestToken}
-	\begin{itemize}
-		\item \textit{Constant}
-		
-		\begin{itemize}
-			\item public final class RequestToken
-			extends OAuthToken
-			implements java.io.Serializable
-			
-		\end{itemize}
-		\item \textit{Constructor}
-		
-		\begin{itemize}
-			\item RequestToken(HttpResponse res, OAuthSupport oauth) 
-			\item RequestToken(java.lang.String token, java.lang.String tokenSecret)
-			\item RequestToken(java.lang.String token, java.lang.String tokenSecret, OAuthSupport oauth) 
-		\end{itemize}
-		\item \textit{Methods}
-		
-		\begin{itemize}
-			\item public java.lang.String getAuthorizationURL()
-			\item public java.lang.String getAuthenticationURL()
-		\end{itemize}
-	\end{itemize}
-	
-\subsection{AccessToken}
-	\begin{itemize}
-		\item \textit{Constant}
-		
-		\begin{itemize}
-			\item public class AccessToken
-			extends OAuthToken
-			implements java.io.Serializable
-						
-		\end{itemize}
-		\item \textit{Constructor}
-		
-		\begin{itemize}
-			\item AccessToken(HttpResponse res) 
-			\item AccessToken(java.lang.String token, java.lang.String tokenSecret) 
-			\item AccessToken(java.lang.String token, java.lang.String tokenSecret, long userId) 
-		\end{itemize}
-		\item \textit{Methods}
-		
-		\begin{itemize}
-			\item public java.lang.String getScreenName()
-			
-			Mengembalikan \textit{screen name}
-			\item public long getUserId()
-			
-			Mengembalikan \textit{user id}
-			\item public boolean equals(java.lang.Object o)
-			\item public int hashCode()
-			\item public java.lang.String toString()
-		\end{itemize}
-	\end{itemize}
 	
 	\subsection{Status}
+	Merupakan kelas \textit{interface} untuk status.
 	\begin{itemize}
 		\item \textit{Constant}
 		
@@ -1042,7 +1030,7 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 			Menguji apakah status tersebut \textit{retweet} atau tidak
 			\item int getFavoriteCount()
 			
-			Menunjukkan berapa kali Tweet telah menjadi \textit{favorite}
+			Menunjukkan berapa kali \textit{Tweet} telah menjadi \textit{favorite}
 			\item User getUser()
 			
 			Mengembalikan \textit{user} yang terdapat pada sebuah status.
@@ -1053,7 +1041,7 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 			Mengembalikan array yang berisi kontributor atau mengembalikan \textit{null} jika tidak ada kontributor yang terkait dengan status ini
 			\item int getRetweetCount()
 			
-			Menunjukkan berapa kali Tweet telah di \textit{retweet}, jika belum terdapat maka akan mengembalikan nilai -1
+			Menunjukkan berapa kali \textit{tweet} telah di \textit{retweet}, jika belum terdapat maka akan mengembalikan nilai -1
 			\item boolean isRetweetedByMe()
 			
 			Mengembalikan nilai \textit{true} jika \textit{user} yang telah diotentikasi melakukan \textit{retweet} terhadap suatu \textit{tweet}, atau mengembalikan nilai \textit{false} jika tidak.
@@ -1072,52 +1060,49 @@ extends java.io.Serializable, OAuthSupport, OAuth2Support, TwitterBase, Timeline
 		\end{itemize}
 	\end{itemize}
 	
-	\subsection{TweetsResources}
-	\begin{itemize}
-		\item \textit{Constant}
-		
-		\begin{itemize}
-			\item public interface TweetsResources
-						
-		\end{itemize}
-		\item \textit{Methods}
-		
-		\begin{itemize}
-			\item ResponseList<Status> getRetweets(long statusId) throws TwitterException
-			
-			Mengembalikan hingga dengan seratus \textit{retweet} pertama
-			\item IDs getRetweeterIds(long statusId, long cursor) throws TwitterException
-			
-			Mengembalikan hingga dengan 100 \textit{user ID} yang melakukan \textit{retweet} terhadap \textit{tweet} ditentukan dari \textit{id parameter}
-			\item IDs getRetweeterIds(long statusId, int count, long cursor) throws TwitterException
-			
-			Mengembalikan hingga dengan \textit{"count"} \textit{user ID} yang melakukan \textit{retweet} terhadap \textit{tweet} ditentukan dari \textit{id parameter}
-			\item Status showStatus(long id) throws TwitterException
-			
-			Mengembalikan \textit{status} yang ditentukan dari parameter id.
-			\item Status destroyStatus(long statusId) throws TwitterException
-			
-			Menghapus \textit{status} yang ditentukan dari parameter id.
-			\item Status updateStatus(java.lang.String status) throws TwitterException
-			
-			Melakukan \textit{update status} terhadap \textit{user} yang telah diotentikasi.
-			\item Status updateStatus(StatusUpdate latestStatus) throws TwitterException
-			
-			Melakukan \textit{update status} terhadap \textit{user} yang telah diotentikasi.
-			\item Status retweetStatus(long statusId) throws TwitterException
-			
-			Melakukan \textit{retweet} terhadap sebuah \textit{tweet}.
-			\item OEmbed getOEmbed(OEmbedRequest req) throws TwitterException
-			
-			Mengembalikan informasi yang mengizinkan terciptanya \textit{embedded representation} dari tweet yang berada di \textit{third party sites}
-			\item ResponseList<Status> lookup(long[] ids) throws TwitterException
-			
-			Mengembalikan objek \textit{tweet} hingga dengan 100 \textit{tweet} per \textbf{request}.
-			\item UploadedMedia uploadMedia(java.io.File mediaFile) throws TwitterException
-			
-			Melakukan \textit{upload} gambar.
-		\end{itemize}
-	\end{itemize}
+	\section{Twitter4J \textit{Properties}}
+	Untuk menggunakan Twitter4J diperlukan \textit{properties} untuk proses konfigurasi. Konfigurasi dapat dilakukan dengan cara membuat \textit{file} twitter4j.properties atau kelas \textit{ConfigurationBuilder} atau \textit{System Property}. Berikut adalah contoh penggunaan dari ketiganya :
+
+\begin{enumerate}
+	\item via twitter4j.properties
+	
+	Menyimpan standar \textit{properties} \textit{file} yang diberi nama "twitter4j.properties". \textit{File} ini diletakkan pada \textit{folder} yang sama dengan pembuatan perangkat lunak.
+	\begin{lstlisting} [caption= isi dari twitter4j.properties]
+	{
+		debug=false
+		oauth.consumerKey=3iT8duMItTTrdaU1qTHxwDIUl
+		oauth.consumerSecret=YUIgJTbQT3i5tYA5RE0L38dPT9HaDhuBTifvVmKDYeOgJ7t313
+		oauth.accessToken=313287708-NO5SPbreQvoOxtXUD5EcKlubIfCBNfCb6aRqYBlZ
+		oauth.accessTokenSecret=LVfDgtlfeht5yjBJGSgvSvtMYcFMoEdYOspYoOptcuR4i
+	}
+	\end{lstlisting}
+	\item via \textit{ConfigurationBuilder}
+	
+	Menggunakan \textit{ConfigurationBuilder class} untuk melakukan konfigurasi Twitter4J.
+	\begin{lstlisting} [caption= isi dari twitter4j ConfigurationBuilder]
+	{
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setDebugEnabled(true)
+			.setOAuthConsumerKey("3iT8duMItTTrdaU1qTHxwDIUl")
+			.setOAuthConsumerSecret("YUIgJTbQT3i5tYA5RE0L38dPT9HaDhuBTifvVmKDYeOgJ7t313")
+			.setOAuthAccessToken("313287708-NO5SPbreQvoOxtXUD5EcKlubIfCBNfCb6aRqYBlZ")
+			.setOAuthAccessTokenSecret("LVfDgtlfeht5yjBJGSgvSvtMYcFMoEdYOspYoOptcuR4i");
+		TwitterFactory tf = new TwitterFactory(cb.build());
+		Twitter twitter = tf.getInstance();
+	}
+	\end{lstlisting}
+	\item via \textit{System Properties}
+	
+	Menggunakan \textit{System Properties} untuk melakukan konfigurasi Twitter4J.
+	\begin{lstlisting} [caption= isi dari twitter4j System Properties]
+		$ export twitter4j.debug=true
+		$ export twitter4j.oauth.consumerKey=3iT8duMItTTrdaU1qTHxwDIUl
+		$ export twitter4j.oauth.consumerSecret=YUIgJTbQT3i5tYA5RE0L38dPT9HaDhuBTifvVmKDYeOgJ7t313
+		$ export twitter4j.oauth.accessToken=313287708-NO5SPbreQvoOxtXUD5EcKlubIfCBNfCb6aRqYBlZ
+		$ export twitter4j.oauth.accessTokenSecret=LVfDgtlfeht5yjBJGSgvSvtMYcFMoEdYOspYoOptcuR4i
+		$ java -cp twitter4j-core-4.0.2.jar:yourApp.jar yourpackage.Main
+	\end{lstlisting}
+\end{enumerate}
 %\subsection{Contoh Kode}
 %Untuk menjalankan ini semua, anda harus mempunyai OAuth credential yang telah dikonfigurasi pada twitter4j.properties.
 

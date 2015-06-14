@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TestSkripsi/src/RoutingResponse.java</file>
-            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TestSkripsi/src/TwitterGateway.java</file>
-            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TestSkripsi/src/KIRIGateway.java</file>
-            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TestSkripsi/src/Steps.java</file>
-            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TestSkripsi/src/Step.java</file>
-            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TestSkripsi/src/twitter4j.properties</file>
-            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TestSkripsi/src/Main.java</file>
+            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TwitterBot/src/TwitterGateway.java</file>
+            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TwitterBot/src/RoutingResponse.java</file>
+            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TwitterBot/src/KIRIGateway.java</file>
+            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TwitterBot/src/twitter4j.properties</file>
+            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TwitterBot/src/Main.java</file>
+            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TwitterBot/src/Step.java</file>
+            <file>file:/C:/Users/Kevin/Documents/NetBeansProjects/TwitterBot/src/Steps.java</file>
         </group>
     </open-files>
 </project-private>

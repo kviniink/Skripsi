@@ -1,14 +1,17 @@
 %_____________________________________________________________________________
 %=============================================================================
-% data.tex v5 (10-11-2013) \ldots dibuat oleh Lionov - Informatika FTIS UNPAR
+% data.tex v6 (13-04-2015) \ldots dibuat oleh Lionov - Informatika FTIS UNPAR
 %
-% Perubahan pada versi 5 (10-11-2013)
-% - Perbaikan pada memasukkan bab : tidak perlu menuliskan apapun untuk 
-%	memasukkan seluruh bab (bagian V)
-% - Perbaikan pada memasukkan lampiran : tidak perlu menuliskan apapun untuk
-%	memasukkan seluruh lampiran atau -1 jika tidak memasukkan apapun
+% Perubahan pada versi 6 (13-04-2015)
+% - Perubahan untuk data-data ``template" menjadi lebih generik dan menggunakan
+%	tanda << dan >>
 %
 % Perubahan pada versi sebelumnya
+% 	versi 5 (10-11-2013)
+% 	- Perbaikan pada memasukkan bab : tidak perlu menuliskan apapun untuk 
+%	  memasukkan seluruh bab (bagian V)
+% 	- Perbaikan pada memasukkan lampiran : tidak perlu menuliskan apapun untuk
+%	  memasukkan seluruh lampiran atau -1 jika tidak memasukkan apapun
 %	versi 4 (21-10-2012)
 %	- Data dosen dipindah ke dosen.tex agar jika ada perubahan/update data dosen
 %   mahasiswa tidak perlu mengubah data.tex
@@ -27,6 +30,7 @@
 % Masukkan ke dalam file ini, data-data yang diperlukan oleh template ini
 % Cara memasukkan data dijelaskan di setiap bagian
 % Data yang WAJIB dan HARUS diisi dengan baik dan benar adalah SELURUHNYA !!
+% Hilangkan tanda << dan >> jika anda menemukannya
 %=============================================================================
 %_____________________________________________________________________________
 %=============================================================================
@@ -59,8 +63,8 @@
 % \mode{kosong}
 % \mode{cover}
 % \mode{sidang}
-\mode{sidang_akhir}
-%\mode{final} 
+%\mode{sidang_akhir}
+\mode{final} 
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -87,8 +91,8 @@
 % - double : jarak yang lebih lebar lagi, jika pembimbing berniat memberi 
 %            catatan yg banyak di antara baris (dianjurkan untuk bimbingan)
 %=============================================================================
-%\linespacing{single}
- \linespacing{onehalf}
+\linespacing{single}
+% \linespacing{onehalf}
 %\linespacing{double}
 %=============================================================================
 
@@ -139,14 +143,15 @@
 %			  ujian akhir skripsi/tugas akhir
 % - pembimbing: isi dengan pembimbing anda, lihat daftar dosen di file dosen.tex
 %				jika pembimbing hanya 1, kosongkan parameter kedua 
-%				(e.g. \pembimbing{\JND}{  } )
+%				(e.g. \pembimbing{\JND}{  } ) , \JND adalah kode dosen
 % - penguji : isi dengan para penguji anda, lihat daftar dosen di file dosen.tex
-%				(e.g. \penguji{\JHD}{\JCD} )
+%				(e.g. \penguji{\JHD}{\JCD} ) , \JND dan \JCD adalah kode dosen
+%
 %=============================================================================
 \namanpm{Kevin Theodorus Yonathan}{2011730037}
-\tanggal{4}{7}{2014}
-\pembimbing{\PAS}{}    %Lihat singkatan pembimbing anda di file dosen.tex
-\penguji{\TAB}{\CEN} 		%Lihat singkatan penguji anda di file dosen.tex
+\tanggal{03}{6}{2015}
+\pembimbing{\TAB}{}    %Lihat singkatan pembimbing anda di file dosen.tex
+\penguji{\CAN}{\LCA} 		%Lihat singkatan penguji anda di file dosen.tex
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -160,6 +165,7 @@
 %			   bawahnya
 %			 - Gunakan \texorpdfstring{\\}{} untuk pindah ke baris baru
 %			 - Judul TIDAK ditulis dengan menggunakan huruf besar seluruhnya !!
+%			 - Gunakan perintah \texorpdfstring{\\}{} untuk baris baru
 %=============================================================================
 
 \judulINA{Pembuatan \textit{Twitter Bot} Untuk Mencari Jalur Transportasi Publik}
@@ -180,18 +186,18 @@
 \abstrakINA{
 Transportasi publik sudah banyak digunakan oleh kebanyakan orang di Indonesia. Keuntungan memakai transportasi publik sudah banyak dirasakan yaitu untuk mengatasi kemacetan dan mengurangi pemanasan global. KIRI adalah website yang dapat mencari jalur transportasi publik dari lokasi awal menuju lokasi tujuan. Seiring dengan perkembangan zaman, perkembangan internet di Indonesia sudah semakin maju. Banyak orang sudah menggunakan fasilitas internet untuk berbagai macam kebutuhan terutama untuk jejaring sosial online. Salah satu  jejaring sosial online yang sudah banyak digunakan orang-orang adalah Twitter. Twitter adalah salah satu layanan jejaring sosial online yang memungkinkan pengguna memposting pesan berbasis teks hingga 140 karakter.
 
-Dalam pembuatan Twitter bot, penulis memanfaatkan KIRI API dan Twitter API. KIRI API digunakan untuk memberi jalur transportasi publik, sedangkan Twitter API digunakan untuk menangkap \textit{tweet} dan membalas \textit{tweet}. Twitter bot yang akan dibangun pada penelitian ini menggunakan bahasa Java dan menggunakan library dari Twitter4J.
+Pada tugas akhir ini penulis akan membuat perangkat lunak \textit{Twitter bot} untuk mencari jalur transportasi publik. Dalam pembuatan Twitter bot, penulis memanfaatkan KIRI API dan Twitter API. KIRI API digunakan untuk memberi jalur transportasi publik, sedangkan Twitter API digunakan untuk menangkap \textit{tweet} dan membalas \textit{tweet}. \textit{Twitter bot} yang dibangun pada penelitian ini menggunakan bahasa Java dan menggunakan library dari Twitter4J.
 
-Dari hasil pengujian, diperoleh bahwa Twitter bot yang dibuat sudah berjalan dengan lancar. Pengguna sudah dapat mencari jalur transportasi publik dari suatu lokasi menuju lokasi tujuan dengan melakukan mention kepada akun Twitter bot. Lalu Twitter Bot akan melakukan balasan kepada pengguna berupa tweet yang berisikan jalur transportasi publik yang harus ditempuh.
+Dari hasil pengujian, diperoleh bahwa \textit{Twitter bot} yang dibuat sudah berjalan dengan baik. Pengguna sudah dapat mencari jalur transportasi publik dari suatu lokasi menuju lokasi tujuan dengan melakukan mention kepada akun \textit{Twitter bot}. Lalu \textit{Twitter Bot} melakukan balasan kepada pengguna berupa tweet yang berisikan jalur transportasi publik yang harus ditempuh.
 }
 
 \abstrakENG{
 Public transport is widely used by most people in Indonesia. Taking advantage of public transportation has been much felt that to tackle congestion and reduce global warming. KIRI is a website that can search for public transport route from the starting location to the destination location. Along with the times, development of the Internet in Indonesia is more advanced. Many people already use the internet facilities for a variety of needs, especially for online social networking. One of the online social networks are already widely used are Twitter. Twitter is one of the online social networking service that allows users to post text-based messages of up to 140 characters.
 
-In the manufacture Twitter bot, the authors utilize KIRI API and Twitter API. KIRI API is used to provide public transportation route, while the Twitter API is used to capture the tweet and reply tweet. Twitter bot that will be built using Java language and use the library from Twitter4J.
+In the manufacture Twitter bot, the authors utilize KIRI API and Twitter API. KIRI API is used to provide public transportation route, while the Twitter API is used to capture the tweet and reply tweet. Twitter bot that be built using Java language and use the library from Twitter4J.
 
-From the test results, obtained that the Twitter bot that made already running correctly. Users are able to search for public transport route from one location to the location of the destination by making mention to a Twitter account bot. Then Twitter Bot will reply to users in the form of a tweet that contains the public transportation lines that must be taken.
-} 
+From the test results, obtained that the Twitter bot that made already running well. Users are able to search for public transport route from one location to the location of the destination by making mention to a Twitter account bot. Then Twitter Bot reply to users in the form of a tweet that contains the public transportation lines that must be taken.
+}
 
 %=============================================================================
 
@@ -214,7 +220,7 @@ From the test results, obtained that the Twitter bot that made already running c
 %=============================================================================
 % Persembahan : kepada siapa anda mempersembahkan skripsi ini ...
 %=============================================================================
-\untuk{Dipersembahkan untuk diri sendiri }
+\untuk{Dipersembahkan untuk diri sendiri}
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -224,7 +230,17 @@ From the test results, obtained that the Twitter bot that made already running c
 % Kata Pengantar: tempat anda menuliskan kata pengantar dan ucapan terima 
 % kasih kepada yang telah membantu anda bla bla bla ....  
 %=============================================================================
-\prakata{\lipsum}
+\prakata{
+Puji Syukur penulis kepada Tuhan yang telah memberikan rahmatnya sehingga penulis dapat menyelesaikan skripsi yang berjudul "\textbf{Pembuatan witter Bot Untuk Mencari Jalur Transportasi Publik}". Skripsi ini disusun dengan maksud memenihi salah satu prasyarat menyelesaikan pendidikan di Jurusan Teknik Informatika, Fakultas Teknologi Informasi dan Sains, Universitas Katolik Parahyangan. Penulis menyadari bahwa dalam penulisan skripsi ini tidak terlepas dari bantuan dan dukungan berbagai pihak. Oleh karena itu, penulis ingin mengucapkan terima kasih kepada:
+\begin{itemize}
+	\item Pak Thomas Anung Basuki selaku pembimbing yang telah memberikan banyak masukan untuk skripsi ini sehingga skripsi ini dapat diselesaikan dengan baik. 
+	\item Pak Pascal Alfadian atas masukan dan tambahan wawasan untuk skripsi ini sehingga skripsi ini dapat diselesaikan dengan baik. 
+	\item Keluarga yang selalu memberi dukungan baik moril maupun materil dan doa.
+	\item Ibu Luciana dan Pak Chandra selaku penguji yang sudah memberikan banyak masukan dalam penyusunan skripsi ini.
+	\item Segenap teman penulis Yohan Sugiyo, Jovan Gunawan, Samuel Christian, Antonio Yaphiar, Steven Christian, Clara, William Wibisono, Calvin Christian, Edbert Jeremiah, teman-teman MWS yang sudah memberi dukungan dan bantuan dalam penyusunan skripsi ini.
+\end{itemize}
+Semoga segala bantuan dan dukungan berbagai pihak tersebut mendapat berkat dari Tuhan. Semoga skripsi ini berguna bagi semua orang dan dapat dijadikan bahan pembelajaran. Akhir kata, penulis mohon maaf apabila kesalahan dan kekurangan dalam penulisan skripsi ini.
+}
 %=============================================================================
 
 %_____________________________________________________________________________

@@ -207,7 +207,7 @@
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="B2W+xp6gJ0y3qG6aAW0T3gAA">
 <XPD:ATTR name="Alpha" type="real">1.5707963267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">1 : Tweet ke @kviniink</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">1 : Melakukan tweet pencarian kepada akun Twitter bot @kviniink</XPD:ATTR>
 <XPD:REF name="Model">ECH1QRhDE0ypqpy9gdNEFQAA</XPD:REF>
 <XPD:REF name="HostEdge">xrzN0odPhUubC52lDmoXSAAA</XPD:REF>
 </XPD:OBJ>
@@ -783,7 +783,7 @@
 </XPD:OBJ>
 <XPD:ATTR name="#ParticipatingStimuli" type="integer">16</XPD:ATTR>
 <XPD:OBJ name="ParticipatingStimuli[0]" type="UMLStimulus" guid="ECH1QRhDE0ypqpy9gdNEFQAA">
-<XPD:ATTR name="Name" type="string">Tweet ke @kviniink</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Melakukan tweet pencarian kepada akun Twitter bot @kviniink</XPD:ATTR>
 <XPD:REF name="Sender">I3JRnsA0Lk+2c8dxmROxegAA</XPD:REF>
 <XPD:REF name="Receiver">+dnIRH5VsE6EOMWdK7qyCQAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLSendAction" guid="smTwheJ1wkG9jgZtuAjQwQAA">

@@ -17,12 +17,12 @@ import java.net.URLEncoder;
  */
 public class KIRIGateway {
     public static String GetLatLong(String destination) throws Exception {
-            String url = "http://kiri.travel/handle.php?version=2&mode=searchplace&region=bdo&querystring=" + URLEncoder.encode(destination.trim(), "UTF-8")+"&apikey=889C2C8FBB82C7E6";
-            
-            //System.out.println(url);
+            //String url = "http://kiri.travel/handle.php?version=2&mode=searchplace&region=bdo&querystring=" + URLEncoder.encode(destination.trim(), "UTF-8")+"&apikey=889C2C8FBB82C7E6";
+            String url = "http://tirtayasa.azurewebsites.net/handle.php?version=2&mode=searchplace&region=bdo&querystring=" + URLEncoder.encode(destination.trim(), "UTF-8")+"&apikey=889C2C8FBB82C7E6";
+            System.out.println(url);
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
+            
             con.setRequestMethod("GET");
 
             int responseCode = con.getResponseCode();
@@ -34,15 +34,17 @@ public class KIRIGateway {
 
             while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
+                    
             }
             in.close();
 
             return response.toString();
 	}
         
-        public static String GetTrack(String dest1, String dest2) throws Exception {
+        public static String GetTrack(String dest1, String dest2, String locale) throws Exception {
             //presentation == desktop biar tidak ada %toicon and %fromicon
-            String url = "http://kiri.travel/handle.php?version=2&mode=findroute&locale=id&start="+dest1+"&finish="+dest2+"&presentation=desktop&apikey=889C2C8FBB82C7E6";
+            String url = "http://tirtayasa.azurewebsites.net/handle.php?version=2&mode=findroute&locale="+locale+"&start="+dest1+"&finish="+dest2+"&presentation=desktop&apikey=889C2C8FBB82C7E6";
+            System.out.println(url);
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
