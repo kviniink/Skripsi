@@ -147,9 +147,26 @@ Pengujian fungsional dilakukan pada fungsionalitas yang tersedia pada aplikasi y
 Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter bot} untuk mencari jalur transportasi publik. Peneliti meminta kepada beberapa orang untuk melakukan pencarian jalur transportasi publik kepada \textit{Twitter bot} untuk mencari jalur transportasi publik. Selain itu juga peneliti mencoba melakukan \textit{tweet} pencarian melalui akun @kviniinktest123.
 
 \begin{enumerate}
-	\item Pengujian 1
+	\item Pengujian otentikasi
 	
-	Pada pengujian satu, peneliti mencoba untuk mencari jalur transportasi publik untuk lokasi yang umum dikunjungi yaitu \textit{mall}. Pencarian dilakukan dengan lokasi awal yaitu BIP (Bandung Indah Plaza) menuju lokasi tujuan yaitu IP (Istana Plaza). Akun penguji @kviniinktest123 melakukan \textit{mention} kepada akun \textit{Twitter bot} @kviniink123 yang dapat dilihat pada Gambar~\ref{fig:Tweet1}.
+	Pada pengujian ini, keberhasilan otentikasi akan diuji keberhasilannya. \textit{Twitter bot} melakukan otentikasi terhadap \textit{customer key, customer secret, access token}, dan \textit{access token secret} yang telah diberikan oleh Twitter. Hasil otentikasi berhasil ditunjukan pada Gambar~\ref{otentikasiBerhasilDilakukan}. Setelah otentikasi berhasil dilakukan, \textit{Twitter bot} dapat melakukan \textit{streaming tweet}. Gambar~\ref{fig:otentikasiGagalDilakukan} merupakan contoh jika otentikasi gagal dilakukan. Kegagalan otentikasi disebabkan jika salah satu nilai pada \textit{customer key, customer secret, access token}, atau \textit{access token} tersebut salah. Jika otentikasi gagal dilakukan \textit{Twitter bot} tidak dapat melakukan \textit{streaming tweet} dan tidak dapat melakukan \textit{tweet}.
+	\begin{figure}
+		\centering
+			\includegraphics[width=0.75\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/OtentikasiBerhasil.PNG}
+		\caption{Otentikasi Berhasil Dilakukan}
+		\label{fig:otentikasiBerhasilDilakukan}
+	\end{figure}
+	
+	\begin{figure}
+		\centering
+			\includegraphics[width=1\textwidth]{C:/Skripsi/doc/DokumenSkripsi/Gambar/OtentikasiGagal1.PNG}
+		\caption{Otentikasi Gagal Dilakukan}
+		\label{fig:otentikasiGagalDilakukan}
+	\end{figure}
+	
+	\item Pengujian satu
+	
+	Pada pengujian ke satu dilakukan uji coba untuk mencari jalur transportasi publik untuk lokasi yang umum dikunjungi yaitu \textit{mall}. Pencarian dilakukan dengan lokasi awal yaitu BIP (Bandung Indah Plaza) menuju lokasi tujuan yaitu IP (Istana Plaza). Akun penguji @kviniinktest123 melakukan \textit{mention} kepada akun \textit{Twitter bot} @kviniink123 yang dapat dilihat pada Gambar~\ref{fig:Tweet1}.
 	
 	\begin{figure}
 		\centering
@@ -168,7 +185,7 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter bot} untuk me
 		\label{fig:HasilTweet1}
 	\end{figure}
 	
-	Pencarian kedua dilakukan dengan lokasi awal yaitu BIP (Bandung Indah Plaza) dan lokasi tujuan yaitu PVJ (Paris van Java). Dapat dilihat pada Gambar~\ref{fig:Tweet2}, akun @kviniinktest123 melakukan \textit{tweet} pencarian jalur transportasi publik yang di-\textit{mention} kepada akun \textit{Twitter bot} @kviniink dengan lokasi awal yaitu BIP dan lokasi tujuan yaitu PVJ.
+	Pencarian ke dua dilakukan dengan lokasi awal yaitu BIP (Bandung Indah Plaza) dan lokasi tujuan yaitu PVJ (Paris van Java). Dapat dilihat pada Gambar~\ref{fig:Tweet2}, akun @kviniinktest123 melakukan \textit{tweet} pencarian jalur transportasi publik yang di-\textit{mention} kepada akun \textit{Twitter bot} @kviniink dengan lokasi awal yaitu BIP dan lokasi tujuan yaitu PVJ.
 	
 	\begin{figure}
 		\centering
@@ -187,7 +204,7 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter bot} untuk me
 		\label{fig:HasilTweet2}
 	\end{figure}
 	
-	Pada pencarian kedua dapat dilihat pada \textit{tweet} pertama terjadi ketidak sesuaian hasil dari KIRI API dengan hasil \textit{tweet}.
+	Pada pencarian ke dua dapat dilihat pada \textit{tweet} pertama terjadi ketidak sesuaian hasil dari KIRI API dengan hasil \textit{tweet}.
 	Peneliti lalu melakukan pencarian melalui \textit{website} KIRI yaitu \url{http://kiri.travel}. Pencarian pertama pada \textit{website} KIRI dilakukan dengan lokasi awal yaitu BIP dan lokasi tujuan yaitu IP. Hasil pencarian pada \textit{website} KIRI dapat dilihat pada Gambar~\ref{fig:HasilKiri1}.
 	
 	
@@ -198,7 +215,7 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter bot} untuk me
 		\label{fig:HasilKiri1}
 	\end{figure}
 	
-	Lalu pencarian kedua pada \textit{website} KIRI dilakukan dengan lokasi awal yaitu BIP dan lokasi tujuan yaitu PVJ. Hasil pencarian KIRI dari BIP menuju PVJ dapat dilihat pada Gambar~\ref{fig:HasilKiri2}. Setelah dilihat dari hasil keduanya, \textit{Twitter bot} melakukan \textit{duplicate tweet} pada \textit{tweet} pertama dalam pencarian ke dua yang dilakukan oleh akun @kviniink123. \textit{Duplicate tweet} adalah \textit{tweet} yang dinyatakan dinyatakan identik oleh Twitter dalam jangka waktu tertentu. \textit{Duplicate tweet} tidak diperbolehkan oleh Twitter. Oleh karena itu, untuk menghindari adanya \textit{duplicate tweet}, penulis menambahkan waktu untuk jam, menit, dan detik di setiap \textit{tweet} yang dilakukan oleh \textit{Twitter bot} agar membuat setiap \textit{tweet} tersebut bersifat unik.
+	Lalu pencarian ke dua pada \textit{website} KIRI dilakukan dengan lokasi awal yaitu BIP dan lokasi tujuan yaitu PVJ. Hasil pencarian KIRI dari BIP menuju PVJ dapat dilihat pada Gambar~\ref{fig:HasilKiri2}. Setelah dilihat dari hasil keduanya, \textit{Twitter bot} melakukan \textit{duplicate tweet} pada \textit{tweet} pertama dalam pencarian ke dua yang dilakukan oleh akun @kviniink123. \textit{Duplicate tweet} adalah \textit{tweet} yang dinyatakan dinyatakan identik oleh Twitter dalam jangka waktu tertentu. \textit{Duplicate tweet} tidak diperbolehkan oleh Twitter. Oleh karena itu, untuk menghindari adanya \textit{duplicate tweet}, penulis menambahkan waktu untuk jam, menit, dan detik di setiap \textit{tweet} yang dilakukan oleh \textit{Twitter bot} agar membuat setiap \textit{tweet} tersebut bersifat unik.
 	
 	\begin{figure}
 		\centering
@@ -208,9 +225,9 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter bot} untuk me
 	\end{figure}
 	\clearpage
 	
-	\item Pengujian 1.1
+	\item Pengujian satu
 	
-	Pada pengujian satu, peneliti mencoba untuk mencari jalur transportasi publik untuk lokasi yang umum dikunjungi yaitu \textit{mall}. Pencarian dilakukan dengan lokasi awal yaitu PVJ (Paris Van Java) menuju lokasi tujuan yaitu BIP (Bandung Indah Plaza). Akun penguji @kviniinktest123 melakukan \textit{mention} kepada akun \textit{Twitter bot} @kviniink123 yang dapat dilihat pada Gambar~\ref{fig:Tweet1_1}.
+	Pada pengujian ke satu, dilakukan uji coba untuk mencari jalur transportasi publik untuk lokasi yang umum dikunjungi yaitu \textit{mall}.. Pencarian dilakukan dengan lokasi awal yaitu PVJ (Paris Van Java) menuju lokasi tujuan yaitu BIP (Bandung Indah Plaza). Akun penguji @kviniinktest123 melakukan \textit{mention} kepada akun \textit{Twitter bot} @kviniink123 yang dapat dilihat pada Gambar~\ref{fig:Tweet1_1}.
 	
 	\begin{figure}
 		\centering
@@ -269,9 +286,9 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter bot} untuk me
 	\end{figure}
 	\clearpage
 	
-	\item Pengujian 2
+	\item Pengujian dua
 	
-	Pada pengujian dua, penulis melakukan pengujian dengan cara menjalankan aplikasi selama 24 jam. Selain itu penulis juga melakukan pengujian dengan cara meminta bantuan kepada beberapa responden untuk melakukan \textit{tweet} pencarian jalur transportasi publik. Pengujian ini dilakukan untung mengetahui apakah aplikasi \textit{Twitter bot} berjalan dengan baik atau tidak. Dari hasil yang didapatkan \textit{Twitter bot} dapat memberi pesan bahwa suatu lokasi pencarian tidak ditemukan. Pesan pemberitahuan yang dapat dilihat pada Gambar~\ref{fig:HasilFinal1}. Selain itu juga \textit{Twitter bot} dapat memberi pesan juga lokasi awal dan lokasi tujuan merupakan lokasi yang sama. Pesan pemberitahuan dapat dilihat pada Gambar~\ref{fig:HasilTweetSama}.
+	Pada pengujian kedua aplikasi dijalankan selama 24 jam dan meminta bantuan kepada beberapa responden untuk melakukan \textit{tweet} pencarian jalur transportasi publik. Pengujian ini dilakukan untung mengetahui apakah aplikasi \textit{Twitter bot} berjalan dengan baik atau tidak. Dari hasil yang didapatkan \textit{Twitter bot} dapat memberi pesan bahwa suatu lokasi pencarian tidak ditemukan. Pesan pemberitahuan yang dapat dilihat pada Gambar~\ref{fig:HasilFinal1}. Selain itu juga \textit{Twitter bot} dapat memberi pesan juga lokasi awal dan lokasi tujuan merupakan lokasi yang sama. Pesan pemberitahuan dapat dilihat pada Gambar~\ref{fig:HasilTweetSama}.
 	Pada Gambar~\ref{fig:HasilFinal1} dapat dilihat bahwa akun @cla\_amour mencari lokasi tki dan kopo tetapi lokasi pencarian tidak ditemukan. Akun @cla\_amour juga mencari jalur transportasi publik yang lokasinya ditemukan tetapi tidak ada rute transportasi publiknya. Hasil \textit{reply Twitter bot} yang dilakukan oleh akun @cla\_amour dapat dilihat pada salah satu \textit{reply} yang terdapat pada Gambar~\ref{fig:HasilFinal1}.
 	
 	Selain itu \textit{Twitter bot} tidak akan mendapatkan \textit{error} ketika akun \textit{Twitter Bot} @kviniink mendapat banyak \textit{mention} dalam satu \textit{tweet} seperti pada Gambar~\ref{fig:testTweet}, jika format penulisan benar maka \textit{Twitter bot} akan tetap mencari jalur transportasi publiknya yang dapat dilihat pada Gambar~\ref{fig:hasilTestTweet}. 
@@ -321,9 +338,9 @@ Pada sub bab ini akan dilakukan pengujian terhadap \textit{Twitter bot} untuk me
 	\end{figure}
 	
 	\clearpage
-	\item Pengujian 3
+	\item Pengujian tiga
 	
-	Pada pengujian tiga dilakukan pengujian untuk mengetahui apakah hasil \textit{tweet} yang diberikan \textit{Twitter bot} terdapat kesalahan atau tidak jika \textit{Twitter bot} mendapatkan dua \textit{tweet} atau lebih pada waktu yang bersamaan. Pengujian dilakukan dengan cara melakukan dua \textit{tweet} pencarian secara bersamaan. Penulis meminta bantuan kepada beberapa responden untuk melakukan \textit{tweet} pencarian secara bersamaan. Hasil pengujian untuk \textit{tweet} pencarian yang dilakukan secara bersamaan dapat dilihat pada tabel~\ref{tab:tabelHasilPengujianTweetYangDilakukanSecaraBersamaan}.
+	Pada pengujian ketiga dilakukan pengujian untuk mengetahui apakah hasil \textit{tweet} yang diberikan \textit{Twitter bot} terdapat kesalahan atau tidak jika \textit{Twitter bot} mendapatkan dua \textit{tweet} atau lebih pada waktu yang bersamaan. Pengujian dilakukan dengan cara melakukan dua \textit{tweet} pencarian secara bersamaan. Penulis meminta bantuan kepada beberapa responden untuk melakukan \textit{tweet} pencarian secara bersamaan. Hasil pengujian untuk \textit{tweet} pencarian yang dilakukan secara bersamaan dapat dilihat pada tabel~\ref{tab:tabelHasilPengujianTweetYangDilakukanSecaraBersamaan}.
 	
 	\begin{table}[h]
 	\caption{Tabel 1 hasil pengujian \textit{tweet} yang dilakukan secara bersamaan}
